@@ -295,9 +295,13 @@
             <!-- Begin Page Content -->
             <div class="container-fluid">
                 <!-- Page Heading -->
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">List of Clients files</h1>
-
+                <div class="container-fluid">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Clients files</li>
+                        </ol>
+                    </nav>
                 </div>
 
                 <!-- Content Row -->
@@ -313,11 +317,11 @@
 
                                 <!-- Modal -->
                                 <div class="modal fade" id="addClientFileModal" tabindex="-1" role="dialog"
-                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
+                                     aria-labelledby="clientModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">New Client File
+                                                <h5 class="modal-title" id="clientModalLabel">New Client File
                                                     Information</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -325,63 +329,63 @@
                                             </div>
                                             <div class="modal-body">
                                                 <form>
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Name</label>
-                                                        <input type="text" class="form-control" id="exampleInputEmail1"
-                                                               aria-describedby="emailHelp"
-                                                               required>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <label for="inputName">Name</label>
+                                                            <input type="text" class="form-control" id="inputEmail4">
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="inputSurname">Surname</label>
+                                                            <input type="text" class="form-control" id="inputPassword4">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <label for="inputEmail">Email</label>
+                                                            <input type="email" class="form-control" id="inputEmail4">
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="inputContact">Contact</label>
+                                                            <input type="tel" class="form-control"
+                                                                   id="inputContact" placeholder="+267">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="contact">Date of Birth</label>
+                                                                <input type="date" class="form-control"
+                                                                       id="dob" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="contact">Gender</label>
+                                                                <select class="form-control form-control-md" required>
+                                                                    <option disabled>Select</option>
+                                                                    <option>Male</option>
+                                                                    <option>Female</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="exampleInputEmail1">Surname</label>
-                                                        <input type="text" class="form-control" id="exampleInputEmail1"
-                                                               aria-describedby="emailHelp"
-                                                               required>
+                                                        <label for="inputAddress">Physical Address</label>
+                                                        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="exampleInputEmail1">Email address</label>
-                                                        <input type="email" class="form-control"
-                                                               id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                                        <label for="inputAddress2">Postal Address</label>
+                                                        <input type="text" class="form-control" id="inputAddress2" >
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="exampleInputEmail1">Physical Address</label>
-                                                        <input type="text" class="form-control" id="exampleInputEmail1"
-                                                               aria-describedby="locationHelp" required>
+                                                        <div class="custom-file">
+                                                            <input type="file" class="custom-file-input" id="validatedCustomFile">
+                                                            <label class="custom-file-label"
+                                                                   for="validatedCustomFile">Upload Supporting
+                                                                Docs...</label>
+                                                            <div class="invalid-feedback">Scan Supporting Documents</div>
+                                                        </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Postal Address</label>
-                                                        <input type="text" class="form-control" id="exampleInputEmail1"
-                                                               aria-describedby="postalAddressHelp" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="contact">Contact No</label>
-                                                        <input type="tel" class="form-control"
-                                                               id="contact" required>
-                                                        <small id="contactHelp" class="form-text
-                                                        text-muted">Contact number should be +267 only</small>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="contact">Date of Birth</label>
-                                                        <input type="date" class="form-control"
-                                                               id="dob" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <select class="form-control form-control-md" required>
-                                                            <option>Gender</option>
-                                                            <option>Male</option>
-                                                            <option>Female</option>
-                                                        </select>
-                                                    </div>
-
-                                                   <div class="form-group">
-                                                       <div class="custom-file">
-                                                           <input type="file" class="custom-file-input" id="validatedCustomFile">
-                                                           <label class="custom-file-label"
-                                                                  for="validatedCustomFile">Upload Supporting
-                                                               Docs...</label>
-                                                           <div class="invalid-feedback">Scan Supporting Documents</div>
-                                                       </div>
-                                                   </div>
-
                                                 </form>
                                             </div>
                                             <div class="modal-footer">

@@ -303,10 +303,66 @@
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <a href="#" class="btn btn-md btn-outline-primary shadow-sm">
+                    <a href="#" class="btn btn-md btn-outline-primary shadow-sm" data-toggle="modal" data-target="#openClientCaseModal">
                         <i class="fa fa-file-contract fa-sm text-dark-100"></i> Open a case</a>
+                    <!-- Modal -->
+                    <div class="modal fade" id="openClientCaseModal" tabindex="-1" role="dialog"
+                         aria-labelledby="openClientCaseModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="openClientCaseModalLabel">Court Case Information</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="alert alert-primary" role="alert">
+                                        In the High Court of the Republic of Botswana
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="inputName">Case No</label>
+                                        <input type="text" class="form-control" id="inputEmail4" disabled>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="inputName">Plantiff Name</label>
+                                        <input type="text" class="form-control" id="inputEmail4">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputSurname">Defendent Name</label>
+                                        <input type="text" class="form-control" id="inputPassword4">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputSurname">Case Details</label>
+                                        <textarea class="form-control" aria-label="With textarea"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <label for="contact">Date of Appeal</label>
+                                            <input type="date" class="form-control"
+                                                   id="dob" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="validatedCustomFile">
+                                            <label class="custom-file-label"
+                                                   for="validatedCustomFile">Upload Supporting
+                                                Docs...</label>
+                                            <div class="invalid-feedback">Scan Supporting Documents</div>
+                                        </div>
+                                    </div>
 
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save case</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                </div>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
                 <div class="card shadow mb-4">
                     <!-- Card Header - Accordion -->
                     <a href="#collapseCardExample1" class="d-block card-header py-3" data-toggle="collapse"
@@ -345,6 +401,7 @@
                             This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
             <!-- /.container-fluid -->
