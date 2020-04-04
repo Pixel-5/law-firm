@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="680dd266-b94c-42b2-bf1f-4eed7f13957c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/client/cases.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/client/cases.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/client/open-file.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/client/open-file.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -193,7 +192,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

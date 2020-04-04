@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
 
     <meta charset="utf-8">
@@ -14,14 +12,16 @@
     <!-- Custom fonts for this template -->
     <link href="{{ asset('js/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <!-- Custom styles for this page -->
-    <link href="{{ asset('js/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-</head>
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/responsive.bootstrap4.min.css') }}" rel="stylesheet">
 
+</head>
 <body id="page-top">
 
 <!-- Page Wrapper -->
@@ -397,8 +397,8 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div class="table-responsive-md">
-                                    <table class="table table-bordered" id="dataTable" cellspacing="0">
+                                <div class="table-responsive">
+                                    <table id="example" class="table table-striped table-bordered nowrap" style="width:100%">
                                         <thead>
                                         <tr>
                                             <th>File No</th>
@@ -424,11 +424,13 @@
                                             <td>mofenyimoffat@gmail.com</td>
                                             <td>+26774338017</td>
                                             <td>
-                                                <a class="btn btn-info text-center text-white"
+                                                <a class="btn btn-info btn-sm  text-center text-white"
                                                    href="{{ route('admin-open-client-cases') }}">
                                                     <i class="fa fa-file-contract"></i> Open</a>
-                                                <a class="btn btn-warning text-center text-white"><i class="fa fa-pencil-alt"></i> Edit</a>
-                                                <a class="btn btn-danger text-center text-white"><i class="fa fa-trash"></i>
+                                                <a class="btn btn-warning btn-sm  text-center text-white"><i class="fa
+                                                fa-pencil-alt"></i> Edit</a>
+                                                <a class="btn btn-danger btn-sm text-center text-white"><i class="fa
+                                                 fa-trash"></i>
                                                     Delete</a>
                                             </td>
 
@@ -439,9 +441,12 @@
                                             <td>mofenyimoffat@gmail.com</td>
                                             <td>+26774338017</td>
                                             <td>
-                                                <a class="btn btn-info text-center text-white"><i class="fa fa-file-contract"></i> Open</a>
-                                                <a class="btn btn-warning text-center text-white"><i class="fa fa-pencil-alt"></i> Edit</a>
-                                                <a class="btn btn-danger text-center text-white"><i class="fa fa-trash"></i>
+                                                <a class="btn btn-info btn-sm  text-center text-white"><i class="fa
+                                                fa-file-contract"></i> Open</a>
+                                                <a class="btn btn-warning btn-sm text-center text-white"><i class="fa
+                                                fa-pencil-alt"></i> Edit</a>
+                                                <a class="btn btn-danger btn-sm  text-center text-white"><i class="fa
+                                                fa-trash"></i>
                                                     Delete</a>
                                             </td>
 
@@ -452,9 +457,12 @@
                                             <td>mofenyimoffat@gmail.com</td>
                                             <td>+26774338017</td>
                                             <td>
-                                                <a class="btn btn-info text-center text-white"><i class="fa fa-file-contract"></i> Open</a>
-                                                <a class="btn btn-warning text-center text-white"><i class="fa fa-pencil-alt"></i> Edit</a>
-                                                <a class="btn btn-danger text-center text-white"><i class="fa fa-trash"></i>
+                                                <a class="btn btn-info btn-sm  text-center text-white"><i class="fa
+                                                fa-file-contract"></i> Open</a>
+                                                <a class="btn btn-warning btn-sm  text-center text-white"><i class="fa
+                                                fa-pencil-alt"></i> Edit</a>
+                                                <a class="btn btn-danger btn-sm  text-center text-white"><i class="fa
+                                                fa-trash"></i>
                                                     Delete</a>
                                             </td>
 
@@ -465,9 +473,12 @@
                                             <td>mofenyimoffat@gmail.com</td>
                                             <td>+26774338017</td>
                                             <td>
-                                                <a class="btn btn-info text-center text-white"><i class="fa fa-file-contract"></i> Open</a>
-                                                <a class="btn btn-warning text-center text-white"><i class="fa fa-pencil-alt"></i> Edit</a>
-                                                <a class="btn btn-danger text-center text-white"><i class="fa fa-trash"></i>
+                                                <a class="btn btn-info btn-sm  text-center text-white"><i class="fa
+                                                fa-file-contract"></i> Open</a>
+                                                <a class="btn btn-warning btn-sm  text-center text-white"><i class="fa
+                                                fa-pencil-alt"></i> Edit</a>
+                                                <a class="btn btn-danger btn-sm text-center text-white"><i class="fa
+                                                fa-trash"></i>
                                                     Delete</a>
                                             </td>
 
@@ -541,17 +552,39 @@
 <!-- Page level plugins -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
-<script src="{{ asset('js/vendor/datatables/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('js/vendor/datatables/dataTables.bootstrap4.js') }}"></script>
+<!-- Custom scripts for all pages-->
+<script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+<script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('js/responsive.bootstrap4.min.js') }}"></script>
+
+
+
+<!-- Page level plugins -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
 
 <script type="application/javascript">
-
-    $('#dataTable').DataTable( {
-        paging: true,
-        responsive: true,
-        searching: true
+    $(document).ready(function() {
+        $('#example').DataTable( {
+            responsive: {
+                details: {
+                    display: $.fn.dataTable.Responsive.display.modal( {
+                        header: function ( row ) {
+                            var data = row.data();
+                            return 'File Details for '+data[1];
+                        }
+                    } ),
+                    renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+                        tableClass: 'table'
+                    } )
+                }
+            }
+        } );
     } );
 </script>
 </body>
-
 </html>
