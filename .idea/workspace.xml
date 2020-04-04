@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="680dd266-b94c-42b2-bf1f-4eed7f13957c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/client/cases.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/client/cases.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/client/open-file.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/client/open-file.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -137,6 +138,7 @@
   <component name="ProjectId" id="1ZrDWUWc1uOVkOu2y5WMHsq0ra8" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -179,7 +181,7 @@
       <workItem from="1585588357734" duration="12560000" />
       <workItem from="1585659011000" duration="2221000" />
       <workItem from="1585748550620" duration="2403000" />
-      <workItem from="1585846517408" duration="20144000" />
+      <workItem from="1585846517408" duration="27418000" />
     </task>
     <servers />
   </component>
