@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="680dd266-b94c-42b2-bf1f-4eed7f13957c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/client/open-file.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/client/open-file.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -183,7 +185,7 @@
       <workItem from="1585748550620" duration="2403000" />
       <workItem from="1585846517408" duration="27418000" />
       <workItem from="1586010891054" duration="16000" />
-      <workItem from="1586109716792" duration="20711000" />
+      <workItem from="1586109716792" duration="22178000" />
     </task>
     <servers />
   </component>

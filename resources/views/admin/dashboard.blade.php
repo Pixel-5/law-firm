@@ -135,7 +135,6 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-
                                         <div class="text-xs font-weight-bold text-warning text-uppercase
                                         mb-1"><a href="{{ route('admin-view-pending-cases') }}">Pending Requests</a></div>
                                         <div class="row no-gutters align-items-center">
@@ -205,7 +204,14 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="#">Logout</a>
+
+                <a class="btn btn-primary" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById
+                ('frm-logout').submit();">
+                    Logout
+                </a>
+                <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
             </div>
         </div>
     </div>
