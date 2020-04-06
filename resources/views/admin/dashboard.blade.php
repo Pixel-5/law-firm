@@ -159,13 +159,19 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
-                        <div class="card">
+                        <!-- Bar Chart -->
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Case Summary</h6>
+                            </div>
                             <div class="card-body">
-                                <h4 class="card-title">Case Summary</h4>
-                                <div id="morris-bar-chart"></div>
+                                <div class="chart-bar">
+                                    <canvas id="myBarChart"></canvas>
+                                </div>
+                                <hr>
+                                Bar chat showing summary of all cases thrroughout the year
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
