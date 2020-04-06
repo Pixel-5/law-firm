@@ -2,8 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="680dd266-b94c-42b2-bf1f-4eed7f13957c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/client/pending-cases.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/client/re-assign-case.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/side-nav-bar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/top-nav-bar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codestream.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codestream.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/client/cases.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/client/cases.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/client/open-file.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/client/open-file.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/client/schedule-lawyer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/client/schedule-lawyer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -135,7 +147,9 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1ZrDWUWc1uOVkOu2y5WMHsq0ra8" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -181,6 +195,8 @@
       <workItem from="1585659011000" duration="2221000" />
       <workItem from="1585748550620" duration="2403000" />
       <workItem from="1585846517408" duration="27418000" />
+      <workItem from="1586010891054" duration="16000" />
+      <workItem from="1586109716792" duration="17757000" />
     </task>
     <servers />
   </component>

@@ -44,7 +44,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin-dashboard') }}">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Schedule</li>
+                            <li class="breadcrumb-item active" aria-current="page">Pending cases</li>
                         </ol>
                     </nav>
                 </div>
@@ -60,103 +60,51 @@
                                     <table id="example" class="table hover table-striped table-bordered nowrap" style="width:100%">
                                         <thead>
                                         <tr>
-                                            <th>File No</th>
-                                            <th>Client Cases</th>
-                                            <th>Action</th>
+                                            <th>Case No</th>
+                                            <th>Client Name</th>
+                                            <th>Assigned Lawyer</th>
+                                            <th>Status</th>
                                         </tr>
                                         </thead>
                                         <tfoot>
                                         <tr>
-                                            <th>File No</th>
-                                            <th>Client Cases</th>
-                                            <th>Action</th>
+                                            <th>Case No</th>
+                                            <th>Client Name</th>
+                                            <th>Assigned Lawyer</th>
+                                            <th>Status</th>
                                         </tr>
                                         </tfoot>
                                         <tbody>
                                         <tr>
-                                            <td>FF-ABS-0</td>
-                                            <td>CS-ABS 01 </td>
+                                            <td>CS-ABS 01</td>
+                                            <td>Sean Leu</td>
+                                            <td>Kabo Bean</td>
                                             <td>
-                                                <a class="btn btn-outline-info btn-sm  text-center
-                                                    dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                                   data-toggle="dropdown" aria-haspopup="true"
-                                                   aria-expanded="false"><i class="fa fa-user-circle">
-                                                    </i> Assign</a>
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item" href="#">Lawyer 1</a>
-                                                    <a class="dropdown-item" href="#">Lawyer 2</a>
-                                                    <a class="dropdown-item" href="#">lawyer 3</a>
-                                                </div>
-                                                <a class="btn btn-warning btn-sm  text-center text-white"><i class="fa
-                                                fa-pencil-alt"></i> Edit</a>
-                                                <a class="btn btn-danger btn-sm text-center text-white"><i class="fa
-                                                 fa-trash"></i>
-                                                    Delete</a>
+                                                <span class="badge badge-warning">Pending</span>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>FF-ABS-0</td>
+                                            <td> CS-ABS 02</td>
+                                            <td> Sam Bien</td>
+                                            <td>Braden Ani</td>
                                             <td>
-                                                CS-ABS 02
-                                            </td>
-                                            <td>
-                                                <a class="btn btn-outline-info btn-sm  text-center
-                                                    dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                                   data-toggle="dropdown" aria-haspopup="true"
-                                                   aria-expanded="false"><i class="fa fa-user-circle">
-                                                    </i> Assign</a>
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item" href="#">Lawyer 1</a>
-                                                    <a class="dropdown-item" href="#">Lawyer 2</a>
-                                                    <a class="dropdown-item" href="#">lawyer 3</a>
-                                                </div>
-                                                <a class="btn btn-warning btn-sm  text-center text-white"><i class="fa
-                                                fa-pencil-alt"></i> Edit</a>
-                                                <a class="btn btn-danger btn-sm  text-center text-white"><i class="fa
-                                                fa-trash"></i>
-                                                    Delete</a>
+                                                <span class="badge badge-warning">Pending</span>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>FF-ABS-1</td>
                                             <td>CS-ABS 10</td>
+                                            <td>Keleb Vince</td>
+                                            <td>Desmond More</td>
                                             <td>
-                                                <a class="btn btn-outline-info btn-sm  text-center
-                                                    dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                                   data-toggle="dropdown" aria-haspopup="true"
-                                                   aria-expanded="false"><i class="fa fa-user-circle">
-                                                    </i> Assign</a>
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item" href="#">Lawyer 1</a>
-                                                    <a class="dropdown-item" href="#">Lawyer 2</a>
-                                                    <a class="dropdown-item" href="#">lawyer 3</a>
-                                                </div>
-                                                <a class="btn btn-warning btn-sm  text-center text-white"><i class="fa
-                                                fa-pencil-alt"></i> Edit</a>
-                                                <a class="btn btn-danger btn-sm  text-center text-white"><i class="fa
-                                                fa-trash"></i>
-                                                    Delete</a>
+                                                <span class="badge badge-warning">Pending</span>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>FF-ABS-1</td>
                                             <td>CS-ABS 12</td>
+                                            <td>Benny Dis</td>
+                                            <td>Desmond More</td>
                                             <td>
-                                                <a class="btn btn-outline-info btn-sm  text-center
-                                                    dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                                   data-toggle="dropdown" aria-haspopup="true"
-                                                   aria-expanded="false"><i class="fa fa-user-circle">
-                                                    </i> Assign</a>
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item" href="#">Lawyer 1</a>
-                                                    <a class="dropdown-item" href="#">Lawyer 2</a>
-                                                    <a class="dropdown-item" href="#">lawyer 3</a>
-                                                </div>
-                                                <a class="btn btn-warning btn-sm  text-center text-white"><i class="fa
-                                                fa-user-circle"></i> Edit</a>
-                                                <a class="btn btn-danger btn-sm text-center text-white"><i class="fa
-                                                fa-trash"></i>
-                                                    Delete</a>
+                                                 <span class="badge badge-warning">Pending</span>
                                             </td>
                                         </tr>
                                         </tbody>
@@ -255,10 +203,6 @@
                     } )
                 }
             },
-            "columnDefs": [
-                { "visible": false, "targets": groupColumn }
-            ],
-            "displayLength": 25,
         } );
     } );
 </script>

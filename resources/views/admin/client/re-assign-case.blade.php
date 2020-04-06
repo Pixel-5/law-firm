@@ -44,7 +44,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin-dashboard') }}">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Schedule</li>
+                            <li class="breadcrumb-item active" aria-current="page">Cases</li>
                         </ol>
                     </nav>
                 </div>
@@ -77,21 +77,16 @@
                                             <td>FF-ABS-0</td>
                                             <td>CS-ABS 01 </td>
                                             <td>
-                                                <a class="btn btn-outline-info btn-sm  text-center
+                                                <a class="btn btn-outline-secondary btn-sm  text-center
                                                     dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                                    data-toggle="dropdown" aria-haspopup="true"
                                                    aria-expanded="false"><i class="fa fa-user-circle">
-                                                    </i> Assign</a>
+                                                    </i> re-assign</a>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item" href="#">Lawyer 1</a>
+                                                    <a class="dropdown-item" href="#" disabled>Lawyer 1</a>
                                                     <a class="dropdown-item" href="#">Lawyer 2</a>
                                                     <a class="dropdown-item" href="#">lawyer 3</a>
                                                 </div>
-                                                <a class="btn btn-warning btn-sm  text-center text-white"><i class="fa
-                                                fa-pencil-alt"></i> Edit</a>
-                                                <a class="btn btn-danger btn-sm text-center text-white"><i class="fa
-                                                 fa-trash"></i>
-                                                    Delete</a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -100,63 +95,48 @@
                                                 CS-ABS 02
                                             </td>
                                             <td>
-                                                <a class="btn btn-outline-info btn-sm  text-center
+                                                <a class="btn btn-outline-secondary btn-sm  text-center
                                                     dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                                    data-toggle="dropdown" aria-haspopup="true"
                                                    aria-expanded="false"><i class="fa fa-user-circle">
-                                                    </i> Assign</a>
+                                                    </i> re-assign</a>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item" href="#">Lawyer 1</a>
+                                                    <a class="dropdown-item" href="#" disabled>Lawyer 1</a>
                                                     <a class="dropdown-item" href="#">Lawyer 2</a>
                                                     <a class="dropdown-item" href="#">lawyer 3</a>
                                                 </div>
-                                                <a class="btn btn-warning btn-sm  text-center text-white"><i class="fa
-                                                fa-pencil-alt"></i> Edit</a>
-                                                <a class="btn btn-danger btn-sm  text-center text-white"><i class="fa
-                                                fa-trash"></i>
-                                                    Delete</a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>FF-ABS-1</td>
                                             <td>CS-ABS 10</td>
                                             <td>
-                                                <a class="btn btn-outline-info btn-sm  text-center
+                                                <a class="btn btn-outline-secondary btn-sm  text-center
                                                     dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                                    data-toggle="dropdown" aria-haspopup="true"
                                                    aria-expanded="false"><i class="fa fa-user-circle">
-                                                    </i> Assign</a>
+                                                    </i> re-assign</a>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item" href="#">Lawyer 1</a>
+                                                    <a class="dropdown-item" href="#" disable>Lawyer 1</a>
                                                     <a class="dropdown-item" href="#">Lawyer 2</a>
                                                     <a class="dropdown-item" href="#">lawyer 3</a>
                                                 </div>
-                                                <a class="btn btn-warning btn-sm  text-center text-white"><i class="fa
-                                                fa-pencil-alt"></i> Edit</a>
-                                                <a class="btn btn-danger btn-sm  text-center text-white"><i class="fa
-                                                fa-trash"></i>
-                                                    Delete</a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>FF-ABS-1</td>
                                             <td>CS-ABS 12</td>
                                             <td>
-                                                <a class="btn btn-outline-info btn-sm  text-center
+                                                <a class="btn btn-outline-secondary btn-sm  text-center
                                                     dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                                    data-toggle="dropdown" aria-haspopup="true"
                                                    aria-expanded="false"><i class="fa fa-user-circle">
-                                                    </i> Assign</a>
+                                                    </i> re-assign</a>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                     <a class="dropdown-item" href="#">Lawyer 1</a>
                                                     <a class="dropdown-item" href="#">Lawyer 2</a>
                                                     <a class="dropdown-item" href="#">lawyer 3</a>
                                                 </div>
-                                                <a class="btn btn-warning btn-sm  text-center text-white"><i class="fa
-                                                fa-user-circle"></i> Edit</a>
-                                                <a class="btn btn-danger btn-sm text-center text-white"><i class="fa
-                                                fa-trash"></i>
-                                                    Delete</a>
                                             </td>
                                         </tr>
                                         </tbody>

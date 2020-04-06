@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,11 +21,21 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/lawyer/dashboard', 'LawyerController@index')->name('lawyer-dashboard');
 
+//admin routes, get and post
 Route::prefix('admin')->group(function (){
     Route::get('/dashboard', 'AdminController@index')->name('admin-dashboard');
     Route::get('/open-file', 'AdminController@openFile')->name('admin-open-client-file');
     Route::get('/open-cases', 'AdminController@openCases')->name('admin-open-client-cases');
+    Route::get('/assign-cases', 'AdminController@assignCases')->name('admin-assign-lawyer-cases');
+    Route::get('/re-assign-cases', 'AdminController@reAssignCases')->name('admin-re-assign-lawyer-cases');
+    Route::get('/view-pending-cases', 'AdminController@pendingCases')->name('admin-view-pending-cases');
+});
+
+
+//lawyer routes, get & post
+Route::prefix('lawyer')->group(function (){
+    Route::get('/dashboard', 'LawyerController@index')->name('lawyer-dashboard');
+
 });
 
