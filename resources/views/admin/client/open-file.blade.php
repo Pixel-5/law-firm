@@ -43,7 +43,7 @@
                 <div class="container-fluid">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('admin-dashboard') }}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Clients files</li>
                         </ol>
                     </nav>
@@ -170,7 +170,7 @@
                                             <td>+26774338017</td>
                                             <td>
                                                 <a class="btn btn-info btn-sm  text-center text-white"
-                                                   href="{{ route('admin-open-client-cases') }}">
+                                                   href="{{ route('admin.open.client.cases') }}">
                                                     <i class="fa fa-file-contract"></i> Open</a>
                                                 <a class="btn btn-warning btn-sm  text-center text-white"><i class="fa
                                                 fa-pencil-alt"></i> Edit</a>

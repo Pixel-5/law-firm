@@ -49,7 +49,7 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a
-                                                href="{{ route('admin-open-client-file') }}">Open
+                                                href="{{ route('admin.open.client.file') }}">Open
                                                 File (Clients)</a></div>
                                         <div class="row no-gutters align-items-center">
                                             <div class="col-auto">
@@ -78,7 +78,7 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-success text-uppercase
-                                        mb-1"><a href="{{ route('admin-assign-lawyer-cases') }}">Assign
+                                        mb-1"><a href="{{ route('admin.assign.lawyer.cases') }}">Assign
                                                 Case (Lawyer)</a></div>
                                         <div class="row no-gutters align-items-center">
                                             <div class="col-auto"><div class="h5 mb-0 mr-3 font-weight-bold
@@ -108,7 +108,7 @@
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-info text-uppercase
                                         mb-1">
-                                            <a href="{{ route('admin-re-assign-lawyer-cases') }}">Scheduled Cases</a>
+                                            <a href="{{ route('admin.re-assign.lawyer.cases') }}">Scheduled Cases</a>
                                         </div>
                                         <div class="row no-gutters align-items-center">
                                             <div class="col-auto">
@@ -136,7 +136,8 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-warning text-uppercase
-                                        mb-1"><a href="{{ route('admin-view-pending-cases') }}">Pending Requests</a></div>
+                                        mb-1"><a href="{{ route('admin.view.pending-cases') }}">Pending
+                                                Requests</a></div>
                                         <div class="row no-gutters align-items-center">
                                             <div class="col-auto"><div class="h5 mb-0 mr-3 font-weight-bold
                                             text-gray-800">18</div></div>
@@ -217,23 +218,7 @@
     </div>
 </div>
 
-<!-- Bootstrap core JavaScript-->
-<script src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('js/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-
-<!-- Core plugin JavaScript-->
-<script src="{{ asset('js/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
-
-<!-- Custom scripts for all pages-->
-<script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
-
-<!-- Page level plugins -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-
-<!-- Page level custom scripts -->
-<script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
-<script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
-<script src="{{ asset('js/demo/chart-bar-demo.js') }}"></script>
+@include("layouts.scripts")
 </body>
 
 </html>

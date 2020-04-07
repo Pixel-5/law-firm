@@ -14,22 +14,39 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route('login');
-});
 
-Auth::routes();
+Route::redirect('/', '/login');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes(['register' => false]);
 
 //admin routes, get and post
-Route::prefix('admin')->group(function (){
-    Route::get('/dashboard', 'AdminController@index')->name('admin-dashboard');
-    Route::get('/open-file', 'AdminController@openFile')->name('admin-open-client-file');
-    Route::get('/open-cases', 'AdminController@openCases')->name('admin-open-client-cases');
-    Route::get('/assign-cases', 'AdminController@assignCases')->name('admin-assign-lawyer-cases');
-    Route::get('/re-assign-cases', 'AdminController@reAssignCases')->name('admin-re-assign-lawyer-cases');
-    Route::get('/view-pending-cases', 'AdminController@pendingCases')->name('admin-view-pending-cases');
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
+
+    // Permissions
+    Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
+    Route::resource('permissions', 'PermissionsController');
+
+    // Roles
+    Route::delete('roles/destroy', 'RolesController@massDestroy')->name('roles.massDestroy');
+    Route::resource('roles', 'RolesController');
+
+    // Users
+    Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
+    Route::resource('users', 'UsersController');
+
+    // Events
+    Route::delete('events/destroy', 'EventsController@massDestroy')->name('events.massDestroy');
+    Route::resource('events', 'EventsController');
+
+    Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
+
+    //default routes
+    Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+    Route::get('/open-file', 'HomeController@openFile')->name('open.client.file');
+    Route::get('/open-cases', 'HomeController@openCases')->name('open.client.cases');
+    Route::get('/assign-cases', 'HomeController@assignCases')->name('assign.lawyer.cases');
+    Route::get('/re-assign-cases', 'HomeController@reAssignCases')->name('re-assign.lawyer.cases');
+    Route::get('/view-pending-cases', 'HomeController@pendingCases')->name('view.pending-cases');
 });
 
 

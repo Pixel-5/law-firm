@@ -11,8 +11,12 @@
 
     <title>Lawyer Dashboard</title>
 
+
+    <link href="https://unpkg.com/angular-bootstrap-colorpicker@3/css/colorpicker.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css' />
     <!-- Custom fonts for this template-->
-    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('js/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
@@ -292,7 +296,6 @@
 
                 <!-- Content Row -->
                 <div class="row">
-
                     <!-- Earnings (Monthly) Card Example -->
                     <div class="col-xl-3 col-md-6 mb-4">
                         <div class="card border-left-primary shadow h-100 py-2">
@@ -374,6 +377,33 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-xl-7 col-lg-7">
+                        <!-- Bar Chart -->
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">My Cases</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-bar">
+                                    <canvas id="myBarChart"></canvas>
+                                </div>
+                                <hr>
+                                Bar chart showing my monthly cases through out the year
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-5 col-lg-5">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">My Case Schedule</h6>
+                            </div>
+                            <div class="card-body">
+                                <div id='calendar'></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- /.container-fluid -->
 
@@ -381,13 +411,7 @@
         <!-- End of Main Content -->
 
         <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Law-system 2020</span>
-                </div>
-            </div>
-        </footer>
+      @include("footer")
         <!-- End of Footer -->
 
     </div>
@@ -420,23 +444,21 @@
     </div>
 </div>
 
-<!-- Bootstrap core JavaScript-->
-<script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+@include("layouts.scripts")
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js'></script>
 
-<!-- Core plugin JavaScript-->
-<script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
-
-<!-- Custom scripts for all pages-->
-<script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
-
-<!-- Page level plugins -->
-<script src="{{ asset('vendor/chart.js/Chart.min.js') }}"></script>
-
-<!-- Page level custom scripts -->
-<script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
-<script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
-
+<script src="{{ asset('js/main.js') }}"></script>
+<script>
+    $(document).ready(function () {
+        // page is now ready, initialize the calendar...
+        events={!! json_encode($events ?? '') !!};
+        $('#calendar').fullCalendar({
+            // put your options and callbacks here
+            events: events,
+        })
+    });
+</script>
 </body>
 
 </html>
