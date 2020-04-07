@@ -15,7 +15,7 @@ class SystemCalendarController extends Controller
             'field'      => 'name',
             'prefix'     => '',
             'suffix'     => '',
-            'route'      => 'admin.events.edit',
+            'route'      => 'lawyer.events.edit',
         ],
     ];
 

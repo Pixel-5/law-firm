@@ -22,40 +22,43 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet" />
+    <link href="{{ asset('js/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
 
     @yield('styles')
 </head>
 
 <body class="app header-fixed sidebar-fixed aside-menu-fixed pace-done sidebar-lg-show">
     <header id="content-wrapper" class="d-flex flex-column">
-        @include("admin.top-nav-bar")
+
     </header>
 
     <div class="content">
-
+        @include("lawyer.side-nav-bar")
         <main class="main">
-            <div style="padding-top: 20px" class="container-fluid">
-                @if(session('message'))
-                    <div class="row mb-2">
-                        <div class="col-lg-12">
-                            <div class="alert alert-success" role="alert">{{ session('message') }}</div>
-                        </div>
+            <div id="content-wrapper" class="d-flex flex-column">
+                @include("admin.top-nav-bar")
+                <div id="content-wrapper" class="d-flex flex-column">
+                    <div style="padding-top: 20px" class="container-fluid">
+                        @if(session('message'))
+                            <div class="row mb-2">
+                                <div class="col-lg-12">
+                                    <div class="alert alert-success" role="alert">{{ session('message') }}</div>
+                                </div>
+                            </div>
+                        @endif
+                        @if($errors->count() > 0)
+                            <div class="alert alert-danger">
+                                <ul class="list-unstyled">
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                            @yield('content')
                     </div>
-                @endif
-                @if($errors->count() > 0)
-                    <div class="alert alert-danger">
-                        <ul class="list-unstyled">
-                            @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-                @yield('content')
-
+                </div>
             </div>
-
-
         </main>
         <form id="logoutform" action="{{ route('logout') }}" method="POST" style="display: none;">
             {{ csrf_field() }}
@@ -174,6 +177,7 @@
 
     </script>
     @yield('scripts')
+    @yield("layouts.scripts")
 </body>
 
 </html>

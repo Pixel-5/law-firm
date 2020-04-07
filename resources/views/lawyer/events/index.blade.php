@@ -4,14 +4,14 @@
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route("lawyer.events.create") }}">
-                {{ trans('global.add') }} {{ trans('cruds.event.title_singular') }}
+                {{ trans('global.schedule') }} {{ trans('global.case') }}
             </a>
         </div>
     </div>
 @endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.event.title_singular') }} {{ trans('global.list') }}
+        {{ trans('global.case') }} {{ trans('global.schedule') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
@@ -71,19 +71,19 @@
                             </td>
                             <td>
                                 @can('event_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.events.show', $event->id) }}">
+                                    <a class="btn btn-xs btn-primary" href="{{ route('lawyer.events.show', $event->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
                                 @can('event_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.events.edit', $event->id) }}">
+                                    <a class="btn btn-xs btn-info" href="{{ route('lawyer.events.edit', $event->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
 
                                 @can('event_delete')
-                                    <form action="{{ route('admin.events.destroy', $event->id) }}"
+                                    <form action="{{ route('lawyer.events.destroy', $event->id) }}"
                                         method="POST"
                                         onsubmit="return confirm('{{ $event->events_count || $event->event ? 'Do you want to delete future recurring events, too?' : trans('global.areYouSure') }}');" style="display: inline-block;"
                                     >
@@ -114,7 +114,7 @@
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.events.massDestroy') }}",
+    url: "{{ route('lawyer.events.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {

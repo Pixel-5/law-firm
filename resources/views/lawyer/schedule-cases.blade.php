@@ -147,6 +147,7 @@
             // put your options and callbacks here
             events: events,
             contentHeight: 400,
+            weekends: false,
             eventRender: function(event, element) {
                 element.css("font-size", "1.2em");
                 element.css("padding", "5px");

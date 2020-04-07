@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('lawyer.dashboard') }}">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -13,7 +13,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{ route('lawyer.dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -32,16 +32,27 @@
             <i class="fas fa-fw fa-folder"></i>
             <span>My Clients Cases</span>
         </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">List of Lawyers:</h6>
+                <a class="collapse-item" href="#">Lawyer 1</a>
+                <a class="collapse-item" href="#">Lawyer 2</a>
+                <a class="collapse-item" href="#">Lawyer 3</a>
+                <a class="collapse-item" href=#">Lawyer 4</a>
+            </div>
+        </div>
     </li>
 
-    <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-calendar"></i>
-            <span>My Case schedules</span>
-        </a>
+    @can('event_access')
+        <li class="nav-item">
+            <a href="{{ route("lawyer.events.index") }}" class="nav-link {{ request()->is('lawyer/events') || request()->is('lawyer/events/*') ? 'active' : '' }}">
+                <i class="fa-fw fas fa-calendar nav-icon">
 
-    </li>
+                </i>
+               Case Schedules
+            </a>
+        </li>
+    @endcan
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-user-circle"></i>
