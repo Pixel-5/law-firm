@@ -3,7 +3,7 @@
 @can('event_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route("admin.events.create") }}">
+            <a class="btn btn-success" href="{{ route("lawyer.events.create") }}">
                 {{ trans('global.add') }} {{ trans('cruds.event.title_singular') }}
             </a>
         </div>
@@ -83,8 +83,8 @@
                                 @endcan
 
                                 @can('event_delete')
-                                    <form action="{{ route('admin.events.destroy', $event->id) }}" 
-                                        method="POST" 
+                                    <form action="{{ route('admin.events.destroy', $event->id) }}"
+                                        method="POST"
                                         onsubmit="return confirm('{{ $event->events_count || $event->event ? 'Do you want to delete future recurring events, too?' : trans('global.areYouSure') }}');" style="display: inline-block;"
                                     >
                                         <input type="hidden" name="_method" value="DELETE">

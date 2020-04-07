@@ -3,17 +3,12 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.edit') }} {{ trans('cruds.event.title_singular') }}
+        {{ trans('global.create') }} {{ trans('cruds.event.title_singular') }}
     </div>
 
     <div class="card-body">
-        <form action="{{ route("admin.events.update", [$event->id]) }}" 
-            method="POST" 
-            enctype="multipart/form-data" 
-            @if($event->events_count || $event->event) onsubmit="return confirm('Do you want to apply these changes to all future recurring events, too?');" @endif
-        >
+        <form action="{{ route("lawyer.events.store") }}" method="POST" enctype="multipart/form-data">
             @csrf
-            @method('PUT')
             <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                 <label for="name">{{ trans('cruds.event.fields.name') }}*</label>
                 <input type="text" id="name" name="name" class="form-control" value="{{ old('name', isset($event) ? $event->name : '') }}" required>
@@ -50,29 +45,24 @@
                     {{ trans('cruds.event.fields.end_time_helper') }}
                 </p>
             </div>
-            @if(!$event->event && !$event->events_count)
-                <div class="form-group {{ $errors->has('recurrence') ? 'has-error' : '' }}">
-                    <label>{{ trans('cruds.event.fields.recurrence') }}*</label>
-                    @foreach(App\Event::RECURRENCE_RADIO as $key => $label)
-                        <div>
-                            <input id="recurrence_{{ $key }}" name="recurrence" type="radio" value="{{ $key }}" {{ old('recurrence', $event->recurrence) === (string)$key ? 'checked' : '' }} required>
-                            <label for="recurrence_{{ $key }}">{{ $label }}</label>
-                        </div>
-                    @endforeach
-                    @if($errors->has('recurrence'))
-                        <em class="invalid-feedback">
-                            {{ $errors->first('recurrence') }}
-                        </em>
-                    @endif
-                </div>
-            @else
-                <input type="hidden" name="recurrence" value="{{ $event->recurrence }}">
-            @endif
+            <div class="form-group {{ $errors->has('recurrence') ? 'has-error' : '' }}">
+                <label>{{ trans('cruds.event.fields.recurrence') }}*</label>
+                @foreach(App\Event::RECURRENCE_RADIO as $key => $label)
+                    <div>
+                        <input id="recurrence_{{ $key }}" name="recurrence" type="radio" value="{{ $key }}" {{ old('recurrence', 'none') === (string)$key ? 'checked' : '' }} required>
+                        <label for="recurrence_{{ $key }}">{{ $label }}</label>
+                    </div>
+                @endforeach
+                @if($errors->has('recurrence'))
+                    <em class="invalid-feedback">
+                        {{ $errors->first('recurrence') }}
+                    </em>
+                @endif
+            </div>
             <div>
                 <input class="btn btn-danger" type="submit" value="{{ trans('global.save') }}">
             </div>
         </form>
-
 
     </div>
 </div>

@@ -2,19 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="680dd266-b94c-42b2-bf1f-4eed7f13957c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/HomeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/lawyer/assigned-cases.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/lawyer/pending-cases.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/lawyer/schedule-cases.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/law-firm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/law-firm.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/fullcalendar.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LawyerController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/EventsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/EventsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/global.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/global.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/calendar/calendar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/calendar/calendar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/events/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/events/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/events/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/events/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/events/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/events/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/events/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/events/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/pending-cases.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/pending-cases.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/schedule-cases.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/schedule-cases.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -170,18 +169,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Documents\Projects\law-firm\app\Http\Controllers\Lawyer" />
+      <recent name="C:\Users\User\Documents\Projects\law-firm\resources\views\lawyer" />
+      <recent name="C:\Users\User\Documents\Projects\law-firm\app\Http\Controllers" />
+      <recent name="C:\Users\User\Documents\Projects\law-firm\app\Http\Controllers\Admin" />
+      <recent name="C:\Users\User\Documents\Projects\law-firm\public\js" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\User\Documents\Projects\law-firm\resources\views\lawyer" />
       <recent name="C:\Users\User\Documents\Projects\law-firm\public\css" />
       <recent name="C:\Users\User\Documents\Projects\law-firm\config" />
       <recent name="C:\Users\User\Documents\Projects\law-firm\public\js" />
       <recent name="C:\Users\User\Documents\Projects\law-firm\resources\lang\en" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\User\Documents\Projects\law-firm\app\Http\Controllers" />
-      <recent name="C:\Users\User\Documents\Projects\law-firm\app\Http\Controllers\Admin" />
-      <recent name="C:\Users\User\Documents\Projects\law-firm\public\js" />
-      <recent name="C:\Users\User\Documents\Projects\law-firm\resources\js" />
     </key>
   </component>
   <component name="RunManager">
@@ -211,7 +211,7 @@
       <workItem from="1586258462423" duration="481000" />
       <workItem from="1586259399001" duration="799000" />
       <workItem from="1586260572711" duration="992000" />
-      <workItem from="1586263606936" duration="6138000" />
+      <workItem from="1586263606936" duration="16041000" />
     </task>
     <servers />
   </component>
@@ -251,5 +251,9 @@
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="496" y="274" key="com.intellij.ide.util.TipDialog/0.0.1600.900@0.0.1600.900" timestamp="1586263605859" />
+    <state x="460" y="106" width="672" height="676" key="search.everywhere.popup" timestamp="1586291138840">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state x="460" y="106" width="672" height="676" key="search.everywhere.popup/0.0.1600.900@0.0.1600.900" timestamp="1586291138840" />
   </component>
 </project>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Lawyer;
 
 use App\Event;
 use App\Http\Controllers\Controller;
@@ -19,21 +19,21 @@ class EventsController extends Controller
         $events = Event::withCount('events')
             ->get();
 
-        return view('admin.events.index', compact('events'));
+        return view('lawyer.events.index', compact('events'));
     }
 
     public function create()
     {
         abort_if(Gate::denies('event_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.events.create');
+        return view('lawyer.events.create');
     }
 
     public function store(StoreEventRequest $request)
     {
         Event::create($request->all());
 
-        return redirect()->route('admin.systemCalendar');
+        return redirect()->route('lawyer.schedule');
     }
 
     public function edit(Event $event)
@@ -43,14 +43,14 @@ class EventsController extends Controller
         $event->load('event')
             ->loadCount('events');
 
-        return view('admin.events.edit', compact('event'));
+        return view('lawyer.events.edit', compact('event'));
     }
 
     public function update(UpdateEventRequest $request, Event $event)
     {
         $event->update($request->all());
 
-        return redirect()->route('admin.systemCalendar');
+        return redirect()->route('lawyer.schedule');
     }
 
     public function show(Event $event)
@@ -59,7 +59,7 @@ class EventsController extends Controller
 
         $event->load('event');
 
-        return view('admin.events.show', compact('event'));
+        return view('lawyer.events.show', compact('event'));
     }
 
     public function destroy(Event $event)

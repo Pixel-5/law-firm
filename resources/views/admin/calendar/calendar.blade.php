@@ -21,7 +21,6 @@
     </div>
 </div>
 @endsection
-
 @section('scripts')
 @parent
 <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js'></script>
