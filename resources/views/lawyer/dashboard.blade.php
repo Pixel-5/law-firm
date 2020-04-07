@@ -57,7 +57,7 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                            <a href="#">Assigned Cases (Clients)</a>
+                                            <a href="{{ route('lawyer.cases') }}">Assigned Cases (Clients)</a>
                                         </div>
                                         <div class="row no-gutters align-items-center">
                                             <div class="col-auto">
@@ -87,7 +87,7 @@
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-info text-uppercase
                                         mb-1">
-                                            <a href="#">Schedule Case</a>
+                                            <a href="{{ route('lawyer.schedule') }}">Schedule Case</a>
                                         </div>
                                         <div class="row no-gutters align-items-center">
                                             <div class="col-auto">
@@ -115,13 +115,16 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
 
-                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
+                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                            <a href="{{ route('lawyer.pending.cases') }}">Pending request</a>
+                                        </div>
                                         <div class="row no-gutters align-items-center">
                                             <div class="col-auto"><div class="h5 mb-0 mr-3 font-weight-bold
                                             text-gray-800">18</div></div>
                                             <div class="col">
                                                 <div class="progress progress-sm mr-2">
-                                                    <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-bar bg-info" role="progressbar" style="width: 50%"
+                                                         aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -139,7 +142,7 @@
                         <!-- Bar Chart -->
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">My Cases</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">My Case Summary</h6>
                             </div>
                             <div class="card-body">
                                 <div class="chart-bar">
@@ -214,7 +217,13 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
+                <a class="btn btn-primary" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById
+                ('frm-logout').submit();">
+                    Logout
+                </a>
+                <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
             </div>
         </div>
     </div>

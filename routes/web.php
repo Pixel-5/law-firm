@@ -49,10 +49,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('/view-pending-cases', 'HomeController@pendingCases')->name('view.pending-cases');
 });
 
-
 //lawyer routes, get & post
-Route::prefix('lawyer')->group(function (){
-    Route::get('/dashboard', 'LawyerController@index')->name('lawyer-dashboard');
-
+Route::group(['prefix' => 'lawyer', 'as' => 'lawyer.', 'namespace' => 'Lawyer', 'middleware' => ['auth']],function (){
+    Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+    Route::get('/my-cases', 'HomeController@myCases')->name('cases');
+    Route::get('/my-schedule', 'HomeController@mySchedule')->name('schedule');
+    Route::get('/pending-cases', 'HomeController@pendingCases')->name('pending.cases');
 });
 
