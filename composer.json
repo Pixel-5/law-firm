@@ -9,15 +9,16 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5",
+        "ext-json": "*",
+        "bugsnag/bugsnag-laravel": "^2.17",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
-        "bugsnag/bugsnag-laravel": "^2.17",
-        "yajra/laravel-datatables-oracle": "^9.7",
-        "ext-json": "*"
+        "spatie/laravel-permission": "^3.11",
+        "yajra/laravel-datatables-oracle": "^9.7"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

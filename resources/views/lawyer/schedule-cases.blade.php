@@ -138,21 +138,36 @@
 @include("layouts.scripts")
 <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js'></script>
+<script src="https://unpkg.com/@fullcalendar/core@4.4.0/main.min.js"></script>
+<script src="https://unpkg.com/@fullcalendar/daygrid@4.4.0/main.min.js"></script>
+<script src="https://unpkg.com/@fullcalendar/timegrid@4.4.0/main.min.js"></script>
+<script src="https://unpkg.com/@fullcalendar/list@4.4.0/main.min.js"></script>
+<script src="https://unpkg.com/@fullcalendar/bootstrap@4.4.0/main.min.js"></script>
+
 <script>
     $(document).ready(function () {
         // page is now ready, initialize the calendar...
         events={!! json_encode($events) !!};
 
-        $('#calendar').fullCalendar({
-            // put your options and callbacks here
-            events: events,
-            contentHeight: 400,
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            plugins: [ 'dayGrid', 'timeGrid', 'list', 'bootstrap' ],
+            timeZone: 'UTC',
+            themeSystem: 'bootstrap',
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+            },
+            weekNumbers: false,
             weekends: false,
-            eventRender: function(event, element) {
-                element.css("font-size", "1.2em");
-                element.css("padding", "5px");
-            }
-        })
+            contentHeight: 400,
+            eventLimit: true, // allow "more" link when too many events
+            events: events
+        });
+
+        calendar.render();
     });
 </script>
 </body>
