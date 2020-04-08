@@ -68,15 +68,15 @@
             <div class="container-fluid">
 
 
-                @can('event_create')
-                    <div style="margin-bottom: 10px;" class="row">
-                        <div class="col-lg-11">
-                            <a class="btn btn-success offset-12" href="{{ route("lawyer.events.create") }}">
-                                {{ trans('global.schedule') }} {{ trans('global.case') }}
-                            </a>
-                        </div>
-                    </div>
-                @endcan
+{{--                @can('event_create')--}}
+{{--                    <div style="margin-bottom: 10px;" class="row">--}}
+{{--                        <div class="col-lg-11">--}}
+{{--                            <a class="btn btn-success offset-12" href="{{ route("lawyer.events.create") }}">--}}
+{{--                                {{ trans('global.schedule') }} {{ trans('global.case') }}--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                @endcan--}}
                 <!-- Content Row -->
                 <div class="row">
                     <!-- Earnings (Monthly) Card Example -->
@@ -147,18 +147,39 @@
 <script>
     $(document).ready(function () {
         // page is now ready, initialize the calendar...
-        events={!! json_encode($events) !!};
+        let events= {!! json_encode($events) !!};
 
         var calendarEl = document.getElementById('calendar');
 
         var calendar = new FullCalendar.Calendar(calendarEl, {
             plugins: [ 'dayGrid', 'timeGrid', 'list', 'bootstrap' ],
             timeZone: 'UTC',
+            defaultView: 'dayGridMonth',
             themeSystem: 'bootstrap',
             header: {
-                left: 'prev,next today',
+                left: 'prev,next today, addEventButton',
                 center: 'title',
                 right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+            },
+            businessHours: [ // specify an array instead
+                {
+                    daysOfWeek: [ 1, 2, 3 ], // Monday, Tuesday, Wednesday
+                    startTime: '08:00', // 8am
+                    endTime: '18:00' // 6pm
+                },
+                {
+                    daysOfWeek: [ 4, 5 ], // Thursday, Friday
+                    startTime: '10:00', // 10am
+                    endTime: '16:00' // 4pm
+                }
+            ],
+            customButtons: {
+                addEventButton: {
+                    text: 'Schedule Case',
+                    click: function() {
+                        window.location.href='{{ route("lawyer.events.create") }}';
+                    }
+                }
             },
             weekNumbers: false,
             weekends: false,
