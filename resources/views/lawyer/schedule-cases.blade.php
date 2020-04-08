@@ -157,7 +157,7 @@
             defaultView: 'dayGridMonth',
             themeSystem: 'bootstrap',
             header: {
-                left: 'prev,next today, addEventButton',
+                left: 'prevYear,prev,next,nextYear today, addEventButton',
                 center: 'title',
                 right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
             },
