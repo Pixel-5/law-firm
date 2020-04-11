@@ -21,19 +21,23 @@ class HomeController extends Controller
         ],
     ];
 
-    public function index(){
+    public function index()
+    {
         return view('lawyer.dashboard');
     }
 
-    public function myCases(){
+    public function myCases()
+    {
         return view('lawyer.assigned-cases');
     }
 
-    public function pendingCases(){
+    public function pendingCases()
+    {
         return view('lawyer.pending-cases');
     }
 
-    public function mySchedule(){
+    public function mySchedule()
+    {
         $events = [];
         foreach ($this->sources as $source) {
             foreach ($source['model']::all() as $model) {

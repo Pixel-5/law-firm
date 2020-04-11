@@ -4,27 +4,33 @@ namespace App\Http\Controllers\Admin;
 
 class HomeController
 {
-    public function index(){
+    public function index()
+    {
         return view('admin.dashboard');
     }
 
-    public function openFile(){
+    public function openFile()
+    {
         return view('admin.client.open-file');
     }
 
-    public function openCases(){
+    public function openCases()
+    {
         return view('admin.client.cases');
     }
 
-    public function assignCases(){
+    public function assignCases()
+    {
         return view('admin.client.schedule-lawyer');
     }
 
-    public function reAssignCases(){
+    public function reAssignCases()
+    {
         return view('admin.client.re-assign-case');
     }
 
-    public function pendingCases(){
+    public function pendingCases()
+    {
         return view('admin.client.pending-cases');
     }
 }

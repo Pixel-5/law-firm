@@ -1,5 +1,6 @@
 <?php
 
+use App\Facade\FileRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -34,25 +35,36 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
     Route::resource('users', 'UsersController');
 
-    Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
+    //File
+    Route::delete('files/destroy', 'FileController@massDestroy')->name('files.massDestroy');
+    Route::resource('files', 'FileController');
+
+    //Case
+    Route::delete('cases/destroy', 'CaseController@massDestroy')->name('cases.massDestroy');
+    Route::resource('cases', 'CaseController');
+
+
 
     //default routes
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
-    Route::get('/open-file', 'HomeController@openFile')->name('open.client.file');
     Route::get('/open-cases', 'HomeController@openCases')->name('open.client.cases');
     Route::get('/assign-cases', 'HomeController@assignCases')->name('assign.lawyer.cases');
     Route::get('/re-assign-cases', 'HomeController@reAssignCases')->name('re-assign.lawyer.cases');
     Route::get('/view-pending-cases', 'HomeController@pendingCases')->name('view.pending-cases');
 });
 
-//lawyer routes, get & post
-Route::group(['prefix' => 'lawyer', 'as' => 'lawyer.', 'namespace' => 'Lawyer', 'middleware' => ['auth']],function (){
+    //lawyer routes, get & post
+    Route::group(['prefix' => 'lawyer', 'as' => 'lawyer.', 'namespace' => 'Lawyer', 'middleware' => ['auth']],function (){
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
     Route::get('/my-cases', 'HomeController@myCases')->name('cases');
     Route::get('/my-schedule', 'HomeController@mySchedule')->name('schedule');
     Route::get('/pending-cases', 'HomeController@pendingCases')->name('pending.cases');
 
     // Events
+    Route::delete('events/destroy', 'EventsController@massDestroy')->name('events.massDestroy');
+    Route::resource('events', 'EventsController');
+
+    //Case
     Route::delete('events/destroy', 'EventsController@massDestroy')->name('events.massDestroy');
     Route::resource('events', 'EventsController');
 });

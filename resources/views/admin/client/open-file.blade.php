@@ -65,6 +65,9 @@
                                      aria-labelledby="clientModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg" role="document">
                                         <div class="modal-content">
+                                            <form action="{{ route('admin.files.store') }}"
+                                                  enctype="multipart/form-data" method="POST">
+                                                @csrf
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="clientModalLabel">New Client File
                                                     Information</h5>
@@ -73,26 +76,28 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form>
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <label for="inputName">Name</label>
-                                                            <input type="text" class="form-control" id="inputEmail4">
+                                                            <input type="text" class="form-control" id="inputEmail4"
+                                                            name="name">
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <label for="inputSurname">Surname</label>
-                                                            <input type="text" class="form-control" id="inputPassword4">
+                                                            <input type="text" class="form-control" id="inputPassword4"
+                                                            name="surname">
                                                         </div>
                                                     </div>
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <label for="inputEmail">Email</label>
-                                                            <input type="email" class="form-control" id="inputEmail4">
+                                                            <input type="email" class="form-control" id="inputEmail4"
+                                                            name="email">
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <label for="inputContact">Contact</label>
                                                             <input type="tel" class="form-control"
-                                                                   id="inputContact" placeholder="+267">
+                                                                   name="contact" id="inputContact" placeholder="+267">
                                                         </div>
                                                     </div>
                                                     <div class="form-row">
@@ -100,13 +105,14 @@
                                                             <div class="form-group">
                                                                 <label for="contact">Date of Birth</label>
                                                                 <input type="date" class="form-control"
-                                                                       id="dob" required>
+                                                                      name="dob" id="dob" required>
                                                             </div>
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <div class="form-group">
                                                                 <label for="contact">Gender</label>
-                                                                <select class="form-control form-control-md" required>
+                                                                <select class="form-control form-control-md"
+                                                                        name="gender" required>
                                                                     <option disabled>Select</option>
                                                                     <option>Male</option>
                                                                     <option>Female</option>
@@ -116,27 +122,30 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="inputAddress">Physical Address</label>
-                                                        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                                                        <input type="text" class="form-control" id="inputAddress"
+                                                               name="physical_address" placeholder="1234 Main St">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="inputAddress2">Postal Address</label>
-                                                        <input type="text" class="form-control" id="inputAddress2" >
+                                                        <input type="text" class="form-control"
+                                                               name="postal_address" id="inputAddress2" >
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="custom-file">
-                                                            <input type="file" class="custom-file-input" id="validatedCustomFile">
+                                                            <input type="file"
+                                                                   name="docs" class="custom-file-input" id="validatedCustomFile">
                                                             <label class="custom-file-label"
                                                                    for="validatedCustomFile">Upload Supporting
                                                                 Docs...</label>
                                                             <div class="invalid-feedback">Scan Supporting Documents</div>
                                                         </div>
                                                     </div>
-                                                </form>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Save file</button>
+                                                <button type="submit" class="btn btn-primary">Save file</button>
                                             </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
