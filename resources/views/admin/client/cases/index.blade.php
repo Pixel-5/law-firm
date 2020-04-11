@@ -140,6 +140,7 @@
                     </div>
                 @endif
                 <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <input type="hidden" name="_token" value="{{ @csrf_token() }}">
 {{--                    <div class="card shadow mb-4">--}}
 {{--                        <!-- Card Header - Accordion -->--}}
 {{--                        <a href="#collapseCardExample1" class="d-block card-header py-3" data-toggle="collapse"--}}
@@ -254,7 +255,7 @@
                                             <i class="fa fa-file-contract"></i> Edit Case
                                         </button>
                                         <button class="delete btn btn-danger btn-sm  text-center text-white"
-                                                data-toggle="modal" data-target="#">
+                                                data-toggle="modal" data-target="#" id="{{ $case->id }}">
                                             <i class="fa fa-trash"></i> Delete Case
                                         </button>
                                         <a class="btn btn-outline-success btn-sm  text-center
@@ -335,13 +336,49 @@
 <!-- Custom scripts for all pages-->
 <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
 
-<!-- Page level plugins -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script src="{{ asset('js/bootbox.min.js') }}"></script>
+<script type="application/javascript">
+    $(document).ready(function() {
+        $('.delete').click(function(){
+            var el = this;
 
-<!-- Page level custom scripts -->
-<script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
-<script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
-<script src="{{ asset('js/demo/chart-bar-demo.js') }}"></script>
+            // Delete id
+            let id = $(this).attr('id');
+            console.log('id = '+id);
+            // Confirm box
+            bootbox.confirm("Do you really want to delete record?", function(result) {
+
+                let url = '{{ route("admin.cases.destroy",["case"=> ":id"]) }}';
+                url = url.replace(':id', id);
+                console.log('url = '+url);
+                console.log($('input[name="_token"]').val());
+                if(result){
+                    // AJAX Request
+                    $.ajax({
+                        url: url,
+                        type: 'POST',
+                        data: {
+                            '_token' : $('input[name="_token"]').val(),
+                            _method: 'delete'
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(response){
+                            console.log("Successfully deleted");
+                            window.location.reload();
+                        },
+                        error: function (response) {
+                            console.log("error "+ response);
+                        }
+                    });
+                }
+
+            });
+
+        });
+    } );
+</script>
 </body>
 
 </html>

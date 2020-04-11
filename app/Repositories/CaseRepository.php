@@ -46,4 +46,9 @@ class CaseRepository
 
         return true;
     }
+
+    public function deleteCase($case)
+    {
+        $case->delete();
+    }
 }

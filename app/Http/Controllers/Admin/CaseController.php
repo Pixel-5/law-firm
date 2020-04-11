@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Facade\CaseRepository;
 use App\Facade\FileRepository;
+use App\FileCase;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCaseRequest;
 use Illuminate\Http\Request;
@@ -89,11 +90,15 @@ class CaseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param FileCase $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(FileCase $id)
     {
+        //dd($id);
         //
+        abort_if(Gate::denies('user_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        FileRepository::deleteCase($id);
+        return back()->with("status", "Successfully deleted client case");
     }
 }
