@@ -15,8 +15,7 @@ class StoreCaseRequest extends FormRequest
      */
     public function authorize()
     {
-        abort_if(Gate::denies('role_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
+        abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         return true;
     }
 
@@ -28,18 +27,19 @@ class StoreCaseRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'       => [
+            'plaintiff'      => [
                 'required',
             ],
-            'start_time' => [
+            'defendant'      => [
                 'required',
-                'date_format:' . config('panel.date_format') . ' ' . config('panel.time_format'),
             ],
-            'end_time'   => [
+            'details'        => [
                 'required',
-                'date_format:' . config('panel.date_format') . ' ' . config('panel.time_format'),
             ],
-            'recurrence' => [
+            'date_appeal'    => [
+                'required',
+            ],
+            'number'         => [
                 'required',
             ],
         ];

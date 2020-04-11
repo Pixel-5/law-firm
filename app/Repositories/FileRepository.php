@@ -5,7 +5,6 @@ namespace App\Repositories;
 
 
 use App\File;
-use App\Http\Requests\StoreFileRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -36,7 +35,7 @@ class FileRepository
         if (!empty($docs)){
             foreach ($docs as $doc){
                 $file_name = $doc->getClientOriginalName();
-                Storage::putFile('client/'.$file_no, $doc);
+                Storage::putFile('client/files/'.$file_no, $doc);
                 $files[] = $file_name;
             }
         }
@@ -50,7 +49,7 @@ class FileRepository
             'postal_address'    => $postal_address,
             'physical_address'  => $physical_address,
             'gender'            => $gender,
-            'docs'              => is_null($docs) ? "" : implode(" ",$files),
+            'docs'              => is_null($docs) ? "" : implode(",",$files),
         ]);
         return true;
     }
@@ -58,6 +57,11 @@ class FileRepository
     public function deleteFile($file)
     {
         $file->delete();
+    }
+
+    public function findById($id)
+    {
+        return File::with('cases')->findOrFail($id);
     }
 
     public function updateFile($file, $request)

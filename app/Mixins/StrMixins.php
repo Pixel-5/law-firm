@@ -21,7 +21,7 @@ class StrMixins
     {
         return function (){
             $case = Str::random(8);
-            return 'CA-'. substr($case,0,3). '-'. substr($case,3);
+            return Str::upper('CA-'. substr($case,0,3). '-'. substr($case,3));
         };
 
     }

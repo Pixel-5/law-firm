@@ -17,7 +17,10 @@ class CreateCasesTable extends Migration
             $table->id();
             $table->string("number")->unique();
             $table->string("file_id");
-            $table->string("defended_name");
+            $table->string("defendant");
+            $table->string("plaintiff");
+            $table->string("status");
+            $table->longText("details");
             $table->date("date_appeal");
             $table->string("docs")->nullable(true);
             $table->timestamps();

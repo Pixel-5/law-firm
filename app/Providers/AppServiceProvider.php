@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Http\View\Composers\FileComposer;
 use App\Mixins\StrMixins;
+use App\Repositories\CaseRepository;
 use App\Repositories\FileRepository;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
@@ -27,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
      * Bootstrap any application services.
      *
      * @return void
+     * @throws \ReflectionException
      */
     public function boot()
     {

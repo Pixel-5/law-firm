@@ -9,7 +9,7 @@ class CaseRepository
     public static function __callStatic($method, $arguments)
     {
         // TODO: Implement __callStatic() method.
-        return (self::resolveFacade('FileRepository'))
+        return (self::resolveFacade('CaseRepository'))
             ->$method(...$arguments);
     }
 

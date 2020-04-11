@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\File;
+use App\Facade\CaseRepository;
+use App\Facade\FileRepository;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreCaseRequest;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class CaseController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function index()
     {
@@ -22,7 +25,7 @@ class CaseController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -32,58 +35,62 @@ class CaseController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param StoreCaseRequest $request
+     * @return void
      */
-    public function store(Request $request)
+    public function store(StoreCaseRequest $request)
     {
-        //
+        //store case using a repository
+
+        $results = CaseRepository::storeCase($request);
+        if ($results)
+        return redirect()->back()->with('status','Successfully created a new client case');
+
+        return redirect()->back()->with('fail','Failed to open a new case');
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function show($file)
+    public function show($id)
     {
-        //$cases = $file->cases();
-        dd($file);
-        if (!empty($cases))
-            return view('admin.client.cases.index',compact('cases'));
-
-        return view('admin.client.cases.index');
+        $file =  FileRepository::findById($id);
+        return view('admin.client.cases.index',compact('file'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function edit($id)
     {
         //
+        return null;
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, $id)
     {
         //
+        return null;
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {

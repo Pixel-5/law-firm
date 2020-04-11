@@ -40,7 +40,7 @@ class FileController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param StoreFileRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreFileRequest $request)
@@ -50,7 +50,7 @@ class FileController extends Controller
         if ($results)
         return redirect()->back()->with("status","Successfully added new client file");
 
-        return  redirect()->back()->with("status","Failed to add a client file");
+        return  redirect()->back()->with("fail","Failed to add a client file");
     }
 
     /**
@@ -62,6 +62,7 @@ class FileController extends Controller
     public function show($id)
     {
         abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        return null;
     }
 
     /**
@@ -73,17 +74,19 @@ class FileController extends Controller
     public function edit($id)
     {
         abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        return  null;
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param UpdateFileRequest $request
+     * @param File $file
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateFileRequest $request, File $file)
     {
+
         FileRepository::updateFile($file,$request);
         return back()->with("status", "Successfully edited client file");
     }
@@ -91,7 +94,7 @@ class FileController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param File $file
      * @return \Illuminate\Http\Response
      */
     public function destroy(File $file)

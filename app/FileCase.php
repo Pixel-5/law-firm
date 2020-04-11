@@ -12,8 +12,14 @@ class FileCase extends Model
     protected $table = 'cases';
 
     protected $fillable = [
+        'file_id',
+        'plaintiff',
+        'defendant',
+        'details',
+        'status',
         'number',
-        ''
+        'date_appeal',
+        'docs'
         ];
 
     public function file()
