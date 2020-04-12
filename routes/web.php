@@ -71,5 +71,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
 
     Route::get('/facade/test', function (){
-        dd(\App\Facade\UserRepository::getLawyersOnly());
+        dd(\App\Facade\CaseRepository::updateCase(1,[ 'user_id' => 1]));
     });

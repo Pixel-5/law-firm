@@ -14,22 +14,6 @@
     </ol>
 </nav>
 
-@if(Session::has('status'))
-    <div class="alert  alert-success alert-dismissible fade show" role="alert">
-        <strong>Alert!</strong>  {{  Session::get('status') }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-@endif
-@if(Session::has('fail'))
-    <div class="alert  alert-danger alert-dismissible fade show" role="alert">
-        <strong>Alert!</strong>  {{  Session::get('fail') }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-@endif
 @error('email', 'name', 'contact')
 <div class="alert alert-danger">{{ $message }}</div>
 @enderror

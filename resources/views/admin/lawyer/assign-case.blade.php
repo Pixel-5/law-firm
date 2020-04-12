@@ -30,6 +30,7 @@
                                 <th>#</th>
                                 <th>File No</th>
                                 <th>Case No</th>
+                                <th>Lawyer Name</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -38,6 +39,7 @@
                                 <th>#</th>
                                 <th>File No</th>
                                 <th>Case No</th>
+                                <th>Lawyer Name</th>
                                 <th>Action</th>
                             </tr>
                             </tfoot>
@@ -48,16 +50,24 @@
                                 <td>{{ $case->id }}</td>
                                 <td>{{ $case->file->number }}</td>
                                 <td>{{ $case->number }}</td>
+                                <td>{{ $case->user == null ? "":  $case->user->name}}</td>
                                 <td>
-                                    <a class="btn btn-outline-info btn-sm  text-center
+                                    <a class="btn {{ $case->user == null ? 'btn-outline-info': 'btn-outline-success'}}
+                                        btn-sm  text-center
                                         dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                        data-toggle="dropdown" aria-haspopup="true"
                                        aria-expanded="false"><i class="fa fa-user-circle">
-                                        </i> Assign</a>
-                                    @include('partials.lawyers')
+                                        </i>
+                                        @if($case->user != null)
+                                            Re-assign
+                                        @else Assign
+                                        @endif
+                                    </a>
+                                    @include('partials.dropdown-lawyers')
                                     <a class="btn btn-warning btn-sm  text-center text-white"><i class="fa
                                     fa-user-circle"></i> Edit</a>
-                                    <a class="btn btn-danger btn-sm text-center text-white"><i class="fa
+                                    <a class="delete btn btn-danger btn-sm text-center text-white"
+                                    id="{{ $case->id }}"><i class="fa
                                     fa-trash"></i>
                                         Delete</a>
                                 </td>
@@ -90,8 +100,6 @@
     <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('js/responsive.bootstrap4.min.js') }}"></script>
-
-
     <script type="application/javascript">
         $(document).ready(function() {
             let groupColumn = 1;
@@ -100,7 +108,7 @@
                     details: {
                         display: $.fn.dataTable.Responsive.display.modal( {
                             header: function ( row ) {
-                                var data = row.data();
+                                let data = row.data();
                                 return 'Case Details for '+data[1];
                             }
                         } ),
@@ -124,13 +132,14 @@
                 let case_id = $(this).closest('tr').find('td:nth-child(1)').text()
                 url = url.replace(':id', case_id);
                 console.log('url = '+url);
+                console.log('token = '+token);
                 $.ajax({
                     url: url,
                     type: 'POST',
                     data: {
                         '_token' : token,
                         _method: 'PUT',
-                        'lawyer_id': lawyer_id
+                        'user_id': lawyer_id
                     },
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -146,4 +155,5 @@
             })
         } );
     </script>
+    @include('partials.case-delete-btn')
 @endsection

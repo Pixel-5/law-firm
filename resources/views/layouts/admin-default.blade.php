@@ -29,6 +29,23 @@
                     @hasSection('breadcrumb')
                         @yield('breadcrumb')
                     @endif
+
+                    @if(Session::has('status'))
+                        <div class="alert  alert-success alert-dismissible fade show" role="alert">
+                            <strong>Alert!</strong>  {{  Session::get('status') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
+                    @if(Session::has('fail'))
+                        <div class="alert  alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Alert!</strong>  {{  Session::get('fail') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         @hasSection('title')
                         <h1 class="h3 mb-0 text-gray-800">@yield('title')</h1>

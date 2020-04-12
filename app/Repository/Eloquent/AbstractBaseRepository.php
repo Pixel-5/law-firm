@@ -36,7 +36,7 @@ abstract  class AbstractBaseRepository implements EloquentRepositoryInterface
      * @param $id
      * @return Model
      */
-    public function find($id): ?Model
+    public function find(int $id): ?Model
     {
         return $this->model->findOrFail($id);
     }
@@ -47,7 +47,7 @@ abstract  class AbstractBaseRepository implements EloquentRepositoryInterface
      * @return void
      */
 
-    public function delete($id)
+    public function delete(int $id)
     {
         $this->model->find($id)->delete();
         return true;
@@ -56,5 +56,5 @@ abstract  class AbstractBaseRepository implements EloquentRepositoryInterface
     /**
      * @inheritDoc
      */
-    public abstract function update($id, array $attributes): Model;
+    public abstract function update(int $id, array $attributes): Model;
 }

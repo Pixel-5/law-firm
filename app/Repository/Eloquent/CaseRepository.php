@@ -77,16 +77,6 @@ class CaseRepository extends AbstractBaseRepository implements CaseRepositoryInt
     }
 
     /**
-     * @param $case
-     * @param $request
-     * @return Model
-     */
-    public function updateCase($case, $request)
-    {
-        return $this->update($request->all());
-    }
-
-    /**
      * @inheritDoc
      */
     public function update($id, array $attributes): Model
@@ -96,8 +86,18 @@ class CaseRepository extends AbstractBaseRepository implements CaseRepositoryInt
         return $case;
     }
 
+    /**
+     * @param $id
+     * @param $request
+     * @return Model
+     */
+    public function updateCase($id, $request)
+    {
+        return $this->update($id,$request);
+    }
+
     public function allCases()
     {
-        return $this->model->with('file')->cursor();
+        return $this->model->with(['file','user'])->cursor();
     }
 }

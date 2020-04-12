@@ -19,23 +19,23 @@ interface EloquentRepositoryInterface
     public function create(array $attributes): Model;
 
     /**
-     * @param $id
+     * @param int $id
      * @return Model
      */
-    public function find($id): ?Model;
+    public function find(int $id): ?Model;
 
     /**
-     * @param $id
+     * @param int $id
      * @return void
      */
-    public function delete($id);
+    public function delete(int $id);
 
     /**
-     * @param $id
+     * @param int $id
      * @param array $attributes
      * @return Model
      */
-    public function update($id, array $attributes): Model;
+    public function update(int $id, array $attributes): Model;
 
 
 }

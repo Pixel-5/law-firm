@@ -86,7 +86,14 @@ class CaseController extends Controller
     public function update(Request $request, $id)
     {
         //
-        return null;
+
+        if (!empty(CaseRepository::updateCase($id,$request->all()))){
+            Session::flash("status", "Successfully assigned lawyer a case");
+            return true;
+        }
+
+        Session::flash("fail", "Failed to assign a lawyer a case");
+        return false;
     }
 
     /**

@@ -170,12 +170,18 @@
                                     data-toggle="modal" data-target="#" id="{{ $case->id }}">
                                 <i class="fa fa-trash"></i> Delete Case
                             </button>
-                            <a class="btn btn-outline-success btn-sm  text-center
-                                        dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                            <a class="btn {{ $case->user == null ? 'btn-outline-info': 'btn-outline-success'}}
+                                btn-sm  text-center
+                                dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                data-toggle="dropdown" aria-haspopup="true"
                                aria-expanded="false"><i class="fa fa-user-circle">
-                                </i> Assign</a>
-                            @include('partials.lawyers')
+                                </i>
+                                @if($case->user != null)
+                                    Re-assign
+                                @else Assign
+                                @endif
+                            </a>
+                            @include('partials.dropdown-lawyers')
                             <button class="attach btn btn-secondary btn-sm text-center text-white"
                                     id="{{ $case->id }}"
                                     data-id='{{ $case->id }}'>
@@ -183,9 +189,23 @@
                             </button>
                         </div>
                         <div class="col-md-6 align-items-end">
-                            <div class="d-flex p-2 font-weight-bold" style="float: right;">
-                                <span >Date of Court Appeal:  {{ $case->date_appeal }}</span>
+                            @if($case->user != null)
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <div class="d-flex p-2 font-weight-bold" style="float: right;">
+                                            <span >Assigned Lawyer:  {{ $case->user->name }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="d-flex p-2 font-weight-bold" style="float: right;">
+                                        <span >Date of Court Appeal:  {{ $case->date_appeal }}</span>
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -198,47 +218,5 @@
 @endsection
 <!-- /.container-fluid -->
 @section('custom-scripts')
-    <script src="{{ asset('js/bootbox.min.js') }}"></script>
-    <script type="application/javascript">
-        $(document).ready(function() {
-            $('.delete').click(function(){
-                var el = this;
-
-                // Delete id
-                let id = $(this).attr('id');
-                console.log('id = '+id);
-                // Confirm box
-                bootbox.confirm("Do you really want to delete record?", function(result) {
-
-                    let url = '{{ route("admin.cases.destroy",["case"=> ":id"]) }}';
-                    url = url.replace(':id', id);
-                    console.log('url = '+url);
-                    console.log($('input[name="_token"]').val());
-                    if(result){
-                        // AJAX Request
-                        $.ajax({
-                            url: url,
-                            type: 'POST',
-                            data: {
-                                '_token' : $('input[name="_token"]').val(),
-                                _method: 'delete'
-                            },
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            success: function(response){
-                                console.log("Successfully deleted");
-                                window.location.reload();
-                            },
-                            error: function (response) {
-                                console.log("error "+ response);
-                            }
-                        });
-                    }
-
-                });
-
-            });
-        } );
-    </script>
+@include('partials.case-delete-btn')
 @endsection
