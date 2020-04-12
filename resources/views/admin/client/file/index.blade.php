@@ -98,25 +98,25 @@
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <label for="inputName">Name</label>
-                                                            <input type="text" class="form-control" id="inputEmail4"
+                                                            <input type="text" class="form-control" id="name"
                                                                    name="name">
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <label for="inputSurname">Surname</label>
-                                                            <input type="text" class="form-control" id="inputPassword4"
+                                                            <input type="text" class="form-control" id="surname"
                                                                    name="surname" required>
                                                         </div>
                                                     </div>
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <label for="inputEmail">Email</label>
-                                                            <input type="email" class="form-control" id="inputEmail4"
+                                                            <input type="email" class="form-control" id="email"
                                                                    name="email" required>
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <label for="inputContact">Contact</label>
                                                             <input type="tel" class="form-control"
-                                                                   name="contact" id="inputContact" placeholder="+267"
+                                                                   name="contact" id="contact" placeholder="+267"
                                                                    required>
                                                         </div>
                                                     </div>
@@ -130,7 +130,7 @@
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <div class="form-group">
-                                                                <label for="contact">Gender</label>
+                                                                <label for="gender">Gender</label>
                                                                 <select class="form-control form-control-md"
                                                                         name="gender" required>
                                                                     <option disabled>Select</option>
@@ -142,13 +142,13 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="inputAddress">Physical Address</label>
-                                                        <input type="text" class="form-control" id="inputAddress"
+                                                        <input type="text" class="form-control" id="physicalAddress"
                                                                name="physical_address" placeholder="1234 Main St">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="inputAddress2">Postal Address</label>
                                                         <input type="text" class="form-control"
-                                                               name="postal_address" id="inputAddress2" >
+                                                               name="postal_address" id="PostalAddress" >
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="custom-file">
@@ -171,6 +171,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
+                                <input type="hidden" name="_token" value="{{ @csrf_token() }}">
                                 <div class="table-responsive">
                                     <table id="example" class="table table-striped table-bordered nowrap" style="width:100%">
                                         <thead>
@@ -194,7 +195,6 @@
                                         <tbody>
                                         @foreach($files as $file)
                                         <tr>
-                                            <input type="hidden" name="_token" value="{{ @csrf_token() }}">
                                             <div class="modal fade" id="editClientFileModal" tabindex="-1"
                                                  role="dialog"
                                                  aria-labelledby="clientModalLabel" aria-hidden="true">
@@ -363,7 +363,16 @@
         </div>
     </div>
 </div>
-@include('layouts.scripts')
+<!-- Bootstrap core JavaScript-->
+<script src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('js/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="{{ asset('js/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+
 
 <!-- Custom scripts for all pages-->
 <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
@@ -419,11 +428,13 @@
                         success: function(response){
 
                             // Removing row from HTML Table
+                            console.log(response);
                             if(response == 1){
                                 $(el).closest('tr').css('background','tomato');
                                 $(el).closest('tr').fadeOut(800,function(){
                                     $(this).remove();
                                 });
+                                window.location.reload();
                             }else{
                                 bootbox.alert('Record not deleted.');
                             }

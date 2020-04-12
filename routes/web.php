@@ -69,3 +69,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('events', 'EventsController');
 });
 
+
+    Route::get('/facade/test', function (){
+        dd(FileRepository::all());
+    });

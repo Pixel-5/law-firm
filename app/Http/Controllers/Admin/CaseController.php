@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCaseRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Session;
 
 class CaseController extends Controller
 {
@@ -31,6 +33,7 @@ class CaseController extends Controller
     public function create()
     {
         //
+        return null;
     }
 
     /**
@@ -90,15 +93,20 @@ class CaseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param FileCase $id
-     * @return Response
+     * @param int $case
+     * @return bool
      */
-    public function destroy(FileCase $id)
+    public function destroy(int $case)
     {
-        //dd($id);
-        //
         abort_if(Gate::denies('user_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        FileRepository::deleteCase($id);
-        return back()->with("status", "Successfully deleted client case");
+
+        if (CaseRepository::deleteCase($case)){
+            Session::flash("status", "Successfully deleted client case");
+            return true;
+        }
+
+        Session::flash("fail", "Failed to delete client case");
+        return false;
+
     }
 }

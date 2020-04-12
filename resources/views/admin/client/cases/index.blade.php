@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
-
 </head>
 
 <body id="page-top">
@@ -141,49 +140,6 @@
                 @endif
                 <div class="alert alert-primary alert-dismissible fade show" role="alert">
                     <input type="hidden" name="_token" value="{{ @csrf_token() }}">
-{{--                    <div class="card shadow mb-4">--}}
-{{--                        <!-- Card Header - Accordion -->--}}
-{{--                        <a href="#collapseCardExample1" class="d-block card-header py-3" data-toggle="collapse"--}}
-{{--                           role="button" aria-expanded="true" aria-controls="collapseCardExample">--}}
-{{--                            <h6 class="m-0 font-weight-bold text-primary">Case ASBI-21--}}
-{{--                                <span class="badge badge-success ">Done</span></h6>--}}
-
-{{--                        </a>--}}
-{{--                        <!-- Card Content - Collapse -->--}}
-{{--                        <div class="collapse hide" id="collapseCardExample1">--}}
-{{--                            <div class="card-body">--}}
-{{--                                This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="card shadow mb-4">--}}
-{{--                        <!-- Card Header - Accordion -->--}}
-{{--                        <a href="#collapseCardExample2" class="d-block card-header py-3" data-toggle="collapse"--}}
-{{--                           role="button" aria-expanded="true" aria-controls="collapseCardExample">--}}
-{{--                            <h6 class="m-0 font-weight-bold text-primary">Case ASBI-22--}}
-{{--                                <span class="badge badge-warning ">Not Assigned</span>--}}
-{{--                            </h6>--}}
-
-{{--                        </a>--}}
-
-{{--                        <!-- Card Content - Collapse -->--}}
-{{--                        <div class="collapse hide" id="collapseCardExample2">--}}
-{{--                            <div class="card-body">--}}
-{{--                                This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!--}}
-{{--                                <div class="dropdown">--}}
-{{--                                    <button class="btn btn-secondary  btn-sm dropdown-toggle float-right" type="button"--}}
-{{--                                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-{{--                                        Assign Lawyer--}}
-{{--                                    </button>--}}
-{{--                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">--}}
-{{--                                        <a class="dropdown-item" href="#">Action</a>--}}
-{{--                                        <a class="dropdown-item" href="#">Another action</a>--}}
-{{--                                        <a class="dropdown-item" href="#">Something else here</a>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
                     @foreach($file->cases as $case)
                         <div class="card shadow mb-4">
                         <!-- Card Header - Accordion -->
@@ -221,7 +177,8 @@
                                         </div>
                                     </div>
                                     <div class="col-md-7 align-items-end">
-                                       <div class="d-sm-none d-md-block p-2" style="float: right;">
+
+                                       <div class="" style="float: right;">
                                            <div class="d-block p-2 font-weight-bold offset-1">Supporting Docs</div>
                                            <ul>
                                                @foreach(explode(",", $case->docs) as $doc)
@@ -263,11 +220,7 @@
                                            data-toggle="dropdown" aria-haspopup="true"
                                            aria-expanded="false"><i class="fa fa-user-circle">
                                             </i> Assign</a>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <a class="dropdown-item" href="#">Lawyer 1</a>
-                                            <a class="dropdown-item" href="#">Lawyer 2</a>
-                                            <a class="dropdown-item" href="#">lawyer 3</a>
-                                        </div>
+                                        @include('partials.lawyers')
                                         <button class="attach btn btn-secondary btn-sm text-center text-white"
                                                 id="{{ $case->id }}"
                                                 data-id='{{ $case->id }}'>
