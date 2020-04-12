@@ -2,11 +2,9 @@
 
 namespace App\Providers;
 
+use App\Facade\UserRepository;
 use App\Http\View\Composers\FileComposer;
 use App\Mixins\StrMixins;
-use App\Repositories\CaseRepository;
-use App\Repositories\FileRepository;
-use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;

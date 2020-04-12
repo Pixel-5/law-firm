@@ -11,6 +11,6 @@ class UserComposer
 {
     public function compose(View $view)
     {
-        return $view->with('lawyers', UserRepository::all());
+        return $view->with('lawyers', UserRepository::allUsers());
     }
 }

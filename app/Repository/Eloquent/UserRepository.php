@@ -25,18 +25,16 @@ class UserRepository extends AbstractBaseRepository implements UserRepositoryInt
     /**
      * @return Collection
      */
-    public function all(): Collection
+    public function allUsers(): Collection
     {
         return $this->model->all();
     }
 
-    public function getLawyersOnly()
+    public function getLawyersOnly(): Collection
     {
-        $users = User::whereHas('roles', function ($q) {
-            $q->Where('name', 'lawyer');
-        })->where('active_status', 1)->paginate(20);
-
-        return $users;
+        return  User::whereHas('roles', function ($q) {
+            $q->Where('title', 'lawyer');
+        })->where('active_status', 1)->get();
     }
 
     /**

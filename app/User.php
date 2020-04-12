@@ -66,4 +66,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class);
     }
+
+    public function cases()
+    {
+        return $this->belongsToMany(FileCase::class);
+    }
 }

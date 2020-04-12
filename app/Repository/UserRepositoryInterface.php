@@ -6,5 +6,7 @@ use Illuminate\Support\Collection;
 
 interface UserRepositoryInterface
 {
-    public function all(): Collection;
+    public function allUsers(): Collection;
+
+    public function getLawyersOnly(): Collection;
 }

@@ -3,8 +3,6 @@
 
 namespace App\Repository\Eloquent;
 
-
-use App\Facade\FileRepository;
 use App\FileCase;
 use App\Repository\CaseRepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
@@ -37,7 +35,7 @@ class CaseRepository extends AbstractBaseRepository implements CaseRepositoryInt
 
     /**
      * @param Request $request
-     * @return bool
+     * @return Model
      */
     public function storeCase($request)
     {
@@ -96,5 +94,10 @@ class CaseRepository extends AbstractBaseRepository implements CaseRepositoryInt
         $case = $this->find($id);
         $case->update($attributes);
         return $case;
+    }
+
+    public function allCases()
+    {
+        return $this->model->with('file')->cursor();
     }
 }

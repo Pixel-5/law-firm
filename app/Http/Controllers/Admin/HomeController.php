@@ -21,7 +21,7 @@ class HomeController
 
     public function assignCases()
     {
-        return view('admin.client.schedule-lawyer');
+        return view('admin.lawyer.assign-case');
     }
 
     public function reAssignCases()

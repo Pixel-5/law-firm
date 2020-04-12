@@ -19,11 +19,17 @@ class FileCase extends Model
         'status',
         'number',
         'date_appeal',
-        'docs'
+        'docs',
+        'user_id'
         ];
 
     public function file()
     {
         return $this->belongsTo('App\File');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 }

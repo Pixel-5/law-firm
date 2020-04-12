@@ -13,7 +13,6 @@ use App\Repository\UserRepositoryInterface;
 use App\Repository\Eloquent\UserRepository;
 use App\Repository\Eloquent\AbstractBaseRepository;
 use Illuminate\Contracts\Support\DeferrableProvider;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 
 /**

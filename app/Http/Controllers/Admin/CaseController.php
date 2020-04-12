@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Facade\CaseRepository;
 use App\Facade\FileRepository;
-use App\FileCase;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCaseRequest;
 use Illuminate\Http\Request;
