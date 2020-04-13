@@ -44,6 +44,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('file/{id}/cases', 'CaseController@index')->name('open.client.cases');
     Route::resource('cases', 'CaseController');
 
+    //Case Schedule
+    Route::resource('schedule', 'CaseScheduleController');
+
 
 
     //default routes

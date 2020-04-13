@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="680dd266-b94c-42b2-bf1f-4eed7f13957c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CaseScheduleController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/lawyer/schedule-case.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/FileCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/FileCase.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/client/file/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/client/file/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/client/re-assign-case.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/client/re-assign-case.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/lawyer/assign-case.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/lawyer/assign-case.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Admin/EventResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Admin/CaseScheduleResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/client/cases/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/client/cases/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,19 +168,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Documents\Projects\law-firm\app\Http\Controllers\Admin" />
+      <recent name="C:\Users\User\Documents\Projects\law-firm\app\Repository\Interface" />
+      <recent name="C:\Users\User\Documents\Projects\law-firm\app\Http\Resources\Admin" />
+      <recent name="C:\Users\User\Documents\Projects\law-firm\app\Http\Controllers\Lawyer" />
+      <recent name="C:\Users\User\Documents\Projects\law-firm\resources\views\lawyer" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\User\Documents\Projects\law-firm\public\js" />
       <recent name="C:\Users\User\Documents\Projects\law-firm\resources\views\lawyer" />
       <recent name="C:\Users\User\Documents\Projects\law-firm\public\css" />
       <recent name="C:\Users\User\Documents\Projects\law-firm\config" />
       <recent name="C:\Users\User\Documents\Projects\law-firm\resources\lang\en" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\User\Documents\Projects\law-firm\app\Repository\Interface" />
-      <recent name="C:\Users\User\Documents\Projects\law-firm\app\Http\Controllers\Admin" />
-      <recent name="C:\Users\User\Documents\Projects\law-firm\app\Http\Resources\Admin" />
-      <recent name="C:\Users\User\Documents\Projects\law-firm\app\Http\Controllers\Lawyer" />
-      <recent name="C:\Users\User\Documents\Projects\law-firm\resources\views\lawyer" />
     </key>
   </component>
   <component name="RunManager">
@@ -210,7 +212,7 @@
       <workItem from="1586260572711" duration="992000" />
       <workItem from="1586263606936" duration="27669000" />
       <workItem from="1586603029305" duration="25310000" />
-      <workItem from="1586697079996" duration="40287000" />
+      <workItem from="1586697079996" duration="42226000" />
     </task>
     <servers />
   </component>
@@ -246,22 +248,22 @@
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="482" y="178" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1600.900@0.0.1600.900" timestamp="1586609192002" />
-    <state x="129" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1586741875255">
+    <state x="129" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1586749814922">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="129" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.900@0.0.1600.900" timestamp="1586741875255" />
+    <state x="129" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.900@0.0.1600.900" timestamp="1586749814922" />
     <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1586742428129">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.900@0.0.1600.900" timestamp="1586742428129" />
-    <state x="556" y="264" key="NewPhpClassDialog" timestamp="1586657835088">
+    <state x="556" y="264" key="NewPhpClassDialog" timestamp="1586749625710">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="556" y="264" key="NewPhpClassDialog/0.0.1600.900@0.0.1600.900" timestamp="1586657835088" />
-    <state x="635" y="373" key="NewPhpFileDialog" timestamp="1586726748391">
+    <state x="556" y="264" key="NewPhpClassDialog/0.0.1600.900@0.0.1600.900" timestamp="1586749625710" />
+    <state x="635" y="373" key="NewPhpFileDialog" timestamp="1586750388977">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="635" y="373" key="NewPhpFileDialog/0.0.1600.900@0.0.1600.900" timestamp="1586726748391" />
+    <state x="635" y="373" key="NewPhpFileDialog/0.0.1600.900@0.0.1600.900" timestamp="1586750388977" />
     <state x="496" y="274" key="com.intellij.ide.util.TipDialog" timestamp="1586697238033">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
