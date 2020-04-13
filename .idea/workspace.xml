@@ -4,18 +4,12 @@
     <list default="true" id="680dd266-b94c-42b2-bf1f-4eed7f13957c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/FileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/FileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/EventsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/EventsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreCaseRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreCaseRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreEventRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreScheduleRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreFileRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreFileRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UpdateCaseRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UpdateCaseRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UpdateEventRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UpdateScheduleRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UpdateFileRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UpdateFileRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/CaseRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/CaseRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_03_000003_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_03_000003_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/client/cases/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/client/cases/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/client/cases/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/client/cases/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/client/file/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/client/file/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/lawyer/assign-case.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/lawyer/assign-case.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/partials/case-edit-modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/case-edit-modal.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -220,7 +214,7 @@
       <workItem from="1586260572711" duration="992000" />
       <workItem from="1586263606936" duration="27669000" />
       <workItem from="1586603029305" duration="25310000" />
-      <workItem from="1586697079996" duration="36248000" />
+      <workItem from="1586697079996" duration="39049000" />
     </task>
     <servers />
   </component>

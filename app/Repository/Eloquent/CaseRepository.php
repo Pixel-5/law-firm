@@ -30,7 +30,7 @@ class CaseRepository extends AbstractBaseRepository implements CaseRepositoryInt
      */
     public function showCase($id)
     {
-        return null;
+        return $this->find($id);
     }
 
     /**

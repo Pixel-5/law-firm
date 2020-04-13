@@ -245,7 +245,7 @@
                             <td>+267{{ $file->contact }}</td>
                             <td>
                                 <a class="btn btn-info btn-sm  text-center text-white"
-                                   href="{{ route('admin.cases.show', $file->id) }}">
+                                   href="{{ route('admin.open.client.cases', $file->id) }}">
                                     <i class="fa fa-file-contract"></i> Open</a>
                                 <a class="btn btn-warning btn-sm  text-center text-white"
                                    data-toggle="modal" data-target="#editClientFileModal"><i class="fa

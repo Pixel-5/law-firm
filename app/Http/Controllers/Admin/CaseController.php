@@ -16,13 +16,15 @@ class CaseController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param $id
      * @return void
      */
-    public function index()
+    public function index($id)
     {
         //
         abort_if(Gate::denies('case_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        //return view('admin.index')
+        $file =  FileRepository::findById($id);
+        return view('admin.client.cases.index',compact('file'));
     }
 
     /**
@@ -63,8 +65,8 @@ class CaseController extends Controller
     public function show($id)
     {
         abort_if(Gate::denies('case_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        $file =  FileRepository::findById($id);
-        return view('admin.client.cases.index',compact('file'));
+        $case =  CaseRepository::showCase($id);
+        return view('admin.client.cases.edit',compact('case'));
     }
 
     /**

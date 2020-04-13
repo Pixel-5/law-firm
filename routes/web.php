@@ -41,13 +41,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     //Case
     Route::delete('cases/destroy', 'CaseController@massDestroy')->name('cases.massDestroy');
+    Route::get('file/{id}/cases', 'CaseController@index')->name('open.client.cases');
     Route::resource('cases', 'CaseController');
 
 
 
     //default routes
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
-    Route::get('/open-cases', 'HomeController@openCases')->name('open.client.cases');
+
     Route::get('/assign-cases', 'HomeController@assignCases')->name('assign.lawyer.cases');
     Route::get('/re-assign-cases', 'HomeController@reAssignCases')->name('re-assign.lawyer.cases');
     Route::get('/view-pending-cases', 'HomeController@pendingCases')->name('view.pending-cases');

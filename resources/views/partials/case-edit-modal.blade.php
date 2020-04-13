@@ -1,6 +1,6 @@
 <div class="modal fade" id="editClientCaseModal" tabindex="-1" role="dialog"
      aria-labelledby="openClientCaseModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="openClientCaseModalLabel">Court Case Information</h5>

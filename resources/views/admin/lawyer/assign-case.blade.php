@@ -65,13 +65,12 @@
                                     </a>
                                     @include('partials.dropdown-lawyers')
                                     <a class="btn btn-warning btn-sm  text-center text-white"
-                                       data-toggle="modal" data-target="#editClientCaseModal">
+                                       href="{{ route('admin.cases.show', $case->id ) }}">
                                         <i class="fa fa-pencil-alt"></i> Edit</a>
                                     <a class="delete btn btn-danger btn-sm text-center text-white"
                                     id="{{ $case->id }}"><i class="fa
                                     fa-trash"></i>
                                         Delete</a>
-                                    @include('partials.case-edit-modal')
                                 </td>
                             </tr>
                                 @endforeach

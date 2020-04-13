@@ -138,10 +138,10 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <button class="btn btn-info btn-sm  text-center text-white"
+                            <a class="btn btn-info btn-sm  text-center text-white"
                                     href="{{ route('admin.cases.show', $case->id) }}">
                                 <i class="fa fa-file-contract"></i> Edit Case
-                            </button>
+                            </a>
                             <button class="delete btn btn-danger btn-sm  text-center text-white"
                                     data-toggle="modal" data-target="#" id="{{ $case->id }}">
                                 <i class="fa fa-trash"></i> Delete Case
