@@ -36,4 +36,9 @@ class FileCase extends Model
     {
         return $this->hasOne(Schedule::class,'case_id');
     }
+
+    protected function getArrayAttributeByKey($key)
+    {
+        return 'slug';
+    }
 }

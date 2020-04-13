@@ -41,7 +41,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     //Case
     Route::delete('cases/destroy', 'CaseController@massDestroy')->name('cases.massDestroy');
-    Route::get('file/{id}/cases', 'CaseController@index')->name('open.client.cases');
+    Route::get('file/{file:slug}/cases', 'CaseController@index')->name('open.client.cases');
     Route::resource('cases', 'CaseController');
 
     //Case Schedule

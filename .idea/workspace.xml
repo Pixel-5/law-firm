@@ -2,13 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="680dd266-b94c-42b2-bf1f-4eed7f13957c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/css/errors.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/401.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/403.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/404.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/419.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/429.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/500.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/503.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/custom-error.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/illustrated-layout.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/layout.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/minimal.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/FileCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/FileCase.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/CaseRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/CaseRepositoryInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/CaseRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/CaseRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/lawyer/schedule-case.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/lawyer/schedule-case.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/side-nav-bar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/side-nav-bar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/client/cases/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/client/cases/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/client/file/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/client/file/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,9 +37,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="Less File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -163,7 +176,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/public/js" />
-    <property name="list.type.of.created.stylesheet" value="Less" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
@@ -213,6 +226,7 @@
       <workItem from="1586263606936" duration="27669000" />
       <workItem from="1586603029305" duration="25310000" />
       <workItem from="1586697079996" duration="45958000" />
+      <workItem from="1586790833732" duration="6738000" />
     </task>
     <servers />
   </component>
@@ -252,22 +266,22 @@
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="129" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.900@0.0.1600.900" timestamp="1586749814922" />
-    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1586755144166">
+    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1586801051067">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.900@0.0.1600.900" timestamp="1586755144166" />
+    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.900@0.0.1600.900" timestamp="1586801051067" />
     <state x="556" y="264" key="NewPhpClassDialog" timestamp="1586749625710">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="556" y="264" key="NewPhpClassDialog/0.0.1600.900@0.0.1600.900" timestamp="1586749625710" />
-    <state x="635" y="373" key="NewPhpFileDialog" timestamp="1586750388977">
+    <state x="635" y="373" key="NewPhpFileDialog" timestamp="1586803634340">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="635" y="373" key="NewPhpFileDialog/0.0.1600.900@0.0.1600.900" timestamp="1586750388977" />
-    <state x="496" y="274" key="com.intellij.ide.util.TipDialog" timestamp="1586697238033">
+    <state x="635" y="373" key="NewPhpFileDialog/0.0.1600.900@0.0.1600.900" timestamp="1586803634340" />
+    <state x="496" y="274" key="com.intellij.ide.util.TipDialog" timestamp="1586790915191">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="496" y="274" key="com.intellij.ide.util.TipDialog/0.0.1600.900@0.0.1600.900" timestamp="1586697238033" />
+    <state x="496" y="274" key="com.intellij.ide.util.TipDialog/0.0.1600.900@0.0.1600.900" timestamp="1586790915191" />
     <state x="459" y="207" key="run.anything.popup" timestamp="1586425480980">
       <screen x="0" y="0" width="1600" height="900" />
     </state>

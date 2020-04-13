@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Gate;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class LoginController extends Controller
 {
@@ -22,13 +25,6 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
-
-    /**
      * Create a new controller instance.
      *
      * @return void
@@ -36,5 +32,30 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    /**
+     * Where to redirect users after login.
+     *
+     * @return RedirectResponse
+     */
+
+    public function redirectPath()
+    {
+        switch (auth()->user()->roles){
+            case 'Admin':
+                return redirect()->route(RouteServiceProvider::ADMIN);
+
+            case 'Lawyer':
+                return redirect()->route(RouteServiceProvider::LAWYER);
+
+            case 'SuperAdmin':
+                return redirect()->route(RouteServiceProvider::SUPER);
+
+            default:
+                abort_if(Gate::denies('system_access'),
+                    Response::HTTP_UNAUTHORIZED);
+
+        }
     }
 }

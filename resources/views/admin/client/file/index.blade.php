@@ -128,6 +128,7 @@
                     <table id="example" class="table table-striped table-bordered nowrap" style="width:100%">
                         <thead>
                         <tr>
+                            <th>#</th>
                             <th>File No</th>
                             <th>Client</th>
                             <th>Email</th>
@@ -137,6 +138,7 @@
                         </thead>
                         <tfoot>
                         <tr>
+                            <th>#</th>
                             <th>File No</th>
                             <th>Client</th>
                             <th>Email</th>
@@ -239,6 +241,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <td>{{ $file->id }}</td>
                             <td>{{ $file->number }}</td>
                             <td>{{ $file->name }} {{ $file->surname }}</td>
                             <td>{{ $file->email }}</td>

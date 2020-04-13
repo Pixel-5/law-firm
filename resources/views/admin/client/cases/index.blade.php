@@ -177,7 +177,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="d-flex p-2 font-weight-bold" style="float: right;">
-{{--                                        <span >Date of Court Appeal:  {{ $case->date_appeal }}</span>--}}
+{{--                                        <span >Date of Court Appeal:  {{ $case ?? ''->date_appeal }}</span>--}}
                                     </div>
                                 </div>
                             </div>
@@ -201,31 +201,33 @@
 
             //Update id
             let user_id = $(this).attr('id');
-            let case_id = '{{ $case->id }}';
+            let case_id = '{{ $case->id ?? null }}';
             let url = '{{ route("admin.cases.update",["case"=> ":id"]) }}';
             let token = $('input[name="_token"]').val();
 
-            url = url.replace(':id', case_id);
-
-            $.ajax({
-                url: url,
-                type: 'POST',
-                data: {
-                    '_token' : token,
-                    _method: 'PUT',
-                    'user_id': user_id
-                },
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function(response){
-                    console.log("Successfully updated client case");
-                    window.location.reload();
-                },
-                error: function (response) {
-                    console.log("error "+ response.data);
-                }
-            });
+            if(case_id != null)
+            {
+                url = url.replace(':id', case_id);
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        '_token' : token,
+                        _method: 'PUT',
+                        'user_id': user_id
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response){
+                        console.log("Successfully updated client case");
+                        window.location.reload();
+                    },
+                    error: function (response) {
+                        console.log("error "+ response.data);
+                    }
+                });
+            }
         });
     } );
 </script>
