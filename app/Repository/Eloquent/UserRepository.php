@@ -32,7 +32,7 @@ class UserRepository extends AbstractBaseRepository implements UserRepositoryInt
 
     public function getLawyersOnly(): Collection
     {
-        return  User::whereHas('roles', function ($q) {
+        return  $this->model->whereHas('roles', function ($q) {
             $q->Where('title', 'lawyer');
         })->where('active_status', 1)->get();
     }

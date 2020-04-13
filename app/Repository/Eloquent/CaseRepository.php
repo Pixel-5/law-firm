@@ -96,6 +96,11 @@ class CaseRepository extends AbstractBaseRepository implements CaseRepositoryInt
 
     public function allCases()
     {
-        return $this->model->with(['file','user'])->cursor();
+        return $this->model->with(['file'])->cursor();
+    }
+
+    public function scheduledCases()
+    {
+        return $this->model->whereHas('schedule')->with(['file','user'])->get();
     }
 }

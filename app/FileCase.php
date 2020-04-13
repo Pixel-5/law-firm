@@ -34,6 +34,6 @@ class FileCase extends Model
 
     public function schedule()
     {
-        return $this->hasOne(Schedule::class);
+        return $this->hasOne(Schedule::class,'case_id');
     }
 }

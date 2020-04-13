@@ -46,12 +46,18 @@
                             </tr>
                             </tfoot>
                             <tbody>
+                            @inject('caseRepository','App\Repository\CaseRepositoryInterface')
+                            @foreach($caseRepository->scheduledCases() as $case)
                             <tr>
-                                <td>FF-ABS-0</td>
-                                <td>CS-ABS 01 </td>
-                                <td>More</td>
-                                <td>10-10-2019</td>
-                                <td>Molepolole Magistrate Court</td>
+                                <td>{{ $case->file->number }}</td>
+                                <td>{{ $case->number }}</td>
+                                <td>{{ $case->user->name }}</td>
+                                <td>
+                                    Start: {{ $case->schedule->start_time }}
+                                    <br/>
+                                    End: {{ $case->schedule->end_time }}
+                                </td>
+                                <td> {{ $case->schedule->venue }}</td>
                                 <td>
                                     <a class="btn btn-outline-secondary btn-sm  text-center
                                         dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
@@ -68,6 +74,7 @@
                                     </div>
                                 </td>
                             </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

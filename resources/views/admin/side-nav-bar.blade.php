@@ -55,7 +55,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">List of Cases:</h6>
                 @inject('cases', 'App\Repository\CaseRepositoryInterface')
-                @foreach($cases->allCases() as $case)
+                @foreach($cases->scheduledCases() as $case)
                     <a class="collapse-item" href="#">{{ $case->number }}</a>
                 @endforeach
             </div>
