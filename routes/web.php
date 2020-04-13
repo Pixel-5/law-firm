@@ -21,7 +21,7 @@ Route::redirect('/', '/login');
 Auth::routes(['register' => false]);
 
 //admin routes, get and post
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth','admin']], function () {
 
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
@@ -57,8 +57,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('/view-pending-cases', 'HomeController@pendingCases')->name('view.pending-cases');
 });
 
-    //lawyer routes, get & post
-    Route::group(['prefix' => 'lawyer', 'as' => 'lawyer.', 'namespace' => 'Lawyer', 'middleware' => ['auth']],function (){
+//lawyer routes, get & post
+Route::group(['prefix' => 'lawyer', 'as' => 'lawyer.', 'namespace' => 'Lawyer', 'middleware' => ['auth','lawyer']],function (){
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
     Route::get('/my-cases', 'HomeController@myCases')->name('cases');
     Route::get('/my-schedule', 'HomeController@mySchedule')->name('schedule');

@@ -25,6 +25,7 @@ class RouteServiceProvider extends ServiceProvider
     public const ADMIN =  'admin.dashboard';
     public const LAWYER = 'lawyer.dashboard';
     public const SUPER =  'super.dashboard';
+    public const HOME =  '/';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -86,13 +87,13 @@ class RouteServiceProvider extends ServiceProvider
         foreach (auth()->user()->roles as $role){
             switch ($role->title){
                 case 'Admin':
-                    return redirect()->route(RouteServiceProvider::ADMIN);
+                    return route(RouteServiceProvider::ADMIN);
 
                 case 'Lawyer':
-                    return redirect()->route(RouteServiceProvider::LAWYER);
+                    return route(RouteServiceProvider::LAWYER);
 
                 case 'SuperAdmin':
-                    return redirect()->route(RouteServiceProvider::SUPER);
+                    return route(RouteServiceProvider::SUPER);
 
                 default:
                     abort_if(Gate::denies('system_access'),
