@@ -59,8 +59,12 @@
                                        aria-expanded="false"><i class="fa fa-user-circle">
                                         </i> re-schedule</a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Reset schedule</a>
-                                        <a class="dropdown-item" href="#">Postpone schedule</a>
+                                        <a class="dropdown-item" href="#">
+                                            <i class="fa fa-calendar-plus"></i> Edit schedule</a>
+                                        <a class="dropdown-item" href="#">
+                                            <i class="fa fa-calendar-times"></i> Reset schedule</a>
+                                        <a class="dropdown-item" href="#">
+                                            <i class="fa fa-calendar-minus"></i> Postpone schedule</a>
                                     </div>
                                 </td>
                             </tr>

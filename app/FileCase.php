@@ -31,4 +31,9 @@ class FileCase extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function schedule()
+    {
+        return $this->hasOne(Schedule::class);
+    }
 }

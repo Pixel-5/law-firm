@@ -30,6 +30,7 @@
                                 <th>#</th>
                                 <th>File No</th>
                                 <th>Case No</th>
+                                <th>Client</th>
                                 <th>Lawyer Name</th>
                                 <th>Action</th>
                             </tr>
@@ -39,6 +40,7 @@
                                 <th>#</th>
                                 <th>File No</th>
                                 <th>Case No</th>
+                                <th>Client</th>
                                 <th>Lawyer Name</th>
                                 <th>Action</th>
                             </tr>
@@ -50,6 +52,7 @@
                                 <td>{{ $case->id }}</td>
                                 <td>{{ $case->file->number }}</td>
                                 <td>{{ $case->number }}</td>
+                                <td>{{ $case->file->name }} {{ $case->file->surname }}</td>
                                 <td>{{ $case->user == null ? "":  $case->user->name}}</td>
                                 <td>
                                     <a class="btn {{ $case->user == null ? 'btn-outline-info': 'btn-outline-success'}}

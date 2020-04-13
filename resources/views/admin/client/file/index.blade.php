@@ -29,7 +29,7 @@
             <div class="card-header py-3">
                 <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                    data-toggle="modal" data-target="#addClientFileModal">
-                    <i class="fasfa-file fa-sm text-white-50"></i> New Client File</a>
+                    <i class="fas fa-file-archive fa-sm text-white-50"></i> New Client File</a>
 
                 <!-- Modal -->
                 <div class="modal fade" id="addClientFileModal" tabindex="-1" role="dialog"
@@ -129,7 +129,7 @@
                         <thead>
                         <tr>
                             <th>File No</th>
-                            <th>Client Full Name</th>
+                            <th>Client</th>
                             <th>Email</th>
                             <th>Contact</th>
                             <th>Action</th>
@@ -138,7 +138,7 @@
                         <tfoot>
                         <tr>
                             <th>File No</th>
-                            <th>Client Full Name</th>
+                            <th>Client</th>
                             <th>Email</th>
                             <th>Contact</th>
                             <th>Action</th>
