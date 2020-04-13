@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\HttpFoundation\Response;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -78,5 +79,25 @@ class RouteServiceProvider extends ServiceProvider
             ->middleware('api')
             ->namespace($this->namespace)
             ->group(base_path('routes/api.php'));
+    }
+
+    public static function redirectPath()
+    {
+        foreach (auth()->user()->roles as $role){
+            switch ($role->title){
+                case 'Admin':
+                    return redirect()->route(RouteServiceProvider::ADMIN);
+
+                case 'Lawyer':
+                    return redirect()->route(RouteServiceProvider::LAWYER);
+
+                case 'SuperAdmin':
+                    return redirect()->route(RouteServiceProvider::SUPER);
+
+                default:
+                    abort_if(Gate::denies('system_access'),
+                        Response::HTTP_UNAUTHORIZED);
+            }
+        }
     }
 }

@@ -21,22 +21,7 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            switch (Auth::user()->roles){
-                case 'Admin':
-                    return redirect()->route(RouteServiceProvider::ADMIN);
-
-                case 'Lawyer':
-                    return redirect()->route(RouteServiceProvider::LAWYER);
-
-                case 'SuperAdmin':
-                    return redirect()->route(RouteServiceProvider::SUPER);
-
-                default:
-                    Auth::logout();
-                    abort_if(Gate::denies('system_access'),
-                        Response::HTTP_UNAUTHORIZED);
-
-            }
+            return RouteServiceProvider::redirectPath();
         }
 
         return $next($request);

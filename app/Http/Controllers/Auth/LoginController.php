@@ -42,20 +42,6 @@ class LoginController extends Controller
 
     public function redirectPath()
     {
-        switch (auth()->user()->roles){
-            case 'Admin':
-                return redirect()->route(RouteServiceProvider::ADMIN);
-
-            case 'Lawyer':
-                return redirect()->route(RouteServiceProvider::LAWYER);
-
-            case 'SuperAdmin':
-                return redirect()->route(RouteServiceProvider::SUPER);
-
-            default:
-                abort_if(Gate::denies('system_access'),
-                    Response::HTTP_UNAUTHORIZED);
-
-        }
+        return RouteServiceProvider::redirectPath();
     }
 }
