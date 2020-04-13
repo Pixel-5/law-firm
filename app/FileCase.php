@@ -18,7 +18,6 @@ class FileCase extends Model
         'details',
         'status',
         'number',
-        'date_appeal',
         'docs',
         'user_id'
         ];

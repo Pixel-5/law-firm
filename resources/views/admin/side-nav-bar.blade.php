@@ -37,10 +37,10 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Select File:</h6>
-                <a class="collapse-item" href="#">FF-AS 01</a>
-                <a class="collapse-item" href="#">FF-BS 02</a>
-                <a class="collapse-item" href="#">FF-CS 03</a>
-                <a class="collapse-item" href="#">FF-DS 04</a>
+                @inject('files', 'App\Repository\FileRepositoryInterface')
+                @foreach($files->allFiles() as $file)
+                    <a class="collapse-item" href="{{ route('admin.cases.show', $file->id) }}">{{ $file->number }}</a>
+                @endforeach
             </div>
         </div>
     </li>
@@ -54,10 +54,10 @@
         <div id="collapseCases" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">List of Cases:</h6>
-                <a class="collapse-item" href="#">Case 1</a>
-                <a class="collapse-item" href="#">Case 2</a>
-                <a class="collapse-item" href="#">Case 3</a>
-                <a class="collapse-item" href="#">Case 4</a>
+                @inject('cases', 'App\Repository\CaseRepositoryInterface')
+                @foreach($cases->allCases() as $case)
+                    <a class="collapse-item" href="#">{{ $case->number }}</a>
+                @endforeach
             </div>
         </div>
     </li>
@@ -68,11 +68,11 @@
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">List of Lwayers:</h6>
-                <a class="collapse-item" href="#">Lawyer 1</a>
-                <a class="collapse-item" href="#">Lawyer 2</a>
-                <a class="collapse-item" href="#">Lawyer 3</a>
-                <a class="collapse-item" href="#">Lawyer 4</a>
+                <h6 class="collapse-header">List of Lawyers:</h6>
+                @inject('users', 'App\Repository\UserRepositoryInterface')
+                @foreach($users->getLawyersOnly() as $lawyer)
+                <a class="collapse-item" href="#">{{ $lawyer->name }}</a>
+                    @endforeach
             </div>
         </div>
     </li>
@@ -80,45 +80,44 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
     @can('user_management_access')
-        <li class="nav-item nav-dropdown">
-            <a class="nav-link  nav-dropdown-toggle" href="#">
-                <i class="fa-fw fas fa-users nav-icon">
-
-                </i>
-                {{ trans('cruds.userManagement.title') }}
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#userManagement"
+               aria-expanded="true" aria-controls="collapseUtilities">
+                <i class="fas fa-fw fa-user-circle"></i>
+                <span>{{ trans('cruds.userManagement.title') }}</span>
             </a>
-            <ul class="nav-dropdown-items">
-                @can('permission_access')
-                    <li class="nav-item">
-                        <a href="{{ route("admin.permissions.index") }}" class="nav-link {{ request()->is('admin/permissions') || request()->is('admin/permissions/*') ? 'active' : '' }}">
+            <div id="userManagement" class="collapse" aria-labelledby="headingUtilities"
+                 data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    @can('permission_access')
+                        <a href="{{ route("admin.permissions.index") }}"
+                           class="collapse-item {{ request()->is('admin/permissions') ||
+                              request()->is('admin/permissions/*') ? 'active' : '' }}">
                             <i class="fa-fw fas fa-unlock-alt nav-icon">
-
                             </i>
                             {{ trans('cruds.permission.title') }}
                         </a>
-                    </li>
-                @endcan
-                @can('role_access')
-                    <li class="nav-item">
-                        <a href="{{ route("admin.roles.index") }}" class="nav-link {{ request()->is('admin/roles') || request()->is('admin/roles/*') ? 'active' : '' }}">
+                    @endcan
+                    @can('role_access')
+                        <a href="{{ route("admin.roles.index") }}" class="collapse-item
+                        {{ request()->is('admin/roles') || request()->is('admin/roles/*') ? 'active' : '' }}">
                             <i class="fa-fw fas fa-briefcase nav-icon">
-
                             </i>
                             {{ trans('cruds.role.title') }}
                         </a>
-                    </li>
-                @endcan
-                @can('user_access')
-                    <li class="nav-item">
-                        <a href="{{ route("admin.users.index") }}" class="nav-link {{ request()->is('admin/users') || request()->is('admin/users/*') ? 'active' : '' }}">
-                            <i class="fa-fw fas fa-user nav-icon">
+                    @endcan
+                        @can('user_access')
+                            <a href="{{ route("admin.users.index") }}"
+                               class="collapse-item {{ request()->is('admin/users') || request()->is('admin/users/*') ?
+                                'active' : '' }}">
+                                <i class="fa-fw fas fa-user nav-icon">
 
-                            </i>
-                            {{ trans('cruds.user.title') }}
-                        </a>
-                    </li>
-                @endcan
-            </ul>
+                                </i>
+                                {{ trans('cruds.user.title') }}
+                            </a>
+                            @endcan
+                </div>
+            </div>
         </li>
     @endcan
 

@@ -86,14 +86,19 @@ class CaseController extends Controller
     public function update(Request $request, $id)
     {
         //
-
-        if (!empty(CaseRepository::updateCase($id,$request->all()))){
-            Session::flash("status", "Successfully assigned lawyer a case");
-            return true;
+        if ($request->ajax()){
+            if (!empty(CaseRepository::updateCase($id,$request->all()))){
+                Session::flash("status", "Successfully assigned lawyer a case");
+                return true;
+            }
+            Session::flash("fail", "Failed to assign a lawyer a case");
+           return false;
         }
 
-        Session::flash("fail", "Failed to assign a lawyer a case");
-        return false;
+        if (!empty(CaseRepository::updateCase($id,$request->all()))){
+            return redirect()->back()->with("status", "Successfully updated client a case");
+        }
+        return redirect()->back()->with("fail", "Failed to update client case");
     }
 
     /**

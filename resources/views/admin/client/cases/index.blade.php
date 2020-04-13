@@ -50,14 +50,6 @@
                                 </textarea>
                             </div>
                             <div class="form-group">
-                                <div class="form-group">
-                                    <label for="DateAppeal">Date of Appeal</label>
-                                    <input type="date" class="form-control"
-                                           id="date_appeal" required name="date_appeal"
-                                           required>
-                                </div>
-                            </div>
-                            <div class="form-group">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="validatedCustomFile"
                                     name="docs[]" multiple>
@@ -201,7 +193,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="d-flex p-2 font-weight-bold" style="float: right;">
-                                        <span >Date of Court Appeal:  {{ $case->date_appeal }}</span>
+{{--                                        <span >Date of Court Appeal:  {{ $case->date_appeal }}</span>--}}
                                     </div>
                                 </div>
                             </div>

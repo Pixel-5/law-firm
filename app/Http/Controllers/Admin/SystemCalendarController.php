@@ -9,7 +9,7 @@ class SystemCalendarController extends Controller
 {
     public $sources = [
         [
-            'model'      => '\\App\\Event',
+            'model'      => '\\App\\Schedule',
             'date_field' => 'start_time',
             'end_field'  => 'end_time',
             'field'      => 'name',

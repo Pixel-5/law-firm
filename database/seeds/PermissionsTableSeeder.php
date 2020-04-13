@@ -74,23 +74,23 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => '17',
-                'title' => 'event_create',
+                'title' => 'schedule_create',
             ],
             [
                 'id'    => '18',
-                'title' => 'event_edit',
+                'title' => 'schedule_edit',
             ],
             [
                 'id'    => '19',
-                'title' => 'event_show',
+                'title' => 'schedule_show',
             ],
             [
                 'id'    => '20',
-                'title' => 'event_delete',
+                'title' => 'schedule_delete',
             ],
             [
                 'id'    => '21',
-                'title' => 'event_access',
+                'title' => 'schedule_access',
             ],
             [
                 'id'    => '22',

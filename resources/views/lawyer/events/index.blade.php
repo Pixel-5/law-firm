@@ -64,7 +64,7 @@
                                 {{ $event->end_time ?? '' }}
                             </td>
                             <td>
-                                {{ App\Event::RECURRENCE_RADIO[$event->recurrence] ?? '' }}
+                                {{ App\Schedule::RECURRENCE_RADIO[$event->recurrence] ?? '' }}
                             </td>
                             <td>
                                 {{ $event->event->name ?? '' }}

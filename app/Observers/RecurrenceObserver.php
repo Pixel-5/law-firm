@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\Event;
+use App\Schedule;
 use Carbon\Carbon;
 
 class RecurrenceObserver
@@ -10,10 +10,10 @@ class RecurrenceObserver
     /**
      * Handle the event "created" event.
      *
-     * @param  \App\Event  $event
+     * @param  \App\Schedule  $event
      * @return void
      */
-    public static function created(Event $event)
+    public static function created(Schedule $event)
     {
         if(!$event->event()->exists())
         {
@@ -53,10 +53,10 @@ class RecurrenceObserver
     /**
      * Handle the event "updated" event.
      *
-     * @param  \App\Event  $event
+     * @param  \App\Schedule  $event
      * @return void
      */
-    public function updated(Event $event)
+    public function updated(Schedule $event)
     {
         if($event->events()->exists() || $event->event)
         {
@@ -86,10 +86,10 @@ class RecurrenceObserver
     /**
      * Handle the event "deleted" event.
      *
-     * @param  \App\Event  $event
+     * @param  \App\Schedule  $event
      * @return void
      */
-    public function deleted(Event $event)
+    public function deleted(Schedule $event)
     {
         if($event->events()->exists())
             $events = $event->events()->pluck('id');
@@ -98,6 +98,6 @@ class RecurrenceObserver
         else
             $events = [];
 
-        Event::whereIn('id', $events)->delete();
+        Schedule::whereIn('id', $events)->delete();
     }
 }

@@ -6,11 +6,11 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Event extends Model
+class Schedule extends Model
 {
     use SoftDeletes;
 
-    public $table = 'events';
+    public $table = 'schedules';
 
     protected $dates = [
         'end_time',
@@ -30,7 +30,11 @@ class Event extends Model
     protected $fillable = [
         'name',
         'end_time',
-        'event_id',
+        'venue',
+        'case_id',
+        'user_id',
+        'notes',
+        'schedule_id',
         'start_time',
         'recurrence',
         'created_at',
@@ -38,9 +42,9 @@ class Event extends Model
         'deleted_at',
     ];
 
-    public function events()
+    public function schedules()
     {
-        return $this->hasMany(Event::class, 'event_id', 'id');
+        return $this->hasMany(Schedule::class, 'schedule_id', 'id');
     }
 
     public function getStartTimeAttribute($value)
@@ -63,9 +67,9 @@ class Event extends Model
         $this->attributes['end_time'] = $value ? Carbon::createFromFormat(config('panel.date_format') . ' ' . config('panel.time_format'), $value)->format('Y-m-d H:i:s') : null;
     }
 
-    public function event()
+    public function schedule()
     {
-        return $this->belongsTo(Event::class, 'event_id');
+        return $this->belongsTo(Schedule::class, 'schedule_id');
     }
 
     public function saveQuietly()

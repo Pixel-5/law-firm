@@ -13,6 +13,10 @@ class CreateUsersTable extends Migration
 
             $table->string('name');
 
+            $table->string('surname')->nullable();
+
+            $table->string('contact')->nullable();
+
             $table->string('email')->unique();
 
             $table->datetime('email_verified_at')->nullable();

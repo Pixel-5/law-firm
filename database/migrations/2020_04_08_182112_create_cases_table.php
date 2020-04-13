@@ -22,7 +22,6 @@ class CreateCasesTable extends Migration
             $table->string("plaintiff");
             $table->string("status");
             $table->longText("details");
-            $table->date("date_appeal");
             $table->string("docs")->nullable(true);
             $table->timestamps();
             $table->softDeletes();

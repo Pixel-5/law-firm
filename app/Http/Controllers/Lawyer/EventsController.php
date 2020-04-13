@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Lawyer;
 
-use App\Event;
+use App\Schedule;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyEventRequest;
 use App\Http\Requests\StoreEventRequest;
@@ -16,7 +16,7 @@ class EventsController extends Controller
     public function index()
     {
         abort_if(Gate::denies('event_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        $events = Event::withCount('events')
+        $events = Schedule::withCount('events')
             ->get();
 
         return view('lawyer.events.index', compact('events'));
@@ -31,12 +31,12 @@ class EventsController extends Controller
 
     public function store(StoreEventRequest $request)
     {
-        Event::create($request->all());
+        Schedule::create($request->all());
 
         return redirect()->route('lawyer.schedule');
     }
 
-    public function edit(Event $event)
+    public function edit(Schedule $event)
     {
         abort_if(Gate::denies('event_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
@@ -46,14 +46,14 @@ class EventsController extends Controller
         return view('lawyer.events.edit', compact('event'));
     }
 
-    public function update(UpdateEventRequest $request, Event $event)
+    public function update(UpdateEventRequest $request, Schedule $event)
     {
         $event->update($request->all());
 
         return redirect()->route('lawyer.schedule');
     }
 
-    public function show(Event $event)
+    public function show(Schedule $event)
     {
         abort_if(Gate::denies('event_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
@@ -62,7 +62,7 @@ class EventsController extends Controller
         return view('lawyer.events.show', compact('event'));
     }
 
-    public function destroy(Event $event)
+    public function destroy(Schedule $event)
     {
         abort_if(Gate::denies('event_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
@@ -73,7 +73,7 @@ class EventsController extends Controller
 
     public function massDestroy(MassDestroyEventRequest $request)
     {
-        Event::whereIn('id', request('ids'))->delete();
+        Schedule::whereIn('id', request('ids'))->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
     }

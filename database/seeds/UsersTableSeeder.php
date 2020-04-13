@@ -15,6 +15,13 @@ class UsersTableSeeder extends Seeder
                 'password'       => '$2y$10$KZ1AioruwI7TtKuMJCiu3.VyxwgnXBEFhKraK8wlkep9xqTEQeXny',
                 'remember_token' => null,
             ],
+            [
+                'id'             => 2,
+                'name'           => 'Lawyer',
+                'email'          => 'lawyer@lawyer.com',
+                'password'       => '$2y$10$KZ1AioruwI7TtKuMJCiu3.VyxwgnXBEFhKraK8wlkep9xqTEQeXny',
+                'remember_token' => null,
+            ],
         ];
 
         User::insert($users);
