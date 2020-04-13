@@ -21,6 +21,7 @@ class CaseController extends Controller
     public function index()
     {
         //
+        abort_if(Gate::denies('case_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         //return view('admin.index')
     }
 
@@ -32,6 +33,7 @@ class CaseController extends Controller
     public function create()
     {
         //
+        abort_if(Gate::denies('case_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         return null;
     }
 
@@ -60,6 +62,7 @@ class CaseController extends Controller
      */
     public function show($id)
     {
+        abort_if(Gate::denies('case_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $file =  FileRepository::findById($id);
         return view('admin.client.cases.index',compact('file'));
     }
@@ -73,6 +76,7 @@ class CaseController extends Controller
     public function edit($id)
     {
         //
+        abort_if(Gate::denies('case_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         return null;
     }
 
@@ -109,7 +113,7 @@ class CaseController extends Controller
      */
     public function destroy(int $case)
     {
-        abort_if(Gate::denies('user_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('case_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if (CaseRepository::deleteCase($case)){
             Session::flash("status", "Successfully deleted client case");

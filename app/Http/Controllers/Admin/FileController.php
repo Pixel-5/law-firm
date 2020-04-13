@@ -23,7 +23,7 @@ class FileController extends Controller
     public function index()
     {
         //
-        abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('file_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         return view("admin.client.file.index");
     }
 
@@ -34,7 +34,7 @@ class FileController extends Controller
      */
     public function create()
     {
-        abort_if(Gate::denies('user_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('file_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         return view('admin.client.file.create');
     }
 
@@ -62,7 +62,7 @@ class FileController extends Controller
      */
     public function show($id)
     {
-        abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('file_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         return view("admin.client.file.index");
     }
 
@@ -74,7 +74,7 @@ class FileController extends Controller
      */
     public function edit($id)
     {
-        abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('file_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         return  null;
     }
 
@@ -101,7 +101,7 @@ class FileController extends Controller
      */
     public function destroy(int $file)
     {
-        abort_if(Gate::denies('user_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('file_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         if (FileRepository::deleteFile($file)){
             Session::flash("status", "Successfully deleted client file");
             return true;

@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Gate;
 
 class UpdateCaseRequest extends FormRequest
 {
@@ -13,7 +15,8 @@ class UpdateCaseRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        abort_if(Gate::denies('case_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        return true;
     }
 
     /**

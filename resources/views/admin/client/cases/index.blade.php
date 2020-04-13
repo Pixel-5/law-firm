@@ -69,22 +69,6 @@
             </div>
         </div>
     </div>
-    @if(Session::has('status'))
-        <div class="alert  alert-success alert-dismissible fade show" role="alert">
-            <strong>Alert!</strong>  {{  Session::get('status') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
-    @if(Session::has('fail'))
-        <div class="alert  alert-danger alert-dismissible fade show" role="alert">
-            <strong>Alert!</strong>  {{  Session::get('fail') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
     <div class="alert alert-primary alert-dismissible fade show" role="alert">
         <input type="hidden" name="_token" value="{{ @csrf_token() }}">
         @foreach($file->cases as $case)
@@ -211,4 +195,38 @@
 <!-- /.container-fluid -->
 @section('custom-scripts')
 @include('partials.case-delete-btn')
+<script type="application/javascript">
+    $(document).ready(function() {
+        $('.dropdown-item').on('click', function(){
+
+            //Update id
+            let user_id = $(this).attr('id');
+            let case_id = '{{ $case->id }}';
+            let url = '{{ route("admin.cases.update",["case"=> ":id"]) }}';
+            let token = $('input[name="_token"]').val();
+
+            url = url.replace(':id', case_id);
+
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: {
+                    '_token' : token,
+                    _method: 'PUT',
+                    'user_id': user_id
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response){
+                    console.log("Successfully updated client case");
+                    window.location.reload();
+                },
+                error: function (response) {
+                    console.log("error "+ response.data);
+                }
+            });
+        });
+    } );
+</script>
 @endsection

@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Lawyer;
 use App\Schedule;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyEventRequest;
-use App\Http\Requests\StoreEventRequest;
-use App\Http\Requests\UpdateEventRequest;
+use App\Http\Requests\StoreScheduleRequest;
+use App\Http\Requests\UpdateScheduleRequest;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,7 +29,7 @@ class EventsController extends Controller
         return view('lawyer.events.create');
     }
 
-    public function store(StoreEventRequest $request)
+    public function store(StoreScheduleRequest $request)
     {
         Schedule::create($request->all());
 
@@ -46,7 +46,7 @@ class EventsController extends Controller
         return view('lawyer.events.edit', compact('event'));
     }
 
-    public function update(UpdateEventRequest $request, Schedule $event)
+    public function update(UpdateScheduleRequest $request, Schedule $event)
     {
         $event->update($request->all());
 

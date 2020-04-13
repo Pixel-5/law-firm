@@ -44,7 +44,6 @@ class CaseRepository extends AbstractBaseRepository implements CaseRepositoryInt
         $plaintiff          = $request->plaintiff;
         $defendant          = $request->defendant;
         $details            = $request->details;
-        $date_appeal        = $request->date_appeal;
         $file_id            = $request->file_id;
 
         if (!empty($docs)){
@@ -60,7 +59,6 @@ class CaseRepository extends AbstractBaseRepository implements CaseRepositoryInt
                     'plaintiff'   => $plaintiff,
                     'defendant'   => $defendant,
                     'details'     => $details,
-                    'date_appeal' => $date_appeal,
                     'status'      => 'pending',
                     'docs'        => is_null($docs) ? "" : implode(",",$files),
             ]);

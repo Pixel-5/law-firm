@@ -17,6 +17,8 @@ class CreateUsersTable extends Migration
 
             $table->string('contact')->nullable();
 
+            $table->boolean('active_status')->default(true);
+
             $table->string('email')->unique();
 
             $table->datetime('email_verified_at')->nullable();
