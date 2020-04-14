@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="680dd266-b94c-42b2-bf1f-4eed7f13957c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/QueryFilters/Lawyer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ScheduleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ScheduleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/ScheduleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/ScheduleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/ScheduleRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/ScheduleRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/schedule/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/schedule/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/schedule/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/schedule/create.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +50,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/app/QueryFilters/EndTime.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/QueryFilters/Lawyer.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -213,7 +227,7 @@
       <workItem from="1586790833732" duration="8120000" />
       <workItem from="1586872762929" duration="4861000" />
       <workItem from="1586878849295" duration="1256000" />
-      <workItem from="1586881843938" duration="20655000" />
+      <workItem from="1586881843938" duration="23603000" />
     </task>
     <servers />
   </component>
@@ -223,11 +237,34 @@
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State />
           </value>
         </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="1" value="TOOL_WINDOW" />
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
@@ -236,10 +273,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="427" y="128" key="#Inspections" timestamp="1586883951719">
+    <state x="427" y="128" key="#Inspections" timestamp="1586907617022">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="427" y="128" key="#Inspections/0.0.1600.900@0.0.1600.900" timestamp="1586883951719" />
+    <state x="427" y="128" key="#Inspections/0.0.1600.900@0.0.1600.900" timestamp="1586907617022" />
     <state x="394" y="109" key="#Notifications" timestamp="1586881727311">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
@@ -252,18 +289,22 @@
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="482" y="178" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1600.900@0.0.1600.900" timestamp="1586876068826" />
-    <state x="129" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1586827008301">
+    <state x="129" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1586905892956">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="129" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.900@0.0.1600.900" timestamp="1586827008301" />
+    <state x="129" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.900@0.0.1600.900" timestamp="1586905892956" />
     <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1586890902863">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.900@0.0.1600.900" timestamp="1586890902863" />
-    <state x="556" y="264" key="NewPhpClassDialog" timestamp="1586878133013">
+    <state x="581" y="205" key="FileChooserDialogImpl" timestamp="1586906086640">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="556" y="264" key="NewPhpClassDialog/0.0.1600.900@0.0.1600.900" timestamp="1586878133013" />
+    <state x="581" y="205" key="FileChooserDialogImpl/0.0.1600.900@0.0.1600.900" timestamp="1586906086640" />
+    <state x="556" y="264" key="NewPhpClassDialog" timestamp="1586906583294">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state x="556" y="264" key="NewPhpClassDialog/0.0.1600.900@0.0.1600.900" timestamp="1586906583294" />
     <state x="635" y="373" key="NewPhpFileDialog" timestamp="1586878116401">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
@@ -272,10 +313,22 @@
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="302" y="95" key="SettingsEditor/0.0.1600.900@0.0.1600.900" timestamp="1586881755514" />
+    <state x="618" y="147" key="VCS.ChangeListViewerDialog" timestamp="1586906135007">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state x="618" y="147" key="VCS.ChangeListViewerDialog/0.0.1600.900@0.0.1600.900" timestamp="1586906135007" />
     <state x="393" y="183" key="Vcs.Push.Dialog.v2" timestamp="1586883969203">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="393" y="183" key="Vcs.Push.Dialog.v2/0.0.1600.900@0.0.1600.900" timestamp="1586883969203" />
+    <state x="93" y="93" width="1413" height="713" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1586906744875">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state x="93" y="93" width="1413" height="713" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1600.900@0.0.1600.900" timestamp="1586906744875" />
+    <state x="93" y="93" width="1413" height="713" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1586906245069">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state x="93" y="93" width="1413" height="713" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1600.900@0.0.1600.900" timestamp="1586906245069" />
     <state x="496" y="274" key="com.intellij.ide.util.TipDialog" timestamp="1586872798405">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
