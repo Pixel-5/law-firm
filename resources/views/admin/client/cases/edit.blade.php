@@ -1,4 +1,4 @@
-@extends('layouts.admin-default')
+@extends('layouts.default')
 
 @section('breadcrumb')
     <div class="container-fluid">

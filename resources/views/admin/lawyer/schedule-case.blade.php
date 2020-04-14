@@ -1,4 +1,4 @@
-@extends('layouts.admin-default')
+@extends('layouts.default')
 @section('custom-links')
     <link href="{{ asset('css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/responsive.bootstrap4.min.css') }}" rel="stylesheet">
@@ -53,28 +53,27 @@
                                 <td>{{ $case->number }}</td>
                                 <td>{{ $case->user->name }}</td>
                                 <td>
-                                    Start: {{ $case->schedule->start_time }}
+                                    {{ $case->schedule != null ? ' Start: '. $case->schedule->start_time : ''}}
                                     <br/>
-                                    End: {{ $case->schedule->end_time }}
+                                     {{ $case->schedule != null ? 'End: ' . $case->schedule->end_time : ''}}
                                 </td>
-                                <td> {{ $case->schedule->venue }}</td>
+                                <td> {{ $case->schedule != null ? $case->schedule->venue : '' }}</td>
                                 <td>
-                                    <a class="btn btn-outline-secondary btn-sm  text-center
-                                        dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                       data-toggle="dropdown" aria-haspopup="true"
-                                       aria-expanded="false"><i class="fa fa-user-circle">
-                                        </i> re-schedule</a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="#">
-                                            <i class="fa fa-calendar-plus"></i> Edit schedule</a>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="fa fa-calendar-times"></i> Reset schedule</a>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="fa fa-calendar-minus"></i> Postpone schedule</a>
-                                    </div>
+                                    @if($case->schedule != null)
+                                    <a class="btn btn-outline-success btn-sm  text-center"
+                                       href="{{ route('admin.schedule.edit', $case->schedule->id) }}" role="button" aria-haspopup="true"
+                                       aria-expanded="false"><i class="fa fa-calendar-check">
+                                        </i> Re-schedule</a>
+                                        @else
+                                        <a class="btn btn-outline-info btn-sm  text-center"
+                                           href="{{ action('Admin\ScheduleController@show', $case->id) }}" role="button" aria-haspopup="true"
+                                           aria-expanded="false"><i class="fa fa-calendar-plus">
+                                            </i> Schedule case</a>
+                                        @endif
                                 </td>
                             </tr>
                                 @endforeach
+
                             </tbody>
                         </table>
                     </div>

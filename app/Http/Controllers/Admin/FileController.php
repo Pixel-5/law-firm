@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\File;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFileRequest;
 use App\Facade\FileRepository;
 use App\Http\Requests\UpdateFileRequest;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\Response;
 use Gate;
 
@@ -17,7 +19,7 @@ class FileController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Factory|View
      */
 
     public function index()
@@ -30,7 +32,7 @@ class FileController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Factory|View
      */
     public function create()
     {
@@ -42,23 +44,21 @@ class FileController extends Controller
      * Store a newly created resource in storage.
      *
      * @param StoreFileRequest $request
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
     public function store(StoreFileRequest $request)
     {
-
-        $results = FileRepository::storeFile($request);
-        if (!empty($results))
-        return redirect()->back()->with("status","Successfully added new client file");
-
-        return  redirect()->back()->with("fail","Failed to add a client file");
+        return redirect()->back()->with(
+            empty(FileRepository::storeFile($request)) ?
+                ["fail"=>"Failed to add a client file"] :
+                ["status" => "Successfully added new client file"]);
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Factory|View
      */
     public function show($id)
     {
@@ -83,14 +83,13 @@ class FileController extends Controller
      *
      * @param UpdateFileRequest $request
      * @param int $file
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
     public function update(UpdateFileRequest $request, int $file)
     {
-        if(!empty(FileRepository::updateFile($file,$request)))
-            return back()->with("status", "Successfully edited client file");
-
-        return back()->with("fail", "Failed to update client file");
+            return back()->with(empty(FileRepository::updateFile($file,$request))?
+                ["fail" => "Failed to update client file"]:
+                ["status" => "Successfully edited client file"]);
     }
 
     /**

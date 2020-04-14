@@ -2,13 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="680dd266-b94c-42b2-bf1f-4eed7f13957c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/IsAdmin.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/IsLawyer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/IsRoleUser.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/AuthGates.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/AuthGates.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Facade/CaseScheduleRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Facade/ScheduleRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CaseScheduleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ScheduleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/FileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/FileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SystemCalendarController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SystemCalendarController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/EventsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/ScheduleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreScheduleRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreScheduleRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UpdateScheduleRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UpdateScheduleRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/RepositoryServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RepositoryServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/CaseScheduleRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/ScheduleRepositoryInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/CaseRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/CaseRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/CaseScheduleRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/ScheduleRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/panel.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/panel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_03_000004_create_schedule_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_03_000004_create_schedule_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_08_182112_create_cases_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_08_182112_create_cases_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/client/cases/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/client/cases/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/client/cases/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/client/cases/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/client/file/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/client/file/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/client/re-assign-case.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/client/re-assign-case.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/lawyer/assign-case.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/lawyer/assign-case.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/lawyer/schedule-case.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/lawyer/schedule-case.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/events/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/schedule/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/events/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/schedule/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/events/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/schedule/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/events/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/schedule/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/schedule-cases.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/schedule-cases.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/side-nav-bar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/side-nav-bar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin-default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/default.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -250,14 +274,14 @@
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="482" y="178" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1600.900@0.0.1600.900" timestamp="1586609192002" />
-    <state x="129" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1586749814922">
+    <state x="129" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1586827008301">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="129" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.900@0.0.1600.900" timestamp="1586749814922" />
-    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1586817877285">
+    <state x="129" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.900@0.0.1600.900" timestamp="1586827008301" />
+    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1586835493240">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.900@0.0.1600.900" timestamp="1586817877285" />
+    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.900@0.0.1600.900" timestamp="1586835493240" />
     <state x="556" y="264" key="NewPhpClassDialog" timestamp="1586749625710">
       <screen x="0" y="0" width="1600" height="900" />
     </state>

@@ -7,8 +7,10 @@ use App\FileCase;
 use App\Repository\CaseRepositoryInterface;
 use App\Repository\Eloquent\CaseRepository;
 use App\Repository\Eloquent\FileRepository;
+use App\Repository\Eloquent\ScheduleRepository;
 use App\Repository\EloquentRepositoryInterface;
 use App\Repository\FileRepositoryInterface;
+use App\Repository\ScheduleRepositoryInterface;
 use App\Repository\UserRepositoryInterface;
 use App\Repository\Eloquent\UserRepository;
 use App\Repository\Eloquent\AbstractBaseRepository;
@@ -32,6 +34,7 @@ class RepositoryServiceProvider extends ServiceProvider implements DeferrablePro
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
         $this->app->bind(FileRepositoryInterface::class, FileRepository::class);
         $this->app->bind(CaseRepositoryInterface::class, CaseRepository::class);
+        $this->app->bind(ScheduleRepositoryInterface::class, ScheduleRepository::class);
     }
 
     /**
@@ -42,11 +45,17 @@ class RepositoryServiceProvider extends ServiceProvider implements DeferrablePro
         $this->app->singleton('FileRepository',FileRepositoryInterface::class);
         $this->app->singleton('CaseRepository',CaseRepositoryInterface::class);
         $this->app->singleton('UserRepository',UserRepositoryInterface::class);
+        $this->app->singleton('ScheduleRepository',ScheduleRepositoryInterface::class);
     }
 
     public function provides()
     {
-        return [FileRepository::class, CaseRepository::class, UserRepository::class];
+        return [
+            FileRepository::class,
+            CaseRepository::class,
+            UserRepository::class,
+            ScheduleRepository::class
+            ];
     }
 
 }

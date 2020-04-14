@@ -1,4 +1,4 @@
-@extends('layouts.admin-default')
+@extends('layouts.default')
 @section('custom-links')
     <link href="{{ asset('css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/responsive.bootstrap4.min.css') }}" rel="stylesheet">

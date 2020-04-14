@@ -19,7 +19,7 @@ class UpdateScheduleRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'       => [
+            'venue'       => [
                 'required',
             ],
             'start_time' => [

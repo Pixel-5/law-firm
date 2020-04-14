@@ -16,8 +16,8 @@ class CreateCasesTable extends Migration
         Schema::create('cases', function (Blueprint $table) {
             $table->id();
             $table->string("number")->unique();
-            $table->string("file_id");
-            $table->string('user_id')->nullable();
+            $table->foreignId("file_id");
+            $table->foreignId('user_id')->nullable();
             $table->string("defendant");
             $table->string("plaintiff");
             $table->string("status");

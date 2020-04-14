@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 @section('content')
-@can('event_create')
+@can('schedule_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route("lawyer.events.create") }}">
+            <a class="btn btn-success" href="{{ route("lawyer.schedule.create") }}">
                 {{ trans('global.schedule') }} {{ trans('global.case') }}
             </a>
         </div>
@@ -71,19 +71,19 @@
                             </td>
                             <td>
                                 @can('event_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('lawyer.events.show', $event->id) }}">
+                                    <a class="btn btn-xs btn-primary" href="{{ route('lawyer.schedule.show', $event->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
                                 @can('event_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('lawyer.events.edit', $event->id) }}">
+                                    <a class="btn btn-xs btn-info" href="{{ route('lawyer.schedule.edit', $event->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
 
                                 @can('event_delete')
-                                    <form action="{{ route('lawyer.events.destroy', $event->id) }}"
+                                    <form action="{{ route('lawyer.schedule.destroy', $event->id) }}"
                                         method="POST"
                                         onsubmit="return confirm('{{ $event->events_count || $event->event ? 'Do you want to delete future recurring events, too?' : trans('global.areYouSure') }}');" style="display: inline-block;"
                                     >

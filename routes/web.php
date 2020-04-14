@@ -1,6 +1,5 @@
 <?php
 
-use App\Facade\FileRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -45,8 +44,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('cases', 'CaseController');
 
     //Case Schedule
-    Route::resource('schedule', 'CaseScheduleController');
-
+    Route::resource('schedule', 'ScheduleController')
+        ->except(['create','destroy']);
 
 
     //default routes
@@ -65,10 +64,10 @@ Route::group(['prefix' => 'lawyer', 'as' => 'lawyer.', 'namespace' => 'Lawyer', 
     Route::get('/pending-cases', 'HomeController@pendingCases')->name('pending.cases');
 
     // Events
-    Route::delete('events/destroy', 'EventsController@massDestroy')->name('events.massDestroy');
-    Route::resource('events', 'EventsController');
+    Route::delete('schedules/destroy', 'ScheduleController@massDestroy')->name('events.massDestroy');
+    Route::resource('schedule', 'ScheduleController');
 
-    //Case
-    Route::delete('events/destroy', 'EventsController@massDestroy')->name('events.massDestroy');
-    Route::resource('events', 'EventsController');
+//    //Case
+//    Route::delete('events/destroy', 'ScheduleController@massDestroy')->name('events.massDestroy');
+//    Route::resource('cases', 'ScheduleController');
 });

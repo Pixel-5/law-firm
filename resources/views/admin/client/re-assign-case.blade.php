@@ -1,4 +1,4 @@
-@extends('layouts.admin-default')
+@extends('layouts.default')
 @section('custom-links')
     <link href="{{ asset('css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/responsive.bootstrap4.min.css') }}" rel="stylesheet">
@@ -61,10 +61,6 @@
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                         <a class="dropdown-item" href="#">
                                             <i class="fa fa-calendar-plus"></i> Edit schedule</a>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="fa fa-calendar-times"></i> Reset schedule</a>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="fa fa-calendar-minus"></i> Postpone schedule</a>
                                     </div>
                                 </td>
                             </tr>

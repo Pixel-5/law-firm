@@ -177,7 +177,7 @@
                 addEventButton: {
                     text: 'Schedule Case',
                     click: function() {
-                        window.location.href='{{ route("lawyer.events.create") }}';
+                        window.location.href='{{ route("lawyer.schedule.create") }}';
                     }
                 }
             },

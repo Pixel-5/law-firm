@@ -6,10 +6,10 @@ namespace App\Facade;
 
 use Illuminate\Support\Facades\Facade;
 
-class CaseScheduleRepository extends Facade
+class ScheduleRepository extends Facade
 {
 protected static function getFacadeAccessor()
 {
-    return 'CaseScheduleRepository';
+    return 'ScheduleRepository';
 }
 }
