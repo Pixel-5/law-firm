@@ -76,4 +76,15 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(FileCase::class);
     }
+
+    public function userSchedule()
+    {
+        return $this->hasManyThrough(
+            Schedule::class,
+            FileCase::class,
+            'user_id', // Foreign key on schedule table...
+            'case_id', // Foreign key on cases table...
+            'id', // Local key on schedule table...
+            'id');
+    }
 }

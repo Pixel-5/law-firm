@@ -44,4 +44,9 @@ class UserRepository extends AbstractBaseRepository implements UserRepositoryInt
     {
         // TODO: Implement update() method.
     }
+
+    public function userSchedule($id)
+    {
+        return $this->find($id)->load('userSchedule');
+    }
 }
