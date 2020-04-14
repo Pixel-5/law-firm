@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Facade\ScheduleRepository;
+
 class HomeController
 {
     public function index()

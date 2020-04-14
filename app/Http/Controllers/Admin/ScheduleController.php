@@ -38,8 +38,9 @@ class ScheduleController extends Controller
     {
         return redirect()->route('admin.schedule.index')
             ->with(empty(ScheduleRepository::createSchedule($request->all()))?
-                ['fail'=> 'Failed to schedule a case, Please check another available '.
-                    '\r\nDate & Time slot from '. $request->start_time . ' to ' . $request->end_time . 'is unavailable'] :
+                ['fail'=> 'Failed to update schedule'. 'Date & Time slot from '.
+                    $request->start_time . ' to ' . $request->end_time .
+                    ' is unavailable. Please check another available slot'] :
                 ['status'=> 'Successfully scheduled a case']);
     }
 
@@ -85,9 +86,9 @@ class ScheduleController extends Controller
     {
         return redirect()->route('admin.schedule.index')->with(empty(
             ScheduleRepository::updateSchedule($id,$request))?
-            ['fail'=> 'Failed to update schedule, Please check another available slot '.
-                "\r\n" .
-               'Date & Time slot from '. $request->start_time . ' to ' . $request->end_time . ' is unavailable'] :
+            ['fail'=> 'Failed to update schedule'. 'Date & Time slot from '.
+                $request->start_time . ' to ' . $request->end_time .
+                ' is unavailable. Please check another available slot'] :
             ["status" => "Successfully updated case schedule"]);
     }
 }

@@ -24,21 +24,21 @@ class ScheduleRepository extends AbstractBaseRepository implements ScheduleRepos
         parent::__construct($model);
     }
 
-    public function checkAvailableSlot($user_id, $start, $end)
-    {
-        $schedules = UserRepository::userSchedule($user_id)->userSchedule;
-        $start = Carbon::createFromFormat(
-            config('panel.date_format') . ' ' . config('panel.time_format'),
-            $start)->format('Y-m-d H:i:s') ;
-        $end =  Carbon::createFromFormat(
-            config('panel.date_format') . ' ' . config('panel.time_format'),
-            $end)->format('Y-m-d H:i:s') ;
-
-        foreach ($schedules as $schedule){
-            if ($start == $schedule->start_time && $end == $schedule->end_time)
-                return false;
-        }
-    }
+//    public function checkAvailableSlot($user_id, $start, $end)
+//    {
+//        $schedules = UserRepository::userSchedule($user_id)->userSchedule;
+//        $start = Carbon::createFromFormat(
+//            config('panel.date_format') . ' ' . config('panel.time_format'),
+//            $start)->format('Y-m-d H:i:s') ;
+//        $end =  Carbon::createFromFormat(
+//            config('panel.date_format') . ' ' . config('panel.time_format'),
+//            $end)->format('Y-m-d H:i:s') ;
+//
+//        foreach ($schedules as $schedule){
+//            if ($start == $schedule->start_time && $end == $schedule->end_time)
+//                return false;
+//        }
+//    }
 
     public function update(int $id, array $attributes): Model
     {
@@ -60,10 +60,7 @@ class ScheduleRepository extends AbstractBaseRepository implements ScheduleRepos
     }
     public function createSchedule(array $attributes)
     {
-        $case = $this->getCase($attributes->case_id);
-        if ($this->checkAvailableSlot($case->user->id,$attributes->start_time, $attributes->end_time))
-            return $this->create($attributes);
-        return null;
+        return $this->create($attributes);
     }
 
     public function deleteSchedule($id)
@@ -73,11 +70,7 @@ class ScheduleRepository extends AbstractBaseRepository implements ScheduleRepos
 
     public function updateSchedule($id, $request)
     {
-        $case = $this->getCase($id);
-        if ($this->checkAvailableSlot($case->user->id,$request->start_time, $request->end_time))
-            return $this->update($id,$request->all());
-
-        return null;
+        return $this->update($id,$request->all());
     }
 
     public function checkSchedule()
@@ -89,8 +82,7 @@ class ScheduleRepository extends AbstractBaseRepository implements ScheduleRepos
                 EndTime::class
             ))
             ->thenReturn();
-
-        dd($pipeline->get());
+        return ['status' => $pipeline->first() != null? $pipeline->first()->exists : false];
     }
 
 }

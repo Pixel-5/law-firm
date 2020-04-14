@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Lawyer;
 
+use App\Facade\ScheduleRepository;
 use App\Schedule;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyEventRequest;
@@ -83,5 +84,10 @@ class ScheduleController extends Controller
         Schedule::whereIn('id', request('ids'))->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
+    }
+
+    public function checkSchedule()
+    {
+        return ScheduleRepository::checkSchedule();
     }
 }

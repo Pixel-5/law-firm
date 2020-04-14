@@ -176,8 +176,8 @@
 });
 
     </script>
-    @yield('scripts')
     @yield("layouts.scripts")
+    @yield('scripts')
 </body>
 
 </html>

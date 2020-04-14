@@ -9,7 +9,7 @@
                 <div class="card-body">
 
                     <form action="{{  route(isset($case) ? 'admin.schedule.store': 'lawyer.schedule.store')}}"
-                          method="POST" enctype="multipart/form-data">
+                          method="POST" enctype="multipart/form-data" id="form">
                         @csrf
                         @if(isset($case))
                             <div class="form-group">
@@ -34,7 +34,6 @@
                                     <option>Case BSC-40-2</option>
                                     <option>Case DSB-54-3</option>
                                     <option>Case ASB-90-11</option>
-
                                 </select>
                             </div>
                             @endif
@@ -57,6 +56,7 @@
                                     {{ $errors->first('start_time') }}
                                 </em>
                             @endif
+                            <em class="invalid-feedback" id="start_time_errors"></em>
                             <p class="helper-block">
                                 {{ trans('cruds.event.fields.start_time_helper') }}
                             </p>
@@ -70,6 +70,7 @@
                                     {{ $errors->first('end_time') }}
                                 </em>
                             @endif
+                            <em class="invalid-feedback" id="end_time_errors"></em>
                             <p class="helper-block">
                                 {{ trans('cruds.event.fields.end_time_helper') }}
                             </p>
@@ -98,4 +99,86 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script type="application/javascript">
+
+        $(document).ready(function () {
+            let url = '{{ action('Lawyer\ScheduleController@checkSchedule') }}';
+            let case_id = '{{ isset($case)? $case->id : '' }}';
+            let token =  $('input[name="_token"]').val();
+            let start_time = $("#start_time").val();
+            let end_time = $("#end_time").val();
+
+            $("#start_time").on("dp.change", function() {
+                start_time = $(this).val();
+
+                if(new Date(start_time) > new Date(end_time)){
+                    $("#start_time_errors").text("start date time  cannot be greater than end date time");
+                    $("#start_time_errors").css({'display':'block'});
+                    $('#form').attr('onsubmit','return false;');
+                }else{
+                    $.ajax({
+                        url: url,
+                        type: 'POST',
+                        data: {
+                            '_token' : token,
+                            'case_id': case_id,
+                            'start_time': start_time
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(response){
+                            if(response.status){
+                                $("#start_time_errors").text("Schedule for this date already exists");
+                                $("#start_time_errors").css({'display':'block'});
+                                $('#form').attr('onsubmit','return false;');
+                            }else{
+                                $("#start_time_errors").text("");
+                                $("#start_time_errors").css({'display':'none'});
+                                $('#form').attr('onsubmit','return true;');
+                            }
+
+                        },
+                        error: function (response) {
+                        }
+                    })
+                }
+
+            });
+
+            $("#end_time").on("dp.change", function() {
+                end_time = $(this).val();
+
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        '_token' : token,
+                        'case_id': case_id,
+                        'end_time': end_time
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response){
+                        if(response.status){
+                            $("#end_time_errors").text("Schedule for this date already exists");
+                            $("#end_time_errors").css({'display':'block'});
+                            $('#form').attr('onsubmit','return false;');
+                        }else{
+                            $("#end_time_errors").text("");
+                            $("#end_time_errors").css({'display':'none'});
+                            $('#form').attr('onsubmit','return true;');
+                        }
+
+                    },
+                    error: function (response) {
+                    }
+                })
+            });
+
+        });
+    </script>
 @endsection
