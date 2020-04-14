@@ -3,11 +3,14 @@
 
 namespace App\Repository\Eloquent;
 
+use App\QueryFilters\EndTime;
+use App\QueryFilters\StartTime;
 use App\Repository\ScheduleRepositoryInterface;
 use App\Schedule;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use \App\Facade\UserRepository;
+use Illuminate\Pipeline\Pipeline;
 
 class ScheduleRepository extends AbstractBaseRepository implements ScheduleRepositoryInterface
 {
@@ -15,6 +18,7 @@ class ScheduleRepository extends AbstractBaseRepository implements ScheduleRepos
     /**
      * @inheritDoc
      */
+
     public function __construct(Schedule $model)
     {
         parent::__construct($model);
@@ -48,11 +52,15 @@ class ScheduleRepository extends AbstractBaseRepository implements ScheduleRepos
         return $this->find($id);
     }
 
+    private function getCase($id)
+    {
+        $case = \App\Facade\CaseRepository::showCase($id);
+        $case = $case->load('user');
+        return $case;
+    }
     public function createSchedule(array $attributes)
     {
-        $case = \App\Facade\CaseRepository::showCase($attributes->case_id);
-        $case = $case->load('user');
-
+        $case = $this->getCase($attributes->case_id);
         if ($this->checkAvailableSlot($case->user->id,$attributes->start_time, $attributes->end_time))
             return $this->create($attributes);
         return null;
@@ -65,13 +73,24 @@ class ScheduleRepository extends AbstractBaseRepository implements ScheduleRepos
 
     public function updateSchedule($id, $request)
     {
-        $case = \App\Facade\CaseRepository::showCase($id);
-        $case = $case->load('user');
-
+        $case = $this->getCase($id);
         if ($this->checkAvailableSlot($case->user->id,$request->start_time, $request->end_time))
             return $this->update($id,$request->all());
 
         return null;
+    }
+
+    public function checkSchedule()
+    {
+        $pipeline = app(Pipeline::class)
+            ->send($this->model->query())
+            ->through(array(
+                StartTime::class,
+                EndTime::class
+            ))
+            ->thenReturn();
+
+        dd($pipeline->get());
     }
 
 }

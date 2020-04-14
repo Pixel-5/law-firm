@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="680dd266-b94c-42b2-bf1f-4eed7f13957c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/QueryFilters/BaseFilter.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/QueryFilters/EndTime.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/QueryFilters/StartTime.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ScheduleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ScheduleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/CaseRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/CaseRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/ScheduleRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/ScheduleRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/UserRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/UserRepositoryInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,13 +31,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="IgnoredFileRootStore">
-    <option name="generatedRoots">
-      <set>
-        <option value="C:\Users\User\Documents\Projects\law-firm\.idea" />
-      </set>
-    </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -156,7 +147,6 @@
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -166,7 +156,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/public/js" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -215,61 +205,67 @@
       <workItem from="1586603029305" duration="25310000" />
       <workItem from="1586697079996" duration="45958000" />
       <workItem from="1586790833732" duration="8120000" />
+      <workItem from="1586872762929" duration="4861000" />
+      <workItem from="1586878849295" duration="1256000" />
+      <workItem from="1586881843938" duration="1836000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="394" y="109" key="#Notifications" timestamp="1586263659162">
+    <state x="394" y="109" key="#Notifications" timestamp="1586881727311">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="394" y="109" key="#Notifications/0.0.1600.900@0.0.1600.900" timestamp="1586263659162" />
+    <state x="394" y="109" key="#Notifications/0.0.1600.900@0.0.1600.900" timestamp="1586881727311" />
     <state x="606" y="166" key="#com.intellij.ide.util.MemberChooser" timestamp="1586668476389">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="606" y="166" key="#com.intellij.ide.util.MemberChooser/0.0.1600.900@0.0.1600.900" timestamp="1586668476389" />
-    <state x="482" y="178" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1586609192002">
+    <state x="482" y="178" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1586876068826">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="482" y="178" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1600.900@0.0.1600.900" timestamp="1586609192002" />
+    <state x="482" y="178" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1600.900@0.0.1600.900" timestamp="1586876068826" />
     <state x="129" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1586827008301">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="129" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.900@0.0.1600.900" timestamp="1586827008301" />
-    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1586844189170">
+    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1586876889850">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.900@0.0.1600.900" timestamp="1586844189170" />
-    <state x="556" y="264" key="NewPhpClassDialog" timestamp="1586749625710">
+    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.900@0.0.1600.900" timestamp="1586876889850" />
+    <state x="556" y="264" key="NewPhpClassDialog" timestamp="1586878133013">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="556" y="264" key="NewPhpClassDialog/0.0.1600.900@0.0.1600.900" timestamp="1586749625710" />
-    <state x="635" y="373" key="NewPhpFileDialog" timestamp="1586803634340">
+    <state x="556" y="264" key="NewPhpClassDialog/0.0.1600.900@0.0.1600.900" timestamp="1586878133013" />
+    <state x="635" y="373" key="NewPhpFileDialog" timestamp="1586878116401">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="635" y="373" key="NewPhpFileDialog/0.0.1600.900@0.0.1600.900" timestamp="1586803634340" />
-    <state x="496" y="274" key="com.intellij.ide.util.TipDialog" timestamp="1586790915191">
+    <state x="635" y="373" key="NewPhpFileDialog/0.0.1600.900@0.0.1600.900" timestamp="1586878116401" />
+    <state x="302" y="95" key="SettingsEditor" timestamp="1586881755514">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="496" y="274" key="com.intellij.ide.util.TipDialog/0.0.1600.900@0.0.1600.900" timestamp="1586790915191" />
+    <state x="302" y="95" key="SettingsEditor/0.0.1600.900@0.0.1600.900" timestamp="1586881755514" />
+    <state x="496" y="274" key="com.intellij.ide.util.TipDialog" timestamp="1586872798405">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state x="496" y="274" key="com.intellij.ide.util.TipDialog/0.0.1600.900@0.0.1600.900" timestamp="1586872798405" />
     <state x="459" y="207" key="run.anything.popup" timestamp="1586425480980">
       <screen x="0" y="0" width="1600" height="900" />
     </state>

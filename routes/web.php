@@ -71,3 +71,11 @@ Route::group(['prefix' => 'lawyer', 'as' => 'lawyer.', 'namespace' => 'Lawyer', 
 //    Route::delete('events/destroy', 'ScheduleController@massDestroy')->name('events.massDestroy');
 //    Route::resource('cases', 'ScheduleController');
 });
+
+Route::get('/filters', function (){
+//    Carbon::createFromFormat(
+//        $value =
+//        config('panel.date_format') . ' ' . config('panel.time_format'),
+//        $value)->format('Y-m-d H:i:s')
+    dd(\App\Facade\ScheduleRepository::checkSchedule());
+});
