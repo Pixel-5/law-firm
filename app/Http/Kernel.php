@@ -29,7 +29,6 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\AuthGates::class,
             \App\Http\Middleware\SetLocale::class,
-//            \App\Http\Middleware\IsAdmin::class,
         ],
     ];
 
@@ -43,7 +42,7 @@ class Kernel extends HttpKernel
         'bindings'         => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
         'auth.basic'       => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'admin'            => \App\Http\Middleware\IsAdmin::class,
-        'lawyer'            => \App\Http\Middleware\IsLawyer::class,
+        'admin'            => \App\Http\Middleware\Admin::class,
+        'lawyer'           => \App\Http\Middleware\Lawyer::class,
     ];
 }

@@ -2,8 +2,6 @@
 namespace App\Providers;
 
 
-use App\File;
-use App\FileCase;
 use App\Repository\CaseRepositoryInterface;
 use App\Repository\Eloquent\CaseRepository;
 use App\Repository\Eloquent\FileRepository;

@@ -4,27 +4,33 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
-class IsRoleUser
+class RoleUser
 {
     /**
      * Handle an incoming request.
      *
      * @param \Illuminate\Http\Request $request
      * @param \Closure $next
-     * @param $role
      * @return mixed
      */
-    public function handle($request, Closure $next, $role)
+    public function handle($request, Closure $next)
     {
         if (Auth::user() &&  !empty(Auth::user()->roles)) {
 
             $roles = collect(Auth::user()->roles);
-            $results = $roles->whereInStrict('title',[$role]);
+            $results = $roles->whereInStrict('title',[$this->className()]);
 
-            if (empty($results->all()))
+            if (empty($results->all())) {
                 abort(401);
+            }
         }
         return $next($request);
+    }
+
+    protected function className()
+    {
+        return class_basename($this);
     }
 }
