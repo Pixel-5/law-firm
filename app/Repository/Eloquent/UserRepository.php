@@ -4,9 +4,13 @@
 namespace App\Repository\Eloquent;
 
 
+use App\QueryFilters\EndTime;
+use App\QueryFilters\Schedule;
+use App\QueryFilters\StartTime;
 use App\Repository\UserRepositoryInterface;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pipeline\Pipeline;
 use Illuminate\Support\Collection;
 
 class UserRepository extends AbstractBaseRepository implements UserRepositoryInterface
@@ -48,5 +52,25 @@ class UserRepository extends AbstractBaseRepository implements UserRepositoryInt
     public function userSchedule($id)
     {
         return $this->find($id)->load('userSchedule');
+    }
+
+    public function checkUserSchedule()
+    {
+        $schedules = $this->userSchedule(request('user_id'))->userSchedule;
+
+        foreach ($schedules as $schedule){
+            $pipeline = app(Pipeline::class)
+                ->send($schedule->query())
+                ->through(array(
+                    StartTime::class,
+                    EndTime::class,
+                    //Schedule::class
+                ))
+                ->thenReturn();
+            if ($pipeline->first() != null)
+                dd($pipeline->first());
+                return ['status' => $pipeline->first() != null? $pipeline->first()->exists : false];
+        }
+        return ['status' => false];
     }
 }

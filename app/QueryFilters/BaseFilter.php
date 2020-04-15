@@ -20,7 +20,6 @@ abstract class BaseFilter
     public function handle($request, Closure $next)
     {
         if (!request()->has($this->filterName())){
-
             return $next($request);
         }
         $builder = $next($request);
