@@ -1,0 +1,4 @@
+
+Dphp:S121"0Add curly braces around the nested statement(s).(ŒÙíŞ
+R	php:S1854"=Remove this useless assignment to local variable '$req_time'.(ú¿é
+f	php:S1192"LDefine a constant instead of duplicating this literal "Y-m-d H:i:s" 4 times.(Ò’²Óúÿÿÿÿ

@@ -5294,20 +5294,23 @@
       <change afterPath="$PROJECT_DIR$/../landboard/tests/TestCase.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../landboard/tests/Unit/ExampleTest.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../landboard/webpack.mix.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/QueryFilters/Schedule.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/law-firm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/law-firm.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/laravel-plugin.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/reactTemplatesPlugin.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/9/19b01e2bbc8068f95f89d0f1f01b1acd17b1edf5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/d/4d326ebc70321cdf9b4580de48980179ea17aed5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/1/5158cc6821d0344345606af2834807beae093242" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/3/534cb7bfc70edeb4ad08780e072c155b11dfd5de" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/55cbd8826c2e55d5c355adbafd73d2bbfa059b67" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/b/6b9a783d9b43fee50fd28f56dbd1856d2608f305" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/a/7a1299ac860248e2c54ad5d49405c83d93ec7e64" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/7/b7584db03a96611282eb063ee3e41d9affb7cacb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/5/d5e418d1f8b942fa9b7321ecb842039d1fcaaadd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/6/e62cccdc2ec8baf9c79a86e57084571e1032efe5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/QueryFilters/BaseFilter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/QueryFilters/BaseFilter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/QueryFilters/EndTime.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/QueryFilters/EndTime.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/QueryFilters/StartTime.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/QueryFilters/StartTime.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/CaseRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/CaseRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/ScheduleRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/ScheduleRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/ScheduleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/ScheduleController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/lawyer/schedule/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/schedule/create.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -5462,8 +5465,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="add_unversioned_files" value="$PROJECT_DIR$/.env" />
+    <property name="com.github.shiraji.findpullrequest.model.FindPullRequestConfig.HOSTING" value="GitHub" />
     <property name="eu.ydp.idea.ts.spec.generator.settings.spec.template" value="import {$ClassName$} from '$TestsRelativePath$../src/$classRelativePath$/$ClassName$';&#10;&#10;describe('$ClassName$', () =&gt; {&#10;  let $ObjName$:$ClassName$;&#10;&#10;  beforeEach(() =&gt; {&#10;    $ObjName$ = new $ClassName$();&#10;  });&#10;&#10;  describe('', () =&gt; {&#10;    it('', () =&gt; {&#10;      // given&#10;&#10;      // when&#10;&#10;      // then&#10;    });&#10;  });&#10;});&#10;" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../ubcs-tender-procument" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -5520,7 +5526,11 @@
       <workItem from="1586790833732" duration="8120000" />
       <workItem from="1586872762929" duration="4861000" />
       <workItem from="1586878849295" duration="1256000" />
-      <workItem from="1586881843938" duration="53423000" />
+      <workItem from="1586881843938" duration="54073000" />
+      <workItem from="1586941140881" duration="819000" />
+      <workItem from="1586944295466" duration="1101000" />
+      <workItem from="1586964446523" duration="1819000" />
+      <workItem from="1586966691755" duration="4687000" />
     </task>
     <servers />
   </component>
@@ -5573,14 +5583,22 @@
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="937" y="261" key="#Custom_Plugin_Repositories" timestamp="1586966791862">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state x="937" y="261" key="#Custom_Plugin_Repositories/0.0.1600.900@0.0.1600.900" timestamp="1586966791862" />
     <state x="427" y="128" key="#Inspections" timestamp="1586921101730">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="427" y="128" key="#Inspections/0.0.1600.900@0.0.1600.900" timestamp="1586921101730" />
-    <state x="394" y="109" key="#Notifications" timestamp="1586881727311">
+    <state x="68" y="109" width="583" height="655" key="#Notifications" timestamp="1586965473880">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="394" y="109" key="#Notifications/0.0.1600.900@0.0.1600.900" timestamp="1586881727311" />
+    <state x="68" y="109" width="583" height="655" key="#Notifications/0.0.1600.900@0.0.1600.900" timestamp="1586965473880" />
+    <state x="257" y="70" width="1343" height="682" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586965707017">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state x="257" y="70" width="1343" height="682" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.900@0.0.1600.900" timestamp="1586965707017" />
     <state x="606" y="166" key="#com.intellij.ide.util.MemberChooser" timestamp="1586919683981">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
@@ -5609,6 +5627,22 @@
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="581" y="205" key="FileChooserDialogImpl/0.0.1600.900@0.0.1600.900" timestamp="1586916184558" />
+    <state width="1557" height="236" key="GridCell.Tab.0.bottom" timestamp="1586942227890">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state width="1557" height="236" key="GridCell.Tab.0.bottom/0.0.1600.900@0.0.1600.900" timestamp="1586942227890" />
+    <state width="1557" height="236" key="GridCell.Tab.0.center" timestamp="1586942227890">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state width="1557" height="236" key="GridCell.Tab.0.center/0.0.1600.900@0.0.1600.900" timestamp="1586942227890" />
+    <state width="1557" height="236" key="GridCell.Tab.0.left" timestamp="1586942227890">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state width="1557" height="236" key="GridCell.Tab.0.left/0.0.1600.900@0.0.1600.900" timestamp="1586942227890" />
+    <state width="1557" height="236" key="GridCell.Tab.0.right" timestamp="1586942227890">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state width="1557" height="236" key="GridCell.Tab.0.right/0.0.1600.900@0.0.1600.900" timestamp="1586942227890" />
     <state x="556" y="264" key="NewPhpClassDialog" timestamp="1586919659016">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
@@ -5617,18 +5651,22 @@
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="635" y="373" key="NewPhpFileDialog/0.0.1600.900@0.0.1600.900" timestamp="1586878116401" />
-    <state x="568" y="6" key="SettingsEditor" timestamp="1586916001479">
+    <state x="594" y="320" key="STICKY_NOTE_LIST_DIALOG" timestamp="1586967807033">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="568" y="6" key="SettingsEditor/0.0.1600.900@0.0.1600.900" timestamp="1586916001479" />
+    <state x="594" y="320" key="STICKY_NOTE_LIST_DIALOG/0.0.1600.900@0.0.1600.900" timestamp="1586967807033" />
+    <state x="568" y="6" key="SettingsEditor" timestamp="1586971704144">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state x="568" y="6" key="SettingsEditor/0.0.1600.900@0.0.1600.900" timestamp="1586971704144" />
     <state x="93" y="93" width="1413" height="713" key="ShowDiffWithBranchDialog" timestamp="1586915929141">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="93" y="93" width="1413" height="713" key="ShowDiffWithBranchDialog/0.0.1600.900@0.0.1600.900" timestamp="1586915929141" />
-    <state x="618" y="147" key="VCS.ChangeListViewerDialog" timestamp="1586939393717">
+    <state x="618" y="147" key="VCS.ChangeListViewerDialog" timestamp="1586965874480">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="618" y="147" key="VCS.ChangeListViewerDialog/0.0.1600.900@0.0.1600.900" timestamp="1586939393717" />
+    <state x="618" y="147" key="VCS.ChangeListViewerDialog/0.0.1600.900@0.0.1600.900" timestamp="1586965874480" />
     <state x="393" y="183" key="Vcs.Push.Dialog.v2" timestamp="1586883969203">
       <screen x="0" y="0" width="1600" height="900" />
     </state>

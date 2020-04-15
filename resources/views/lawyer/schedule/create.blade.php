@@ -21,7 +21,7 @@
                                        value="{{ $case->id }}">
                             </div>
                             <div class="form-group">
-                                <label for="case_number">Lawyer</label>
+                                <label for="lawyer">Lawyer</label>
                                 <input type="text" id="lawyer" class="form-control"
                                        value="{{ $case->user->name }}" readonly>
                             </div>
@@ -38,7 +38,7 @@
                             </div>
                             @endif
                         <div class="form-group {{ $errors->has('venue') ? 'has-error' : '' }}">
-                            <label for="inputState">Venue</label>
+                            <label for="venue">Venue</label>
                             <select id="venue" class="form-control venue" required name="venue">
                                 <option>Choose Location...</option>
                                 <option>Molepolole Magistrate</option>
@@ -49,7 +49,7 @@
                             </select>
                         </div>
                         <div class="form-group {{ $errors->has('notes') ? 'has-error' : '' }}">
-                            <label for="case_number">Notes</label>
+                            <label for="notes">Notes</label>
                             <textarea type="text" id="notes" name="notes" class="form-control">
 
                             </textarea>
@@ -112,90 +112,79 @@
 
         $(document).ready(function () {
             let url = '{{ action('Lawyer\ScheduleController@checkSchedule') }}';
-            let case_id = '{{ isset($case)? $case->id : '' }}';
             let token =  $('input[name="_token"]').val();
-            let start_time = $("#start_time").val();
-            let end_time = $("#end_time").val();
+            let start_time,end_time  = '';
             let venue = $( "#venue option:selected" ).text();
 
             $("select.venue").change(function(){
                 venue = $(this).children("option:selected").val();
-                console.log(venue);
+                checkSchedule(start_time, end_time, venue, url, token);
             });
 
-            console.log(venue);
-            console.log(url);
-            console.log(token);
-            console.log(start_time);
-            console.log(end_time);
+            $("#start_time").on("dp.change", function() {
+                start_time = $(this).val();
 
-            if(start_time != null && end_time != null){
-                $("#start_time").on("dp.change", function() {
-                    start_time = $(this).val();
-                    console.log(venue);
-                    $.ajax({
-                        url: url,
-                        type: 'POST',
-                        data: {
-                            '_token' : token,
-                            'case_id': case_id,
-                            'start_time': start_time
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        success: function(response){
-                            if(response.status){
-                                $("#start_time_errors").text("Schedule for this date already exists");
-                                $("#start_time_errors").css({'display':'block'});
-                                $('#form').attr('onsubmit','return false;');
-                            }else{
-                                $("#start_time_errors").text("");
-                                $("#start_time_errors").css({'display':'none'});
-                                $('#form').attr('onsubmit','return true;');
-                            }
+                if((end_time != null) && new Date(start_time) > new Date(end_time)){
+                    $("#start_time_errors").text("start date time  cannot be greater than end date time");
+                    $("#start_time_errors").css({'display':'block'});
+                    $('#form').attr('onsubmit','return false;');
 
-                        },
-                        error: function (response) {
+                }else{
+                    $("#start_time_errors").text("");
+                    $("#start_time_errors").css({'display':'none'});
+                    $('#form').attr('onsubmit','return true;');
+                }
+            });
+
+            $("#end_time").on("dp.change", function() {
+                end_time = $(this).val();
+                checkSchedule(start_time, end_time, venue, url, token);
+            });
+
+        });
+        function checkSchedule(start_time, end_time, venue, url, token) {
+            if((start_time != null) && new Date(start_time) > new Date(end_time)){
+
+                $("#start_time_errors").text("start date time  cannot be greater than end date time");
+                $("#start_time_errors").css({'display':'block'});
+                $('#form').attr('onsubmit','return false;');
+
+            }
+            else if (start_time != null){
+
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        '_token' : token,
+                        'start_time': start_time,
+                        'end_time': end_time,
+                        'venue': venue
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response){
+
+                        $("#start_time_errors").text("");
+                        $("#start_time_errors").css({'display':'none'});
+
+                        if(response.status){
+
+                            $("#end_time_errors").text("Schedule for this date already exists");
+                            $("#end_time_errors").css({'display':'block'});
+                            $('#form').attr('onsubmit','return false;');
+                        }else{
+                            $("#end_time_errors").text("");
+                            $("#end_time_errors").css({'display':'none'});
+                            $('#form').attr('onsubmit','return true;');
                         }
-                    });
-                });
-                $("#end_time").on("dp.change", function() {
-                    end_time = $(this).val();
-                    if(new Date(start_time) > new Date(end_time)){
-                        $("#start_time_errors").text("start date time  cannot be greater than end date time");
-                        $("#start_time_errors").css({'display':'block'});
-                        $('#form').attr('onsubmit','return false;');
-                    }else{
-                        $.ajax({
-                            url: url,
-                            type: 'POST',
-                            data: {
-                                '_token' : token,
-                                'case_id': case_id,
-                                'end_time': end_time
-                            },
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            success: function(response){
-                                if(response.status){
-                                    $("#end_time_errors").text("Schedule for this date already exists");
-                                    $("#end_time_errors").css({'display':'block'});
-                                    $('#form').attr('onsubmit','return false;');
-                                }else{
-                                    $("#end_time_errors").text("");
-                                    $("#end_time_errors").css({'display':'none'});
-                                    $('#form').attr('onsubmit','return true;');
-                                }
 
-                            },
-                            error: function (response) {
-                            }
-                        });
+                    },
+                    error: function (response) {
                     }
                 });
             }
-        });
+        }
     </script>
 @endsection
