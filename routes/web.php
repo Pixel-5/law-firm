@@ -24,7 +24,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     function () {
 
         // Permissions
-        Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
+        Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name(
+            'permissions.massDestroy');
         Route::resource('permissions', 'PermissionsController');
 
         // Roles
@@ -53,7 +54,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
         Route::get('/assign-cases', 'HomeController@assignCases')->name('assign.lawyer.cases');
         Route::get('/re-assign-cases', 'HomeController@reAssignCases')->name('re-assign.lawyer.cases');
-        Route::get('/view-pending-cases', 'HomeController@pendingCases')->name('view.pending-cases');
+        Route::get('/pending/cases', 'HomeController@pendingCases')->name('view.pending-cases');
 });
 
 //lawyer routes, get & post

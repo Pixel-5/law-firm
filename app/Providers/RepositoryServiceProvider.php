@@ -19,7 +19,7 @@ use Illuminate\Support\ServiceProvider;
  * Class RepositoryServiceProvider
  * @package App\Providers
  */
-class RepositoryServiceProvider extends ServiceProvider implements DeferrableProvider
+class RepositoryServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -44,16 +44,6 @@ class RepositoryServiceProvider extends ServiceProvider implements DeferrablePro
         $this->app->singleton('CaseRepository',CaseRepositoryInterface::class);
         $this->app->singleton('UserRepository',UserRepositoryInterface::class);
         $this->app->singleton('ScheduleRepository',ScheduleRepositoryInterface::class);
-    }
-
-    public function provides()
-    {
-        return [
-            FileRepository::class,
-            CaseRepository::class,
-            UserRepository::class,
-            ScheduleRepository::class
-            ];
     }
 
 }

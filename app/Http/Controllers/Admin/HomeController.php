@@ -33,6 +33,6 @@ class HomeController
 
     public function pendingCases()
     {
-        return view('admin.client.pending-cases');
+        return view('admin.client.cases.pending');
     }
 }

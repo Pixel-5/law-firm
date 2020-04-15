@@ -136,16 +136,7 @@
                             <th>Action</th>
                         </tr>
                         </thead>
-                        <tfoot>
-                        <tr>
-                            <th>#</th>
-                            <th>File No</th>
-                            <th>Client</th>
-                            <th>Email</th>
-                            <th>Contact</th>
-                            <th>Action</th>
-                        </tr>
-                        </tfoot>
+
                         <tbody>
                         @foreach($files as $file)
                         <tr>

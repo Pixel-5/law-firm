@@ -35,16 +35,7 @@
                                 <th>Action</th>
                             </tr>
                             </thead>
-                            <tfoot>
-                            <tr>
-                                <th>#</th>
-                                <th>File No</th>
-                                <th>Case No</th>
-                                <th>Client</th>
-                                <th>Lawyer Name</th>
-                                <th>Action</th>
-                            </tr>
-                            </tfoot>
+
                             <tbody>
                             @inject('cases','App\Repository\CaseRepositoryInterface')
                             @foreach($cases->allCases() as $case)
