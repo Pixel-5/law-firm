@@ -42,7 +42,9 @@ class Kernel extends HttpKernel
         'bindings'         => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
         'auth.basic'       => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'role'            => \App\Http\Middleware\Role::class,
         'admin'            => \App\Http\Middleware\Admin::class,
         'lawyer'           => \App\Http\Middleware\Lawyer::class,
+        'super'           => \App\Http\Middleware\Super::class,
     ];
 }

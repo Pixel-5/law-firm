@@ -14,7 +14,6 @@ class UsersTableSeeder extends Seeder
                 'email'          => 'admin@admin.com',
                 'password'       => '$2y$10$KZ1AioruwI7TtKuMJCiu3.VyxwgnXBEFhKraK8wlkep9xqTEQeXny',
                 'remember_token' => Str::random(10),
-                'email_verified_at' => now(),
                 'created_at'     => now()
             ],
             [
@@ -23,7 +22,14 @@ class UsersTableSeeder extends Seeder
                 'email'          => 'lawyer@lawyer.com',
                 'password'       => '$2y$10$KZ1AioruwI7TtKuMJCiu3.VyxwgnXBEFhKraK8wlkep9xqTEQeXny',
                 'remember_token' => Str::random(10),
-                'email_verified_at' => now(),
+                'created_at'     => now()
+            ],
+            [
+                'id'             => 2,
+                'name'           => 'Super',
+                'email'          => 'super@super.com',
+                'password'       => '$2y$10$KZ1AioruwI7TtKuMJCiu3.VyxwgnXBEFhKraK8wlkep9xqTEQeXny',
+                'remember_token' => Str::random(10),
                 'created_at'     => now()
             ],
         ];

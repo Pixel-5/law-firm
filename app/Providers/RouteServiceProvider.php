@@ -84,21 +84,23 @@ class RouteServiceProvider extends ServiceProvider
 
     public static function redirectPath()
     {
-        foreach (auth()->user()->roles as $role){
-            switch ($role->title){
-                case 'Admin':
-                    return route(RouteServiceProvider::ADMIN);
+        if (auth()->user()->roles->count() < 0){
 
-                case 'Lawyer':
-                    return route(RouteServiceProvider::LAWYER);
+            auth()->logout();
+            abort_if(Gate::denies('system_access'),
+                Response::HTTP_UNAUTHORIZED);
+        }
+        $role = auth()->user()->roles->first();
+        switch ($role->title){
+            case self::ADMIN or self::SUPER:
+                return route(self::ADMIN);
 
-                case 'SuperAdmin':
-                    return route(RouteServiceProvider::SUPER);
+            case self::LAWYER:
+                return route(self::LAWYER);
 
-                default:
-                    abort_if(Gate::denies('system_access'),
-                        Response::HTTP_UNAUTHORIZED);
-            }
+            default:
+                auth()->logout();
+                return self::HOME;
         }
     }
 }

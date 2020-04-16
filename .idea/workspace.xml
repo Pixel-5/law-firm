@@ -20,16 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="680dd266-b94c-42b2-bf1f-4eed7f13957c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/Super.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/client/file/edit.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/client/file/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/client/file/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/client/pending-cases.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/client/re-assign-case.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/scripts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/scripts.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Lawyer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Lawyer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/RoleUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Role.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/RoleUserTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/RoleUserTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/RolesTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/RolesTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -255,7 +256,7 @@
       <workItem from="1586966691755" duration="4687000" />
       <workItem from="1586971774915" duration="2479000" />
       <workItem from="1586974401122" duration="9984000" />
-      <workItem from="1586987928846" duration="8021000" />
+      <workItem from="1586987928846" duration="12364000" />
     </task>
     <servers />
   </component>
@@ -332,10 +333,10 @@
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="482" y="178" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1600.900@0.0.1600.900" timestamp="1586876068826" />
-    <state x="129" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1586979031401">
+    <state x="129" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1586999499798">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="129" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.900@0.0.1600.900" timestamp="1586979031401" />
+    <state x="129" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.900@0.0.1600.900" timestamp="1586999499798" />
     <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1586915303496">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
@@ -416,10 +417,10 @@
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="460" y="208" key="run.anything.popup/0.0.1600.900@0.0.1600.900" timestamp="1586900580986" />
-    <state x="463" y="109" width="672" height="676" key="search.everywhere.popup" timestamp="1586700251397">
+    <state x="463" y="109" width="672" height="676" key="search.everywhere.popup" timestamp="1586997518547">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="463" y="109" width="672" height="676" key="search.everywhere.popup/0.0.1600.900@0.0.1600.900" timestamp="1586700251397" />
+    <state x="463" y="109" width="672" height="676" key="search.everywhere.popup/0.0.1600.900@0.0.1600.900" timestamp="1586997518547" />
     <state x="523" y="362" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1586908048372">
       <screen x="0" y="0" width="1600" height="900" />
     </state>

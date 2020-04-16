@@ -6,7 +6,7 @@ use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class Admin extends RoleUser
+class Admin extends Role
 {
 
 }

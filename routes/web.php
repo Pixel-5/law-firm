@@ -20,8 +20,8 @@ Route::redirect('/', '/login');
 Auth::routes(['register' => false]);
 
 //admin routes, get and post
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth','admin']],
-    function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin',
+    'middleware' => ['auth','role:admin,super']], function () {
 
         // Permissions
         Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name(
@@ -59,7 +59,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
 //lawyer routes, get & post
 Route::group(
-    ['prefix' => 'lawyer', 'as' => 'lawyer.', 'namespace' => 'Lawyer', 'middleware' => ['auth','lawyer']],
+    ['prefix' => 'lawyer', 'as' => 'lawyer.', 'namespace' => 'Lawyer', 'middleware' => ['auth','role:lawyer,super']],
     function (){
         Route::get('/dashboard', 'HomeController@index')->name('dashboard');
         Route::get('/my-cases', 'HomeController@myCases')->name('cases');

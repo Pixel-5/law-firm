@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class Lawyer extends RoleUser
+class Lawyer extends Role
 {
 
 }
