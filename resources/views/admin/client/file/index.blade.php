@@ -13,10 +13,6 @@
         <li class="breadcrumb-item active" aria-current="page">Clients files</li>
     </ol>
 </nav>
-
-@error('email', 'name', 'contact')
-<div class="alert alert-danger">{{ $message }}</div>
-@enderror
 @endsection
 
 @section('content')

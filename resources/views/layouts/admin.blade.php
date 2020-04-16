@@ -33,7 +33,7 @@
     </header>
 
     <div class="content">
-        @include("lawyer.side-nav-bar")
+        @include("admin.side-nav-bar")
         <main class="main">
             <div id="content-wrapper" class="d-flex flex-column">
                 @include("admin.top-nav-bar")

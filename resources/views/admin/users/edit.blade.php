@@ -1,9 +1,9 @@
-@extends('layouts.admin')
+@extends('layouts.default')
 @section('content')
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.edit') }} {{ trans('cruds.user.title_singular') }}
+        {{ trans('global.edit') }} Staff
     </div>
 
     <div class="card-body">

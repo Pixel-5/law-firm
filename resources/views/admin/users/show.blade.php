@@ -1,9 +1,9 @@
-@extends('layouts.admin')
+@extends('layouts.default')
 @section('content')
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.show') }} {{ trans('cruds.user.title') }}
+        Staff Details
     </div>
 
     <div class="card-body">
@@ -20,6 +20,22 @@
                     </tr>
                     <tr>
                         <th>
+                            Surname
+                        </th>
+                        <td>
+                            {{ $user->surname }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                           Contacts
+                        </th>
+                        <td>
+                            {{ $user->contact }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.user.fields.name') }}
                         </th>
                         <td>
@@ -32,14 +48,6 @@
                         </th>
                         <td>
                             {{ $user->email }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.user.fields.email_verified_at') }}
-                        </th>
-                        <td>
-                            {{ $user->email_verified_at }}
                         </td>
                     </tr>
                     <tr>
