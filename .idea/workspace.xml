@@ -21,14 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0320a9e0-a603-4f46-b203-f3a2b803c9ae" name="Lawyer Dashboard" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/CaseRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/CaseRepositoryInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/CaseRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/CaseRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/errors/custom-error.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/errors/custom-error.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/schedule/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/schedule/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/schedule/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/schedule/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/schedule/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/schedule/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/schedule/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/schedule/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <list id="680dd266-b94c-42b2-bf1f-4eed7f13957c" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -299,7 +291,9 @@
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
       <updated>1587010062274</updated>
-      <workItem from="1587010062618" duration="6200000" />
+      <workItem from="1587010062618" duration="8338000" />
+      <workItem from="1587052286141" duration="88000" />
+      <workItem from="1587052457396" duration="876000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <option name="updateEnabled" value="false" />
@@ -368,10 +362,14 @@
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="427" y="128" key="#Inspections/0.0.1600.900@0.0.1600.900" timestamp="1586921101730" />
-    <state x="68" y="109" width="583" height="655" key="#Notifications" timestamp="1586974429447">
+    <state x="68" y="109" width="583" height="655" key="#Notifications" timestamp="1587052295727">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="68" y="109" width="583" height="655" key="#Notifications/0.0.1600.900@0.0.1600.900" timestamp="1586974429447" />
+    <state x="68" y="109" width="583" height="655" key="#Notifications/0.0.1600.900@0.0.1600.900" timestamp="1587052295727" />
+    <state x="394" y="91" key="#Plugins" timestamp="1587052534455">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state x="394" y="91" key="#Plugins/0.0.1600.900@0.0.1600.900" timestamp="1587052534455" />
     <state x="257" y="70" width="1343" height="682" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587007165503">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
