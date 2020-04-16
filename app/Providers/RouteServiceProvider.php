@@ -91,6 +91,7 @@ class RouteServiceProvider extends ServiceProvider
                 Response::HTTP_UNAUTHORIZED);
         }
         $role = auth()->user()->roles->first();
+
         switch ($role->title){
             case self::ADMIN or self::SUPER:
                 return route(self::ADMIN);
