@@ -46,7 +46,7 @@
 
     @can('event_access')
         <li class="nav-item">
-            <a href="{{ route("lawyer.events.index") }}" class="nav-link {{ request()->is('lawyer/events') || request()->is('lawyer/events/*') ? 'active' : '' }}">
+            <a href="{{ route("lawyer.schedule.index") }}" class="nav-link {{ request()->is('lawyer/schedules') || request()->is('lawyer/schedules/*') ? 'active' : '' }}">
                 <i class="fa-fw fas fa-calendar nav-icon">
 
                 </i>
