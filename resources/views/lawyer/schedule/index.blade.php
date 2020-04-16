@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.default')
 @section('content')
 @can('schedule_create')
     <div style="margin-bottom: 10px;" class="row">

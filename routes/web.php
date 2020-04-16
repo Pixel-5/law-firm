@@ -1,5 +1,6 @@
 <?php
 
+use App\Facade\CaseRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 

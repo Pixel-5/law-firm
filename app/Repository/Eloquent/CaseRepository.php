@@ -7,6 +7,7 @@ use App\FileCase;
 use App\Repository\CaseRepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 /**
@@ -110,5 +111,16 @@ class CaseRepository extends AbstractBaseRepository implements CaseRepositoryInt
     {
        // return $this->model->whereHas('schedule')->with(['file','user'])->get();
         return $this->model->with(['file','user','schedule'])->cursor();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function myCases()
+    {
+        $lawyer = Auth::user();
+        $myCases = $this->model->where('user_id',$lawyer->id)->get();
+        $myCases = $myCases->load('file');
+        return $myCases;
     }
 }

@@ -21,11 +21,14 @@
   <component name="ChangeListManager">
     <list default="true" id="0320a9e0-a603-4f46-b203-f3a2b803c9ae" name="Lawyer Dashboard" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Role.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Role.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/CaseRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/CaseRepositoryInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/CaseRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/CaseRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/errors/custom-error.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/errors/custom-error.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/schedule/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/schedule/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/schedule/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/schedule/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/schedule/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/schedule/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/schedule/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/schedule/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <list id="680dd266-b94c-42b2-bf1f-4eed7f13957c" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -296,7 +299,7 @@
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
       <updated>1587010062274</updated>
-      <workItem from="1587010062618" duration="2607000" />
+      <workItem from="1587010062618" duration="6200000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <option name="updateEnabled" value="false" />
@@ -373,10 +376,10 @@
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="257" y="70" width="1343" height="682" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.900@0.0.1600.900" timestamp="1587007165503" />
-    <state x="606" y="166" key="#com.intellij.ide.util.MemberChooser" timestamp="1586919683981">
+    <state x="606" y="166" key="#com.intellij.ide.util.MemberChooser" timestamp="1587014610462">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="606" y="166" key="#com.intellij.ide.util.MemberChooser/0.0.1600.900@0.0.1600.900" timestamp="1586919683981" />
+    <state x="606" y="166" key="#com.intellij.ide.util.MemberChooser/0.0.1600.900@0.0.1600.900" timestamp="1587014610462" />
     <state x="482" y="178" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1586876068826">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
