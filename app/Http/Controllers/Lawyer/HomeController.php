@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Lawyer;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App\Schedule;
 
 class HomeController extends Controller
 {
     //
     public $sources = [
         [
-            'model'      => '\\App\\Schedule',
+            'model'      => Schedule::class,
             'date_field' => 'start_time',
             'end_field'  => 'end_time',
             'field'      => 'name',

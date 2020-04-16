@@ -59,7 +59,7 @@
                                     </a>
                                     @include('partials.dropdown-lawyers')
                                     <a class="btn btn-warning btn-sm  text-center text-white"
-                                       href="{{ route('admin.cases.show', $case->id ) }}">
+                                       href="{{ route('cases.show', $case->id ) }}">
                                         <i class="fa fa-pencil-alt"></i> Edit</a>
                                     <a class="delete btn btn-danger btn-sm text-center text-white"
                                     id="{{ $case->id }}"><i class="fa
@@ -121,7 +121,7 @@
             $('.dropdown-item').on('click',function () {
 
                 let lawyer_id = $(this).attr('id');
-                let url = '{{ route("admin.cases.update",["case"=> ":id"]) }}';
+                let url = '{{ route("cases.update",["case"=> ":id"]) }}';
                 let token = $('input[name="_token"]').val();
 
                 let case_id = $(this).closest('tr').find('td:nth-child(1)').text();

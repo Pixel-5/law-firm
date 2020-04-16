@@ -234,16 +234,22 @@
                             <td>{{ $file->email }}</td>
                             <td>+267{{ $file->contact }}</td>
                             <td>
+                                @can('case_access')
                                 <a class="btn btn-info btn-sm  text-center text-white"
                                    href="{{ route('admin.open.client.cases', $file->id) }}">
                                     <i class="fa fa-file-contract"></i> Open</a>
+                                @endcan
+                                @can('file_access')
                                 <a class="btn btn-warning btn-sm  text-center text-white"
                                    data-toggle="modal" data-target="#editClientFileModal"><i class="fa
                                 fa-pencil-alt"></i> Edit</a>
+                                    @endcan
+                                    @can('file_delete')
                                 <button class="delete btn btn-danger btn-sm text-center text-white"
                                    id="{{ $file->id }}"
                                         data-id='{{ $file->id }}'>
                                     <i class="fa fa-trash"></i>Delete</button>
+                                    @endcan
                             </td>
 
                         </tr>

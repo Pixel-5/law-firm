@@ -109,8 +109,8 @@ class CaseRepository extends AbstractBaseRepository implements CaseRepositoryInt
 
     public function scheduledCases()
     {
-       // return $this->model->whereHas('schedule')->with(['file','user'])->get();
-        return $this->model->with(['file','user','schedule'])->cursor();
+        return $this->model->whereHas('user')->with(['file','user'])->cursor();
+        //return $this->model->with(['file','user','schedule'])->cursor();
     }
 
     /**
@@ -120,7 +120,7 @@ class CaseRepository extends AbstractBaseRepository implements CaseRepositoryInt
     {
         $lawyer = Auth::user();
         $myCases = $this->model->where('user_id',$lawyer->id)->get();
-        $myCases = $myCases->load('file');
+        $myCases = $myCases->load(['file','schedule']);
         return $myCases;
     }
 }

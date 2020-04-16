@@ -4,6 +4,7 @@
 <div class="container-fluid">
     <div class="alert alert-info fade show" role="alert">
         <strong>Client has {{ $file->cases->count() }} cases recorded!</strong> Click the button to register a new case.
+        @can('case_create')
         <a href="#" class="btn btn-md btn-outline-primary shadow-sm" data-toggle="modal" data-target="#openClientCaseModal">
             <i class="fa fa-file-contract fa-sm text-dark-100"></i> open a new case</a>
         <!-- Modal -->
@@ -21,7 +22,7 @@
                         <div class="alert alert-primary" role="alert">
                             In the High Court of the Republic of Botswana
                         </div>
-                        <form method="POST" action="{{ route('admin.cases.store') }}"
+                        <form method="POST" action="{{ route('cases.store') }}"
                               enctype="multipart/form-data">
                             @csrf
                             <div class="form-group ">
@@ -68,6 +69,7 @@
                 </div>
             </div>
         </div>
+        @endcan
     </div>
     <div class="alert alert-primary alert-dismissible fade show" role="alert">
         <input type="hidden" name="_token" value="{{ @csrf_token() }}">
@@ -139,7 +141,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <a class="btn btn-info btn-sm  text-center text-white"
-                                    href="{{ route('admin.cases.show', $case->id) }}">
+                                    href="{{ route('cases.show', $case->id) }}">
                                 <i class="fa fa-file-contract"></i> Edit Case
                             </a>
                             <button class="delete btn btn-danger btn-sm  text-center text-white"
@@ -202,7 +204,7 @@
             //Update id
             let user_id = $(this).attr('id');
             let case_id = '{{ $case->id ?? null }}';
-            let url = '{{ route("admin.cases.update",["case"=> ":id"]) }}';
+            let url = '{{ route("cases.update",["case"=> ":id"]) }}';
             let token = $('input[name="_token"]').val();
 
             if(case_id != null)

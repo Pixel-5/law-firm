@@ -33,8 +33,8 @@
                                 <thead>
                                 <tr>
                                     <th>Case No</th>
-                                    <th>Client Name</th>
-                                    <th>Assigned Lawyer</th>
+                                    <th>Client</th>
+                                    <th>Lawyer</th>
                                     <th>Status</th>
                                 </tr>
                                 </thead>
@@ -44,9 +44,9 @@
                                     <tr>
                                         <td>{{ $case->number }}</td>
                                         <td>{{ $case->name }}</td>
-                                        <td>{{ $case->user->name }}</td>
+                                        <td>{{ $case->user !== null ? $case->user->name : '' }}</td>
                                         <td>
-                                            <span class="badge badge-warning">Pending</span>
+                                            <span class="badge badge-warning">{{ $case->status }}</span>
                                         </td>
                                     </tr>
                                 @endforeach

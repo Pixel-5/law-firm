@@ -69,52 +69,36 @@
                                         <thead>
                                         <tr>
                                             <th>Case No</th>
-                                            <th>Client Name</th>
+                                            <th>Client</th>
                                             <th>Schedule</th>
                                             <th>Status</th>
+                                            <th>Action</th>
                                         </tr>
                                         </thead>
-                                        <tfoot>
-                                        <tr>
-                                            <th>Case No</th>
-                                            <th>Client Name</th>
-                                            <th>Schedule</th>
-                                            <th>Status</th>
-                                        </tr>
-                                        </tfoot>
+
                                         <tbody>
-                                        <tr>
-                                            <td>CS-ABS 01</td>
-                                            <td>Sean Leu</td>
-                                            <td>02-10-20 10:00AM</td>
-                                            <td>
-                                                <span class="badge badge-info">In progress</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td> CS-ABS 02</td>
-                                            <td> Sam Bien</td>
-                                            <td>13-10-20 08:00AM</td>
-                                            <td>
-                                                <span class="badge badge-info">In progress</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>CS-ABS 10</td>
-                                            <td>Keleb Vince</td>
-                                            <td>Not Scheduled</td>
-                                            <td>
-                                                <span class="badge badge-warning">Pending</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>CS-ABS 12</td>
-                                            <td>Benny Dis</td>
-                                            <td>Not Scheduled</td>
-                                            <td>
-                                                <span class="badge badge-warning">Pending</span>
-                                            </td>
-                                        </tr>
+                                        @inject('cases','App\Repository\CaseRepositoryInterface')
+                                        @foreach ($cases->myCases() as $case)
+                                            <tr>
+                                                <td>{{ $case->number }}</td>
+                                                <td>{{ $case->file->name }} {{ $case->file->surname }}</td>
+                                                <td>
+                                                    @if ($case->schedule !== null)
+                                                        Start: {{ $case->schedule->start_time }}<br>
+                                                        End: {{ $case->schedule->end_time }}<br>
+                                                        Venue: {{ $case->schedule->venue }}
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <span class="badge badge-info">{{ $case->status }}</span>
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-warning btn-sm  text-center text-white"
+                                                       href="{{ route('cases.show', $case->id ) }}">
+                                                        <i class="fa fa-eye"></i> view case</a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>

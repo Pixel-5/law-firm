@@ -39,7 +39,7 @@
                 <h6 class="collapse-header">Select File:</h6>
                 @inject('files', 'App\Repository\FileRepositoryInterface')
                 @foreach($files->allFiles() as $file)
-                    <a class="collapse-item" href="{{ route('admin.cases.show', $file->id) }}">{{ $file->number }}</a>
+                    <a class="collapse-item" href="{{ route('cases.show', $file->id) }}">{{ $file->number }}</a>
                 @endforeach
             </div>
         </div>

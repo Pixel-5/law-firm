@@ -25,7 +25,7 @@
                         <div class="alert alert-primary" role="alert">
                             In the High Court of the Republic of Botswana
                         </div>
-                        <form method="POST" action="{{ route('admin.cases.update', ['case' => $case->id]) }}"
+                        <form method="POST" action="{{ route('cases.update', ['case' => $case->id]) }}"
                               enctype="multipart/form-data">
                             @csrf
                             @method('PUT')

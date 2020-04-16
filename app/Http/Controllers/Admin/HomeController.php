@@ -18,7 +18,7 @@ class HomeController
 
     public function openCases()
     {
-        return view('admin.client.cases');
+        return view('client.cases');
     }
 
     public function assignCases()
@@ -33,6 +33,6 @@ class HomeController
 
     public function pendingCases()
     {
-        return view('admin.client.cases.pending');
+        return view('client.cases.pending');
     }
 }
