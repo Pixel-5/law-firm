@@ -109,9 +109,9 @@
 @parent
 <script>
     $(function () {
-  let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
+  let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons);
 @can('event_delete')
-  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
+  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
   let deleteButton = {
     text: deleteButtonTrans,
     url: "{{ route('lawyer.events.massDestroy') }}",
@@ -122,7 +122,7 @@
       });
 
       if (ids.length === 0) {
-        alert('{{ trans('global.datatables.zero_selected') }}')
+        alert('{{ trans('global.datatables.zero_selected') }}');
 
         return
       }
@@ -136,15 +136,15 @@
           .done(function () { location.reload() })
       }
     }
-  }
-  dtButtons.push(deleteButton)
+  };
+  dtButtons.push(deleteButton);
 @endcan
 
   $.extend(true, $.fn.dataTable.defaults, {
     order: [[ 1, 'asc' ]],
     pageLength: 100,
   });
-  $('.datatable-Event:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  $('.datatable-Event:not(.ajaxTable)').DataTable({ buttons: dtButtons });
     $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
         $($.fn.dataTable.tables(true)).DataTable()
             .columns.adjust();

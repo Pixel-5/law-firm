@@ -2,8 +2,8 @@
 
 return [
     'userManagement' => [
-        'title'          => 'User management',
-        'title_singular' => 'User management',
+        'title'          => 'Staff management',
+        'title_singular' => 'Staff management',
     ],
     'permission'     => [
         'title'          => 'Permissions',
@@ -40,8 +40,8 @@ return [
         ],
     ],
     'user'           => [
-        'title'          => 'Users',
-        'title_singular' => 'User',
+        'title'          => 'Staff',
+        'title_singular' => 'Staff',
         'fields'         => [
             'id'                       => 'ID',
             'id_helper'                => '',

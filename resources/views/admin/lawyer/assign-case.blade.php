@@ -124,7 +124,7 @@
                 let url = '{{ route("admin.cases.update",["case"=> ":id"]) }}';
                 let token = $('input[name="_token"]').val();
 
-                let case_id = $(this).closest('tr').find('td:nth-child(1)').text()
+                let case_id = $(this).closest('tr').find('td:nth-child(1)').text();
                 url = url.replace(':id', case_id);
                 console.log('url = '+url);
                 console.log('token = '+token);

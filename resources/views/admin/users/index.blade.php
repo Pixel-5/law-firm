@@ -126,9 +126,9 @@
     </script>
 <script>
     $(function () {
-  let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
+  let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons);
 @can('user_delete')
-  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
+  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
   let deleteButton = {
     text: deleteButtonTrans,
     url: "{{ route('admin.users.massDestroy') }}",
@@ -139,7 +139,7 @@
       });
 
       if (ids.length === 0) {
-        alert('{{ trans('global.datatables.zero_selected') }}')
+        alert('{{ trans('global.datatables.zero_selected') }}');
 
         return
       }
@@ -153,8 +153,8 @@
           .done(function () { location.reload() })
       }
     }
-  }
-  dtButtons.push(deleteButton)
+  };
+  dtButtons.push(deleteButton);
 @endcan
 
 

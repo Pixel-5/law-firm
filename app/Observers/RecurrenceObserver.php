@@ -10,7 +10,7 @@ class RecurrenceObserver
     /**
      * Handle the event "created" event.
      *
-     * @param  \App\Schedule  $event
+     * @param Schedule $event
      * @return void
      */
     public static function created(Schedule $event)
@@ -53,7 +53,7 @@ class RecurrenceObserver
     /**
      * Handle the event "updated" event.
      *
-     * @param  \App\Schedule  $event
+     * @param Schedule $event
      * @return void
      */
     public function updated(Schedule $event)
@@ -86,7 +86,7 @@ class RecurrenceObserver
     /**
      * Handle the event "deleted" event.
      *
-     * @param  \App\Schedule  $event
+     * @param Schedule $event
      * @return void
      */
     public function deleted(Schedule $event)
