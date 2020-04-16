@@ -37,10 +37,10 @@ class LoginController extends Controller
     /**
      * Where to redirect users after login.
      *
-     * @return RedirectResponse
+     * @return string
      */
 
-    public function redirectPath()
+    public function redirectPath(): string
     {
         return RouteServiceProvider::redirectPath();
     }
