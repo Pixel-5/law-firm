@@ -36,8 +36,7 @@ class ScheduleController extends Controller
     public function store(StoreScheduleRequest $request)
     {
         Schedule::create($request->all());
-
-        return redirect()->route('lawyer.schedule');
+        return redirect()->route('lawyer.schedule')->with('status', 'Successfully scheduled a case');
     }
 
     public function edit(Schedule $schedule)
@@ -51,9 +50,9 @@ class ScheduleController extends Controller
         return view('lawyer.schedule.edit', compact('schedule'));
     }
 
-    public function update(UpdateScheduleRequest $request, Schedule $event)
+    public function update(UpdateScheduleRequest $request, Schedule $schedule)
     {
-        $event->update($request->all());
+        $schedule->update($request->all());
 
         if (Auth::user()->roles)
         return redirect()->route('lawyer.schedule');

@@ -1,4 +1,7 @@
 @extends('layouts.default')
+@section('custom-links')
+
+@endsection
 @section('content')
     <div class="row">
         <div class="col col-md-10  col-lg-10 col-sm-6 offset-0 ml-5">
@@ -25,18 +28,24 @@
                                 <input type="text" id="lawyer" class="form-control"
                                        value="{{ $case->user->name }}" readonly>
                             </div>
-                            @else
+                        @else
                             <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                                <label for="inputState">Case</label>
-                                <select id="inputState" class="form-control">
-                                    <option selected>Choose case...</option>
-                                    <option>Case ASB-39-1</option>
-                                    <option>Case BSC-40-2</option>
-                                    <option>Case DSB-54-3</option>
-                                    <option>Case ASB-90-11</option>
+                                <label for="case_id">Case No</label>
+                                <select id="case_id" class="form-control" name="case_id">
+                                    <option disabled>Choose case...</option>
+                                    @foreach ($cases as $case)
+                                        <option value="{{ $case->id }}" class="collapse-item">
+                                            {{ $case->number }}
+                                        </option>
+                                    @endforeach
                                 </select>
+                                @if($errors->has('case_id'))
+                                    <em class="invalid-feedback" >
+                                        {{ $errors->first('case_id') }}
+                                    </em>
+                                @endif
                             </div>
-                            @endif
+                        @endif
                         <div class="form-group {{ $errors->has('venue') ? 'has-error' : '' }}">
                             <label for="venue">Venue</label>
                             <select id="venue" class="form-control venue" required name="venue">
@@ -47,6 +56,11 @@
                                 <option>High Court</option>
                                 <option>Lobatse Magistrate</option>
                             </select>
+                            @if($errors->has('venue'))
+                                <em class="invalid-feedback" >
+                                    {{ $errors->first('venue') }}
+                                </em>
+                            @endif
                         </div>
                         <div class="form-group {{ $errors->has('notes') ? 'has-error' : '' }}">
                             <label for="notes">Notes</label>
@@ -107,41 +121,96 @@
         </div>
     </div>
 @endsection
-@section('scripts')
-    <script src="{{ asset('js/checkSchedule.js') }}"></script>
+@section('custom-scripts')
     <script type="application/javascript">
 
         $(document).ready(function () {
             let url = '{{ action('Lawyer\ScheduleController@checkSchedule') }}';
-            let token =  $('input[name="_token"]').val();
-            let start_time,end_time  = '';
-            let venue = $( "#venue option:selected" ).text();
+            let token = $('input[name="_token"]').val();
+            let start_time = $('#start_time').val();
+            let end_time = $('#end_time').val();
+            let venue = $("#venue option:selected").text();
+            let case_id = '{{ isset($case)? $case->id : $schedule->case->id }}';
 
-            $("select.venue").change(function(){
+
+            $("select.venue").change(function () {
                 venue = $(this).children("option:selected").val();
-                checkSchedule(start_time, end_time, venue, url, token);
+
+                checkSchedule(start_time, end_time, venue, url, token,case_id);
             });
 
-            $("#start_time").on("dp.change", function() {
+            $("#start_time").on("dp.change", function () {
                 start_time = $(this).val();
 
-                if((end_time != null) && new Date(start_time) > new Date(end_time)){
+                if ((end_time != null) && new Date(start_time) > new Date(end_time)) {
                     $("#start_time_errors").text("start date time  cannot be greater than end date time");
-                    $("#start_time_errors").css({'display':'block'});
-                    $('#form').attr('onsubmit','return false;');
+                    $("#start_time_errors").css({'display': 'block'});
+                    $('#form').attr('onsubmit', 'return false;');
 
-                }else{
+                } else {
                     $("#start_time_errors").text("");
-                    $("#start_time_errors").css({'display':'none'});
-                    $('#form').attr('onsubmit','return true;');
+                    $("#start_time_errors").css({'display': 'none'});
+                    checkSchedule(start_time, end_time, venue, url, token,case_id);
                 }
             });
 
-            $("#end_time").on("dp.change", function() {
+            $("#end_time").on("dp.change", function () {
                 end_time = $(this).val();
-                checkSchedule(start_time, end_time, venue, url, token);
+                checkSchedule(start_time, end_time, venue, url, token,case_id);
             });
 
         });
+        function checkSchedule(start_time, end_time, venue, url, token,case_id) {
+            console.log(venue);
+            console.log(case_id);
+            console.log(start_time);
+            console.log(end_time);
+
+            if((start_time !== null) && new Date(start_time) > new Date(end_time)){
+
+                $("#start_time_errors").text("start date time  cannot be greater than end date time");
+                $("#start_time_errors").css({'display':'block'});
+                $('#form').attr('onsubmit','return false;');
+
+            }
+            else if (start_time != null){
+
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        '_token' : token,
+                        'start_time': start_time,
+                        'end_time': end_time,
+                        'venue': venue,
+                        'case': case_id
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response){
+
+                        $("#start_time_errors").text("");
+                        $("#start_time_errors").css({'display':'none'});
+                        console.log(response.status);
+                        if(response.status){
+
+                            $("#end_time_errors").text("Schedule for this date already exists");
+                            $("#end_time_errors").css({'display':'block'});
+                            $('#form').attr('onsubmit','return false;');
+
+                        }else{
+                            $("#end_time_errors").text("");
+                            $("#end_time_errors").css({'display':'none'});
+                            $('#form').attr('onsubmit','return true;');
+                        }
+
+                    },
+                    error: function (response) {
+                        console.log(response);
+                    }
+                });
+            }
+        }
     </script>
 @endsection

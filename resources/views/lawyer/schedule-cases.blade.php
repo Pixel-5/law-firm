@@ -154,7 +154,7 @@
         var calendar = new FullCalendar.Calendar(calendarEl, {
             plugins: [ 'dayGrid', 'timeGrid', 'list', 'bootstrap' ],
             timeZone: 'UTC',
-            defaultView: 'dayGridMonth',
+            defaultView: 'list',
             themeSystem: 'bootstrap',
             header: {
                 left: 'prevYear,prev,next,nextYear today, addEventButton',

@@ -36,8 +36,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">List of Cases:</h6>
-                @inject('cases','App\Repository\CaseRepositoryInterface')
-                @foreach ($cases->myCases() as $case)
+                @foreach ($cases as $case)
                     <a class="collapse-item" href="#">{{ $case->number }} </a>
                 @endforeach
             </div>
@@ -60,8 +59,7 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">List of Clients:</h6>
-                @inject('cases','App\Repository\CaseRepositoryInterface')
-                @foreach ($cases->myCases() as $case)
+                @foreach ($cases as $case)
                     <a class="collapse-item" href="#">{{ $case->file->name }} {{ $case->file->surname }}</a>
                 @endforeach
             </div>

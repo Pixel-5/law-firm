@@ -2,8 +2,10 @@
 
 namespace App\Repository\Eloquent;
 
+use App\QueryFilters\CaseId;
 use App\QueryFilters\EndTime;
 use App\QueryFilters\StartTime;
+use App\QueryFilters\Venue;
 use App\Repository\ScheduleRepositoryInterface;
 use App\Schedule;
 use Illuminate\Database\Eloquent\Model;
@@ -58,16 +60,20 @@ class ScheduleRepository extends AbstractBaseRepository implements ScheduleRepos
 
     public function checkSchedule()
     {
+
         $pipeline = app(Pipeline::class)
             ->send($this->model->query())
-            ->through(array(
+            ->through([
                 StartTime::class,
                 EndTime::class
-            ))
+            ])
             ->thenReturn();
 
-        if ($pipeline->first() != null)
-            return ['status' => $pipeline->first() != null? $pipeline->first()->exists : false];
+
+        if ($pipeline && $pipeline->first() !== null) {
+
+            return ['status' => $pipeline->first()->exists];
+        }
 
         return ['status' => false];
     }

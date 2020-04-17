@@ -1,6 +1,5 @@
 <?php
 
-use App\Facade\CaseRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -14,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/schedule', function (){
+    return \App\Facade\ScheduleRepository::checkSchedule();
+});
 
 Route::redirect('/', '/login');
 

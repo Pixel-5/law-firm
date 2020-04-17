@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Facade\UserRepository;
+use App\Http\View\Composers\CaseComposer;
 use App\Http\View\Composers\FileComposer;
 use App\Mixins\StrMixins;
 use Illuminate\Support\Facades\Schema;
@@ -44,6 +45,8 @@ class AppServiceProvider extends ServiceProvider
 
         //custom view composers
         View::composer('client.*', FileComposer::class);
+        View::composer('lawyer.*', CaseComposer::class);
+
         View::composer('partials.lawyers',function ($view){
             return $view->with('lawyers',UserRepository::getLawyersOnly());
         });
