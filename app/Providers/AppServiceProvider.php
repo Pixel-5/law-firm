@@ -39,10 +39,8 @@ class AppServiceProvider extends ServiceProvider
     {
         //custom string mixins
         Str::mixin(new StrMixins());
-
         Schema::defaultStringLength(191);
-
-
+        
         //custom view composers
         View::composer('client.*', FileComposer::class);
         View::composer('lawyer.*', CaseComposer::class);

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Providers;
 
 
@@ -40,10 +41,9 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app->singleton('FileRepository',FileRepositoryInterface::class);
-        $this->app->singleton('CaseRepository',CaseRepositoryInterface::class);
-        $this->app->singleton('UserRepository',UserRepositoryInterface::class);
-        $this->app->singleton('ScheduleRepository',ScheduleRepositoryInterface::class);
+        $this->app->singleton('FileRepository', FileRepositoryInterface::class);
+        $this->app->singleton('CaseRepository', CaseRepositoryInterface::class);
+        $this->app->singleton('UserRepository', UserRepositoryInterface::class);
+        $this->app->singleton('ScheduleRepository', ScheduleRepositoryInterface::class);
     }
-
 }

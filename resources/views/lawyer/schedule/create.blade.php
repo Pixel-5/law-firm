@@ -141,6 +141,7 @@
 
             $("#start_time").on("dp.change", function () {
                 start_time = $(this).val();
+                $("#end_time").val(start_time);
 
                 if ((end_time != null) && new Date(start_time) > new Date(end_time)) {
                     $("#start_time_errors").text("start date time  cannot be greater than end date time");
