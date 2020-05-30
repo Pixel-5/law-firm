@@ -79,8 +79,10 @@
                                     <a href="{{ route('lawyer.pending.cases') }}">Pending request</a>
                                 </div>
                                 <div class="row no-gutters align-items-center">
-                                    <div class="col-auto"><div class="h5 mb-0 mr-3 font-weight-bold
-                                            text-gray-800">18</div></div>
+                                    <div class="col-auto">
+                                        <div class="h5 mb-0 mr-3 font-weight-bold
+                                            text-gray-800">{{ count($myUnScheduledCases) }}</div>
+                                    </div>
                                     <div class="col">
                                         <div class="progress progress-sm mr-2">
                                             <div class="progress-bar bg-info" role="progressbar" style="width: 50%"
@@ -112,36 +114,6 @@
                         Bar chart showing my monthly cases through out the year
                     </div>
                 </div>
-            </div>
-            {{--                    <div class="col-xl-5 col-lg-5">--}}
-            {{--                        <div class="card shadow mb-4">--}}
-            {{--                            <div class="card-header py-3">--}}
-            {{--                                <h6 class="m-0 font-weight-bold text-primary">My Case Schedule</h6>--}}
-            {{--                            </div>--}}
-            {{--                            <div class="card-body">--}}
-            {{--                                <div class="card">--}}
-            {{--                                    <div class="card-body px-0">--}}
-            {{--                                        <h4 class="card-title px-4 mb-3">Todo</h4>--}}
-            {{--                                        <div class="todo-list">--}}
-            {{--                                            <div class="tdl-holder">--}}
-            {{--                                                <div class="tdl-content">--}}
-            {{--                                                    <ul id="todo_list">--}}
-            {{--                                                        <li><label><input type="checkbox"><i></i><span>Get up</span><a href='#' class="ti-trash"></a></label></li>--}}
-            {{--                                                        <li><label><input type="checkbox" checked><i></i><span>Stand up</span><a href='#' class="ti-trash"></a></label></li>--}}
-            {{--                                                        <li><label><input type="checkbox"><i></i><span>Don't give up the fight.</span><a href='#' class="ti-trash"></a></label></li>--}}
-            {{--                                                        <li><label><input type="checkbox" checked><i></i><span>Do something else</span><a href='#' class="ti-trash"></a></label></li>--}}
-            {{--                                                    </ul>--}}
-            {{--                                                </div>--}}
-            {{--                                                <div class="px-4">--}}
-            {{--                                                    <input type="text" class="tdl-new form-control" placeholder="Write new item and hit 'Enter'...">--}}
-            {{--                                                </div>--}}
-            {{--                                            </div>--}}
-            {{--                                        </div>--}}
-            {{--                                    </div>--}}
-            {{--                                </div>--}}
-            {{--                            </div>--}}
-            {{--                        </div>--}}
-            {{--                    </div>--}}
         </div>
     </div>
     <!-- /.container-fluid -->
