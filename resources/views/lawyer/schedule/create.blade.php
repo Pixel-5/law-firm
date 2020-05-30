@@ -1,7 +1,4 @@
 @extends('layouts.default')
-@section('custom-links')
-
-@endsection
 @section('content')
     <div class="container-fluid">
         <nav aria-label="breadcrumb">
@@ -9,6 +6,11 @@
                 <li class="breadcrumb-item"><a href="{{ route('lawyer.dashboard') }}">Home</a></li>
                 <li class="breadcrumb-item"><a href="{{ route('lawyer.schedule') }}">My Schedule</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Create Schedule</li>
+                <li class="offset-11 d-sm-block" style="height: 10px;margin-top: -30px;">
+                    <a href="{{ url()->previous() }}" title="Back">
+                        <i class="fa fa-2x fa-chevron-circle-left"></i>
+                    </a>
+                </li>
             </ol>
         </nav>
     </div>

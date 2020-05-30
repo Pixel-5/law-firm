@@ -15,6 +15,11 @@
                         Assigned cases
                     </a></li>
                 <li class="breadcrumb-item active" aria-current="page">Edit</li>
+                <li class="offset-11 d-sm-block" style="height: 10px;margin-top: -30px;">
+                    <a href="{{ url()->previous() }}" title="Back">
+                        <i class="fa fa-2x fa-chevron-circle-left"></i>
+                    </a>
+                </li>
             </ol>
         </nav>
     </div>
@@ -26,7 +31,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="openClientCaseModalLabel"><b>Court Case Information</b></h5>
-                        <a href="{{ route('admin.open.client.cases', $case->file->id) }}"
+                        <a href="{{ route('admin.open.client.cases', $case->file->id) }}" title="Open file"
                            class="btn btn-outline-primary align-items-end"><i class="fa fa-folder-open"></i>
                             {{ $case->file->number }}
                         </a>

@@ -3,7 +3,7 @@
 @can('schedule_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route("schedule.create") }}">
+            <a class="btn btn-success" href="{{ route("lawyer.schedule.create") }}">
                 {{ trans('global.schedule') }} {{ trans('global.case') }}
             </a>
         </div>
@@ -38,15 +38,12 @@
                             {{ trans('cruds.event.fields.recurrence') }}
                         </th>
                         <th>
-                            {{ trans('cruds.event.fields.event') }}
-                        </th>
-                        <th>
                             &nbsp;
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($events as $key => $event)
+                    @foreach($schedules as $key => $event)
                         <tr data-entry-id="{{ $event->id }}">
                             <td>
 
@@ -55,7 +52,7 @@
                                 {{ $event->id ?? '' }}
                             </td>
                             <td>
-                                {{ $event->name ?? '' }}
+                                {{ $event->venue ?? '' }}
                             </td>
                             <td>
                                 {{ $event->start_time ?? '' }}
@@ -66,24 +63,22 @@
                             <td>
                                 {{ App\Schedule::RECURRENCE_RADIO[$event->recurrence] ?? '' }}
                             </td>
+
                             <td>
-                                {{ $event->event->name ?? '' }}
-                            </td>
-                            <td>
-                                @can('event_show')
+                                @can('schedule_show')
                                     <a class="btn btn-xs btn-primary" href="{{ route('lawyer.schedule.show', $event->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
-                                @can('event_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('schedule.edit', $event->id) }}">
+                                @can('schedule_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('lawyer.schedule.edit', $event->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
 
-                                @can('event_delete')
-                                    <form action="{{ route('schedule.destroy', $event->id) }}"
+                                @can('schedule_delete')
+                                    <form action="{{ route('lawyer.schedule.destroy', $event->id) }}"
                                         method="POST"
                                         onsubmit="return confirm('{{ $event->events_count || $event->event ? 'Do you want to delete future recurring events, too?' : trans('global.areYouSure') }}');" style="display: inline-block;"
                                     >

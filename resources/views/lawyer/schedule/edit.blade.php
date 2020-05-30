@@ -13,11 +13,17 @@
                    Schedule
                 </a></li>
             <li class="breadcrumb-item active" aria-current="page">Edit</li>
+            <li class="offset-11 d-sm-block" style="height: 10px;margin-top: -30px;">
+                <a href="{{ url()->previous() }}" title="Back">
+                    <i class="fa fa-2x fa-chevron-circle-left"></i>
+                </a>
+            </li>
         </ol>
     </nav>
 <div class="card">
     <div class="card-header">
         {{ trans('global.update') }} {{ trans('global.case') }} {{ trans('global.schedule') }}
+
     </div>
 
     <div class="card-body">
@@ -29,6 +35,12 @@
                 <label for="case_id">Case No</label>
                 <input type="text" id="case_id" class="form-control"
                        value="{{ isset($schedule) ? $schedule->case->number : '' }}" readonly>
+            </div>
+            <div class="form-group ">
+                <label for="case_id">Client</label>
+                <input type="text" id="case_id" class="form-control"
+                       value="{{ isset($schedule) ? $schedule->case->file->name . ' '.
+                                $schedule->case->file->surname : '' }}" readonly>
             </div>
             <div class="form-group {{ $errors->has('venue') ? 'has-error' : '' }}">
                 <label for="venue">Venue <span style="color: red;">*</span></label>
@@ -107,7 +119,7 @@
                 <input type="hidden" name="recurrence" value="{{ $schedule->recurrence }}">
             @endif
             <div>
-                <input class="btn btn-danger" type="submit" value="{{ trans('global.save') }}">
+                <input class="btn btn-primary" type="submit" value="{{ trans('global.save') }}">
             </div>
         </form>
 

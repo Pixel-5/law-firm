@@ -31,14 +31,13 @@ class HomeController extends Controller
             if ($case->schedule && $case->schedule->count() > 0){
                 $schedule = $case->schedule;
                 $events[] = [
-                    'title'   => $schedule->notes . "\r\n"
-                        .'Case No: '. $case->number,
+                    'title'   => 'Case No: '. $case->number,
                     'start'   => $schedule->getOriginal('start_time'),
                     'end'     => $schedule->end_time,
                     'venue'   => $schedule->venue,
                     'case'    => $case->number,
                     'client'  => $case->file->name . ' ' . $case->file->surname,
-                    'url'   => route('lawyer.schedule.edit', $schedule->id),
+                    'url'   => route('lawyer.schedule.show', $schedule->id),
                 ];
             }
         }

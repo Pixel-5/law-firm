@@ -11,7 +11,10 @@ class CaseComposer
 {
     public function compose(View $view)
     {
-        return $view->with( ['cases'=> CaseRepository::myCases(), 'myUnScheduledCases'=>$this->myUnScheduledCases()]);
+        return $view->with( [
+            'cases'=> CaseRepository::myCases(),
+            'myUnScheduledCases'=>$this->myUnScheduledCases(),
+        ]);
     }
 
     public function myUnScheduledCases(){

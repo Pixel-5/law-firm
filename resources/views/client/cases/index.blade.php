@@ -4,9 +4,19 @@
 <div class="container-fluid">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
+            <li class="breadcrumb-item">
+                <a @php
+                       $isLawyer =  auth()->user()->roles->first()->title === 'Lawyer'
+                   @endphp
+                   href="{{  route($isLawyer? 'lawyer.dashboard': 'admin.dashboard') }}">Home
+                </a></li>
             <li class="breadcrumb-item"><a href="{{ route('files.index') }}">Files</a></li>
             <li class="breadcrumb-item"><a>{{ $file->number }}</a></li>
+            <li class="offset-11 d-sm-block" style="height: 10px;margin-top: -30px;">
+                <a href="{{ url()->previous() }}" title="Back">
+                    <i class="fa fa-2x fa-chevron-circle-left"></i>
+                </a>
+            </li>
         </ol>
     </nav>
     <div class="alert alert-info fade show" role="alert">

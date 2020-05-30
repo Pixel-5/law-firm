@@ -15,6 +15,11 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">Assigned cases</li>
+                <li class="offset-11 d-sm-block" style="height: 10px;margin-top: -30px;">
+                    <a href="{{ url()->previous() }}" title="Back">
+                        <i class="fa fa-2x fa-chevron-circle-left"></i>
+                    </a>
+                </li>
             </ol>
         </nav>
     </div>
@@ -54,7 +59,7 @@
                                         <span class="badge badge-info">{{ $case->status }}</span>
                                     </td>
                                     <td>
-                                        <a class="btn btn-warning btn-sm  text-center text-white"
+                                        <a class="btn btn-outline-info btn-sm  text-center"
                                            href="{{ route('cases.show', $case->id ) }}">
                                             <i class="fa fa-eye"></i> view case</a>
                                     </td>

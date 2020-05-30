@@ -54,7 +54,7 @@ class UserRepository extends AbstractBaseRepository implements UserRepositoryInt
         return $this->find($id)->load('userSchedule');
     }
 
-    public function checkUserSchedule()
+    public function checkUserSchedule(): array
     {
         $schedules = $this->userSchedule(request('user_id'))->userSchedule;
 
@@ -67,9 +67,10 @@ class UserRepository extends AbstractBaseRepository implements UserRepositoryInt
                     //Schedule::class
                 ))
                 ->thenReturn();
-            if ($pipeline->first() != null)
-                dd($pipeline->first());
-                return ['status' => $pipeline->first() != null? $pipeline->first()->exists : false];
+            if ($pipeline->first() !== null){
+                return ['status' => $pipeline->first() !== null? $pipeline->first()->exists : false];
+            }
+
         }
         return ['status' => false];
     }
