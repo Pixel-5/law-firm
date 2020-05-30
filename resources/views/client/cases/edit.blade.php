@@ -4,9 +4,15 @@
     <div class="container-fluid">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.open.client.cases', $case->file->id) }}">
-                        {{ $case->file->number }}
+                <li class="breadcrumb-item">
+                    <a @php
+                           $isLawyer =  auth()->user()->roles->first()->title === 'Lawyer'
+                       @endphp
+                       href="{{  route($isLawyer? 'lawyer.dashboard': 'admin.dashboard') }}">Home
+                    </a>
+                </li>
+                <li class="breadcrumb-item"><a href="{{ route('lawyer.cases') }}">
+                        Assigned cases
                     </a></li>
                 <li class="breadcrumb-item active" aria-current="page">Edit</li>
             </ol>
@@ -19,7 +25,11 @@
             <div class="container-fluid">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="openClientCaseModalLabel">Court Case Information</h5>
+                        <h5 class="modal-title" id="openClientCaseModalLabel"><b>Court Case Information</b></h5>
+                        <a href="{{ route('admin.open.client.cases', $case->file->id) }}"
+                           class="btn btn-outline-primary align-items-end"><i class="fa fa-folder-open"></i>
+                            {{ $case->file->number }}
+                        </a>
                     </div>
                     <div class="modal-body">
                         <div class="alert alert-primary" role="alert">
@@ -52,7 +62,7 @@
                                 </textarea>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+{{--                                <a href="" class="btn btn-secondary">Close</a>--}}
                                 <button type="submit" class="btn btn-primary">Save case</button>
                             </div>
                         </form>

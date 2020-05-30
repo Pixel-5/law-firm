@@ -1,6 +1,20 @@
 @extends('layouts.default')
 @section('content')
-
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a @php
+                       $isLawyer =  auth()->user()->roles->first()->title === 'Lawyer'
+                   @endphp
+                   href="{{  route($isLawyer? 'lawyer.dashboard': 'admin.dashboard') }}">Home
+                </a>
+            </li>
+            <li class="breadcrumb-item"><a href="{{ route('lawyer.schedule') }}">
+                   Schedule
+                </a></li>
+            <li class="breadcrumb-item active" aria-current="page">Edit</li>
+        </ol>
+    </nav>
 <div class="card">
     <div class="card-header">
         {{ trans('global.update') }} {{ trans('global.case') }} {{ trans('global.schedule') }}
