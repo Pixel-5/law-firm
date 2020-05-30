@@ -2,6 +2,13 @@
 <!--  Content -->
 @section('content')
 <div class="container-fluid">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('files.index') }}">Files</a></li>
+            <li class="breadcrumb-item"><a>{{ $file->number }}</a></li>
+        </ol>
+    </nav>
     <div class="alert alert-info fade show" role="alert">
         <strong>Client has {{ $file->cases->count() }} cases recorded!</strong> Click the button to register a new case.
         @can('case_create')
@@ -140,14 +147,19 @@
 
                     <div class="row">
                         <div class="col-md-6">
+                                @can('case_edit')
                             <a class="btn btn-info btn-sm  text-center text-white"
                                     href="{{ route('cases.show', $case->id) }}">
                                 <i class="fa fa-file-contract"></i> Edit Case
                             </a>
+                                @endcan
+                                @can('case_delete')
                             <button class="delete btn btn-danger btn-sm  text-center text-white"
                                     data-toggle="modal" data-target="#" id="{{ $case->id }}">
                                 <i class="fa fa-trash"></i> Delete Case
                             </button>
+                                @endcan
+                                @can('case_assign')
                             <a class="btn {{ $case->user == null ? 'btn-outline-info': 'btn-outline-success'}}
                                 btn-sm  text-center
                                 dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
@@ -159,6 +171,7 @@
                                 @else Assign
                                 @endif
                             </a>
+                                @endcan
                             @include('partials.dropdown-lawyers')
                             <button class="attach btn btn-secondary btn-sm text-center text-white"
                                     id="{{ $case->id }}"

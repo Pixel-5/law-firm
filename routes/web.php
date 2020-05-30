@@ -74,10 +74,12 @@ Route::group(
 
 //Case & Case Schedule
 Route::group(['middleware' => ['auth', 'role:lawyer,super,admin']], function (){
-
     Route::resource('cases', 'CaseController')->names([
         'destroy' => 'admin.cases.destroy',
         'create' => 'admin.cases.create',
+    ]);
+    Route::resource('files', 'Admin\FileController')->names([
+        'index' =>'files.index'
     ]);
     Route::delete('cases/destroy', 'CaseController@massDestroy')->name('admin.cases.massDestroy');
     Route::get('file/{file:slug}/cases', 'CaseController@index')->name('admin.open.client.cases');

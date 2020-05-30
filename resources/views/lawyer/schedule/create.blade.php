@@ -3,6 +3,15 @@
 
 @endsection
 @section('content')
+    <div class="container-fluid">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('lawyer.dashboard') }}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('lawyer.schedule') }}">My Schedule</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Create Schedule</li>
+            </ol>
+        </nav>
+    </div>
     <div class="row">
         <div class="col col-md-10  col-lg-10 col-sm-6 offset-0 ml-5">
             <div class="card">

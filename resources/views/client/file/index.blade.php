@@ -9,7 +9,13 @@
 @section('breadcrumb')
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
+        <li class="breadcrumb-item">
+            <a @php
+                  $isLawyer =  auth()->user()->roles->first()->title === 'Lawyer'
+            @endphp
+                    href="{{  route($isLawyer? 'lawyer.dashboard': 'admin.dashboard') }}">Home
+            </a>
+        </li>
         <li class="breadcrumb-item active" aria-current="page">Clients files</li>
     </ol>
 </nav>
@@ -23,9 +29,13 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
+                @can('file_create')
                 <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                    data-toggle="modal" data-target="#addClientFileModal">
-                    <i class="fas fa-file-archive fa-sm text-white-50"></i> New Client File</a>
+                    <i class="fas fa-file-archive fa-sm text-white-50"></i>
+                    New Client File
+                </a>
+                @endcan
 
                 <!-- Modal -->
                 <div class="modal fade" id="addClientFileModal" tabindex="-1" role="dialog"
@@ -239,7 +249,7 @@
                                    href="{{ route('admin.open.client.cases', $file->id) }}">
                                     <i class="fa fa-file-contract"></i> Open</a>
                                 @endcan
-                                @can('file_access')
+                                @can('file_edit')
                                 <a class="btn btn-warning btn-sm  text-center text-white"
                                    data-toggle="modal" data-target="#editClientFileModal"><i class="fa
                                 fa-pencil-alt"></i> Edit</a>
