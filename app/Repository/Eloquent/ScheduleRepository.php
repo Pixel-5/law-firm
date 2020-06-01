@@ -58,6 +58,7 @@ class ScheduleRepository extends AbstractBaseRepository implements ScheduleRepos
         return $this->update($id,$request->all());
     }
 
+    //check given lawyer schedule if exists
     public function checkSchedule()
     {
 
