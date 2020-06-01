@@ -7,6 +7,7 @@ use App\FileCase;
 use App\Repository\CaseRepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 /**
@@ -46,23 +47,22 @@ class CaseRepository extends AbstractBaseRepository implements CaseRepositoryInt
         $details            = $request->details;
         $file_id            = $request->file_id;
 
-        if (!empty($docs)){
-            foreach ($docs as $doc){
+        if (!empty($docs)) {
+            foreach ($docs as $doc) {
                 $file_name = $doc->getClientOriginalName();
-                Storage::putFile('client/cases/'.$case_no, $doc);
+                Storage::putFile('client/cases/' . $case_no, $doc);
                 $files[] = $file_name;
             }
         }
         return $this->create([
-                    'file_id'     => $file_id,
-                    'number'      => $case_no,
-                    'plaintiff'   => $plaintiff,
-                    'defendant'   => $defendant,
-                    'details'     => $details,
-                    'status'      => 'pending',
-                    'docs'        => is_null($docs) ? "" : implode(",",$files),
-            ]);
-
+            'file_id'     => $file_id,
+            'number'      => $case_no,
+            'plaintiff'   => $plaintiff,
+            'defendant'   => $defendant,
+            'details'     => $details,
+            'status'      => 'pending',
+            'docs'        => is_null($docs) ? "" : implode(",", $files),
+        ]);
     }
 
     /**
@@ -91,7 +91,7 @@ class CaseRepository extends AbstractBaseRepository implements CaseRepositoryInt
      */
     public function updateCase($id, $request)
     {
-        return $this->update($id,$request);
+        return $this->update($id, $request);
     }
 
     public function pendingCases()
@@ -103,12 +103,35 @@ class CaseRepository extends AbstractBaseRepository implements CaseRepositoryInt
 
     public function allCases()
     {
-        return $this->model->with(['file','user'])->cursor();
+        return $this->model->with(['file', 'user',])->cursor();
     }
 
     public function scheduledCases()
     {
-       // return $this->model->whereHas('schedule')->with(['file','user'])->get();
-        return $this->model->with(['file','user','schedule'])->cursor();
+        return $this->model->whereHas('user')->with(['file', 'user'])->cursor();
+    }
+    public function myUnScheduledCases(): array
+    {
+        $myUnscheduledCases = array();
+        $lawyer = Auth::user();
+        $myCases = $this->model->where('user_id', $lawyer->id)->get();
+        $myCases = $myCases->load(['file', 'schedule']);
+        foreach ($myCases as $myCase) {
+            if($myCase->schedule === null){
+                $myUnscheduledCases[] = $myCase;
+            }
+        }
+        return $myUnscheduledCases;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function myCases()
+    {
+        $lawyer = Auth::user();
+        $myCases = $this->model->where('user_id', $lawyer->id)->get();
+        $myCases = $myCases->load(['file', 'schedule']);
+        return $myCases;
     }
 }

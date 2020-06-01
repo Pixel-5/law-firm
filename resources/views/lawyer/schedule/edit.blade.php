@@ -1,9 +1,29 @@
-@extends('layouts.admin')
+@extends('layouts.default')
 @section('content')
-
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a @php
+                       $isLawyer =  auth()->user()->roles->first()->title === 'Lawyer'
+                   @endphp
+                   href="{{  route($isLawyer? 'lawyer.dashboard': 'admin.dashboard') }}">Home
+                </a>
+            </li>
+            <li class="breadcrumb-item"><a href="{{ route('lawyer.schedule') }}">
+                   Schedule
+                </a></li>
+            <li class="breadcrumb-item active" aria-current="page">Edit</li>
+            <li class="offset-11 d-sm-block" style="height: 10px;margin-top: -30px;">
+                <a href="{{ url()->previous() }}" title="Back">
+                    <i class="fa fa-2x fa-chevron-circle-left"></i>
+                </a>
+            </li>
+        </ol>
+    </nav>
 <div class="card">
     <div class="card-header">
         {{ trans('global.update') }} {{ trans('global.case') }} {{ trans('global.schedule') }}
+
     </div>
 
     <div class="card-body">
@@ -11,10 +31,27 @@
             [$schedule->id]) }}" method="POST" enctype="multipart/form-data" id="form">
             @csrf
             @method('PUT')
+            <div class="form-group ">
+                <label for="case_id">Case No</label>
+                <input type="text" id="case_id" class="form-control"
+                       value="{{ isset($schedule) ? $schedule->case->number : '' }}" readonly>
+            </div>
+            <div class="form-group ">
+                <label for="case_id">Client</label>
+                <input type="text" id="case_id" class="form-control"
+                       value="{{ isset($schedule) ? $schedule->case->file->name . ' '.
+                                $schedule->case->file->surname : '' }}" readonly>
+            </div>
             <div class="form-group {{ $errors->has('venue') ? 'has-error' : '' }}">
                 <label for="venue">Venue <span style="color: red;">*</span></label>
-                <input type="text" id="venue" name="venue" class="form-control"
-                       value="{{ old('name', isset($schedule) ? $schedule->venue : '') }}" required>
+                <select id="venue" class="form-control venue" name="venue">
+                    <option>{{ old('name', isset($schedule) ? $schedule->venue : '') }}</option>
+                    <option>Molepolole Magistrate</option>
+                    <option>Broadhurst Magistrate</option>
+                    <option>Ext 10 Magistrate</option>
+                    <option>High Court</option>
+                    <option>Lobatse Magistrate</option>
+                </select>
                 @if($errors->has('venue'))
                     <em class="invalid-feedback">
                         {{ $errors->first('venue') }}
@@ -82,7 +119,7 @@
                 <input type="hidden" name="recurrence" value="{{ $schedule->recurrence }}">
             @endif
             <div>
-                <input class="btn btn-danger" type="submit" value="{{ trans('global.save') }}">
+                <input class="btn btn-primary" type="submit" value="{{ trans('global.save') }}">
             </div>
         </form>
 
@@ -90,41 +127,96 @@
     </div>
 </div>
 @endsection
-@section('scripts')
-    <script src="{{ asset('js/checkSchedule.js') }}"></script>
+@section('custom-scripts')
     <script type="application/javascript">
 
         $(document).ready(function () {
             let url = '{{ action('Lawyer\ScheduleController@checkSchedule') }}';
-            let token =  $('input[name="_token"]').val();
-            let start_time,end_time  = '';
-            let venue = $( "#venue option:selected" ).text();
+            let token = $('input[name="_token"]').val();
+            let start_time = $('#start_time').val();
+            let end_time = $('#end_time').val();
+            let venue = $("#venue option:selected").text();
+            let case_id = '{{ isset($case)? $case->id : $schedule->case->id }}';
 
-            $("select.venue").change(function(){
+
+            $("select.venue").change(function () {
                 venue = $(this).children("option:selected").val();
-                checkSchedule(start_time, end_time, venue, url, token);
+
+                checkSchedule(start_time, end_time, venue, url, token,case_id);
             });
 
-            $("#start_time").on("dp.change", function() {
+            $("#start_time").on("dp.change", function () {
                 start_time = $(this).val();
 
-                if((end_time != null) && new Date(start_time) > new Date(end_time)){
+                if ((end_time != null) && new Date(start_time) > new Date(end_time)) {
                     $("#start_time_errors").text("start date time  cannot be greater than end date time");
-                    $("#start_time_errors").css({'display':'block'});
-                    $('#form').attr('onsubmit','return false;');
+                    $("#start_time_errors").css({'display': 'block'});
+                    $('#form').attr('onsubmit', 'return false;');
 
-                }else{
+                } else {
                     $("#start_time_errors").text("");
-                    $("#start_time_errors").css({'display':'none'});
-                    $('#form').attr('onsubmit','return true;');
+                    $("#start_time_errors").css({'display': 'none'});
+                    checkSchedule(start_time, end_time, venue, url, token,case_id);
                 }
             });
 
-            $("#end_time").on("dp.change", function() {
+            $("#end_time").on("dp.change", function () {
                 end_time = $(this).val();
-                checkSchedule(start_time, end_time, venue, url, token);
+                checkSchedule(start_time, end_time, venue, url, token,case_id);
             });
 
         });
+        function checkSchedule(start_time, end_time, venue, url, token,case_id) {
+            console.log(venue);
+            console.log(case_id);
+            console.log(start_time);
+            console.log(end_time);
+
+            if((start_time !== null) && new Date(start_time) > new Date(end_time)){
+
+                $("#start_time_errors").text("start date time  cannot be greater than end date time");
+                $("#start_time_errors").css({'display':'block'});
+                $('#form').attr('onsubmit','return false;');
+
+            }
+            else if (start_time != null){
+
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        '_token' : token,
+                        'start_time': start_time,
+                        'end_time': end_time,
+                        'venue': venue,
+                        'case': case_id
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response){
+
+                        $("#start_time_errors").text("");
+                        $("#start_time_errors").css({'display':'none'});
+                        console.log(response.status);
+                        if(response.status){
+
+                            $("#end_time_errors").text("Schedule for this date already exists");
+                            $("#end_time_errors").css({'display':'block'});
+                            $('#form').attr('onsubmit','return false;');
+
+                        }else{
+                            $("#end_time_errors").text("");
+                            $("#end_time_errors").css({'display':'none'});
+                            $('#form').attr('onsubmit','return true;');
+                        }
+
+                    },
+                    error: function (response) {
+                        console.log(response);
+                    }
+                });
+            }
+        }
     </script>
-    @endsection
+@endsection

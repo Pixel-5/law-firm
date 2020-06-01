@@ -9,8 +9,19 @@
 @section('breadcrumb')
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
+        <li class="breadcrumb-item">
+            <a @php
+                  $isLawyer =  auth()->user()->roles->first()->title === 'Lawyer'
+            @endphp
+                    href="{{  route($isLawyer? 'lawyer.dashboard': 'admin.dashboard') }}">Home
+            </a>
+        </li>
         <li class="breadcrumb-item active" aria-current="page">Clients files</li>
+        <li class="offset-11 d-sm-block" style="height: 10px;margin-top: -30px;">
+            <a href="{{ url()->previous() }}" title="Back">
+                <i class="fa fa-2x fa-chevron-circle-left"></i>
+            </a>
+        </li>
     </ol>
 </nav>
 @endsection
@@ -23,9 +34,13 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
+                @can('file_create')
                 <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                    data-toggle="modal" data-target="#addClientFileModal">
-                    <i class="fas fa-file-archive fa-sm text-white-50"></i> New Client File</a>
+                    <i class="fas fa-file-archive fa-sm text-white-50"></i>
+                    New Client File
+                </a>
+                @endcan
 
                 <!-- Modal -->
                 <div class="modal fade" id="addClientFileModal" tabindex="-1" role="dialog"
@@ -234,16 +249,22 @@
                             <td>{{ $file->email }}</td>
                             <td>+267{{ $file->contact }}</td>
                             <td>
+                                @can('case_access')
                                 <a class="btn btn-info btn-sm  text-center text-white"
                                    href="{{ route('admin.open.client.cases', $file->id) }}">
                                     <i class="fa fa-file-contract"></i> Open</a>
+                                @endcan
+                                @can('file_edit')
                                 <a class="btn btn-warning btn-sm  text-center text-white"
                                    data-toggle="modal" data-target="#editClientFileModal"><i class="fa
                                 fa-pencil-alt"></i> Edit</a>
+                                    @endcan
+                                    @can('file_delete')
                                 <button class="delete btn btn-danger btn-sm text-center text-white"
                                    id="{{ $file->id }}"
                                         data-id='{{ $file->id }}'>
                                     <i class="fa fa-trash"></i>Delete</button>
+                                    @endcan
                             </td>
 
                         </tr>

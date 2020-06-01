@@ -2,24 +2,11 @@
 
 namespace App\Http\Controllers\Lawyer;
 
+use App\Facade\CaseRepository;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Carbon\Carbon;
 
 class HomeController extends Controller
 {
-    //
-    public $sources = [
-        [
-            'model'      => '\\App\\Schedule',
-            'date_field' => 'start_time',
-            'end_field'  => 'end_time',
-            'field'      => 'name',
-            'prefix'     => '',
-            'suffix'     => '',
-            'route'      => 'lawyer.schedule.edit',
-        ],
-    ];
 
     public function index()
     {
@@ -39,23 +26,23 @@ class HomeController extends Controller
     public function mySchedule()
     {
         $events = [];
-        foreach ($this->sources as $source) {
-            foreach ($source['model']::all() as $model) {
-                $crudFieldValue = $model->getOriginal($source['date_field']);
-
-                if (!$crudFieldValue) {
-                    continue;
-                }
-
+        $myCases = CaseRepository::myCases();
+        foreach ($myCases as $case) {
+            if ($case->schedule && $case->schedule->count() > 0){
+                $schedule = $case->schedule;
                 $events[] = [
-                    'title' => trim($source['prefix'] . " " . $model->{$source['field']}
-                        . " " . $source['suffix']),
-                    'start' => $crudFieldValue,
-                    'end'   => $model->{$source['end_field']},
-                    'url'   => route($source['route'], $model->id),
+                    'title'   => 'Case No: '. $case->number,
+                    'start'   => $schedule->getOriginal('start_time'),
+                    'end'     => $schedule->end_time,
+                    'venue'   => $schedule->venue,
+                    'case'    => $case->number,
+                    'client'  => $case->file->name . ' ' . $case->file->surname,
+                    'url'   => route('lawyer.schedule.show', $schedule->id),
                 ];
             }
         }
+
+//        dd($events);
         return view('lawyer.schedule-cases',compact('events'));
     }
 }

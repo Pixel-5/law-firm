@@ -35,21 +35,18 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">List of Lawyers:</h6>
-                <a class="collapse-item" href="#">Lawyer 1</a>
-                <a class="collapse-item" href="#">Lawyer 2</a>
-                <a class="collapse-item" href="#">Lawyer 3</a>
-                <a class="collapse-item" href=#">Lawyer 4</a>
+                <h6 class="collapse-header">List of Cases:</h6>
+                @foreach ($cases as $case)
+                    <a class="collapse-item" href="#">{{ $case->number }} </a>
+                @endforeach
             </div>
         </div>
     </li>
 
     @can('event_access')
         <li class="nav-item">
-            <a href="{{ route("lawyer.events.index") }}" class="nav-link {{ request()->is('lawyer/events') || request()->is('lawyer/events/*') ? 'active' : '' }}">
-                <i class="fa-fw fas fa-calendar nav-icon">
-
-                </i>
+            <a href="{{ route("lawyer.schedule.index") }}" class="nav-link {{ request()->is('lawyer/schedules') || request()->is('lawyer/schedules/*') ? 'active' : '' }}">
+                <i class="fa-fw fas fa-calendar nav-icon"></i>
                Case Schedules
             </a>
         </li>
@@ -61,11 +58,10 @@
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">List of Lawyers:</h6>
-                <a class="collapse-item" href="#">Lawyer 1</a>
-                <a class="collapse-item" href="#">Lawyer 2</a>
-                <a class="collapse-item" href="#">Lawyer 3</a>
-                <a class="collapse-item" href=#">Lawyer 4</a>
+                <h6 class="collapse-header">List of Clients:</h6>
+                @foreach ($cases as $case)
+                    <a class="collapse-item" href="#">{{ $case->file->name }} {{ $case->file->surname }}</a>
+                @endforeach
             </div>
         </div>
     </li>

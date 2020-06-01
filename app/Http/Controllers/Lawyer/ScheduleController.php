@@ -36,8 +36,7 @@ class ScheduleController extends Controller
     public function store(StoreScheduleRequest $request)
     {
         Schedule::create($request->all());
-
-        return redirect()->route('lawyer.schedule');
+        return redirect()->route('lawyer.schedule')->with('status', 'Successfully scheduled a case');
     }
 
     public function edit(Schedule $schedule)
@@ -51,9 +50,9 @@ class ScheduleController extends Controller
         return view('lawyer.schedule.edit', compact('schedule'));
     }
 
-    public function update(UpdateScheduleRequest $request, Schedule $event)
+    public function update(UpdateScheduleRequest $request, Schedule $schedule)
     {
-        $event->update($request->all());
+        $schedule->update($request->all());
 
         if (Auth::user()->roles)
         return redirect()->route('lawyer.schedule');
@@ -61,7 +60,7 @@ class ScheduleController extends Controller
 
     public function show(Schedule $schedule)
     {
-        abort_if(Gate::denies('event_show'), Response::HTTP_FORBIDDEN,
+        abort_if(Gate::denies('schedule_show'), Response::HTTP_FORBIDDEN,
             $this->message .' show this schedule');
 
         $schedule->load('schedule');
@@ -75,7 +74,7 @@ class ScheduleController extends Controller
             $this->message .' delete this schedule');
         $schedule->delete();
 
-        return back();
+        return redirect()->route('lawyer.schedule')->with('status', 'Successfully deleted a schedule');
     }
 
     public function massDestroy(MassDestroyEventRequest $request)

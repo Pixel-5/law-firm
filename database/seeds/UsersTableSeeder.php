@@ -25,7 +25,7 @@ class UsersTableSeeder extends Seeder
                 'created_at'     => now()
             ],
             [
-                'id'             => 2,
+                'id'             => 3,
                 'name'           => 'Super',
                 'email'          => 'super@super.com',
                 'password'       => '$2y$10$KZ1AioruwI7TtKuMJCiu3.VyxwgnXBEFhKraK8wlkep9xqTEQeXny',

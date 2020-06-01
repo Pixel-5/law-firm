@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Facade\UserRepository;
+use App\Http\View\Composers\CaseComposer;
 use App\Http\View\Composers\FileComposer;
 use App\Mixins\StrMixins;
 use Illuminate\Support\Facades\Schema;
@@ -34,16 +35,16 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      * @throws ReflectionException
      */
-    public function boot()
+    public function boot(): void
     {
         //custom string mixins
         Str::mixin(new StrMixins());
-
         Schema::defaultStringLength(191);
 
-
         //custom view composers
-        View::composer('admin.client.*', FileComposer::class);
+        View::composer('client.*', FileComposer::class);
+        View::composer('lawyer.*', CaseComposer::class);
+
         View::composer('partials.lawyers',function ($view){
             return $view->with('lawyers',UserRepository::getLawyersOnly());
         });

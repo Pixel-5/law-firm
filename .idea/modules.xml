@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/law-firm.iml" filepath="$PROJECT_DIR$/.idea/law-firm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ubcs-tender-procument/.idea/ubcs-tender-procument.iml" filepath="$PROJECT_DIR$/../ubcs-tender-procument/.idea/ubcs-tender-procument.iml" />
     </modules>
   </component>
 </project>

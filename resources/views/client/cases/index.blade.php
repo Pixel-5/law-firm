@@ -2,8 +2,26 @@
 <!--  Content -->
 @section('content')
 <div class="container-fluid">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a @php
+                       $isLawyer =  auth()->user()->roles->first()->title === 'Lawyer'
+                   @endphp
+                   href="{{  route($isLawyer? 'lawyer.dashboard': 'admin.dashboard') }}">Home
+                </a></li>
+            <li class="breadcrumb-item"><a href="{{ route('files.index') }}">Files</a></li>
+            <li class="breadcrumb-item"><a>{{ $file->number }}</a></li>
+            <li class="offset-11 d-sm-block" style="height: 10px;margin-top: -30px;">
+                <a href="{{ url()->previous() }}" title="Back">
+                    <i class="fa fa-2x fa-chevron-circle-left"></i>
+                </a>
+            </li>
+        </ol>
+    </nav>
     <div class="alert alert-info fade show" role="alert">
         <strong>Client has {{ $file->cases->count() }} cases recorded!</strong> Click the button to register a new case.
+        @can('case_create')
         <a href="#" class="btn btn-md btn-outline-primary shadow-sm" data-toggle="modal" data-target="#openClientCaseModal">
             <i class="fa fa-file-contract fa-sm text-dark-100"></i> open a new case</a>
         <!-- Modal -->
@@ -21,7 +39,7 @@
                         <div class="alert alert-primary" role="alert">
                             In the High Court of the Republic of Botswana
                         </div>
-                        <form method="POST" action="{{ route('admin.cases.store') }}"
+                        <form method="POST" action="{{ route('cases.store') }}"
                               enctype="multipart/form-data">
                             @csrf
                             <div class="form-group ">
@@ -68,6 +86,7 @@
                 </div>
             </div>
         </div>
+        @endcan
     </div>
     <div class="alert alert-primary alert-dismissible fade show" role="alert">
         <input type="hidden" name="_token" value="{{ @csrf_token() }}">
@@ -138,14 +157,19 @@
 
                     <div class="row">
                         <div class="col-md-6">
+                                @can('case_edit')
                             <a class="btn btn-info btn-sm  text-center text-white"
-                                    href="{{ route('admin.cases.show', $case->id) }}">
+                                    href="{{ route('cases.show', $case->id) }}">
                                 <i class="fa fa-file-contract"></i> Edit Case
                             </a>
+                                @endcan
+                                @can('case_delete')
                             <button class="delete btn btn-danger btn-sm  text-center text-white"
                                     data-toggle="modal" data-target="#" id="{{ $case->id }}">
                                 <i class="fa fa-trash"></i> Delete Case
                             </button>
+                                @endcan
+                                @can('case_assign')
                             <a class="btn {{ $case->user == null ? 'btn-outline-info': 'btn-outline-success'}}
                                 btn-sm  text-center
                                 dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
@@ -157,6 +181,7 @@
                                 @else Assign
                                 @endif
                             </a>
+                                @endcan
                             @include('partials.dropdown-lawyers')
                             <button class="attach btn btn-secondary btn-sm text-center text-white"
                                     id="{{ $case->id }}"
@@ -202,7 +227,7 @@
             //Update id
             let user_id = $(this).attr('id');
             let case_id = '{{ $case->id ?? null }}';
-            let url = '{{ route("admin.cases.update",["case"=> ":id"]) }}';
+            let url = '{{ route("cases.update",["case"=> ":id"]) }}';
             let token = $('input[name="_token"]').val();
 
             if(case_id != null)

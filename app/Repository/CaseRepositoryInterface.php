@@ -16,4 +16,6 @@ interface CaseRepositoryInterface
     public function allCases();
 
     public function scheduledCases();
+
+    public function myCases();
 }

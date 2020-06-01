@@ -1,15 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Facade\CaseRepository;
 use App\Facade\FileRepository;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCaseRequest;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
 
 class CaseController extends Controller
 {
@@ -17,14 +20,14 @@ class CaseController extends Controller
      * Display a listing of the resource.
      *
      * @param $id
-     * @return void
+     * @return Application|Factory|View
      */
     public function index($id)
     {
         //
         abort_if(Gate::denies('case_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $file =  FileRepository::findById($id);
-        return view('admin.client.cases.index',compact('file'));
+        return view('client.cases.index',compact('file'));
     }
 
     /**
@@ -43,15 +46,16 @@ class CaseController extends Controller
      * Store a newly created resource in storage.
      *
      * @param StoreCaseRequest $request
-     * @return void
+     * @return RedirectResponse
      */
     public function store(StoreCaseRequest $request)
     {
         //store case using a repository
 
         $results = CaseRepository::storeCase($request);
-        if ($results)
-        return redirect()->back()->with('status','Successfully created a new client case');
+        if ($results) {
+            return redirect()->back()->with('status', 'Successfully created a new client case');
+        }
 
         return redirect()->back()->with('fail','Failed to open a new case');
     }
@@ -60,13 +64,13 @@ class CaseController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return Response
+     * @return Application|Factory|View
      */
     public function show($id)
     {
         abort_if(Gate::denies('case_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $case =  CaseRepository::showCase($id);
-        return view('admin.client.cases.edit',compact('case'));
+        return view('client.cases.edit',compact('case'));
     }
 
     /**
@@ -87,24 +91,24 @@ class CaseController extends Controller
      *
      * @param Request $request
      * @param  int  $id
-     * @return Response
+     * @return RedirectResponse
      */
     public function update(Request $request, $id)
     {
         //
         if ($request->ajax()){
             if (!empty(CaseRepository::updateCase($id,$request->all()))){
-                Session::flash("status", "Successfully assigned lawyer a case");
+                Session::flash('status', 'Successfully assigned lawyer a case');
                 return true;
             }
-            Session::flash("fail", "Failed to assign a lawyer a case");
+            Session::flash('fail', 'Failed to assign a lawyer a case');
            return false;
         }
 
         if (!empty(CaseRepository::updateCase($id,$request->all()))){
-            return redirect()->back()->with("status", "Successfully updated client a case");
+            return redirect()->back()->with('status', 'Successfully updated client a case');
         }
-        return redirect()->back()->with("fail", "Failed to update client case");
+        return redirect()->back()->with('fail', 'Failed to update client case');
     }
 
     /**
@@ -118,11 +122,11 @@ class CaseController extends Controller
         abort_if(Gate::denies('case_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if (CaseRepository::deleteCase($case)){
-            Session::flash("status", "Successfully deleted client case");
+            Session::flash('status', 'Successfully deleted client case');
             return true;
         }
 
-        Session::flash("fail", "Failed to delete client case");
+        Session::flash('fail', 'Failed to delete client case');
         return false;
 
     }

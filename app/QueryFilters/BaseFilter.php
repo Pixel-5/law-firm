@@ -31,7 +31,10 @@ abstract class BaseFilter
      * @param $builder
      * @return mixed
      */
-    public abstract function applyFilter($builder);
+    public function applyFilter($builder)
+    {
+        return $builder->where($this->filterName(),request($this->filterName()));
+    }
 
     /**
      * @return string

@@ -10,6 +10,11 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Cases</li>
+                <li class="offset-11 d-sm-block" style="height: 10px;margin-top: -30px;">
+                    <a href="{{ url()->previous() }}" title="Back">
+                        <i class="fa fa-2x fa-chevron-circle-left"></i>
+                    </a>
+                </li>
             </ol>
         </nav>
     </div>
@@ -41,7 +46,9 @@
                             <tr>
                                 <td>{{ $case->file->number }}</td>
                                 <td>{{ $case->number }}</td>
-                                <td>{{ $case->user->name }}</td>
+                                <td>
+                                    {{ $case->user !== null ? $case->user->name : '' }}
+                                </td>
                                 <td>
                                     {{ $case->schedule != null ? ' Start: '. $case->schedule->start_time : ''}}
                                     <br/>
@@ -51,7 +58,7 @@
                                 <td>
                                     @if($case->schedule != null)
                                     <a class="btn btn-outline-success btn-sm  text-center"
-                                       href="{{ route('admin.schedule.edit', $case->schedule->id) }}" role="button" aria-haspopup="true"
+                                       href="{{ route('schedule.edit', $case->schedule->id) }}" role="button" aria-haspopup="true"
                                        aria-expanded="false"><i class="fa fa-calendar-check">
                                         </i> Re-schedule</a>
                                         @else

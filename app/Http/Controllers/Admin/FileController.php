@@ -26,7 +26,7 @@ class FileController extends Controller
     {
         //
         abort_if(Gate::denies('file_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        return view("admin.client.file.index");
+        return view('client.file.index');
     }
 
     /**
@@ -37,7 +37,7 @@ class FileController extends Controller
     public function create()
     {
         abort_if(Gate::denies('file_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        return view('admin.client.file.create');
+        return view('client.file.create');
     }
 
     /**
@@ -50,8 +50,8 @@ class FileController extends Controller
     {
         return redirect()->back()->with(
             empty(FileRepository::storeFile($request)) ?
-                ["fail"=>"Failed to add a client file"] :
-                ["status" => "Successfully added new client file"]);
+                ['fail' => 'Failed to add a client file'] :
+                ['status' => 'Successfully added new client file']);
     }
 
     /**
@@ -63,7 +63,7 @@ class FileController extends Controller
     public function show($id)
     {
         abort_if(Gate::denies('file_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        return view("admin.client.file.index");
+        return view('client.file.index');
     }
 
     /**
@@ -88,8 +88,8 @@ class FileController extends Controller
     public function update(UpdateFileRequest $request, int $file)
     {
             return back()->with(empty(FileRepository::updateFile($file,$request))?
-                ["fail" => "Failed to update client file"]:
-                ["status" => "Successfully edited client file"]);
+                ['fail' => 'Failed to update client file']:
+                ['status' => 'Successfully edited client file']);
     }
 
     /**
@@ -102,11 +102,11 @@ class FileController extends Controller
     {
         abort_if(Gate::denies('file_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         if (FileRepository::deleteFile($file)){
-            Session::flash("status", "Successfully deleted client file");
+            Session::flash('status', 'Successfully deleted client file');
             return true;
         }
 
-        Session::flash("fail", "Failed to delete client file");
+        Session::flash('fail', 'Failed to delete client file');
         return false;
 
     }

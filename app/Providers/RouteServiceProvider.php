@@ -84,6 +84,7 @@ class RouteServiceProvider extends ServiceProvider
 
     public static function redirectPath()
     {
+
         if (auth()->user()->roles->count() < 0){
 
             auth()->logout();
@@ -93,10 +94,11 @@ class RouteServiceProvider extends ServiceProvider
         $role = auth()->user()->roles->first();
 
         switch ($role->title){
-            case self::ADMIN or self::SUPER:
+            case 'Super':
+            case 'Admin':
                 return route(self::ADMIN);
 
-            case self::LAWYER:
+            case 'Lawyer':
                 return route(self::LAWYER);
 
             default:
