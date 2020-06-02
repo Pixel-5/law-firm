@@ -42,8 +42,7 @@
                             </thead>
 
                             <tbody>
-                            @inject('cases','App\Repository\CaseRepositoryInterface')
-                            @foreach($cases->allCases() as $case)
+                            @foreach($cases as $case)
                             <tr>
                                 <td>{{ $case->id }}</td>
                                 <td>{{ $case->file->number }}</td>

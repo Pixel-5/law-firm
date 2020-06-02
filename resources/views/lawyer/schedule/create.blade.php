@@ -72,7 +72,8 @@
                             @endif
                             <div class="form-group {{ $errors->has('venue') ? 'has-error' : '' }}">
                                 <label for="venue">Venue</label>
-                                <select id="venue" class="form-control venue" required name="venue" {{ !$hasNoSchedules? 'disabled':'' }}>
+                                <select id="venue" class="form-control venue" required name="venue"
+                                        {{ isset($hasNoSchedules)? !$hasNoSchedules? 'disabled':'':'' }}>
                                     <option>Choose Location...</option>
                                     <option>Molepolole Magistrate</option>
                                     <option>Broadhurst Magistrate</option>
@@ -89,7 +90,7 @@
                             <div class="form-group {{ $errors->has('notes') ? 'has-error' : '' }}">
                                 <label for="notes">Notes</label>
                                 <textarea type="text" id="notes" name="notes" class="form-control"
-                                    {{ !$hasNoSchedules? 'disabled':'' }}>
+                                  {{ isset($hasNoSchedules)? !$hasNoSchedules? 'disabled':'':'' }}>
 
                             </textarea>
                             </div>
@@ -97,7 +98,7 @@
                                 <label for="start_time">{{ trans('cruds.event.fields.start_time') }}*</label>
                                 <input type="text" id="start_time" name="start_time" class="form-control datetime"
                                        value="{{ old('start_time', isset($event) ? $event->start_time : '') }}"
-                                       required {{ !$hasNoSchedules? 'disabled':'' }}>
+                                       required {{ isset($hasNoSchedules)? !$hasNoSchedules? 'disabled':'':'' }}>
                                 @if($errors->has('start_time'))
                                     <em class="invalid-feedback">
                                         {{ $errors->first('start_time') }}
@@ -112,7 +113,7 @@
                                 <label for="end_time">{{ trans('cruds.event.fields.end_time') }}*</label>
                                 <input type="text" id="end_time" name="end_time" class="form-control datetime"
                                        value="{{ old('end_time', isset($event) ? $event->end_time : '') }}"
-                                       required {{ !$hasNoSchedules? 'disabled':'' }}>
+                                       required {{ isset($hasNoSchedules)? !$hasNoSchedules? 'disabled':'':'' }}>
                                 @if($errors->has('end_time'))
                                     <em class="invalid-feedback">
                                         {{ $errors->first('end_time') }}
@@ -129,7 +130,7 @@
                                     <div>
                                         <input id="recurrence_{{ $key }}" name="recurrence" type="radio" value="{{ $key }}"
                                                {{ old('recurrence', 'none') === (string)$key ? 'checked' : '' }}
-                                               required {{ !$hasNoSchedules? 'disabled':'' }}>
+                                               required {{ isset($hasNoSchedules)? !$hasNoSchedules? 'disabled':'':'' }}>
                                         <label for="recurrence_{{ $key }}">{{ $label }}</label>
                                     </div>
                                 @endforeach
@@ -140,8 +141,8 @@
                                 @endif
                             </div>
                             <div>
-                                <input class="btn {{ !$hasNoSchedules? 'btn-secondary':' btn-primary' }}" type="submit"
-                                       value="{{ trans('global.save') }}" {{ !$hasNoSchedules? 'disabled':'' }}>
+                                <input class="btn {{ isset($hasNoSchedules)? !$hasNoSchedules? 'btn-secondary':'btn-primary':'btn-primary' }} " type="submit"
+                                       value="{{ trans('global.save') }}" {{ isset($hasNoSchedules)? !$hasNoSchedules? 'disabled':'':'' }}>
                             </div>
                         </form>
 

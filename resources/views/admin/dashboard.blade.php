@@ -14,11 +14,11 @@
                                 File (Clients)</a></div>
                         <div class="row no-gutters align-items-center">
                             <div class="col-auto">
-                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">400</div>
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $files->count() }}</div>
                             </div>
                             <div class="col">
                                 <div class="progress progress-sm mr-2">
-                                    <div class="progress-bar bg-info" role="progressbar" style="width: 70%"
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: {{ $files->count() }}%"
                                         aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
@@ -44,12 +44,12 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col-auto">
                                 <div class="h5 mb-0 mr-3 font-weight-bold
-                                text-gray-800">10
+                                text-gray-800">{{ $unAssignedCases->count() }}
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="progress progress-sm mr-2">
-                                    <div class="progress-bar bg-info" role="progressbar" style="width: 20%"
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: {{ $cases->count() > 0?  $unAssignedCases->count() / $cases->count() * 100 : 0}}%"
                                         aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
@@ -76,11 +76,11 @@
                         </div>
                         <div class="row no-gutters align-items-center">
                             <div class="col-auto">
-                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50</div>
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $unScheduledCases->count() }}</div>
                             </div>
                             <div class="col">
                                 <div class="progress progress-sm mr-2">
-                                    <div class="progress-bar bg-info" role="progressbar" style="width: 50%"
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: {{ $cases->count() > 0 ? $unScheduledCases->count() / $cases->count() * 100 : 0 }}%"
                                         aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
@@ -106,12 +106,12 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col-auto">
                                 <div class="h5 mb-0 mr-3 font-weight-bold
-                                text-gray-800">18
+                                text-gray-800">{{ $unScheduledCases->count() }}
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="progress progress-sm mr-2">
-                                    <div class="progress-bar bg-info" role="progressbar" style="width: 50%"
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: {{ $cases->count() > 0 ? $unScheduledCases->count() / $cases->count() * 100 : 0 }}%"
                                         aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>

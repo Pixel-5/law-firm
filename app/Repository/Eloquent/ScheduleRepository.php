@@ -58,9 +58,9 @@ class ScheduleRepository extends AbstractBaseRepository implements ScheduleRepos
         return $this->update($id,$request->all());
     }
 
+    //check given lawyer schedule if exists
     public function checkSchedule()
     {
-
         $pipeline = app(Pipeline::class)
             ->send($this->model->query())
             ->through([
@@ -68,14 +68,9 @@ class ScheduleRepository extends AbstractBaseRepository implements ScheduleRepos
                 EndTime::class
             ])
             ->thenReturn();
-
-
         if ($pipeline && $pipeline->first() !== null) {
-
             return ['status' => $pipeline->first()->exists];
         }
-
         return ['status' => false];
     }
-
 }

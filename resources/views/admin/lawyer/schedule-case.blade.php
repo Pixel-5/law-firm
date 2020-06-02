@@ -41,8 +41,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @inject('caseRepository','App\Repository\CaseRepositoryInterface')
-                            @foreach($caseRepository->scheduledCases() as $case)
+                            @foreach($scheduledCases as $case)
                             <tr>
                                 <td>{{ $case->file->number }}</td>
                                 <td>{{ $case->number }}</td>
@@ -58,7 +57,7 @@
                                 <td>
                                     @if($case->schedule != null)
                                     <a class="btn btn-outline-success btn-sm  text-center"
-                                       href="{{ route('schedule.edit', $case->schedule->id) }}" role="button" aria-haspopup="true"
+                                       href="{{ route('admin.schedule.edit', $case->schedule->id) }}" role="button" aria-haspopup="true"
                                        aria-expanded="false"><i class="fa fa-calendar-check">
                                         </i> Re-schedule</a>
                                         @else

@@ -23,6 +23,9 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "angular-bootstrap-calendar": "^1.0.0"
+        "angular-bootstrap-calendar": "^1.0.0",
+        "bower": "^1.8.8",
+        "eonasdan-bootstrap-datetimepicker": "^4.17.47",
+        "yarn": "^1.22.4"
     }
 }

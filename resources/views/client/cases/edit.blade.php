@@ -62,8 +62,7 @@
                             <div class="form-group">
                                 <label for="inputDetails">Case Details</label>
                                 <textarea class="form-control rounded-lg z-depth-1" aria-label="With textarea" name="details"
-                                          rows="10" cols="50">
-                            {{ $case->details }}
+                                          rows="10" cols="50">{{ $case->details }}
                                 </textarea>
                             </div>
                             <div class="modal-footer">

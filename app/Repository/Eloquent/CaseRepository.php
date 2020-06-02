@@ -110,6 +110,16 @@ class CaseRepository extends AbstractBaseRepository implements CaseRepositoryInt
     {
         return $this->model->whereHas('user')->with(['file', 'user'])->cursor();
     }
+
+    public function unAssignedCases()
+    {
+        return $this->model->doesntHave('user')->with(['file'])->cursor();
+    }
+
+    public function unScheduledCases()
+    {
+        return $this->model->doesntHave('schedule')->with(['file'])->cursor();
+    }
     public function myUnScheduledCases(): array
     {
         $myUnscheduledCases = array();
