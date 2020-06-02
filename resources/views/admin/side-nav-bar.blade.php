@@ -81,7 +81,7 @@
                     @php
                     $cases = 0;
                     @endphp
-                    @foreach($scheduledCases as $case)
+                    @foreach($assignedCases as $case)
                         @if ($case->user_id === $lawyer->id)
                           @php
                               ++$cases;
