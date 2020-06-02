@@ -36,7 +36,7 @@ class ScheduleController extends Controller
      */
     public function store(StoreScheduleRequest $request)
     {
-        return redirect()->route('schedule.index')
+        return redirect()->route('admin.schedule.index')
             ->with(empty(ScheduleRepository::createSchedule($request->all()))?
                 ['fail'=> 'Failed to update schedule'. 'Date & Time slot from '.
                     $request->start_time . ' to ' . $request->end_time .
@@ -84,7 +84,7 @@ class ScheduleController extends Controller
      */
     public function update(UpdateScheduleRequest $request, $id)
     {
-        return redirect()->route('schedule.index')->with(empty(
+        return redirect()->route('admin.schedule.index')->with(empty(
             ScheduleRepository::updateSchedule($id,$request))?
             ['fail'=> 'Failed to update schedule'. 'Date & Time slot from '.
                 $request->start_time . ' to ' . $request->end_time .

@@ -12,6 +12,11 @@ class FileComposer
 {
     public function compose(View $view)
     {
-        return $view->with('files', FileRepository::allFiles());
+        return $view->with(['files' => $this->getFiles(),] );
+    }
+
+    public function getFiles()
+    {
+        return FileRepository::allFiles();
     }
 }
