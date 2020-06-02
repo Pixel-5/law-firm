@@ -64,8 +64,7 @@
                             <div class="form-group">
                                 <label for="inputDetails">Case Details</label>
                                 <textarea class="form-control text-left" aria-label="With textarea" name="details"
-                                          rows="10" cols="50"  required>
-                                </textarea>
+                                          rows="10" cols="50"  required></textarea>
                             </div>
                             <div class="form-group">
                                 <div class="custom-file">
