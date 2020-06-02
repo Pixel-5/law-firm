@@ -37,6 +37,7 @@
                                 <th>Lawyer</th>
                                 <th>Schedule</th>
                                 <th>Venue</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -55,17 +56,28 @@
                                 </td>
                                 <td> {{ $case->schedule != null ? $case->schedule->venue : '' }}</td>
                                 <td>
+                                    @if (\Carbon\Carbon::parse($case->schedule->end_time)->timestamp >
+                              \Carbon\Carbon::parse(now())->timestamp)
+                                        <h1-6>Active <span class="badge badge-primary"><i class="fa fa-clock"></i></span></h1-6>
+                                    @else
+                                        <h1-6>Attended <span class="badge badge-info"><i class="fa fa-check-circle"></i></span></h1-6>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($case->schedule != null)
-                                    <a class="btn btn-outline-success btn-sm  text-center"
-                                       href="{{ route('admin.schedule.edit', $case->schedule->id) }}" role="button" aria-haspopup="true"
-                                       aria-expanded="false"><i class="fa fa-calendar-check">
-                                        </i> Re-schedule</a>
-                                        @else
+                                        @if (\Carbon\Carbon::parse($case->schedule->end_time)->timestamp >\Carbon\Carbon::parse(now())->timestamp)
+                                            <a class="btn btn-outline-success btn-sm  text-center"
+                                               href="{{ route('admin.schedule.edit', $case->schedule->id) }}"
+                                               role="button" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fa fa-calendar-check"></i> Re-schedule
+                                            </a>
+                                        @endif
+                                    @else
                                         <a class="btn btn-outline-info btn-sm  text-center"
                                            href="{{ action('Admin\ScheduleController@show', $case->id) }}" role="button" aria-haspopup="true"
                                            aria-expanded="false"><i class="fa fa-calendar-plus">
                                             </i> Schedule case</a>
-                                        @endif
+                                    @endif
                                 </td>
                             </tr>
                                 @endforeach

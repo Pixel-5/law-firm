@@ -9,6 +9,7 @@ use App\Repository\FileRepositoryInterface;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -110,5 +111,11 @@ class FileRepository extends AbstractBaseRepository implements FileRepositoryInt
         $file = $this->find($id);
         $file->update($attributes);
         return $file;
+    }
+    public function myClients()
+    {
+        return $this->model->whereHas('cases', function (Builder $query) {
+            $query->where('user_id',Auth::user()->id);
+        })->get();
     }
 }

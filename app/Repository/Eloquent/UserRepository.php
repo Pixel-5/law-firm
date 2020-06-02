@@ -9,6 +9,7 @@ use App\QueryFilters\Schedule;
 use App\QueryFilters\StartTime;
 use App\Repository\UserRepositoryInterface;
 use App\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pipeline\Pipeline;
 use Illuminate\Support\Collection;
@@ -36,8 +37,8 @@ class UserRepository extends AbstractBaseRepository implements UserRepositoryInt
 
     public function getLawyersOnly(): Collection
     {
-        return  $this->model->whereHas('roles', function ($q) {
-            $q->Where('title', 'lawyer');
+        return  $this->model->whereHas('roles', function (Builder $query) {
+            $query->Where('title', 'lawyer');
         })->where('active_status', 1)->get();
     }
 

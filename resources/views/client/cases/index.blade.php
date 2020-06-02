@@ -222,7 +222,6 @@
 <script type="application/javascript">
     $(document).ready(function() {
         $('.dropdown-item').on('click', function(){
-
             //Update id
             let user_id = $(this).attr('id');
             let case_id = '{{ $case->id ?? null }}';

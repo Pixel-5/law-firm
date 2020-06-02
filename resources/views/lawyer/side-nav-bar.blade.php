@@ -37,7 +37,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">List of Cases:</h6>
                 @foreach ($cases as $case)
-                    <a class="collapse-item" href="#">{{ $case->number }} </a>
+                    <a class="collapse-item" href="{{ route('cases.show', $case->id) }}">{{ $case->number }} </a>
                 @endforeach
             </div>
         </div>
@@ -52,15 +52,17 @@
         </li>
     @endcan
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseClients"
+           aria-expanded="true" aria-controls="collapseClients">
             <i class="fas fa-fw fa-user-circle"></i>
             <span>My Clients</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div id="collapseClients" class="collapse" aria-labelledby="collapseClients" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">List of Clients:</h6>
-                @foreach ($cases as $case)
-                    <a class="collapse-item" href="#">{{ $case->file->name }} {{ $case->file->surname }}</a>
+                @foreach ($myClients as $client)
+                    <a class="collapse-item" href="#">{{ $client->name }} {{ $client->surname }}
+                        <span class="badge badge-secondary">{{ $client->cases->count() }}</span>  </a>
                 @endforeach
             </div>
         </div>

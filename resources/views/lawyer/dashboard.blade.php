@@ -21,7 +21,9 @@
                                 </div>
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-auto">
-                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $myCases->count() }}</div>
+                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                            <span class="badge badge-primary">{{ $myCases->count() }}</span>
+                                        </div>
                                     </div>
                                     <div class="col">
                                         <div class="progress progress-sm mr-2">
@@ -51,11 +53,18 @@
                                 </div>
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-auto">
-                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ auth()->user()->userSchedule->count() }}</div>
+                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                            <span class="badge badge-primary">
+                                                {{ auth()->user()->userSchedule->count() }}
+                                            </span>
+                                        </div>
                                     </div>
                                     <div class="col">
                                         <div class="progress progress-sm mr-2">
-                                            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar bg-info" role="progressbar"
+                                                 style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -81,7 +90,11 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-auto">
                                         <div class="h5 mb-0 mr-3 font-weight-bold
-                                            text-gray-800">{{ count($myUnScheduledCases) }}</div>
+                                            text-gray-800">
+                                             <span class="badge badge-primary">
+                                                 {{ count($myUnScheduledCases) }}
+                                            </span>
+                                        </div>
                                     </div>
                                     <div class="col">
                                         <div class="progress progress-sm mr-2">

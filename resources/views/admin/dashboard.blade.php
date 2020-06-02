@@ -14,7 +14,11 @@
                                 File (Clients)</a></div>
                         <div class="row no-gutters align-items-center">
                             <div class="col-auto">
-                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $files->count() }}</div>
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                    <span class="badge badge-primary">
+                                         {{ $files->count() }}
+                                      </span>
+                                </div>
                             </div>
                             <div class="col">
                                 <div class="progress progress-sm mr-2">
@@ -44,7 +48,10 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col-auto">
                                 <div class="h5 mb-0 mr-3 font-weight-bold
-                                text-gray-800">{{ $unAssignedCases->count() }}
+                                text-gray-800">
+                                     <span class="badge badge-primary">
+                                          {{ $unAssignedCases->count() }}
+                                      </span>
                                 </div>
                             </div>
                             <div class="col">
@@ -76,7 +83,11 @@
                         </div>
                         <div class="row no-gutters align-items-center">
                             <div class="col-auto">
-                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $unScheduledCases->count() }}</div>
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                      <span class="badge badge-primary">
+                                          {{ $unScheduledCases->count() }}
+                                      </span>
+                                </div>
                             </div>
                             <div class="col">
                                 <div class="progress progress-sm mr-2">
@@ -106,12 +117,16 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col-auto">
                                 <div class="h5 mb-0 mr-3 font-weight-bold
-                                text-gray-800">{{ $unScheduledCases->count() }}
+                                text-gray-800">
+                                    <span class="badge badge-primary">
+                                        {{ $unScheduledCases->count() }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="progress progress-sm mr-2">
-                                    <div class="progress-bar bg-info" role="progressbar" style="width: {{ $cases->count() > 0 ? $unScheduledCases->count() / $cases->count() * 100 : 0 }}%"
+                                    <div class="progress-bar bg-info" role="progressbar"
+                                         style="width: {{ $cases->count() > 0 ? $unScheduledCases->count() / $cases->count() * 100 : 0 }}%"
                                         aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>

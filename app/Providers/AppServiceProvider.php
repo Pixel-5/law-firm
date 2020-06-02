@@ -42,10 +42,10 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         //custom view composers
-        View::composer(['client.*','admin.*'], FileComposer::class);
+        View::composer(['client.*','admin.*','lawyer.*',], FileComposer::class);
         View::composer(['lawyer.*', 'admin.*',], CaseComposer::class);
 
-        View::composer('partials.lawyers',function ($view){
+        View::composer(['partials.lawyers','admin.*',],function ($view){
             return $view->with('lawyers',UserRepository::getLawyersOnly());
         });
     }

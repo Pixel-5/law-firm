@@ -39,7 +39,9 @@
                 <h6 class="collapse-header">Select File:</h6>
 
                 @foreach($files as $file)
-                    <a class="collapse-item" href="{{ route('cases.show', $file->id) }}">{{ $file->number }}</a>
+                    <a class="collapse-item" href="{{ route('cases.show', $file->id) }}">{{ $file->number }}
+                        <span class="badge badge-secondary">{{ $file->cases->count() }}</span>
+                    </a>
                 @endforeach
             </div>
         </div>
@@ -53,10 +55,16 @@
         </a>
         <div id="collapseCases" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">List of Cases:</h6>
-                @inject('cases', 'App\Repository\CaseRepositoryInterface')
-                @foreach($cases->scheduledCases() as $case)
-                    <a class="collapse-item" href="#">{{ $case->number }}</a>
+                <h6 class="collapse-header">List of Active cases:</h6>
+                @foreach($scheduledCases as $case)
+                    @if (\Carbon\Carbon::parse($case->schedule->end_time)->timestamp >
+                                \Carbon\Carbon::parse(now())->timestamp)
+                        <a class="collapse-item" href="#">{{ $case->number }}
+                            <span class="badge badge-secondary">
+                            <i class="fa fa-clock"></i>
+                        </span>
+                        </a>
+                    @endif
                 @endforeach
             </div>
         </div>
@@ -69,10 +77,21 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">List of Lawyers:</h6>
-                @inject('users', 'App\Repository\UserRepositoryInterface')
-                @foreach($users->getLawyersOnly() as $lawyer)
-                <a class="collapse-item" href="#">{{ $lawyer->name }}</a>
+                @foreach($lawyers as $lawyer)
+                    @php
+                    $cases = 0;
+                    @endphp
+                    @foreach($scheduledCases as $case)
+                        @if ($case->user_id === $lawyer->id)
+                          @php
+                              ++$cases;
+                          @endphp  
+                        @endif
                     @endforeach
+                    <a class="collapse-item" href="#">{{ $lawyer->name }}
+                        <span class="badge badge-secondary">{{ $cases }}</span>
+                    </a>
+                @endforeach
             </div>
         </div>
     </li>
