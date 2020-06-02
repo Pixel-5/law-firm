@@ -49,7 +49,7 @@
                             </div>
                             <div class="col">
                                 <div class="progress progress-sm mr-2">
-                                    <div class="progress-bar bg-info" role="progressbar" style="width: {{ $unAssignedCases->count() / $cases->count() * 100 }}%"
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: {{ $cases->count() > 0?  $unAssignedCases->count() / $cases->count() * 100 : 0}}%"
                                         aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
