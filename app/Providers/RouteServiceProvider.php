@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use Symfony\Component\HttpFoundation\Response;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -22,10 +21,8 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const ADMIN =  'admin.dashboard';
-    public const LAWYER = 'lawyer.dashboard';
-    public const SUPER =  'super.dashboard';
-    public const HOME =  '/';
+
+    public const HOME =  '/redirectUser';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -34,8 +31,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-
         parent::boot();
     }
 
@@ -84,26 +79,6 @@ class RouteServiceProvider extends ServiceProvider
 
     public static function redirectPath()
     {
-
-        if (auth()->user()->roles->count() < 0){
-
-            auth()->logout();
-            abort_if(Gate::denies('system_access'),
-                Response::HTTP_UNAUTHORIZED);
-        }
-        $role = auth()->user()->roles->first();
-
-        switch ($role->title){
-            case 'Super':
-            case 'Admin':
-                return route(self::ADMIN);
-
-            case 'Lawyer':
-                return route(self::LAWYER);
-
-            default:
-                auth()->logout();
-                return self::HOME;
-        }
+        return self::HOME;
     }
 }

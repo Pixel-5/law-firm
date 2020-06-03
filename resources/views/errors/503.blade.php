@@ -57,7 +57,7 @@
                         — The Team</p>
                 </div>
                 <div class="error-actions">
-                    <a href="#" style="margin-top: 10px;" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-home">
+                    <a href="{{ route('home') }}" style="margin-top: 10px;" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-home">
                     </span>Take Me Home </a>
                 </div>
             </div>

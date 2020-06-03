@@ -20,23 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0320a9e0-a603-4f46-b203-f3a2b803c9ae" name="Lawyer Dashboard" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/NotificationController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/partials/notifications.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/RedirectUser.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Commands/SendSmsNotifications.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/SendSmsNotifications.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/View/Composers/UserComposer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/View/Composers/UserComposer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/SendSmsNotifications.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/SendSmsNotifications.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Notifications/CaseScheduleNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/CaseScheduleNotification.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Notifications/CustomerCaseScheduleNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/CustomerCaseScheduleNotification.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Notifications/LawyerCaseScheduleNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/LawyerCaseScheduleNotification.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/ScheduleRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/ScheduleRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/top-nav-bar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/top-nav-bar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/scripts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/scripts.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/errors/503.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/errors/503.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <list id="680dd266-b94c-42b2-bf1f-4eed7f13957c" name="Default Changelist" comment="" />
@@ -490,10 +477,10 @@
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="835" y="191" key="#com.intellij.tools.ToolEditorDialog/0.0.1600.900@0.0.1600.900" timestamp="1587007301846" />
-    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1591208114326">
+    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1591224915267">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.900@0.0.1600.900" timestamp="1591208114326" />
+    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.900@0.0.1600.900" timestamp="1591224915267" />
     <state x="549" y="295" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1587004837554">
       <screen x="0" y="0" width="1600" height="900" />
     </state>

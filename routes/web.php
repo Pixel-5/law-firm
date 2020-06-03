@@ -2,6 +2,7 @@
 
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Route;
+    use Symfony\Component\HttpFoundation\Response;
 
 
     /*
@@ -15,7 +16,8 @@
     |
     */
 
-Route::redirect('/', '/login');
+Route::redirect('/',   '/redirectUser');
+Route::get('/redirectUser','RedirectUser');
 Auth::routes(['register' => false]);
 
 //admin routes, get and post
