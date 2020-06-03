@@ -4,6 +4,8 @@ namespace App\Console\Commands;
 
 use App\Facade\FileRepository;
 use App\Facade\ScheduleRepository;
+use App\Notifications\CustomerCaseScheduleNotification;
+use App\Notifications\LawyerCaseScheduleNotification;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
 
@@ -42,11 +44,14 @@ class SendSmsNotifications extends Command
     {
         $schedules = ScheduleRepository::schedules();
         foreach ($schedules as $schedule){
-            $days = Carbon::now()->diffInDays($schedule->start_time);
-            if ($days === 2) {
+            $days = $schedule->start_time->diffInDays(Carbon::now()->addDays(2));
+            if ($days === 0) {
+                //$schedule->case->file->notify(new CustomerCaseScheduleNotification);
+                $schedule->case->user->notify(new LawyerCaseScheduleNotification($schedule));
+
                 echo "case to schedule is " . $schedule->start_time . " days " . $days . "\n";
                 echo "client to notify " . $schedule->case->file->contact. "\n";
-                echo "Lawyer to notify " . $schedule->case->user->email. "\n";
+                echo "Lawyer to notify " . $schedule->case->user->name. "\n";
             }
         }
 

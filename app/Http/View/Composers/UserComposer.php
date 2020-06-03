@@ -12,6 +12,25 @@ class UserComposer
 {
     public function compose(View $view)
     {
-        return $view->with('lawyers', UserRepository::allUsers());
+        return $view->with([
+            'lawyers' => $this->getLawyers(),
+            'unreadNotifications' => $this->unreadNotifications(),
+            'notifications' => $this->notifications(),
+            ]);
+    }
+
+    public function getLawyers()
+    {
+        return UserRepository::getLawyersOnly();
+    }
+
+    public function unreadNotifications()
+    {
+        return auth()->user()->unreadNotifications;
+    }
+
+    public function notifications()
+    {
+        return auth()->user()->notifications;
     }
 }

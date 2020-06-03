@@ -34,7 +34,9 @@ class ScheduleRepository extends AbstractBaseRepository implements ScheduleRepos
 
     public function getSchedule($id)
     {
-        return $this->find($id);
+        $schedule = $this->find($id);
+        $schedule = $schedule->load(['case']);
+        return $schedule;
     }
 
     private function getCase($id)

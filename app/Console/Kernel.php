@@ -25,7 +25,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('inspire')->everyMinute();
         $schedule->command('send:sms')
             ->daily()
             ->between('08:00','17:00')

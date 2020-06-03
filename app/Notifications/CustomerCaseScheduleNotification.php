@@ -4,18 +4,19 @@
 
     use Gr8Shivam\SmsApi\Notifications\SmsApiChannel;
     use Gr8Shivam\SmsApi\Notifications\SmsApiMessage;
+    use Illuminate\Contracts\Queue\ShouldQueue;
     use Illuminate\Notifications\Messages\NexmoMessage;
 
-    class CustomerCaseScheduleNotification extends CaseScheduleNotification
+    class CustomerCaseScheduleNotification extends CaseScheduleNotification implements ShouldQueue
     {
         /**
          * Create a new notification instance.
          *
-         * @return void
+         * @param $schedule
          */
-        public function __construct()
+        public function __construct($schedule)
         {
-            parent::__construct();
+            parent::__construct($schedule);
         }
 
         /**
@@ -27,9 +28,10 @@
 
         public function via($notifiable)
         {
-            return ['nexmo',SmsApiChannel::class];
+            return ['nexmo'];
         }
 
+        //SmsApiChannel::class
         public function toSmsApi($notifiable)
         {
             return (new SmsApiMessage)

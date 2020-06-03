@@ -20,85 +20,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0320a9e0-a603-4f46-b203-f3a2b803c9ae" name="Lawyer Dashboard" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Console/Commands/DeleteOldNotifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Console/Commands/SendSmsNotifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Jobs/SendSmsNotifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Notifications/CaseScheduleNotification.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Notifications/CustomerCaseScheduleNotification.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Notifications/LawyerCaseScheduleNotification.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Providers/TelescopeServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/bugsnag.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/datatables.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/flare.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/ignition.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/nexmo.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/sms-api.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2018_08_08_100000_create_telescope_entries_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_06_03_091825_create_notifications_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_06_03_095350_create_permission_tables.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/button.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/footer.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/header.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/layout.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/message.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/panel.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/subcopy.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/table.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/themes/default.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/text/button.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/text/footer.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/text/header.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/text/layout.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/text/message.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/text/panel.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/text/subcopy.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/text/table.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/notifications/email.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/pagination/bootstrap-4.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/pagination/default.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/pagination/semantic-ui.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/pagination/simple-bootstrap-4.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/pagination/simple-default.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/console.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/controller.api.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/controller.invokable.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/controller.model.api.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/controller.model.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/controller.nested.api.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/controller.nested.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/controller.plain.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/controller.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/factory.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/job.queued.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/job.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/middleware.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/migration.create.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/migration.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/migration.update.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/model.pivot.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/model.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/policy.plain.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/policy.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/request.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/rule.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/seeder.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/test.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/test.unit.stub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/law-firm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/law-firm.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/NotificationController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/partials/notifications.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Console/Commands/SendSmsNotifications.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/SendSmsNotifications.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/File.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/File.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/ScheduleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/ScheduleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/FileRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/FileRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/View/Composers/UserComposer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/View/Composers/UserComposer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/SendSmsNotifications.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/SendSmsNotifications.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Notifications/CaseScheduleNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/CaseScheduleNotification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Notifications/CustomerCaseScheduleNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/CustomerCaseScheduleNotification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Notifications/LawyerCaseScheduleNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/LawyerCaseScheduleNotification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/ScheduleRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/ScheduleRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/UserRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/top-nav-bar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/top-nav-bar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/default.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/scripts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/scripts.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <list id="680dd266-b94c-42b2-bf1f-4eed7f13957c" name="Default Changelist" comment="" />
@@ -540,22 +478,22 @@
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="606" y="166" key="#com.intellij.ide.util.MemberChooser/0.0.1600.900@0.0.1600.900" timestamp="1587084835361" />
-    <state x="482" y="178" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1586876068826">
+    <state x="482" y="178" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1591205212324">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="482" y="178" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1600.900@0.0.1600.900" timestamp="1586876068826" />
-    <state x="129" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1586999499798">
+    <state x="482" y="178" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1600.900@0.0.1600.900" timestamp="1591205212324" />
+    <state x="129" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1591209824795">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="129" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.900@0.0.1600.900" timestamp="1586999499798" />
+    <state x="129" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.900@0.0.1600.900" timestamp="1591209824795" />
     <state x="835" y="191" key="#com.intellij.tools.ToolEditorDialog" timestamp="1587007301846">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="835" y="191" key="#com.intellij.tools.ToolEditorDialog/0.0.1600.900@0.0.1600.900" timestamp="1587007301846" />
-    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1591189645225">
+    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1591208114326">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.900@0.0.1600.900" timestamp="1591189645225" />
+    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.900@0.0.1600.900" timestamp="1591208114326" />
     <state x="549" y="295" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1587004837554">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
@@ -596,10 +534,10 @@
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="556" y="264" key="NewPhpClassDialog/0.0.1600.900@0.0.1600.900" timestamp="1587084818566" />
-    <state x="635" y="373" key="NewPhpFileDialog" timestamp="1586991689749">
+    <state x="635" y="373" key="NewPhpFileDialog" timestamp="1591209221610">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="635" y="373" key="NewPhpFileDialog/0.0.1600.900@0.0.1600.900" timestamp="1586991689749" />
+    <state x="635" y="373" key="NewPhpFileDialog/0.0.1600.900@0.0.1600.900" timestamp="1591209221610" />
     <state x="594" y="320" key="STICKY_NOTE_LIST_DIALOG" timestamp="1586967807033">
       <screen x="0" y="0" width="1600" height="900" />
     </state>

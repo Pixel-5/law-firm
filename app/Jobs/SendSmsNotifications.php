@@ -30,6 +30,7 @@ class SendSmsNotifications implements ShouldQueue
      */
     public function handle()
     {
+        //TODO
         echo "job schedule >> ". $this->schedule->id;
     }
 }

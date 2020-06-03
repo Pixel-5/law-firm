@@ -18,6 +18,34 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
 <script src="{{ asset('js/main.js') }}"></script>
+<script type="application/javascript">
+    $(document).ready(function(){
+        $(function() {
+            $('.mark-as-read').click(function() {
+                let request = sendMarkRequest($(this).data('id'));
+                request.done(() => {
+                    window.location.reload();
+                });
+            });
+            $('#mark-all').click(function() {
+                let request = sendMarkRequest();
+                request.done(() => {
+                    window.location.reload();
+                })
+            });
+        });
+        function sendMarkRequest(id = null) {
+            console.log();
+            return $.ajax("{{ route('markNotification') }}", {
+                method: 'POST',
+                data: {
+                    '_token':"{{ @csrf_token() }}",
+                    'id':id
+                }
+            });
+        }
+    });
+</script>
 
 
 

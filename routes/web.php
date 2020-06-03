@@ -1,9 +1,8 @@
 <?php
 
-    use App\File;
     use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
-    use Nexmo\Laravel\Facade\Nexmo;
+    use Illuminate\Support\Facades\Route;
+
 
     /*
     |--------------------------------------------------------------------------
@@ -15,19 +14,8 @@ use Illuminate\Support\Facades\Route;
     | contains the "web" middleware group. Now create something great!
     |
     */
-Route::get('/schedule', function (){
-    return \App\Facade\ScheduleRepository::checkSchedule();
-});
 
 Route::redirect('/', '/login');
-Route::get('/nexmo', function () {
-    $file = File::find(1);
-//        Nexmo::message()->send([
-//            'to'   => '+26774338017',
-//            'from' => '15556666666',
-//            'text' => 'Using the facade to send a message.'
-//        ]);
-});
 Auth::routes(['register' => false]);
 
 //admin routes, get and post
@@ -92,5 +80,10 @@ Route::group(['middleware' => ['auth', 'role:lawyer,super,admin']], function (){
     ]);
     Route::delete('cases/destroy', 'CaseController@massDestroy')->name('admin.cases.massDestroy');
     Route::get('file/{file:slug}/cases', 'CaseController@index')->name('admin.open.client.cases');
+
+    //Notification routes for authenticated user
+    Route::post('/mark-as-read', 'NotificationController@markNotification')->name('markNotification');
+    Route::get('/notifications', 'NotificationController@index')->name('notifications');
+
 });
 

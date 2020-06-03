@@ -46,47 +46,43 @@
             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
                 <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">3+</span>
+                <span class="badge badge-danger badge-counter">
+                    {{ $unreadNotifications->count() === 0? $unreadNotifications->count() :
+                       $unreadNotifications->count().'+' }}</span>
             </a>
             <!-- Dropdown - Alerts -->
             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
-                    Alerts Center
+                    Notification Center
                 </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="mr-3">
-                        <div class="icon-circle bg-primary">
-                            <i class="fas fa-file-alt text-white"></i>
+                @forelse($notifications as $notification)
+                    <a class="dropdown-item d-flex align-items-center" href="{{ route('notifications') }}">
+                        <div class="mr-3">
+                            <div class="icon-circle bg-primary">
+                                <i class="fas fa-calendar text-white"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <div class="small text-gray-500">December 12, 2019</div>
-                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                    </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="mr-3">
-                        <div class="icon-circle bg-success">
-                            <i class="fas fa-donate text-white"></i>
+                        <div>
+                            <div class="small text-gray-800">Scehdule Remainder</div>
+                            <span class=" {{ $notification->read_at === null?'font-weight-bold': 'small text-gray-500' }}">
+                                Case {{ $notification->data['case_no'] }}
+                                   Case {{ $notification->data['case_no'] }}
+                                {{ \Carbon\CarbonImmutable::parse($notification->data['start_time'])->isPast() ?
+                                'was':'has been' }} scheduled...</span><br>
+                            <span  class="small text-gray-500 align-content-end">
+                                {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$notification->created_at)->ago() }}
+                            </span>
+
                         </div>
-                    </div>
-                    <div>
-                        <div class="small text-gray-500">December 7, 2019</div>
-                        $290.29 has been deposited into your account!
-                    </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="mr-3">
-                        <div class="icon-circle bg-warning">
-                            <i class="fas fa-exclamation-triangle text-white"></i>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="small text-gray-500">December 2, 2019</div>
-                        Spending Alert: We've noticed unusually high spending for your account.
-                    </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                    </a>
+                    @if($loop->last)
+                        <a class="dropdown-item text-center small text-gray-500"  href="#" id="mark-all">
+                            Mark all as read
+                        </a>
+                    @endif
+                @empty
+                    There are no new notifications
+                @endforelse
             </div>
         </li>
 

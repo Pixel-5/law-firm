@@ -35,6 +35,11 @@ class UserRepository extends AbstractBaseRepository implements UserRepositoryInt
         return $this->model->all();
     }
 
+    public function getLawyer(int $id)
+    {
+        return $this->model->find($id);
+    }
+
     public function getLawyersOnly(): Collection
     {
         return  $this->model->whereHas('roles', function (Builder $query) {

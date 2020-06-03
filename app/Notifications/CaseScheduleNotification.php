@@ -3,22 +3,23 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class CaseScheduleNotification extends Notification implements ShouldQueue
+class CaseScheduleNotification extends Notification
 {
     use Queueable;
+
+    protected $schedule;
 
     /**
      * Create a new notification instance.
      *
-     * @return void
+     * @param $schedule
      */
-    public function __construct()
+    public function __construct($schedule)
     {
-        //
+        $this->schedule = $schedule;
     }
 
     /**
@@ -36,7 +37,7 @@ class CaseScheduleNotification extends Notification implements ShouldQueue
      * Get the mail representation of the notification.
      *
      * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
+     * @return MailMessage
      */
     public function toMail($notifiable)
     {
@@ -46,16 +47,24 @@ class CaseScheduleNotification extends Notification implements ShouldQueue
                     ->line('Thank you for using our application!');
     }
 
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function toArray($notifiable)
+    public function toDatabase()
     {
         return [
-            //
+            'case_no' => $this->schedule->case->number,
+            'start_time' => $this->schedule->start_time,
+            'end_time' => $this->schedule->end_time,
+            'venue' => $this->schedule->venue,
         ];
     }
+
+    public function toArray()
+    {
+        return [
+            'case_no' => $this->schedule->case->number,
+            'start_time' => $this->schedule->start_time,
+            'end_time' => $this->schedule->end_time,
+            'venue' => $this->schedule->venue,
+        ];
+    }
+
 }
