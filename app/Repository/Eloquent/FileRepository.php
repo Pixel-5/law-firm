@@ -33,7 +33,7 @@ class FileRepository extends AbstractBaseRepository implements FileRepositoryInt
      */
     public function allFiles(): Collection
     {
-        return $this->model->with('cases')->get();
+        return $this->model->with(['cases','cases.schedule'])->get();
     }
 
     /**

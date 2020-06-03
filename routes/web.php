@@ -1,24 +1,33 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
+    use App\File;
+    use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+    use Nexmo\Laravel\Facade\Nexmo;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+    /*
+    |--------------------------------------------------------------------------
+    | Web Routes
+    |--------------------------------------------------------------------------
+    |
+    | Here is where you can register web routes for your application. These
+    | routes are loaded by the RouteServiceProvider within a group which
+    | contains the "web" middleware group. Now create something great!
+    |
+    */
 Route::get('/schedule', function (){
     return \App\Facade\ScheduleRepository::checkSchedule();
 });
 
 Route::redirect('/', '/login');
-
+Route::get('/nexmo', function () {
+    $file = File::find(1);
+//        Nexmo::message()->send([
+//            'to'   => '+26774338017',
+//            'from' => '15556666666',
+//            'text' => 'Using the facade to send a message.'
+//        ]);
+});
 Auth::routes(['register' => false]);
 
 //admin routes, get and post

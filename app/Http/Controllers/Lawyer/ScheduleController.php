@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Lawyer;
 
 use App\Facade\ScheduleRepository;
+use App\Jobs\SendSmsNotifications;
 use App\Schedule;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyEventRequest;
@@ -35,7 +36,8 @@ class ScheduleController extends Controller
 
     public function store(StoreScheduleRequest $request)
     {
-        Schedule::create($request->all());
+        $schedule = Schedule::create($request->all());
+        SendSmsNotifications::dispatch($schedule);
         return redirect()->route('lawyer.schedule')->with('status', 'Successfully scheduled a case');
     }
 

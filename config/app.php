@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Africa/Gaborone',
 
     /*
     |--------------------------------------------------------------------------
@@ -123,6 +123,7 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
@@ -176,8 +177,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
-        //App\Providers\TelescopeServiceProvider::class,
-
+        Gr8Shivam\SmsApi\SmsApiServiceProvider::class,
     ],
 
     /*
@@ -230,7 +230,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Bugsnag' => Bugsnag\BugsnagLaravel\Facades\Bugsnag::class,
-
+        'SmsApi'=> Gr8Shivam\SmsApi\SmsApiFacade::class,
     ],
 
 ];

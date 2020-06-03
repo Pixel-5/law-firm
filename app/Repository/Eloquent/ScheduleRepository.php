@@ -73,4 +73,11 @@ class ScheduleRepository extends AbstractBaseRepository implements ScheduleRepos
         }
         return ['status' => false];
     }
+
+    public function schedules()
+    {
+        $schedule = $this->model->all();
+        $schedule = $schedule->load(['case','case.file','case.user']);
+        return $schedule;
+    }
 }

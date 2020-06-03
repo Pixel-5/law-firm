@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
+
     ];
 
     /**
@@ -24,7 +25,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('inspire')->everyMinute();
+        $schedule->command('send:sms')
+            ->daily()
+            ->between('08:00','17:00')
+            ->evenInMaintenanceMode()
+            ->runInBackground();
     }
 
     /**

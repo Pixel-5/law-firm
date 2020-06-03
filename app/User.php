@@ -9,6 +9,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Notifications\Notification;
 use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
@@ -86,5 +87,17 @@ class User extends Authenticatable
             'case_id', // Foreign key on cases table...
             'id', // Local key on schedule table...
             'id');
+    }
+
+    /**
+     * Route notifications for the Nexmo channel.
+     *
+     * @param  Notification  $notification
+     * @return string
+     */
+
+    public function routeNotificationForNexmo($notification)
+    {
+        return '+267'.$this->contact;
     }
 }
