@@ -31,7 +31,7 @@ class Kernel extends ConsoleKernel
             ->evenInMaintenanceMode()
             ->runInBackground();
 
-        $schedule->command('backup:run  --only-db')
+        $schedule->command('backup:run')
             ->everyMinute()
             ->withoutOverlapping()
             ->runInBackground();
