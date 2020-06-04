@@ -36,6 +36,7 @@ class Kernel extends ConsoleKernel
             ->weekly()
             ->wednesdays()
             ->fridays()
+            ->at('00:00')
             ->runInBackground();
     }
 

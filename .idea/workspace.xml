@@ -26,7 +26,6 @@
       <change afterPath="$PROJECT_DIR$/../smart-tourist-guide/database/factories/ProfileFactory.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../smart-tourist-guide/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../smart-tourist-guide/.idea/workspace.xml" afterDir="false" />
     </list>
     <list id="680dd266-b94c-42b2-bf1f-4eed7f13957c" name="Default Changelist" comment="" />
