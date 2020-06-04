@@ -35,7 +35,6 @@
             });
         });
         function sendMarkRequest(id = null) {
-            console.log();
             return $.ajax("{{ route('markNotification') }}", {
                 method: 'POST',
                 data: {

@@ -9,7 +9,7 @@ class NotificationController extends Controller
     //
     public function index()
     {
-        $notifications = auth()->user()->notifications;
+        $notifications = collect(auth()->user()->notifications)->paginate(4);
         return view('partials.notifications', compact('notifications'));
     }
     public function markNotification(Request $request)

@@ -36,8 +36,7 @@ class ScheduleController extends Controller
 
     public function store(StoreScheduleRequest $request)
     {
-        $schedule = Schedule::create($request->all());
-        SendSmsNotifications::dispatch($schedule);
+        Schedule::create($request->all());
         return redirect()->route('lawyer.schedule')->with('status', 'Successfully scheduled a case');
     }
 

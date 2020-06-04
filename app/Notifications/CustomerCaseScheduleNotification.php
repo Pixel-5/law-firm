@@ -4,10 +4,9 @@
 
     use Gr8Shivam\SmsApi\Notifications\SmsApiChannel;
     use Gr8Shivam\SmsApi\Notifications\SmsApiMessage;
-    use Illuminate\Contracts\Queue\ShouldQueue;
     use Illuminate\Notifications\Messages\NexmoMessage;
 
-    class CustomerCaseScheduleNotification extends CaseScheduleNotification implements ShouldQueue
+    class CustomerCaseScheduleNotification extends CaseScheduleNotification
     {
         /**
          * Create a new notification instance.

@@ -2,9 +2,10 @@
 
 namespace App\Jobs;
 
-class SendSmsNotifications extends SendNotifications
-{
+use App\Notifications\LawyerCaseScheduleNotification;
 
+class SendEmailNotifications extends SendNotifications
+{
     /**
      * Create a new job instance.
      *
@@ -22,7 +23,6 @@ class SendSmsNotifications extends SendNotifications
      */
     public function handle()
     {
-        //TODO
-        echo "job schedule >> ". $this->schedule->id;
+        $this->schedule->case->user->notify(new LawyerCaseScheduleNotification($this->schedule));
     }
 }

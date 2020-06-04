@@ -41,6 +41,7 @@
                                    isoFormat('MMMM Do YYYY h:mm A') }}
                                     </i>
                                 </a>
+
                                 @if ( $notification->read_at === null)
                                     <a href="#" class="badge badge-pill badge-primary float-right mark-as-read" data-id="{{ $notification->id }}">
                                         Mark as read
@@ -51,6 +52,9 @@
                         </div>
                     </div>
                     @if($loop->last)
+                        <span class="float-right ">
+                            {{ $notifications->links() }}
+                        </span>
                         <a href="#"  class="badge badge-light float-left" id="mark-all">
                             Mark all as read
                         </a>

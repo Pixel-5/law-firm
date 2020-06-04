@@ -2,8 +2,9 @@
 
 namespace App\Console\Commands;
 
-use App\Facade\FileRepository;
 use App\Facade\ScheduleRepository;
+use App\Jobs\SendEmailNotifications;
+use App\Jobs\SendSmsNotifications as SendSmsNotificationsJob;
 use App\Notifications\CustomerCaseScheduleNotification;
 use App\Notifications\LawyerCaseScheduleNotification;
 use Illuminate\Console\Command;
@@ -23,7 +24,7 @@ class SendSmsNotifications extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'sending sms reminder to clients & lawyers about their case schedule';
 
     /**
      * Create a new command instance.
@@ -47,7 +48,8 @@ class SendSmsNotifications extends Command
             $days = $schedule->start_time->diffInDays(Carbon::now()->addDays(2));
             if ($days === 0) {
                 //$schedule->case->file->notify(new CustomerCaseScheduleNotification);
-                $schedule->case->user->notify(new LawyerCaseScheduleNotification($schedule));
+                SendEmailNotifications::dispatch($schedule)->onQueue('email');
+                SendSmsNotificationsJob::dispatch($schedule)->onQueue('sms');
 
                 echo "case to schedule is " . $schedule->start_time . " days " . $days . "\n";
                 echo "client to notify " . $schedule->case->file->contact. "\n";
