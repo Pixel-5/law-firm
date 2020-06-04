@@ -2,9 +2,12 @@
 
 namespace App\Jobs;
 
+use App\Notifications\CustomerCaseScheduleNotification;
+
 class SendSmsNotifications extends SendNotifications
 {
 
+    public $queue = 'sms';
     /**
      * Create a new job instance.
      *
@@ -22,7 +25,6 @@ class SendSmsNotifications extends SendNotifications
      */
     public function handle()
     {
-        //TODO
-        echo "job schedule >> ". $this->schedule->id;
+        $this->schedule->case->file->notify(new CustomerCaseScheduleNotification($this->schedule));
     }
 }

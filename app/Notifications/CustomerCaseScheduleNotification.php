@@ -2,12 +2,14 @@
 
     namespace App\Notifications;
 
+    use Carbon\CarbonImmutable;
     use Gr8Shivam\SmsApi\Notifications\SmsApiChannel;
     use Gr8Shivam\SmsApi\Notifications\SmsApiMessage;
     use Illuminate\Notifications\Messages\NexmoMessage;
 
     class CustomerCaseScheduleNotification extends CaseScheduleNotification
     {
+        public $queue = 'sms';
         /**
          * Create a new notification instance.
          *
@@ -34,11 +36,17 @@
         public function toSmsApi($notifiable)
         {
             return (new SmsApiMessage)
-                ->content("Hello");
+                ->content("content");
         }
         public function toNexmo($notifiable)
         {
             return (new NexmoMessage)
-                ->content('Your SMS message content');
+                ->clientReference($this->schedule->case->file->name)
+                ->content('Dear '. $this->schedule->case->file->name. ' '. $this->schedule->case->file->surname.
+                    'This is a reminder that your case number '.
+                $this->schedule->case_no. ' has been scheduled ' .
+                    CarbonImmutable::parse($this->schedule->start_time)->calendar().
+                    ' at '. $this->schedule->venue
+                );
         }
     }

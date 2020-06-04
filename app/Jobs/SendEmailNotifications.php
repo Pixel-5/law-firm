@@ -6,6 +6,7 @@ use App\Notifications\LawyerCaseScheduleNotification;
 
 class SendEmailNotifications extends SendNotifications
 {
+    public $queue = 'email';
     /**
      * Create a new job instance.
      *
