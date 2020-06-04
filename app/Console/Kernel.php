@@ -32,8 +32,10 @@ class Kernel extends ConsoleKernel
             ->runInBackground();
 
         $schedule->command('backup:run')
-            ->everyMinute()
             ->withoutOverlapping()
+            ->weekly()
+            ->wednesdays()
+            ->fridays()
             ->runInBackground();
     }
 
