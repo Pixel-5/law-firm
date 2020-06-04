@@ -4,12 +4,21 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Role extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, LogsActivity;
 
     public $table = 'roles';
+
+    protected static $logName = 'role';
+
+    protected static $logOnlyDirty = true;
+
+    protected static $submitEmptyLogs = false;
+
+    protected static $logAttributes = ['title',];
 
     protected $dates = [
         'created_at',
@@ -32,5 +41,10 @@ class Role extends Model
     public function permissions()
     {
         return $this->belongsToMany(Permission::class);
+    }
+
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        return "Role has been {$eventName}";
     }
 }

@@ -10,12 +10,30 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Notifications\Notification;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class User extends Authenticatable
 {
-    use SoftDeletes, Notifiable;
+    use SoftDeletes, Notifiable, LogsActivity;
 
     public $table = 'users';
+
+    protected static $logName = 'user';
+
+    protected static $logOnlyDirty = true;
+
+    protected static $recordEvents = ['created','updated','deleted'];
+
+    protected static $submitEmptyLogs = false;
+
+    protected static $ignoreChangedAttributes = ['password','remember_token','updated_at'];
+
+    protected static $logAttributes =  [
+        'name',
+        'email',
+        'surname',
+        'contact',
+    ];
 
     protected $hidden = [
         'password',
@@ -98,5 +116,10 @@ class User extends Authenticatable
     public function routeNotificationForNexmo($notification)
     {
         return '+267'.$this->contact;
+    }
+
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        return "User has been {$eventName}";
     }
 }

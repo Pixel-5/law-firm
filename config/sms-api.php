@@ -3,7 +3,7 @@
 return [
 
     'country_code' => '267', //Country code to be added
-    'default' => env('SMS_API_DEFAULT_GATEWAY', 'gateway_name_basic'), //Choose default gateway
+    'default' => 'gateway_name_advanced', //Choose default gateway
     
 //    Basic Gateway Sample Configuration
     'gateway_name_basic' => [
@@ -30,20 +30,20 @@ return [
 //    Advanced Gateway Sample Configuration
     'gateway_name_advanced' => [
         'method' => 'POST', //Choose Request Method (GET/POST) Default:GET
-        'url' => 'BaseUrl', //Base URL
+        'url' => 'https://rest-api.telesign.com/v1/messaging', //Base URL
         'params' => [
             'send_to_param_name' => '', //Send to Parameter Name
-            'msg_param_name' => '', //Message Parameter Name
+            'msg_param_name' => '',
+            'message_type' => 'ARN',
+            'username' => 'DDFD0B48-85D9-4F87-B603-2016EE138506',
+            'password' => 'n7CCY8iYsJLVDsyIqKX5zUF25CQh6jBLH/w3hCrdkBHdlvVUH4FCETrNLSYCSnzUknNI0Xq0wjURSXu9wIYTCw==',//Message Parameter Name
             'others' => [
-                'param1' => '',
-                'param2' => '',
-                'param3' => '',
+
                 //More params can be added
             ],
         ],
         'headers' => [
-            'header1' => '',
-            'header2' => '',
+            'Content-Type' => 'application/x-www-form-urlencoded',
             //More headers can be added
         ],
         'json' => true, // OPTIONAL: Use if you want the params to be sent in JSON format instead of query params (accepts true/false)

@@ -5,12 +5,27 @@ namespace App;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Schedule extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, LogsActivity;
 
     public $table = 'schedules';
+
+    protected static $logName = 'schedule';
+
+    protected static $logOnlyDirty = true;
+
+    protected static $submitEmptyLogs = false;
+
+    protected static $logAttributes = [
+        'name',
+        'start_time',
+        'end_time',
+        'venue',
+        'notes',
+    ];
 
     protected $dates = [
         'end_time',
@@ -61,5 +76,10 @@ class Schedule extends Model
     public function case()
     {
         return $this->belongsTo(FileCase::class);
+    }
+
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        return "Schedule has been {$eventName}";
     }
 }

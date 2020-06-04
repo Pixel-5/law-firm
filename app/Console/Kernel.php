@@ -26,9 +26,14 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('send:notifications')
-            ->everyMinute()
-           // ->between('08:00','17:00')
+            ->dailyAt('08:00')
+            ->withoutOverlapping()
             ->evenInMaintenanceMode()
+            ->runInBackground();
+
+        $schedule->command('backup:run  --only-db')
+            ->everyMinute()
+            ->withoutOverlapping()
             ->runInBackground();
     }
 
