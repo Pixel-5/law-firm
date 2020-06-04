@@ -20,24 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0320a9e0-a603-4f46-b203-f3a2b803c9ae" name="Lawyer Dashboard" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Jobs/SendEmailNotifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Jobs/SendNotifications.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../smart-tourist-guide/database/factories/ApplicationFactory.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../smart-tourist-guide/database/factories/OwnershipTransferFactory.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../smart-tourist-guide/database/factories/PlotFactory.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../smart-tourist-guide/database/factories/ProfileFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/law-firm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/law-firm.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Commands/SendSmsNotifications.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/SendSmsNotifications.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/File.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/File.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/ScheduleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/ScheduleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/NotificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/NotificationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/SendSmsNotifications.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/SendSmsNotifications.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Notifications/CaseScheduleNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/CaseScheduleNotification.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Notifications/CustomerCaseScheduleNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/CustomerCaseScheduleNotification.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/partials/notifications.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/notifications.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../smart-tourist-guide/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../smart-tourist-guide/.idea/workspace.xml" afterDir="false" />
     </list>
