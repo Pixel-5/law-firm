@@ -76,8 +76,8 @@
                         </div>
                     </a>
                     @if($loop->last)
-                        <a class="dropdown-item text-center small text-gray-500"  href="#" id="mark-all">
-                            Mark all as read
+                        <a class="dropdown-item text-center small text-gray-500"  href="{{ route('notifications') }}" >
+                           See more
                         </a>
                     @endif
                 @empty

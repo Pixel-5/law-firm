@@ -15,7 +15,7 @@ class UserComposer
         return $view->with([
             'lawyers' => $this->getLawyers(),
             'unreadNotifications' => $this->unreadNotifications(),
-            'notifications' => $this->notifications(),
+            'notifications' => collect($this->notifications())->paginate(3),
             ]);
     }
 
