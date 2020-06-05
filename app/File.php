@@ -62,8 +62,8 @@ class File extends Model
     {
         return '+267'.$this->contact;
     }
-    public function getDescriptionForEvent(string $eventName): string
-    {
-        return "File has been {$eventName}";
-    }
+//    public function getDescriptionForEvent(string $eventName): string
+//    {
+//        return "File has been {$eventName}";
+//    }
 }

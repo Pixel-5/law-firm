@@ -25,6 +25,8 @@ class FileCase extends Model
         'status',
         'number',
         'docs',
+        'user.name',
+        'file.number'
     ];
 
     protected $fillable = [
@@ -58,8 +60,8 @@ class FileCase extends Model
         return 'slug';
     }
 
-    public function getDescriptionForEvent(string $eventName): string
-    {
-        return "Case has been {$eventName}";
-    }
+//    public function getDescriptionForEvent(string $eventName): string
+//    {
+//        return "Case has been {$eventName}";
+//    }
 }

@@ -25,6 +25,8 @@ class Schedule extends Model
         'end_time',
         'venue',
         'notes',
+        'case.user.name',
+        'case.number'
     ];
 
     protected $dates = [
@@ -78,8 +80,8 @@ class Schedule extends Model
         return $this->belongsTo(FileCase::class);
     }
 
-    public function getDescriptionForEvent(string $eventName): string
-    {
-        return "Schedule has been {$eventName}";
-    }
+//    public function getDescriptionForEvent(string $eventName): string
+//    {
+//        return "Schedule has been {$eventName}";
+//    }
 }

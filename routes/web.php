@@ -89,3 +89,8 @@ Route::group(['middleware' => ['auth', 'role:lawyer,super,admin']], function (){
 
 });
 
+Route::group(['prefix' => 'admin', 'as' => 'super.', 'namespace' => 'Admin','middleware' => ['auth', 'role:super']],
+    function (){
+    Route::get('/activity-logs', 'HomeController@activityLogs')->name('activity.logs');
+});
+

@@ -37,7 +37,14 @@ class Kernel extends ConsoleKernel
             ->wednesdays()
             ->fridays()
             ->at('00:00')
+            ->evenInMaintenanceMode()
             ->runInBackground();
+
+        $schedule->command('activitylog:clean --days=7')
+            ->daily()
+            ->runInBackground()
+            ->withoutOverlapping();
+
     }
 
     /**

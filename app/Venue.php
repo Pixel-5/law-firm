@@ -21,8 +21,8 @@ class Venue extends Model
         'name',
         'location'
     ];
-    public function getDescriptionForEvent(string $eventName): string
-    {
-        return "Venue has been {$eventName}";
-    }
+//    public function getDescriptionForEvent(string $eventName): string
+//    {
+//        return "Venue has been {$eventName}";
+//    }
 }

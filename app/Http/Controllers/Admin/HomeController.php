@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Facade\ScheduleRepository;
+use Spatie\Activitylog\Models\Activity;
 
 class HomeController
 {
@@ -34,5 +35,10 @@ class HomeController
     public function pendingCases()
     {
         return view('client.cases.pending');
+    }
+
+    public function activityLogs()
+    {
+        return view('admin.activity_log');
     }
 }

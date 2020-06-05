@@ -26,7 +26,7 @@ class User extends Authenticatable
 
     protected static $submitEmptyLogs = false;
 
-    protected static $ignoreChangedAttributes = ['password','remember_token','updated_at'];
+    protected static $ignoreChangedAttributes = ['password','remember_token',];
 
     protected static $logAttributes =  [
         'name',
@@ -118,8 +118,8 @@ class User extends Authenticatable
         return '+267'.$this->contact;
     }
 
-    public function getDescriptionForEvent(string $eventName): string
-    {
-        return "User has been {$eventName}";
-    }
+//    public function getDescriptionForEvent(string $eventName): string
+//    {
+//        return "User has been {$eventName}";
+//    }
 }

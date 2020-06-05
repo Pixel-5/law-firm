@@ -15,6 +15,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Telescope\TelescopeServiceProvider;
 use ReflectionException;
+use Spatie\Activitylog\Models\Activity;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -51,6 +52,20 @@ class AppServiceProvider extends ServiceProvider
         View::composer('partials.lawyers',function ($view){
             return $view->with('lawyers',UserRepository::getLawyersOnly());
         });
+        View::composer('admin.activity_log',function ($view){
+            $usersActivityLog = Activity::where('log_name','user');
+            $filesActivityLog = Activity::where('log_name','file');
+            $casesActivityLog = Activity::where('log_name','case');
+            $schedulesActivityLog = Activity::where('log_name','schedule');
+
+            return $view->with([
+                'usersActivityLog' => $usersActivityLog,
+                'filesActivityLog' => $filesActivityLog,
+                'casesActivityLog' => $casesActivityLog,
+                'schedulesActivityLog' => $schedulesActivityLog,
+            ]);
+        });
+
         Collection::macro('paginate', function($perPage, $total = null, $page = null, $pageName = 'page') {
             $page = $page ?: LengthAwarePaginator::resolveCurrentPage($pageName);
 

@@ -38,8 +38,8 @@ class Permission extends Model
         return $this->belongsToMany(Role::class);
     }
 
-    public function getDescriptionForEvent(string $eventName): string
-    {
-        return "Permission has been {$eventName}";
-    }
+//    public function getDescriptionForEvent(string $eventName): string
+//    {
+//        return "Permission has been {$eventName}";
+//    }
 }
