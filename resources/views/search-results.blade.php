@@ -35,7 +35,9 @@
             <div class="card shadow mb-4">
                 <!-- Card Header - Accordion -->
                 <a href="#collapseCardExample{{ $type }}" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                    <h3 class="m-0 font-weight-bold text-primary">{{ $type }}</h3>
+                    <h5 class="m-0 font-weight-bold text-primary">{{ $type }}
+                        <span class="badge badge-primary">  {{ count($modelSearchResults) }}</span>
+                    </h5>
                 </a>
                 <!-- Card Content - Collapse -->
                 <div class="collapse hide" id="collapseCardExample{{ $type }}">
