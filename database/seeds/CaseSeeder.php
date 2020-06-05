@@ -1,6 +1,9 @@
 <?php
 
-use Illuminate\Database\Seeder;
+    use App\Facade\UserRepository;
+    use App\FileCase;
+    use Illuminate\Database\Seeder;
+    use Faker\Generator as Faker;
 
 class CaseSeeder extends Seeder
 {
@@ -11,6 +14,6 @@ class CaseSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(FileCase::class, 2000)->create();
     }
 }

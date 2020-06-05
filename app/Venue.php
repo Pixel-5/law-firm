@@ -3,13 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
 class Venue extends Model
 {
-    use HasSlug, LogsActivity;
+    use HasSlug, LogsActivity, SoftDeletes;
 
     protected static $logAttributes = ['name', 'location'];
 
