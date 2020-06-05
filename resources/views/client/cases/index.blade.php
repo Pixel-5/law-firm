@@ -41,6 +41,7 @@
                         </div>
                         <form method="POST" action="{{ route('cases.store') }}"
                               enctype="multipart/form-data">
+                            @honeypot
                             @csrf
                             <div class="form-group ">
                                 <label for="inputCaseNumber">Case Number</label>

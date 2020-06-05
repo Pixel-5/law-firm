@@ -17,6 +17,7 @@ class CreateFilesTable extends Migration
             $table->id();
             $table->string("number")->unique();
             $table->string("name");
+            $table->string('slug');
             $table->string("surname");
             $table->string("email")->unique();
             $table->string("contact")->unique();

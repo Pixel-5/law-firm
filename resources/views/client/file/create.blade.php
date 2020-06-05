@@ -68,6 +68,7 @@
                                         <form action="{{ route('admin.files.store') }}"
                                               enctype="multipart/form-data" method="POST">
                                             @csrf
+                                            @honeypot
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="clientModalLabel">New Client File
                                                     Information</h5>

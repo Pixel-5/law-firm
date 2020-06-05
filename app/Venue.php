@@ -4,10 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Venue extends Model
 {
-    use LogsActivity;
+    use HasSlug, LogsActivity;
 
     protected static $logAttributes = ['name', 'location'];
 
@@ -19,8 +21,19 @@ class Venue extends Model
 
     protected $fillable = [
         'name',
-        'location'
+        'location',
     ];
+    protected function getArrayAttributeByKey($key)
+    {
+        return 'slug';
+    }
+
+    public function getSlugOptions() : SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug');
+    }
 //    public function getDescriptionForEvent(string $eventName): string
 //    {
 //        return "Venue has been {$eventName}";

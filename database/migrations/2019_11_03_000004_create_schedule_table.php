@@ -10,22 +10,19 @@ class CreateScheduleTable extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->increments('id');
-
             $table->foreignId('case_id');
-
             $table->text('notes')->nullable();
-
             $table->string('venue');
-
             $table->datetime('start_time');
-
             $table->datetime('end_time');
-
             $table->string('recurrence');
-
             $table->timestamps();
-
             $table->softDeletes();
         });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('schedules');
     }
 }

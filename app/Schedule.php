@@ -6,8 +6,10 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 
-class Schedule extends Model
+class Schedule extends Model implements Searchable
 {
     use SoftDeletes, LogsActivity;
 
@@ -84,4 +86,19 @@ class Schedule extends Model
 //    {
 //        return "Schedule has been {$eventName}";
 //    }
+    public function getSearchResult(): SearchResult
+    {
+        $url = route('lawyer.schedule.show', $this->id);
+        return new SearchResult(
+            $this,
+            $this->id,
+            $url
+        );
+    }
+
+    protected function getArrayAttributeByKey($key)
+    {
+        return 'id';
+    }
+
 }

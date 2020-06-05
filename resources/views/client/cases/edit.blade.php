@@ -43,6 +43,7 @@
                         <form method="POST" action="{{ route('cases.update', ['case' => $case->id]) }}"
                               enctype="multipart/form-data">
                             @csrf
+                            @honeypot
                             @method('PUT')
                             <div class="form-group ">
                                 <label for="inputCaseNumber">Case Number</label>

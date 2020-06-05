@@ -40,6 +40,9 @@ class VenueSeeder extends Seeder
                 'location' => 'Lobatse'
             ],
         ];
-        Venue::insert($venues);
+        foreach ($venues as $venue){
+            Venue::create($venue);
+        }
+        //Venue::insert($venues);
     }
 }

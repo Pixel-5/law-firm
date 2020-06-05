@@ -5,8 +5,10 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 
-class FileCase extends Model
+class FileCase extends Model implements Searchable
 {
     use SoftDeletes, LogsActivity;
 
@@ -57,11 +59,20 @@ class FileCase extends Model
 
     protected function getArrayAttributeByKey($key)
     {
-        return 'slug';
+        return 'id';
     }
 
 //    public function getDescriptionForEvent(string $eventName): string
 //    {
 //        return "Case has been {$eventName}";
 //    }
+    public function getSearchResult(): SearchResult
+    {
+        $url = route('cases.show', $this->id);
+        return new SearchResult(
+            $this,
+            $this->number,
+            $url
+        );
+    }
 }

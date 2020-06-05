@@ -17,6 +17,7 @@ class CreateVenuesTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('location');
+            $table->string('slug');
             $table->timestamps();
         });
     }

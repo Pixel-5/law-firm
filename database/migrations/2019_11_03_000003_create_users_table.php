@@ -10,26 +10,22 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-
             $table->string('name');
-
+            $table->string('slug');
             $table->string('surname')->nullable();
-
             $table->string('contact')->nullable();
-
             $table->boolean('active_status')->default(true);
-
             $table->string('email')->unique();
-
             $table->datetime('email_verified_at')->nullable();
-
             $table->string('password');
-
             $table->string('remember_token')->nullable();
-
             $table->timestamps();
-
             $table->softDeletes();
         });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('users');
     }
 }

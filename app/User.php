@@ -11,10 +11,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Notifications\Notification;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
-class User extends Authenticatable
+class User extends Authenticatable implements Searchable
 {
-    use SoftDeletes, Notifiable, LogsActivity;
+    use SoftDeletes, Notifiable, HasSlug, LogsActivity;
 
     public $table = 'users';
 
@@ -80,6 +84,11 @@ class User extends Authenticatable
         }
     }
 
+    protected function getArrayAttributeByKey($key)
+    {
+        return 'slug';
+    }
+
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPassword($token));
@@ -122,4 +131,21 @@ class User extends Authenticatable
 //    {
 //        return "User has been {$eventName}";
 //    }
+    public function getSearchResult(): SearchResult
+    {
+        $url = route('admin.users.show', $this->slug);
+        return new SearchResult(
+            $this,
+            $this->name,
+            $url
+        );
+    }
+    public function getSlugOptions() : SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom(['name','surname'])
+            ->saveSlugsTo('slug');
+    }
+
+
 }

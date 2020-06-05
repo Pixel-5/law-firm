@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 use Gate;
 
-class RedirectUser extends Controller
+class RedirectUserController extends Controller
 {
     public const ADMIN =  'admin.dashboard';
     public const LAWYER = 'lawyer.dashboard';

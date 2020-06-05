@@ -7,10 +7,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Notifications\Notification;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
-class File extends Model
+class File extends Model implements Searchable
 {
-    use SoftDeletes, Notifiable, LogsActivity;
+    use SoftDeletes, HasSlug, Notifiable, LogsActivity;
 
     protected static $logName = 'file';
 
@@ -19,31 +23,31 @@ class File extends Model
     protected static $submitEmptyLogs = false;
 
     protected static $logAttributes = [
-        "number",
-        "name",
-        "surname",
-        "gender",
-        "email",
-        "dob",
-        "contact",
-        "postal_address",
-        "physical_address",
-        "docs"
+        'number',
+        'name',
+        'surname',
+        'gender',
+        'email',
+        'dob',
+        'contact',
+        'postal_address',
+        'physical_address',
+        'docs',
     ];
 
 
     //
     protected $fillable = [
-        "number",
-        "name",
-        "surname",
-        "gender",
-        "email",
-        "dob",
-        "contact",
-        "postal_address",
-        "physical_address",
-        "docs"
+        'number',
+        'name',
+        'surname',
+        'gender',
+        'email',
+        'dob',
+        'contact',
+        'postal_address',
+        'physical_address',
+        'docs',
     ];
 
     public function cases()
@@ -66,4 +70,25 @@ class File extends Model
 //    {
 //        return "File has been {$eventName}";
 //    }
+    public function getSearchResult(): SearchResult
+    {
+        $url = route('files.show', $this->slug);
+
+        return new SearchResult(
+            $this,
+            $this->number,
+            $url
+        );
+    }
+    protected function getArrayAttributeByKey($key)
+    {
+        return 'slug';
+    }
+
+    public function getSlugOptions() : SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom(['name','surname'])
+            ->saveSlugsTo('slug');
+    }
 }

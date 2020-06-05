@@ -2,6 +2,7 @@
 
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Route;
+    use Spatie\Honeypot\ProtectAgainstSpam;
     use Symfony\Component\HttpFoundation\Response;
 
 
@@ -17,12 +18,13 @@
     */
 
 Route::redirect('/',   '/redirectUser');
-Route::get('/redirectUser','RedirectUser');
-Auth::routes(['register' => false]);
-
+Route::get('/redirectUser','RedirectUserController');
+Route::middleware(ProtectAgainstSpam::class)->group(function() {
+        Auth::routes(['register' => false]);
+});
 //admin routes, get and post
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'role:admin,super']],
-    function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin',
+    'middleware' => ['auth', 'role:admin,super',ProtectAgainstSpam::class]], function () {
 
     // Permissions
         Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name(
@@ -86,6 +88,9 @@ Route::group(['middleware' => ['auth', 'role:lawyer,super,admin']], function (){
     //Notification routes for authenticated user
     Route::post('/mark-as-read', 'NotificationController@markNotification')->name('markNotification');
     Route::get('/notifications', 'NotificationController@index')->name('notifications');
+
+    //Search model routes
+    Route::post('/search', 'SearchController')->name('search')->middleware(ProtectAgainstSpam::class);
 
 });
 

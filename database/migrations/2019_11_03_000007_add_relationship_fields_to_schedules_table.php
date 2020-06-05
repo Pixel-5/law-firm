@@ -10,7 +10,6 @@ class AddRelationshipFieldsToSchedulesTable extends Migration
     {
         Schema::table('schedules', function (Blueprint $table) {
             $table->unsignedInteger('schedule_id')->nullable();
-
             $table->foreign('schedule_id', 'schedule_fk_556522')->references('id')->on('schedules');
         });
     }
