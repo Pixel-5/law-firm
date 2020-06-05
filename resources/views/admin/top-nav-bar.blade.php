@@ -8,7 +8,7 @@
 
     <!-- Topbar Search -->
     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
-          action="{{ route('search') }}" method="post">
+          action="{{ route('search') }}" method="`get`">
         @csrf
         @honeypot
         <div class="input-group">
@@ -33,7 +33,7 @@
             </a>
             <!-- Dropdown - Messages -->
             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                <form class="form-inline mr-auto w-100 navbar-search" action="{{ route('search') }}" method="post">
+                <form class="form-inline mr-auto w-100 navbar-search" action="{{ route('search') }}" method="get">
                     @csrf
                     @honeypot
                     <div class="input-group">

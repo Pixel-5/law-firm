@@ -254,7 +254,7 @@
                             <td>
                                 @can('case_access')
                                 <a class="btn btn-info btn-sm  text-center text-white"
-                                   href="{{ route('admin.open.client.cases', $file->id) }}">
+                                   href="{{ route('admin.files.show', $file->id) }}">
                                     <i class="fa fa-file-contract"></i> Open</a>
                                 @endcan
                                 @can('file_edit')

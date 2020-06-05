@@ -63,7 +63,8 @@ class FileController extends Controller
     public function show($id)
     {
         abort_if(Gate::denies('file_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        return view('client.file.index');
+        $file =  FileRepository::findById($id);
+        return view('client.cases.index',compact('file'));
     }
 
     /**

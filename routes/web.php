@@ -83,14 +83,12 @@ Route::group(['middleware' => ['auth', 'role:lawyer,super,admin']], function (){
         'index' =>'files.index'
     ]);
     Route::delete('cases/destroy', 'CaseController@massDestroy')->name('admin.cases.massDestroy');
-    Route::get('file/{file:slug}/cases', 'CaseController@index')->name('admin.open.client.cases');
-
     //Notification routes for authenticated user
     Route::post('/mark-as-read', 'NotificationController@markNotification')->name('markNotification');
     Route::get('/notifications', 'NotificationController@index')->name('notifications');
 
     //Search model routes
-    Route::post('/search', 'SearchController')->name('search')->middleware(ProtectAgainstSpam::class);
+    Route::get('/search', 'SearchController')->name('search')->middleware(ProtectAgainstSpam::class);
 
 });
 

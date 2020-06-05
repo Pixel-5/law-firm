@@ -133,7 +133,7 @@ class User extends Authenticatable implements Searchable
 //    }
     public function getSearchResult(): SearchResult
     {
-        $url = route('admin.users.show', $this->slug);
+        $url = route('admin.users.show', $this->id);
         return new SearchResult(
             $this,
             $this->name,

@@ -20,45 +20,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0320a9e0-a603-4f46-b203-f3a2b803c9ae" name="Lawyer Dashboard" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/SearchController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/honeypot.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/search-results.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../smart-tourist-guide/database/factories/ApplicationFactory.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../smart-tourist-guide/database/factories/OwnershipTransferFactory.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../smart-tourist-guide/database/factories/PlotFactory.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../smart-tourist-guide/database/factories/ProfileFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/law-firm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/law-firm.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/File.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/File.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/FileCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/FileCase.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RedirectUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RedirectUserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Schedule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Schedule.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/FileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/FileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SearchController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SearchController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Venue.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Venue.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_03_000001_create_permissions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_03_000001_create_permissions_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_03_000002_create_roles_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_03_000002_create_roles_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_03_000003_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_03_000003_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_03_000004_create_schedule_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_03_000004_create_schedule_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_03_000005_create_permission_role_pivot_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_03_000005_create_permission_role_pivot_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_03_000006_create_role_user_pivot_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_03_000006_create_role_user_pivot_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_03_000007_add_relationship_fields_to_schedules_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_03_000007_add_relationship_fields_to_schedules_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_08_182043_create_files_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_08_182043_create_files_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_15_180641_create_venues_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_15_180641_create_venues_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/PermissionRoleTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/PermissionRoleTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/VenueSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/VenueSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/activity_log.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/activity_log.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/top-nav-bar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/top-nav-bar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/verify.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/verify.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/client/cases/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/cases/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/client/cases/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/cases/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/client/file/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/file/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/client/file/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/file/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/search-results.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/search-results.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../smart-tourist-guide/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../smart-tourist-guide/.idea/workspace.xml" afterDir="false" />
     </list>

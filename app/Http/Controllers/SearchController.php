@@ -19,24 +19,26 @@ class SearchController extends Controller
                     ->addSearchableAttribute('name') // return results for partial matches on usernames
                     ->addSearchableAttribute('surname') // return results for partial matches on surrnames
                     ->addSearchableAttribute('contact')
-                    ->addExactSearchableAttribute('email'); // only return results that exactly match the e-mail address
+                    ->addExactSearchableAttribute('email'); // only return results that exactly match the e-mail
             })
-            ->registerModel(File::class,[
-                'number',
-                'name',
-                'surname',
-                'gender',
-                'email',
-                'dob',
-            ])
-            ->registerModel(FileCase::class, [
-                'plaintiff',
-                'defendant',
-                'details',
-                'status',
-                'number',
-                'docs',
-            ])
+            ->registerModel(File::class, function(ModelSearchAspect $modelSearchAspect) {
+                    $modelSearchAspect
+                        ->addSearchableAttribute('number')
+                        ->addSearchableAttribute('name')
+                        ->addSearchableAttribute('gender')
+                        ->addSearchableAttribute('surname')
+                        ->addSearchableAttribute('dob');
+                })
+
+            ->registerModel(FileCase::class, function(ModelSearchAspect $modelSearchAspect) {
+                $modelSearchAspect
+                    ->addSearchableAttribute('number')
+                    ->addSearchableAttribute('plaintiff')
+                    ->addSearchableAttribute('defendant')
+                    ->addSearchableAttribute('details')
+                    ->addSearchableAttribute('status')
+                    ->addSearchableAttribute('docs');
+            })
             ->search( request('query'));
 
        return view('search-results')->with('searchResults',$search);

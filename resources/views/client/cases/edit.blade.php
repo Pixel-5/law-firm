@@ -31,7 +31,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="openClientCaseModalLabel"><b>Court Case Information</b></h5>
-                        <a href="{{ route('admin.open.client.cases', $case->file->id) }}" title="Open file"
+                        <a href="{{ route('admin.files.show', $case->file->id) }}" title="Open file"
                            class="btn btn-outline-primary align-items-end"><i class="fa fa-folder-open"></i>
                             {{ $case->file->number }}
                         </a>
