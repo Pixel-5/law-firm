@@ -16,16 +16,16 @@ class CreateCasesTable extends Migration
         Schema::create('cases', function (Blueprint $table) {
             $table->id();
             $table->string("number")->unique();
-            $table->foreignId("file_id")
+            $table->foreignId('file_id')
                 ->constrained()
                 ->onDelete('cascade');
             $table->foreignId('user_id')
                 ->nullable();
-            $table->string("defendant");
-            $table->string("plaintiff");
-            $table->string("status");
-            $table->longText("details");
-            $table->string("docs")->nullable(true);
+            $table->string('defendant');
+            $table->string('plaintiff');
+            $table->string('status');
+            $table->longText('details');
+            $table->string('docs')->nullable(true);
             $table->timestamps();
             $table->softDeletes();
         });

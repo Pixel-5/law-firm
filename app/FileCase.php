@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Askedio\SoftCascade\Traits\SoftCascadeTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\Traits\LogsActivity;
@@ -10,11 +11,13 @@ use Spatie\Searchable\SearchResult;
 
 class FileCase extends Model implements Searchable
 {
-    use SoftDeletes, LogsActivity;
+    use SoftDeletes, LogsActivity, SoftCascadeTrait;
 
     protected $table = 'cases';
 
     protected static $logName = 'case';
+
+    protected $softCascade = ['schedule'];
 
     protected static $logOnlyDirty = true;
 
@@ -44,12 +47,12 @@ class FileCase extends Model implements Searchable
 
     public function file()
     {
-        return $this->belongsTo('App\File');
+        return $this->belongsTo(File::class);
     }
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(User::class);
     }
 
     public function schedule()

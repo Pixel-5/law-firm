@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Askedio\SoftCascade\Traits\SoftCascadeTrait;
 use Carbon\Carbon;
 use Hash;
 use Illuminate\Auth\Notifications\ResetPassword;
@@ -18,7 +19,7 @@ use Spatie\Sluggable\SlugOptions;
 
 class User extends Authenticatable implements Searchable
 {
-    use SoftDeletes, Notifiable, HasSlug, LogsActivity;
+    use SoftDeletes, Notifiable, HasSlug, LogsActivity, SoftCascadeTrait;
 
     public $table = 'users';
 
@@ -30,6 +31,8 @@ class User extends Authenticatable implements Searchable
 
     protected static $submitEmptyLogs = false;
 
+    protected $softCascade = ['profile'];
+
     protected static $ignoreChangedAttributes = ['password','remember_token',];
 
     protected static $logAttributes =  [
@@ -37,6 +40,7 @@ class User extends Authenticatable implements Searchable
         'email',
         'surname',
         'contact',
+        'profile.username'
     ];
 
     protected $hidden = [
@@ -101,7 +105,7 @@ class User extends Authenticatable implements Searchable
 
     public function cases()
     {
-        return $this->belongsToMany(FileCase::class);
+        return $this->hasMany(FileCase::class);
     }
 
     public function userSchedule()
@@ -127,13 +131,9 @@ class User extends Authenticatable implements Searchable
         return '+267'.$this->contact;
     }
 
-//    public function getDescriptionForEvent(string $eventName): string
-//    {
-//        return "User has been {$eventName}";
-//    }
     public function getSearchResult(): SearchResult
     {
-        $url = route('admin.users.show', $this->id);
+        $url = route('profile.show', $this->id);
         return new SearchResult(
             $this,
             $this->name,
@@ -145,6 +145,11 @@ class User extends Authenticatable implements Searchable
         return SlugOptions::create()
             ->generateSlugsFrom(['name','surname'])
             ->saveSlugsTo('slug');
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
     }
 
 

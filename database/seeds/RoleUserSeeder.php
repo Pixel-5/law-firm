@@ -3,7 +3,7 @@
 use App\User;
 use Illuminate\Database\Seeder;
 
-class RoleUserTableSeeder extends Seeder
+class RoleUserSeeder extends Seeder
 {
     public function run()
     {

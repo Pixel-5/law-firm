@@ -35,9 +35,14 @@ class UserRepository extends AbstractBaseRepository implements UserRepositoryInt
         return $this->model->all();
     }
 
-    public function getLawyer(int $id)
+
+
+    public function getUser(int $id)
     {
-        return $this->model->find($id);
+        $user = $this->model->findOrFail($id);
+        $user->load('roles');
+        $user->loadCount('cases');
+        return $user;
     }
 
     public function getLawyersOnly(): Collection

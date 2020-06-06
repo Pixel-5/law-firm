@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Askedio\SoftCascade\Traits\SoftCascadeTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
@@ -14,7 +15,7 @@ use Spatie\Sluggable\SlugOptions;
 
 class File extends Model implements Searchable
 {
-    use SoftDeletes, HasSlug, Notifiable, LogsActivity;
+    use SoftDeletes, HasSlug, Notifiable, LogsActivity, SoftCascadeTrait;
 
     protected static $logName = 'file';
 
@@ -35,6 +36,8 @@ class File extends Model implements Searchable
         'docs',
     ];
 
+    protected $softCascade = ['cases'];
+
 
     //
     protected $fillable = [
@@ -52,7 +55,7 @@ class File extends Model implements Searchable
 
     public function cases()
     {
-        return $this->hasMany('App\FileCase');
+        return $this->hasMany(FileCase::class);
     }
 
     /**

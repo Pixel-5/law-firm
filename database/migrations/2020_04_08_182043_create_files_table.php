@@ -15,17 +15,17 @@ class CreateFilesTable extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->id();
-            $table->string("number")->unique();
-            $table->string("name");
+            $table->string('number')->unique();
+            $table->string('name');
             $table->string('slug');
-            $table->string("surname");
-            $table->string("email")->unique();
-            $table->string("contact")->unique();
-            $table->date("dob");
-            $table->string("gender");
-            $table->string("postal_address");
-            $table->string("physical_address");
-            $table->string("docs")->nullable(true);
+            $table->string('surname');
+            $table->string('email')->unique();
+            $table->string('contact')->unique();
+            $table->date('dob');
+            $table->string('gender');
+            $table->string('postal_address');
+            $table->string('physical_address');
+            $table->string('docs')->nullable(true);
             $table->timestamps();
             $table->softDeletes();
         });

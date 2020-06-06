@@ -9,8 +9,10 @@ class CreateScheduleTable extends Migration
     public function up()
     {
         Schema::create('schedules', function (Blueprint $table) {
-            $table->increments('id');
-            $table->foreignId('case_id');
+            $table->id();
+            $table->foreignId('case_id')
+                ->constrained()
+                ->onDelete('cascade');
             $table->text('notes')->nullable();
             $table->string('venue');
             $table->datetime('start_time');

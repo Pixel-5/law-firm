@@ -41,4 +41,9 @@ class HomeController
     {
         return view('admin.activity_log');
     }
+
+    public function profile()
+    {
+        return view('profile');
+    }
 }

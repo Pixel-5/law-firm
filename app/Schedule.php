@@ -61,16 +61,6 @@ class Schedule extends Model implements Searchable
         'deleted_at',
     ];
 
-    public function schedules()
-    {
-        return $this->hasMany(Schedule::class, 'schedule_id', 'id');
-    }
-
-    public function schedule()
-    {
-        return $this->belongsTo(Schedule::class, 'schedule_id');
-    }
-
     public function saveQuietly()
     {
         return static::withoutEvents(function () {

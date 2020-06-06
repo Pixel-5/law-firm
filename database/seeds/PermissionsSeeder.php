@@ -3,7 +3,7 @@
 use App\Permission;
 use Illuminate\Database\Seeder;
 
-class PermissionsTableSeeder extends Seeder
+class PermissionsSeeder extends Seeder
 {
     public function run()
     {

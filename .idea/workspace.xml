@@ -20,25 +20,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0320a9e0-a603-4f46-b203-f3a2b803c9ae" name="Lawyer Dashboard" comment="">
-      <change afterPath="$PROJECT_DIR$/database/factories/FileFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/RoleFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Profile.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/ProfileFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_06_06_193746_create_profiles_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeds/ProfileSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/profile.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/edit-profile.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/show-profile.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../smart-tourist-guide/database/factories/ApplicationFactory.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../smart-tourist-guide/database/factories/OwnershipTransferFactory.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../smart-tourist-guide/database/factories/PlotFactory.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../smart-tourist-guide/database/factories/ProfileFactory.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/File.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/File.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/FileCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/FileCase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/UserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Schedule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Schedule.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Venue.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Venue.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/honeypot.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/honeypot.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/FileCaseFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/FileCaseFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_03_000003_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_03_000003_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_03_000004_create_schedule_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_03_000004_create_schedule_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_08_182043_create_files_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_08_182043_create_files_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_08_182112_create_cases_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_08_182112_create_cases_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/CaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/CaseSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/FileSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/FileSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/RoleUserTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/RoleUserTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/client/file/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/file/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/PermissionRoleTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/PermissionRoleSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/PermissionsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/PermissionsSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/RoleUserTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/RoleUserSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/RolesTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/RolesSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UsersSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/top-nav-bar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/top-nav-bar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stubs/model.stub" beforeDir="false" afterPath="$PROJECT_DIR$/stubs/model.stub" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../smart-tourist-guide/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../smart-tourist-guide/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../smart-tourist-guide/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/../smart-tourist-guide/database/seeds/DatabaseSeeder.php" afterDir="false" />
     </list>
     <list id="680dd266-b94c-42b2-bf1f-4eed7f13957c" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,8 +71,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Less File" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -93,7 +108,7 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="develop" />
-                    <option name="lastUsedInstant" value="1591382992" />
+                    <option name="lastUsedInstant" value="1591434469" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="schedule-case" />
@@ -482,30 +497,34 @@
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="394" y="91" key="#Plugins/0.0.1600.900@0.0.1600.900" timestamp="1587052534455" />
+    <state x="529" y="326" key="#Stylelint" timestamp="1591461755144">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state x="529" y="326" key="#Stylelint/0.0.1600.900@0.0.1600.900" timestamp="1591461755144" />
     <state x="257" y="70" width="1343" height="682" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587007165503">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="257" y="70" width="1343" height="682" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.900@0.0.1600.900" timestamp="1587007165503" />
-    <state x="606" y="166" key="#com.intellij.ide.util.MemberChooser" timestamp="1591343665276">
+    <state x="606" y="166" key="#com.intellij.ide.util.MemberChooser" timestamp="1591466432992">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="606" y="166" key="#com.intellij.ide.util.MemberChooser/0.0.1600.900@0.0.1600.900" timestamp="1591343665276" />
+    <state x="606" y="166" key="#com.intellij.ide.util.MemberChooser/0.0.1600.900@0.0.1600.900" timestamp="1591466432992" />
     <state x="482" y="178" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1591291506351">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="482" y="178" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1600.900@0.0.1600.900" timestamp="1591291506351" />
-    <state x="129" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1591367832410">
+    <state x="129" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1591471416026">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="129" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.900@0.0.1600.900" timestamp="1591367832410" />
+    <state x="129" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.900@0.0.1600.900" timestamp="1591471416026" />
     <state x="835" y="191" key="#com.intellij.tools.ToolEditorDialog" timestamp="1587007301846">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="835" y="191" key="#com.intellij.tools.ToolEditorDialog/0.0.1600.900@0.0.1600.900" timestamp="1587007301846" />
-    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1591394789938">
+    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1591472063325">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.900@0.0.1600.900" timestamp="1591394789938" />
+    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.900@0.0.1600.900" timestamp="1591472063325" />
     <state x="581" y="378" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#" timestamp="1591225908587">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
@@ -518,14 +537,14 @@
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="526" y="328" key="ComposerCompositePathDialog/0.0.1600.900@0.0.1600.900" timestamp="1587007258477" />
-    <state x="35" y="124" width="1413" height="713" key="DiffContextDialog" timestamp="1586939416328">
+    <state x="35" y="124" width="1413" height="713" key="DiffContextDialog" timestamp="1591473255389">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="35" y="124" width="1413" height="713" key="DiffContextDialog/0.0.1600.900@0.0.1600.900" timestamp="1586939416328" />
-    <state x="581" y="205" key="FileChooserDialogImpl" timestamp="1587330546332">
+    <state x="35" y="124" width="1413" height="713" key="DiffContextDialog/0.0.1600.900@0.0.1600.900" timestamp="1591473255389" />
+    <state x="581" y="205" key="FileChooserDialogImpl" timestamp="1591461752910">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="581" y="205" key="FileChooserDialogImpl/0.0.1600.900@0.0.1600.900" timestamp="1587330546332" />
+    <state x="581" y="205" key="FileChooserDialogImpl/0.0.1600.900@0.0.1600.900" timestamp="1591461752910" />
     <state width="1557" height="236" key="GridCell.Tab.0.bottom" timestamp="1586942227890">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
@@ -550,10 +569,10 @@
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="556" y="264" key="NewPhpClassDialog/0.0.1600.900@0.0.1600.900" timestamp="1587084818566" />
-    <state x="635" y="373" key="NewPhpFileDialog" timestamp="1591370496532">
+    <state x="635" y="373" key="NewPhpFileDialog" timestamp="1591461460890">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="635" y="373" key="NewPhpFileDialog/0.0.1600.900@0.0.1600.900" timestamp="1591370496532" />
+    <state x="635" y="373" key="NewPhpFileDialog/0.0.1600.900@0.0.1600.900" timestamp="1591461460889" />
     <state x="594" y="320" key="STICKY_NOTE_LIST_DIALOG" timestamp="1586967807033">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
@@ -574,10 +593,10 @@
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1600.900@0.0.1600.900" timestamp="1587078681738" />
-    <state x="618" y="147" key="VCS.ChangeListViewerDialog" timestamp="1587004181816">
+    <state x="618" y="132" key="VCS.ChangeListViewerDialog" timestamp="1591473196306">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="618" y="147" key="VCS.ChangeListViewerDialog/0.0.1600.900@0.0.1600.900" timestamp="1587004181816" />
+    <state x="618" y="132" key="VCS.ChangeListViewerDialog/0.0.1600.900@0.0.1600.900" timestamp="1591473196306" />
     <state x="393" y="183" key="Vcs.Push.Dialog.v2" timestamp="1586883969203">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
@@ -610,10 +629,10 @@
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="460" y="209" key="run.anything.popup/0.0.1600.900@0.0.1600.900" timestamp="1591310309520" />
-    <state x="463" y="113" width="672" height="676" key="search.everywhere.popup" timestamp="1591368295342">
+    <state x="463" y="115" width="672" height="676" key="search.everywhere.popup" timestamp="1591463290367">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="463" y="113" width="672" height="676" key="search.everywhere.popup/0.0.1600.900@0.0.1600.900" timestamp="1591368295342" />
+    <state x="463" y="115" width="672" height="676" key="search.everywhere.popup/0.0.1600.900@0.0.1600.900" timestamp="1591463290367" />
     <state x="523" y="362" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1586908048372">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
