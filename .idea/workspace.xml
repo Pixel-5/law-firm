@@ -24,8 +24,12 @@
       <change afterPath="$PROJECT_DIR$/../smart-tourist-guide/database/factories/OwnershipTransferFactory.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../smart-tourist-guide/database/factories/PlotFactory.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../smart-tourist-guide/database/factories/ProfileFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/edit-profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/edit-profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/show-profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/show-profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/View/Composers/CaseComposer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/View/Composers/CaseComposer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/lawyer/assign-case.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/lawyer/assign-case.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/lawyer/schedule-case.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/lawyer/schedule-case.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/client/cases/pending.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/cases/pending.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../smart-tourist-guide/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../smart-tourist-guide/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../smart-tourist-guide/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/../smart-tourist-guide/database/seeds/DatabaseSeeder.php" afterDir="false" />
     </list>
@@ -603,10 +607,10 @@
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="460" y="209" key="run.anything.popup/0.0.1600.900@0.0.1600.900" timestamp="1591310309520" />
-    <state x="463" y="118" width="672" height="676" key="search.everywhere.popup" timestamp="1591482430351">
+    <state x="463" y="119" width="672" height="676" key="search.everywhere.popup" timestamp="1591508216736">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="463" y="118" width="672" height="676" key="search.everywhere.popup/0.0.1600.900@0.0.1600.900" timestamp="1591482430351" />
+    <state x="463" y="119" width="672" height="676" key="search.everywhere.popup/0.0.1600.900@0.0.1600.900" timestamp="1591508216736" />
     <state x="523" y="362" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1586908048372">
       <screen x="0" y="0" width="1600" height="900" />
     </state>

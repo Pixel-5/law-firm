@@ -19,6 +19,7 @@ class CaseComposer
             'unScheduledCases' => $this->unscheduledCases(),
             'unAssignedCases' => $this->unAssignedCases(),
             'assignedCases' => $this->assignedCases(),
+            'pendingCases' => $this->pendingCases(),
         ]);
     }
 
@@ -53,6 +54,11 @@ class CaseComposer
     public function assignedCases()
     {
         return CaseRepository::assignedCases();
+    }
+
+    public function pendingCases()
+    {
+        return CaseRepository::pendingCases();
     }
 
 

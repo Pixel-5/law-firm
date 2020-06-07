@@ -44,14 +44,13 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @inject('cases','App\Repository\CaseRepositoryInterface')
-                                @foreach ($cases->pendingCases() as $case)
+                                @foreach ($pendingCases as $case)
                                     <tr>
                                         <td>{{ $case->number }}</td>
                                         <td>{{ $case->name }}</td>
-                                        <td>{{ $case->user !== null ? $case->user->name : '' }}</td>
+                                        <td>{{ $case->user !== null ? $case->user->profile->username : '' }}</td>
                                         <td>
-                                            <span class="badge badge-warning">{{ $case->status }}</span>
+                                            <span class="badge badge-pill badge-warning">{{ $case->status }}</span>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -9,7 +9,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Cases</li>
+                <li class="breadcrumb-item active" aria-current="page">Schedules</li>
                 <li class="offset-11 d-sm-block" style="height: 10px;margin-top: -30px;">
                     <a href="{{ url()->previous() }}" title="Back">
                         <i class="fa fa-2x fa-chevron-circle-left"></i>
@@ -47,22 +47,22 @@
                                 <td>{{ $case->file->number }}</td>
                                 <td>{{ $case->number }}</td>
                                 <td>
-                                    {{ $case->user !== null ? $case->user->name : '' }}
+                                    {{ $case->user !== null ? $case->user->profile->username : '' }}
                                 </td>
                                 <td>
-                                    {{ $case->schedule != null ? ' Start: '. $case->schedule->start_time : ''}}
+                                    {{ $case->schedule !== null ? ' Start: '. $case->schedule->start_time : ''}}
                                     <br/>
-                                     {{ $case->schedule != null ? 'End: ' . $case->schedule->end_time : ''}}
+                                     {{ $case->schedule !== null ? 'End: ' . $case->schedule->end_time : ''}}
                                 </td>
-                                <td> {{ $case->schedule != null ? $case->schedule->venue : '' }}</td>
+                                <td> {{ $case->schedule !== null ? $case->schedule->venue : '' }}</td>
                                 <td>
                                     @if (!empty($case->schedule) && \Carbon\Carbon::parse($case->schedule->end_time)->timestamp >
                               \Carbon\Carbon::parse(now())->timestamp)
-                                        <h1-6>Active <span class="badge badge-primary"><i class="fa fa-clock"></i></span></h1-6>
+                                        <h6>Active <span class="badge badge-primary"><i class="fa fa-clock"></i></span></h6>
                                         @elseif (!empty($case->schedule) && \Carbon\Carbon::parse($case->schedule->end_time)->timestamp < \Carbon\Carbon::parse(now())->timestamp)
-                                        <h1-6>Unscheduled <span class="badge badge-warning"><i class="fa fa-cloud-meatball"></i></span></h1-6>
+                                        <h6> Attended <span class="badge badge-success"><i class="fa fa-check-circle"></i></span></h6>
                                     @else
-                                        <h1-6>Attended <span class="badge badge-info"><i class="fa fa-check-circle"></i></span></h1-6>
+                                        <h6> Unscheduled <span class="badge badge-warning"><i class="fa fa-calendar-day"></i></span></h6>
                                     @endif
                                 </td>
                                 <td>

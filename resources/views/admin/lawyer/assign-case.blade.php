@@ -9,7 +9,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Schedule</li>
+                <li class="breadcrumb-item active" aria-current="page">Cases</li>
                 <li class="offset-11 d-sm-block" style="height: 10px;margin-top: -30px;">
                     <a href="{{ url()->previous() }}" title="Back">
                         <i class="fa fa-2x fa-chevron-circle-left"></i>
@@ -48,7 +48,7 @@
                                 <td>{{ $case->file->number }}</td>
                                 <td>{{ $case->number }}</td>
                                 <td>{{ $case->file->name }} {{ $case->file->surname }}</td>
-                                <td>{{ $case->user == null ? "":  $case->user->name}}</td>
+                                <td>{{ $case->user === null ? "":  $case->user->profile->username}}</td>
                                 <td>
                                     <a class="btn {{ $case->user == null ? 'btn-outline-info': 'btn-outline-success'}}
                                         btn-sm  text-center
@@ -56,7 +56,7 @@
                                        data-toggle="dropdown" aria-haspopup="true"
                                        aria-expanded="false"><i class="fa fa-user-circle">
                                         </i>
-                                        @if($case->user != null)
+                                        @if($case->user !== null)
                                             Re-assign
                                         @else Assign
                                         @endif
