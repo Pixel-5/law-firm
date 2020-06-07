@@ -75,7 +75,7 @@
             <div class="col-md-3">
                 <div class="profile-work">
                     <h4>Academic Awards</h4>
-                    @forelse(json_decode($user->profile->academic_awards) as $award)
+                    @forelse(json_decode($user->profile->academic_awards)??[] as $award)
                         @if ($award)
                             <span class="badge badge-success text-white">
                                 <strong>{{ $award }}</strong>
@@ -86,8 +86,8 @@
                             <strong>No available academic records!</strong>
                         </span>
                     @endforelse
-                    <h4>SKILLS</h4>
-                    @forelse(json_decode($user->profile->skills) as $skill)
+                    <h4>Skills</h4>
+                    @forelse(json_decode($user->profile->skills)??[] as $skill)
                         @if ($skill)
                             <span class="badge badge-success text-white">
                                 <strong>{{ $skill }}</strong>

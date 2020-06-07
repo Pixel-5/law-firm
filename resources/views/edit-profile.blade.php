@@ -200,7 +200,7 @@
                                 <div class="form-group">
                                     <div class="col-xs-6">
                                         <label for="awards"><h4>Academic Awards</h4></label>
-                                        @foreach(json_decode($user->profile->academic_awards) as $award)
+                                        @foreach(json_decode($user->profile->academic_awards)??[] as $award)
                                             @if ($award)
                                                 <div>
                                                     <input type="text" name="academic_awards[]"
@@ -242,7 +242,7 @@
                                 <div class="form-group">
                                     <div class="col-xs-5">
                                         <label for="skills"><h4>Skills</h4></label>
-                                        @foreach(json_decode($user->profile->skills) as $skill)
+                                        @foreach(json_decode($user->profile->skills)??[] as $skill)
                                             @if ($skill)
                                                 <div>
                                                     <input type="text" name="skills[]"  class="form-control alert-secondary"
