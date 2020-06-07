@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Facade\CaseRepository;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Gate;
 
 class HomeController
@@ -44,5 +46,11 @@ class HomeController
     public function profile()
     {
         return view('profile');
+    }
+
+    public function chart(): JsonResponse
+    {
+        $data = CaseRepository::getChartData();
+        return response()->json($data);
     }
 }

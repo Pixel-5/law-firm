@@ -16,6 +16,7 @@ class FileComposer
         return $view->with([
             'files' => $this->getFiles(),
             'myClients' => $this->myClients(),
+
             ] );
     }
 

@@ -24,12 +24,20 @@
       <change afterPath="$PROJECT_DIR$/../smart-tourist-guide/database/factories/OwnershipTransferFactory.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../smart-tourist-guide/database/factories/PlotFactory.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../smart-tourist-guide/database/factories/ProfileFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/law-firm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/law-firm.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/View/Composers/CaseComposer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/View/Composers/CaseComposer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/lawyer/assign-case.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/lawyer/assign-case.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/lawyer/schedule-case.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/lawyer/schedule-case.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/client/cases/pending.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/cases/pending.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/View/Composers/FileComposer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/View/Composers/FileComposer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/CaseRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/CaseRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/FileCaseFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/FileCaseFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/CaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/CaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/demo/chart-bar-demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/demo/chart-bar-demo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/default.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../smart-tourist-guide/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../smart-tourist-guide/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../smart-tourist-guide/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/../smart-tourist-guide/database/seeds/DatabaseSeeder.php" afterDir="false" />
     </list>
@@ -84,6 +92,10 @@
             <RecentBranchesForRepo>
               <option name="branches">
                 <list>
+                  <RecentBranch>
+                    <option name="branchName" value="release/0.1.0" />
+                    <option name="lastUsedInstant" value="1591512510" />
+                  </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="develop" />
                     <option name="lastUsedInstant" value="1591434469" />
@@ -252,6 +264,7 @@
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-honeypot" />
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-searchable" />
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-sluggable" />
+      <path value="$PROJECT_DIR$/vendor/askedio/laravel-soft-cascade" />
     </include_path>
   </component>
   <component name="ProjectId" id="1ZrDWUWc1uOVkOu2y5WMHsq0ra8" />
@@ -379,6 +392,8 @@
       <workItem from="1591173137237" />
       <workItem from="1591276847098" />
       <workItem from="1591291656040" />
+      <workItem from="1591543096713" />
+      <workItem from="1591552827526" />
     </task>
     <option name="localTasksCounter" value="2" />
     <option name="updateEnabled" value="false" />
@@ -499,10 +514,10 @@
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="835" y="191" key="#com.intellij.tools.ToolEditorDialog/0.0.1600.900@0.0.1600.900" timestamp="1587007301846" />
-    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1591498418566">
+    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1591562340265">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.900@0.0.1600.900" timestamp="1591498418566" />
+    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.900@0.0.1600.900" timestamp="1591562340265" />
     <state x="581" y="378" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#" timestamp="1591225908587">
       <screen x="0" y="0" width="1600" height="900" />
     </state>

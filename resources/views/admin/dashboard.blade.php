@@ -149,7 +149,7 @@
             </div>
             <div class="card-body">
                 <div class="chart-bar">
-                    <canvas id="myBarChart"></canvas>
+                    <canvas id="casesBarChart"></canvas>
                 </div>
                 <hr>
                 Bar chat showing summary of all cases thrroughout the year

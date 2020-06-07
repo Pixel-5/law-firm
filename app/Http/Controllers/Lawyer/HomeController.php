@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Lawyer;
 
 use App\Facade\CaseRepository;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Gate;
 
 class HomeController extends Controller
@@ -45,5 +46,11 @@ class HomeController extends Controller
 
 //        dd($events);
         return view('lawyer.schedule-cases',compact('events'));
+    }
+
+    public function chart(): JsonResponse
+    {
+        $data = CaseRepository::getMyChartData();
+        return response()->json($data);
     }
 }

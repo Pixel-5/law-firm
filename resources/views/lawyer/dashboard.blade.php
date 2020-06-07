@@ -121,7 +121,7 @@
                     </div>
                     <div class="card-body">
                         <div class="chart-bar">
-                            <canvas id="myBarChart"></canvas>
+                            <canvas id="casesBarChart"></canvas>
                         </div>
                         <hr>
                         Bar chart showing my monthly cases through out the year

@@ -5,6 +5,7 @@ namespace App\Repository\Eloquent;
 
 use App\FileCase;
 use App\Repository\CaseRepositoryInterface;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -147,4 +148,75 @@ class CaseRepository extends AbstractBaseRepository implements CaseRepositoryInt
         $myCases = $myCases->load(['file', 'schedule']);
         return $myCases;
     }
+
+    public function getChartData()
+    {
+
+        $data = [];
+           $starts = $this->model->get()
+            ->groupBy(function($date) {
+                return Carbon::parse($date->created_at)->format('Y'); // grouping by years
+            })->map(function($case){
+                return $case->groupBy(function($date){
+                    return Carbon::parse($date->created_at)->format('m'); // grouping by years
+                });
+            });
+        foreach ($starts as $year => $months) {
+            $months_data = [];
+            $total = 0;
+            foreach ($months as $key =>$value) {
+               $key = Carbon::create()->startOfMonth()->month((int)$key)->startOfMonth()->shortMonthName;
+                $months_data[] =[
+                    'name' => $key,
+                    'value' =>$value->count()
+                ] ;
+                $total = $total + $value->count();
+            }
+
+            $data[(string)$year] = [
+                'months'=> $months_data,
+                'total_cases' => $total
+            ];
+           }
+
+       return [
+           'years' => $data
+       ];
+    }
+
+    public function getMyChartData()
+    {
+
+        $data = [];
+        $starts = $this->model->where('user_id', auth()->user()->id)
+            ->get()
+            ->groupBy(function($date) {
+                return Carbon::parse($date->created_at)->format('Y'); // grouping by years
+            })->map(function($case){
+                return $case->groupBy(function($date){
+                    return Carbon::parse($date->created_at)->format('m'); // grouping by years
+                });
+            });
+        foreach ($starts as $year => $months) {
+            $months_data = [];
+            $total = 0;
+            foreach ($months as $key =>$value) {
+                $key = Carbon::create()->startOfMonth()->month((int)$key)->startOfMonth()->shortMonthName;
+                $months_data[] =[
+                    'name' => $key,
+                    'value' =>$value->count()
+                ] ;
+                $total = $total + $value->count();
+            }
+
+            $data[(string)$year] = [
+                'months'=> $months_data,
+                'total_cases' => $total
+            ];
+        }
+        return [
+            'years' => $data
+        ];
+    }
+
 }

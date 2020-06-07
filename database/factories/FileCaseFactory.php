@@ -30,6 +30,6 @@
             'details' =>  $faker->sentence(100),
             'created_at' =>  Carbon::createFromFormat(
                 'Y-m-d H:i:s',
-                $faker->dateTimeBetween('2020-01-01', '2020-06-05')->format('Y-m-d H:i:s')),
+                $faker->dateTimeBetween('2017-01-01', '2020-06-05')->format('Y-m-d H:i:s')),
         ];
 });

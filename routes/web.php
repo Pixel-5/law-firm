@@ -48,6 +48,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin',
 
     //default routes
         Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+        Route::get('/chart', 'HomeController@chart')->name('chart');
         Route::get('/assign-cases', 'HomeController@assignCases')->name('assign.lawyer.cases');
         Route::get('/re-assign-cases', 'HomeController@reAssignCases')->name('re-assign.lawyer.cases');
         Route::get('/pending/cases', 'HomeController@pendingCases')->name('view.pending-cases');
@@ -60,6 +61,7 @@ Route::group(
 
         //Dashboard
         Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+        Route::get('/chart', 'HomeController@chart')->name('chart');
         Route::get('/my-cases', 'HomeController@myCases')->name('cases');
         Route::get('/my-schedule', 'HomeController@mySchedule')->name('schedule');
         Route::get('/pending-cases', 'HomeController@pendingCases')->name('pending.cases');
