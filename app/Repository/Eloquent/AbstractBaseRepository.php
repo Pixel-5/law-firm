@@ -56,5 +56,5 @@ abstract  class AbstractBaseRepository implements EloquentRepositoryInterface
     /**
      * @inheritDoc
      */
-    public abstract function update(int $id, array $attributes): Model;
+    public abstract function update(int $id, array $attributes): Bool;
 }

@@ -77,11 +77,9 @@ class CaseRepository extends AbstractBaseRepository implements CaseRepositoryInt
     /**
      * @inheritDoc
      */
-    public function update($id, array $attributes): Model
+    public function update($id, array $attributes): Bool
     {
-        $case = $this->find($id);
-        $case->update($attributes);
-        return $case;
+        return $this->find($id)->update($attributes);
     }
 
     /**

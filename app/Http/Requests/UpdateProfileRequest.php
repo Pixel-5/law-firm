@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Gate;
 
-class UpdateCaseRequest extends FormRequest
+class UpdateProfileRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -15,8 +15,8 @@ class UpdateCaseRequest extends FormRequest
      */
     public function authorize()
     {
-        abort_if(Gate::denies('case_edit'), Response::HTTP_FORBIDDEN,
-            'You do not have permission to edit case');
+        abort_if(Gate::denies('profile_edit'), Response::HTTP_FORBIDDEN,
+            'You do not have permission to update profile');
         return true;
     }
 

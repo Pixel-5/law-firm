@@ -28,7 +28,7 @@
     <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
         <div id="content">
-        @include("admin.top-nav-bar")
+        @include("layouts.top-nav-bar")
         <!-- Begin Page Content -->
             <div class="container-fluid">
                 <!-- Page Heading -->

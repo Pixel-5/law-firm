@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Facade\CaseRepository;
 use App\Facade\FileRepository;
 use App\Http\Requests\StoreCaseRequest;
+use App\Http\Requests\UpdateCaseRequest;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
@@ -22,10 +22,13 @@ class CaseController extends Controller
      * @param $id
      * @return Application|Factory|View
      */
+    private $message = 'You do not have permission to';
+
     public function index($id)
     {
         //
-        abort_if(Gate::denies('case_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('case_access'), Response::HTTP_FORBIDDEN,
+            $this->message.' access cases');
         $file =  FileRepository::findById($id);
         return view('client.cases.index',compact('file'));
     }
@@ -38,7 +41,8 @@ class CaseController extends Controller
     public function create()
     {
         //
-        abort_if(Gate::denies('case_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('case_create'), Response::HTTP_FORBIDDEN,
+            $this->message.' create case');
         return null;
     }
 
@@ -68,7 +72,8 @@ class CaseController extends Controller
      */
     public function show($id)
     {
-        abort_if(Gate::denies('case_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('case_show'), Response::HTTP_FORBIDDEN,
+            $this->message.' view case');
         $case =  CaseRepository::showCase($id);
         return view('client.cases.edit',compact('case'));
     }
@@ -82,22 +87,24 @@ class CaseController extends Controller
     public function edit($id)
     {
         //
-        abort_if(Gate::denies('case_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('case_edit'), Response::HTTP_FORBIDDEN,
+            $this->message.' edit case');
         return null;
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param  int  $id
+     * @param UpdateCaseRequest $request
+     * @param int               $id
+     *
      * @return RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCaseRequest $request, $id)
     {
         //
         if ($request->ajax()){
-            if (!empty(CaseRepository::updateCase($id,$request->all()))){
+            if (CaseRepository::updateCase($id,$request->all())){
                 Session::flash('status', 'Successfully assigned lawyer a case');
                 return true;
             }
@@ -105,7 +112,7 @@ class CaseController extends Controller
            return false;
         }
 
-        if (!empty(CaseRepository::updateCase($id,$request->all()))){
+        if (CaseRepository::updateCase($id,$request->all())){
             return redirect()->back()->with('status', 'Successfully updated client a case');
         }
         return redirect()->back()->with('fail', 'Failed to update client case');
@@ -119,15 +126,13 @@ class CaseController extends Controller
      */
     public function destroy(int $case)
     {
-        abort_if(Gate::denies('case_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
+        abort_if(Gate::denies('case_delete'), Response::HTTP_FORBIDDEN,
+            $this->message.' delete case');
         if (CaseRepository::deleteCase($case)){
             Session::flash('status', 'Successfully deleted client case');
             return true;
         }
-
         Session::flash('fail', 'Failed to delete client case');
         return false;
-
     }
 }

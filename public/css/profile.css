@@ -1,17 +1,19 @@
+
 .emp-profile{
     padding: 3%;
     margin-top: 3%;
     margin-bottom: 3%;
     border-radius: 0.5rem;
-    background: #fff;
-    width: 95%;
+    background: #ffffff;
+    width: 100%;
 }
 .profile-img{
     text-align: center;
+    height: 100%;
 }
 .profile-img img{
-    width: 70%;
-    height: 100%;
+    width: 80%;
+    height: 80%;
 }
 .profile-img .file {
     position: relative;

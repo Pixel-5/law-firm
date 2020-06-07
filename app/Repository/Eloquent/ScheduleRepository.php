@@ -25,11 +25,9 @@ class ScheduleRepository extends AbstractBaseRepository implements ScheduleRepos
     }
 
 
-    public function update(int $id, array $attributes): Model
+    public function update(int $id, array $attributes): Bool
     {
-        $schedule = $this->find($id);
-        $schedule->update($attributes);
-        return $schedule;
+        return $this->find($id)->update($attributes);
     }
 
     public function getSchedule($id)

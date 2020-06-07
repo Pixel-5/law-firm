@@ -48,7 +48,7 @@ class AppServiceProvider extends ServiceProvider
         //custom view composers
         View::composer(['client.*','admin.*','lawyer.*',], FileComposer::class);
         View::composer(['lawyer.*', 'admin.*',], CaseComposer::class);
-        View::composer(['lawyer.*', 'admin.*',], UserComposer::class);
+        View::composer(['lawyer.*', 'admin.*','layouts.top-nav-bar'], UserComposer::class);
         View::composer('partials.lawyers',function ($view){
             return $view->with('lawyers',UserRepository::getLawyersOnly());
         });

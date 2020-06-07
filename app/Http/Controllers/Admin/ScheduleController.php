@@ -10,7 +10,7 @@ use App\Http\Requests\UpdateScheduleRequest;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\View\View;
 
 class ScheduleController extends Controller

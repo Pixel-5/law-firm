@@ -15,7 +15,8 @@ class UpdateFileRequest extends FormRequest
      */
     public function authorize()
     {
-        abort_if(Gate::denies('file_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('file_edit'), Response::HTTP_FORBIDDEN,
+            'You do not have permission to update file');
         return true;
     }
 

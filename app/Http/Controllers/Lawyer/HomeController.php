@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Lawyer;
 
 use App\Facade\CaseRepository;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class HomeController extends Controller
 {

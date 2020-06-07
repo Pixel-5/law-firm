@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Facade\ScheduleRepository;
-use Spatie\Activitylog\Models\Activity;
+use Illuminate\Support\Facades\Gate;
 
 class HomeController
 {

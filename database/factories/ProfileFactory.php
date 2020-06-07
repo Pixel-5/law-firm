@@ -9,5 +9,6 @@ use App\Profile;
     $factory->define(Profile::class, function (Faker $faker) {
     return [
         'username' => $faker->userName,
+        'ranking' => random_int(0,10),
     ];
 });

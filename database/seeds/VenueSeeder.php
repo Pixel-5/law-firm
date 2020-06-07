@@ -2,8 +2,9 @@
 
 use App\Venue;
 use Illuminate\Database\Seeder;
+    use Illuminate\Support\Str;
 
-class VenueSeeder extends Seeder
+    class VenueSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,32 +18,34 @@ class VenueSeeder extends Seeder
             [
                 'id'       => 1,
                 'name'     => 'High Court',
+                'slug'     => Str::slug('High Court'),
                 'location' => 'Gaborone'
             ],
             [
                 'id'       => 2,
                 'name'     => 'Broadhurst Magistrate',
+                'slug'     => Str::slug('Broadhurst Magistrate'),
                 'location' => 'Gaborone'
             ],
             [
                 'id'       => 3,
                 'name'     => 'Ex 10 Magistrate',
+                'slug'     => Str::slug('Ex 10 Magistrate'),
                 'location' => 'Gaborone'
             ],
             [
                 'id'       => 4,
                 'name'     => 'Molepolole Magistrate',
+                'slug'     => Str::slug('Molepolole Magistrate'),
                 'location' => 'Molepolole'
             ],
             [
                 'id'       => 5,
                 'name'     => 'Lobatse Magistrate',
+                'slug'     => Str::slug('Lobatse Magistrate'),
                 'location' => 'Lobatse'
             ],
         ];
-        foreach ($venues as $venue){
-            Venue::create($venue);
-        }
-        //Venue::insert($venues);
+        Venue::insert($venues);
     }
 }

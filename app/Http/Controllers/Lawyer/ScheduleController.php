@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\Lawyer;
 
 use App\Facade\ScheduleRepository;
-use App\Jobs\SendSmsNotifications;
 use App\Schedule;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyEventRequest;
 use App\Http\Requests\StoreScheduleRequest;
 use App\Http\Requests\UpdateScheduleRequest;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 

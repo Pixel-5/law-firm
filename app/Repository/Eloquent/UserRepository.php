@@ -11,8 +11,10 @@ use App\Repository\UserRepositoryInterface;
 use App\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use Illuminate\Pipeline\Pipeline;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Hash;
 
 class UserRepository extends AbstractBaseRepository implements UserRepositoryInterface
 {
@@ -40,8 +42,10 @@ class UserRepository extends AbstractBaseRepository implements UserRepositoryInt
     public function getUser(int $id)
     {
         $user = $this->model->findOrFail($id);
-        $user->load('roles');
-        $user->loadCount('cases');
+        $user->load(['roles','profile']);
+        if (!empty($user->roles) && $user->roles->first()->title === 'Lawyer'){
+            $user->loadCount('cases');
+        }
         return $user;
     }
 
@@ -55,9 +59,23 @@ class UserRepository extends AbstractBaseRepository implements UserRepositoryInt
     /**
      * @inheritDoc
      */
-    public function update($id, array $attributes): Model
+
+    public function updateUser(Request $request, int $id)
     {
-        // TODO: Implement update() method.
+        $user = $this->find($id);
+        $request->password = $request->has('password') ? Hash::make($request->password) : $user->password;
+        return $this->update($id, array_filter($request->all()));
+    }
+
+    /**
+     * @param int   $id
+     * @param array $attributes
+     *
+     * @return bool|Model
+     */
+    public function update($id, array $attributes): Bool
+    {
+        return $this->find($id)->update($attributes);
     }
 
     public function userSchedule($id)

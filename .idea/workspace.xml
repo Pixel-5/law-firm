@@ -20,38 +20,81 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0320a9e0-a603-4f46-b203-f3a2b803c9ae" name="Lawyer Dashboard" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Profile.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/ProfileFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_06_06_193746_create_profiles_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/ProfileSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/profile.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/edit-profile.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/show-profile.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Facade/ProfileRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/StoreProfileRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/UpdateProfileRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/UserController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Repository/Eloquent/ProfileRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Repository/ProfileRepositoryInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_06_06_220356_create_schedules_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/add-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/default-profile.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/minus-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/plus-icon.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../smart-tourist-guide/database/factories/ApplicationFactory.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../smart-tourist-guide/database/factories/OwnershipTransferFactory.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../smart-tourist-guide/database/factories/PlotFactory.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../smart-tourist-guide/database/factories/ProfileFactory.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/File.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/File.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/FileCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/FileCase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/FileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/FileController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PermissionsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PermissionsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/RolesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/RolesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ScheduleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ScheduleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SystemCalendarController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SystemCalendarController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UsersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CaseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/ScheduleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/ScheduleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SearchController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SearchController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/MassDestroyEventRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/MassDestroyEventRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/MassDestroyPermissionRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/MassDestroyPermissionRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/MassDestroyRoleRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/MassDestroyRoleRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/MassDestroyUserRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/MassDestroyUserRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreCaseRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreCaseRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreFileRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreFileRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StorePermissionRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StorePermissionRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreRoleRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreRoleRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreScheduleRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreScheduleRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreUserRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreUserRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UpdateCaseRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UpdateCaseRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UpdateFileRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UpdateFileRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UpdatePermissionRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UpdatePermissionRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UpdateRoleRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UpdateRoleRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UpdateScheduleRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UpdateScheduleRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UpdateUserRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UpdateUserRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/RepositoryServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RepositoryServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/AbstractBaseRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/AbstractBaseRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/CaseRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/CaseRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/FileRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/FileRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/ScheduleRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/ScheduleRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Schedule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Schedule.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_03_000003_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_03_000003_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_03_000004_create_schedule_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_03_000004_create_schedule_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_08_182043_create_files_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_08_182043_create_files_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_08_182112_create_cases_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_08_182112_create_cases_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/PermissionRoleTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/PermissionRoleSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/PermissionsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/PermissionsSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/RoleUserTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/RoleUserSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/RolesTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/RolesSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UsersSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/top-nav-bar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/top-nav-bar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/EloquentRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/EloquentRepositoryInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/ProfileFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/ProfileFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_03_000001_create_permissions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_03_000001_create_permissions_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_03_000002_create_roles_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_03_000002_create_roles_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_03_000004_create_schedule_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_03_000005_create_permission_role_pivot_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_03_000005_create_permission_role_pivot_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_03_000006_create_role_user_pivot_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_03_000006_create_role_user_pivot_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_03_000007_add_relationship_fields_to_schedules_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/CaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/CaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/FileSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/FileSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/PermissionsSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/PermissionsSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/UsersSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UsersSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/VenueSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/VenueSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/activity_log.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/activity_log.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/top-nav-bar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/top-nav-bar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/client/file/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/file/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/edit-profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/edit-profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/top-nav-bar.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/default.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/show-profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/show-profile.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stubs/model.stub" beforeDir="false" afterPath="$PROJECT_DIR$/stubs/model.stub" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../smart-tourist-guide/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../smart-tourist-guide/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../smart-tourist-guide/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/../smart-tourist-guide/database/seeds/DatabaseSeeder.php" afterDir="false" />
     </list>
@@ -320,19 +363,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\User\Documents\Projects\law-firm\resources\views" />
-      <recent name="C:\Users\User\Documents\Projects\law-firm\app\Http\Controllers" />
-      <recent name="C:\Users\User\Documents\Projects\law-firm\app\Http\Controllers\Admin" />
-      <recent name="C:\Users\User\Documents\Projects\law-firm\app\Repository\Interface" />
-      <recent name="C:\Users\User\Documents\Projects\law-firm\app\Http\Resources\Admin" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\User\Documents\Projects\law-firm\public\js" />
       <recent name="C:\Users\User\Documents\Projects\law-firm\resources\views\lawyer" />
       <recent name="C:\Users\User\Documents\Projects\law-firm\public\css" />
       <recent name="C:\Users\User\Documents\Projects\law-firm\config" />
       <recent name="C:\Users\User\Documents\Projects\law-firm\resources\lang\en" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Documents\Projects\law-firm\resources\views\layouts" />
+      <recent name="C:\Users\User\Documents\Projects\law-firm\resources\views" />
+      <recent name="C:\Users\User\Documents\Projects\law-firm\app\Http\Controllers" />
+      <recent name="C:\Users\User\Documents\Projects\law-firm\app\Http\Controllers\Admin" />
+      <recent name="C:\Users\User\Documents\Projects\law-firm\app\Repository\Interface" />
     </key>
   </component>
   <component name="RunManager">
@@ -473,10 +516,10 @@
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="937" y="261" key="#Custom_Plugin_Repositories/0.0.1600.900@0.0.1600.900" timestamp="1586966791862" />
-    <state x="427" y="128" key="#Inspections" timestamp="1586921101730">
+    <state x="427" y="128" key="#Inspections" timestamp="1591490490316">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="427" y="128" key="#Inspections/0.0.1600.900@0.0.1600.900" timestamp="1586921101730" />
+    <state x="427" y="128" key="#Inspections/0.0.1600.900@0.0.1600.900" timestamp="1591490490316" />
     <state x="520" y="244" key="#JSCS" timestamp="1587076285160">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
@@ -505,10 +548,10 @@
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="257" y="70" width="1343" height="682" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.900@0.0.1600.900" timestamp="1587007165503" />
-    <state x="606" y="166" key="#com.intellij.ide.util.MemberChooser" timestamp="1591466432992">
+    <state x="606" y="166" key="#com.intellij.ide.util.MemberChooser" timestamp="1591481186128">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="606" y="166" key="#com.intellij.ide.util.MemberChooser/0.0.1600.900@0.0.1600.900" timestamp="1591466432992" />
+    <state x="606" y="166" key="#com.intellij.ide.util.MemberChooser/0.0.1600.900@0.0.1600.900" timestamp="1591481186128" />
     <state x="482" y="178" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1591291506351">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
@@ -521,10 +564,10 @@
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="835" y="191" key="#com.intellij.tools.ToolEditorDialog/0.0.1600.900@0.0.1600.900" timestamp="1587007301846" />
-    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1591472063325">
+    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1591498418566">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.900@0.0.1600.900" timestamp="1591472063325" />
+    <state x="531" y="205" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.900@0.0.1600.900" timestamp="1591498418566" />
     <state x="581" y="378" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#" timestamp="1591225908587">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
@@ -565,14 +608,14 @@
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="623" y="387" key="IDE.errors.dialog/0.0.1600.900@0.0.1600.900" timestamp="1586972855304" />
-    <state x="556" y="264" key="NewPhpClassDialog" timestamp="1587084818566">
+    <state x="556" y="264" key="NewPhpClassDialog" timestamp="1591482360869">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="556" y="264" key="NewPhpClassDialog/0.0.1600.900@0.0.1600.900" timestamp="1587084818566" />
-    <state x="635" y="373" key="NewPhpFileDialog" timestamp="1591461460890">
+    <state x="556" y="264" key="NewPhpClassDialog/0.0.1600.900@0.0.1600.900" timestamp="1591482360869" />
+    <state x="635" y="373" key="NewPhpFileDialog" timestamp="1591481118638">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="635" y="373" key="NewPhpFileDialog/0.0.1600.900@0.0.1600.900" timestamp="1591461460889" />
+    <state x="635" y="373" key="NewPhpFileDialog/0.0.1600.900@0.0.1600.900" timestamp="1591481118638" />
     <state x="594" y="320" key="STICKY_NOTE_LIST_DIALOG" timestamp="1586967807033">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
@@ -629,10 +672,10 @@
       <screen x="0" y="0" width="1600" height="900" />
     </state>
     <state x="460" y="209" key="run.anything.popup/0.0.1600.900@0.0.1600.900" timestamp="1591310309520" />
-    <state x="463" y="115" width="672" height="676" key="search.everywhere.popup" timestamp="1591463290367">
+    <state x="463" y="118" width="672" height="676" key="search.everywhere.popup" timestamp="1591482430351">
       <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="463" y="115" width="672" height="676" key="search.everywhere.popup/0.0.1600.900@0.0.1600.900" timestamp="1591463290367" />
+    <state x="463" y="118" width="672" height="676" key="search.everywhere.popup/0.0.1600.900@0.0.1600.900" timestamp="1591482430351" />
     <state x="523" y="362" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1586908048372">
       <screen x="0" y="0" width="1600" height="900" />
     </state>

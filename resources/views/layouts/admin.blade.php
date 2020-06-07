@@ -36,7 +36,7 @@
         @include("admin.side-nav-bar")
         <main class="main">
             <div id="content-wrapper" class="d-flex flex-column">
-                @include("admin.top-nav-bar")
+                @include("layouts.top-nav-bar")
                 <div id="content-wrapper" class="d-flex flex-column">
                     <div style="padding-top: 20px" class="container-fluid">
                         @if(session('message'))

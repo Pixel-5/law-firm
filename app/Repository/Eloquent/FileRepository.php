@@ -98,7 +98,7 @@ class FileRepository extends AbstractBaseRepository implements FileRepositoryInt
      * @param $request
      * @return Model
      */
-    public function updateFile($id, $request): Model
+    public function updateFile($id, $request)
     {
         return $this->update($id,$request->all());
     }
@@ -106,11 +106,9 @@ class FileRepository extends AbstractBaseRepository implements FileRepositoryInt
     /**
      * @inheritDoc
      */
-    public function update($id, array $attributes): Model
+    public function update($id, array $attributes): Bool
     {
-        $file = $this->find($id);
-        $file->update($attributes);
-        return $file;
+        return $this->find($id)->update($attributes);
     }
     public function myClients()
     {

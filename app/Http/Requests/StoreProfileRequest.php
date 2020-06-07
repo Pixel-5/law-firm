@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Gate;
 
-class StoreCaseRequest extends FormRequest
+class StoreProfileRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -15,8 +15,8 @@ class StoreCaseRequest extends FormRequest
      */
     public function authorize()
     {
-        abort_if(Gate::denies('case_create'), Response::HTTP_FORBIDDEN,
-            'You do not have permission to create case');
+        abort_if(Gate::denies('profile_create'), Response::HTTP_FORBIDDEN,
+            'You do not have permission to create profile');
         return true;
     }
 
@@ -28,18 +28,7 @@ class StoreCaseRequest extends FormRequest
     public function rules()
     {
         return [
-            'plaintiff'      => [
-                'required',
-            ],
-            'defendant'      => [
-                'required',
-            ],
-            'details'        => [
-                'required',
-            ],
-            'number'         => [
-                'required',
-            ],
+            //
         ];
     }
 }

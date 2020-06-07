@@ -91,6 +91,9 @@ Route::group(['middleware' => ['auth', 'role:lawyer,super,admin']], function (){
 
     //Profile routes for Lawyer & Admin's
     Route::resource('profile','ProfileController');
+    Route::resource('user','UserController')->only([
+        'update'
+    ]);
 
 });
 

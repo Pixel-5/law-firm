@@ -136,6 +136,26 @@ class PermissionsSeeder extends Seeder
                 'id'    => '32',
                 'title' => 'case_assign',
             ],
+            [
+                'id'    => '33',
+                'title' => 'profile_create',
+            ],
+            [
+                'id'    => '34',
+                'title' => 'profile_edit',
+            ],
+            [
+                'id'    => '35',
+                'title' => 'profile_show',
+            ],
+            [
+                'id'    => '36',
+                'title' => 'profile_delete',
+            ],
+            [
+                'id'    => '37',
+                'title' => 'profile_access',
+            ],
         ];
 
         Permission::insert($permissions);

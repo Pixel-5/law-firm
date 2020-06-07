@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\File;
 use App\FileCase;
 use App\User;
-use Illuminate\Http\Request;
 use Spatie\Searchable\ModelSearchAspect;
 use Spatie\Searchable\Search;
 

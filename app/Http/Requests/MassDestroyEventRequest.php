@@ -2,8 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Schedule;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -11,7 +10,8 @@ class MassDestroyEventRequest extends FormRequest
 {
     public function authorize()
     {
-        abort_if(Gate::denies('event_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('schedule_delete'), Response::HTTP_FORBIDDEN,
+            'You do not have permission to delete schedules');
 
         return true;
     }

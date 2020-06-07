@@ -8,11 +8,10 @@ use App\Facade\FileRepository;
 use App\Http\Requests\UpdateFileRequest;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\Response;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 
 class FileController extends Controller
 {
@@ -88,9 +87,10 @@ class FileController extends Controller
      */
     public function update(UpdateFileRequest $request, int $file)
     {
-            return back()->with(empty(FileRepository::updateFile($file,$request))?
-                ['fail' => 'Failed to update client file']:
-                ['status' => 'Successfully edited client file']);
+            return back()->with(FileRepository::updateFile($file,$request)?
+                ['status' => 'Successfully edited client file']:
+                ['fail' => 'Failed to update client file']
+               );
     }
 
     /**

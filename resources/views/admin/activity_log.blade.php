@@ -144,7 +144,8 @@
                                     <tr>
                                         <td class="d-xl-none">
                                             <strong class="alert-heading">
-                                                {{ Str::ucfirst($activityLog->subject->name) }}
+                                                {{ Str::ucfirst($activityLog->subject->name)
+                                                 }}
                                                 was {{ $activityLog->description === 'created'?
                                                        'added': $activityLog->description
                                                       }}
@@ -155,7 +156,8 @@
                                         ($activityLog->description === 'updated'? 'alert-warning': 'alert-danger')}}"
                                                  role="alert">
                                                 <div>
-                                                    {{ $activityLog->causer->name }}
+                                                    {{ $activityLog->causer === null ? 'System Developer':
+                                                       $activityLog->causer->name }}
                                                     {{ $activityLog->description === 'created'?
                                                          'added': $activityLog->description }}
                                                     {{ $activityLog->subject->name }} as
@@ -207,7 +209,8 @@
                                            ($activityLog->description === 'updated'? 'alert-warning': 'alert-danger')}}"
                                                  role="alert">
                                                 <div class="searchable-title">
-                                                    {{ $activityLog->causer->name }} {{ $activityLog->description }}
+                                                    {{ $activityLog->causer === null ? 'System Developer':
+                                                       $activityLog->causer->name }} {{ $activityLog->description }}
                                                     file
                                                     {{ $activityLog->subject->number }} for client
                                                     {{ $activityLog->subject->name }}
@@ -287,7 +290,8 @@
                                         ($activityLog->description === 'updated'? 'alert-warning': 'alert-danger')}}"
                                                      role="alert">
                                                     <div>
-                                                        {{ $activityLog->causer->name }} {{ $activityLog->description }}
+                                                        {{ $activityLog->causer === null ? 'System Developer':
+                                                      $activityLog->causer->name }} {{ $activityLog->description }}
                                                         case
                                                         {{ $activityLog->subject->number }}
                                                         for file

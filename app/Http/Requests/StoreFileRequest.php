@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 
 class StoreFileRequest extends FormRequest
 {
@@ -15,7 +15,8 @@ class StoreFileRequest extends FormRequest
      */
     public function authorize()
     {
-        abort_if(Gate::denies('file_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('file_create'), Response::HTTP_FORBIDDEN,
+            'You do not have permission to create file');
         return true;
     }
 
