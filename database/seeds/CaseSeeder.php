@@ -12,6 +12,6 @@ class CaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(FileCase::class, 2000)->create();
+        factory(FileCase::class, 1000)->create();
     }
 }
