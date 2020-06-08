@@ -29,9 +29,8 @@ class FileCase extends Model implements Searchable
         'details',
         'status',
         'number',
-        'docs',
         'user.name',
-        'file.number'
+        'docs',
     ];
 
     protected $fillable = [

@@ -32,16 +32,18 @@ class ScheduleController extends Controller
      * Store a newly created resource in storage.
      *
      * @param StoreScheduleRequest $request
-     * @return RedirectResponse
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(StoreScheduleRequest $request)
     {
+        $schedule = ScheduleRepository::createSchedule($request->all());
         return redirect()->route('admin.schedule.index')
-            ->with(empty(ScheduleRepository::createSchedule($request->all()))?
-                ['fail'=> 'Failed to update schedule'. 'Date & Time slot from '.
+            ->with(empty($schedule))?
+                ['status'=> 'Failed to update schedule'. 'Date & Time slot from '.
                     $request->start_time . ' to ' . $request->end_time .
                     ' is unavailable. Please check another available slot'] :
-                ['status'=> 'Successfully scheduled a case']);
+                ['status'=> 'Successfully scheduled a case'];
     }
 
     /**
