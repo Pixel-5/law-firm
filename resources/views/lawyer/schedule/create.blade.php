@@ -3,8 +3,16 @@
     <div class="container-fluid">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('lawyer.dashboard') }}">Home</a></li>
+                <li class="breadcrumb-item">
+                    <a @php
+                           $isLawyer =  auth()->user()->roles->first()->title === 'Lawyer'
+                       @endphp
+                       href="{{  route($isLawyer? 'lawyer.dashboard': 'admin.dashboard') }}">Home
+                    </a>
+                </li>
+                @if(auth()->user()->roles->first()->title === 'Lawyer')
                 <li class="breadcrumb-item"><a href="{{ route('lawyer.schedule') }}">My Schedule</a></li>
+                @endif
                 <li class="breadcrumb-item active" aria-current="page">Create Schedule</li>
                 <li class="offset-11 d-sm-block" style="height: 10px;margin-top: -30px;">
                     <a href="{{ url()->previous() }}" title="Back">
@@ -24,8 +32,9 @@
                     <div class="card-body">
 
                         <form action="{{  route(isset($case) ? 'admin.schedule.store': 'lawyer.schedule.store')}}"
-                              method="POST" enctype="multipart/form-data" id="form">
+                              method="POST" id="form">
                             @csrf
+                            @honeypot
                             @if(isset($case))
                                 <div class="form-group">
                                     <label for="case_number">Case Number</label>
@@ -124,22 +133,6 @@
                                     {{ trans('cruds.event.fields.end_time_helper') }}
                                 </p>
                             </div>
-                            <div class="form-group {{ $errors->has('recurrence') ? 'has-error' : '' }}">
-                                <label>{{ trans('cruds.event.fields.recurrence') }} </label>
-                                @foreach(App\Schedule::RECURRENCE_RADIO as $key => $label)
-                                    <div>
-                                        <input id="recurrence_{{ $key }}" name="recurrence" type="radio" value="{{ $key }}"
-                                               {{ old('recurrence', 'none') === (string)$key ? 'checked' : '' }}
-                                               required {{ isset($hasNoSchedules)? !$hasNoSchedules? 'disabled':'':'' }}>
-                                        <label for="recurrence_{{ $key }}">{{ $label }}</label>
-                                    </div>
-                                @endforeach
-                                @if($errors->has('recurrence'))
-                                    <em class="invalid-feedback">
-                                        {{ $errors->first('recurrence') }}
-                                    </em>
-                                @endif
-                            </div>
                             <div>
                                 <input class="btn {{ isset($hasNoSchedules)? !$hasNoSchedules? 'btn-secondary':'btn-primary':'btn-primary' }} " type="submit"
                                        value="{{ trans('global.save') }}" {{ isset($hasNoSchedules)? !$hasNoSchedules? 'disabled':'':'' }}>
@@ -156,25 +149,30 @@
     <script type="application/javascript">
 
         $(document).ready(function () {
-            let url = '{{ action('Lawyer\ScheduleController@checkSchedule') }}';
+            let url = '{{ route('check-schedule') }}';
             let token = $('input[name="_token"]').val();
             let start_time = $('#start_time').val();
             let end_time = $('#end_time').val();
             let venue = $("#venue option:selected").text();
             let case_id = '{{ isset($case)? $case->id : $schedule->case->id }}';
 
-
             $("select.venue").change(function () {
                 venue = $(this).children("option:selected").val();
-
-                checkSchedule(start_time, end_time, venue, url, token,case_id);
+                if ((start_time !== '') && (end_time !== '')){
+                    checkSchedule(start_time, end_time, venue, url, token,case_id);
+                }
             });
 
             $("#start_time").on("dp.change", function () {
                 start_time = $(this).val();
                 $("#end_time").val(start_time);
 
-                if ((end_time != null) && new Date(start_time) > new Date(end_time)) {
+                if ((start_time !== null) && new Date(start_time) < new Date()) {
+                    $("#start_time_errors").text("start date time  cannot be past date time");
+                    $("#start_time_errors").css({'display': 'block'});
+                    $('#form').attr('onsubmit', 'return false;');
+                }
+                else if ((end_time !== null) && new Date(start_time) > new Date(end_time)) {
                     $("#start_time_errors").text("start date time  cannot be greater than end date time");
                     $("#start_time_errors").css({'display': 'block'});
                     $('#form').attr('onsubmit', 'return false;');
@@ -188,61 +186,57 @@
 
             $("#end_time").on("dp.change", function () {
                 end_time = $(this).val();
-                checkSchedule(start_time, end_time, venue, url, token,case_id);
+
+                if ((end_time !== null) && new Date(end_time) < new Date()) {
+                    $("#end_time_errors").text("start date time  cannot be past date time");
+                    $("#end_time_errors").css({'display': 'block'});
+                    $('#form').attr('onsubmit', 'return false;');
+
+                }else{
+                    $("#end_time_errors").text("");
+                    $("#end_time_errors").css({'display': 'none'});
+                    checkSchedule(start_time, end_time, venue, url, token,case_id);
+                }
             });
 
         });
         function checkSchedule(start_time, end_time, venue, url, token,case_id) {
-            console.log(venue);
-            console.log(case_id);
-            console.log(start_time);
-            console.log(end_time);
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: {
+                    '_token' : token,
+                    'honeypot':'check_schedule',
+                    'start_time': start_time,
+                    'end_time': end_time,
+                    'venue': venue,
+                    'case': case_id
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response){
 
-            if((start_time !== null) && new Date(start_time) > new Date(end_time)){
+                    $("#start_time_errors").text("");
+                    $("#start_time_errors").css({'display':'none'});
+                    console.log(response.status);
+                    if(response.status){
 
-                $("#start_time_errors").text("start date time  cannot be greater than end date time");
-                $("#start_time_errors").css({'display':'block'});
-                $('#form').attr('onsubmit','return false;');
+                        $("#end_time_errors").text("Schedule for this date already exists");
+                        $("#end_time_errors").css({'display':'block'});
+                        $('#form').attr('onsubmit','return false;');
 
-            }
-            else if (start_time != null){
-
-                $.ajax({
-                    url: url,
-                    type: 'POST',
-                    data: {
-                        '_token' : token,
-                        'start_time': start_time,
-                        'end_time': end_time,
-                        'venue': venue,
-                        'case': case_id
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(response){
-
-                        $("#start_time_errors").text("");
-                        $("#start_time_errors").css({'display':'none'});
-                        console.log(response.status);
-                        if(response.status){
-
-                            $("#end_time_errors").text("Schedule for this date already exists");
-                            $("#end_time_errors").css({'display':'block'});
-                            $('#form').attr('onsubmit','return false;');
-
-                        }else{
-                            $("#end_time_errors").text("");
-                            $("#end_time_errors").css({'display':'none'});
-                            $('#form').attr('onsubmit','return true;');
-                        }
-
-                    },
-                    error: function (response) {
-                        console.log(response);
+                    }else{
+                        $("#end_time_errors").text("");
+                        $("#end_time_errors").css({'display':'none'});
+                        $('#form').attr('onsubmit','return true;');
                     }
-                });
-            }
+
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            });
         }
     </script>
 @endsection

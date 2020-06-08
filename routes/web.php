@@ -68,7 +68,6 @@ Route::group(
 
         // Schedule
         Route::delete('schedules/destroy', 'ScheduleController@massDestroy')->name('events.massDestroy');
-        Route::post('check-schedule', 'ScheduleController@checkSchedule')->name('check-schedule');
         Route::resource('schedule', 'ScheduleController');
 
     });
@@ -93,6 +92,7 @@ Route::group(['middleware' => ['auth', 'role:lawyer,super,admin']], function (){
 
     //Profile routes for Lawyer & Admin's
     Route::resource('profile','ProfileController');
+    Route::post('check-schedule', 'ScheduleController')->name('check-schedule');
     Route::resource('user','UserController')->only([
         'update'
     ]);

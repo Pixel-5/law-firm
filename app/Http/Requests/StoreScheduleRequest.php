@@ -32,9 +32,6 @@ class StoreScheduleRequest extends FormRequest
                 'required',
                 'date_format:' . config('panel.date_format') . ' ' . config('panel.time_format'),
             ],
-            'recurrence' => [
-                'required',
-            ],
         ];
     }
 }
