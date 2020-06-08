@@ -27,7 +27,6 @@ class Schedule extends Model implements Searchable
         'end_time',
         'venue',
         'notes',
-        'case.user.name',
         'case.number'
     ];
 

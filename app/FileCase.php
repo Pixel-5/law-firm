@@ -29,6 +29,7 @@ class FileCase extends Model implements Searchable
         'details',
         'status',
         'number',
+        'user.name',
         'docs',
     ];
 
