@@ -64,10 +64,12 @@
                        href="{{ route('profile.edit',['profile' => $user->id]) }}">Edit Profile</a>
                 </div>
                 @can('user_edit')
-                    <div class="col-md-2">
-                        <a class="btn btn-secondary text-white"
-                           href="{{ route('profile.edit',['profile' => $user->id]) }}">Edit Profile</a>
-                    </div>
+                    @if ($user->id !== auth()->user()->id)
+                        <div class="col-md-2">
+                            <a class="btn btn-secondary text-white"
+                               href="{{ route('profile.edit',['profile' => $user->id]) }}">Edit Profile</a>
+                        </div>
+                    @endif
                 @endcan
             @endif
         </div>
