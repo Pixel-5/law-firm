@@ -11,7 +11,7 @@
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Cases</li>
                 <li class="offset-11 d-sm-block" style="height: 10px;margin-top: -30px;">
-                    <a href="{{ url()->previous() }}" title="Back">
+                    <a href="{{ url()->previous()}}" title="Back">
                         <i class="fa fa-2x fa-chevron-circle-left"></i>
                     </a>
                 </li>
@@ -29,7 +29,7 @@
             <div class="card shadow mb-4">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="example" class="table hover table-striped table-bordered nowrap" style="width:100%">
+                        <table id="cases" class="table hover table-striped table-bordered nowrap" style="width:100%">
                             <thead>
                             <tr>
                                 <th>#</th>
@@ -40,7 +40,6 @@
                                 <th>Action</th>
                             </tr>
                             </thead>
-
                             <tbody>
                             @foreach($cases as $case)
                             <tr>
@@ -50,18 +49,7 @@
                                 <td>{{ $case->file->name }} {{ $case->file->surname }}</td>
                                 <td>{{ $case->user === null ? "":  $case->user->profile->username}}</td>
                                 <td>
-                                    <a class="btn {{ $case->user == null ? 'btn-outline-info': 'btn-outline-success'}}
-                                        btn-sm  text-center
-                                        dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                       data-toggle="dropdown" aria-haspopup="true"
-                                       aria-expanded="false"><i class="fa fa-user-circle">
-                                        </i>
-                                        @if($case->user !== null)
-                                            Re-assign
-                                        @else Assign
-                                        @endif
-                                    </a>
-                                    @include('partials.dropdown-lawyers')
+                                    @include('partials.dropdown-lawyers',[ 'user' => $case->user === null])
                                     <a class="btn btn-warning btn-sm  text-center text-white"
                                        href="{{ route('cases.show', $case->id ) }}">
                                         <i class="fa fa-pencil-alt"></i> Edit</a>
@@ -102,7 +90,9 @@
     <script type="application/javascript">
         $(document).ready(function() {
             let groupColumn = 1;
-            $('#example').DataTable( {
+
+           $('#cases').DataTable( {
+               processing: true,
                 responsive: {
                     details: {
                         display: $.fn.dataTable.Responsive.display.modal( {
@@ -117,41 +107,50 @@
                     }
                 },
                 "columnDefs": [
-                    { "visible": false, "targets": groupColumn }
+                    { "visible": false, "targets": groupColumn },
                 ],
                 "displayLength": 10,
             } );
 
-            $('.dropdown-item').on('click',function () {
+            $('#cases').on('click', '.dropdown-item', function () {
 
-                let lawyer_id = $(this).attr('id');
+                let lawyerId = $(this).attr('id');
                 let url = '{{ route("cases.update",["case"=> ":id"]) }}';
                 let token = $('input[name="_token"]').val();
+                let buttonAssign = this;
 
-                let case_id = $(this).closest('tr').find('td:nth-child(1)').text();
-                url = url.replace(':id', case_id);
-                console.log('url = '+url);
-                console.log('token = '+token);
+                $(buttonAssign).parents('.dropdown').find('.btn').html(
+                    `<i class="fa fa-spinner fa-spin"></i> assigning...`);
+                $(buttonAssign).parents(".dropdown").find('.btn').attr('disabled', true);
+                const caseId = $(buttonAssign).closest('tr').find('td:nth-child(1)').text();
+                url = url.replace(':id', caseId);
+
                 $.ajax({
                     url: url,
                     type: 'POST',
                     data: {
                         '_token' : token,
                         _method: 'PUT',
-                        'user_id': lawyer_id
+                        'user_id': lawyerId
                     },
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    success: function(response){
-                        console.log("Successfully assigned lawyer case");
+                    success: function(response) {
                         window.location.reload();
+                        // $(buttonAssign).parents('.dropdown').find('.btn').html(`<i class="init-icon fa fa-user-circle"></i> Re-assign`);
+                        // $(buttonAssign).parents('.dropdown').find('.btn').removeClass('btn-outline-info');
+                        // $(buttonAssign).parents('.dropdown').find('.btn').addClass('btn-outline-success');
+                        // $(buttonAssign).parents(".dropdown").find('.btn').attr('disabled', false);
+                        // $('#status_alert').addClass('show');
+                        // $('#status_alert').find('.status').text("Successfully assigned lawyer a case");
                     },
                     error: function (response) {
                         console.log("error "+ response);
                     }
                 });
-            })
+            });
+
         } );
     </script>
     @include('partials.case-delete-btn')

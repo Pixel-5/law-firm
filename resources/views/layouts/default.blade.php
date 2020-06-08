@@ -38,22 +38,17 @@
                 @hasSection('breadcrumb')
                     @yield('breadcrumb')
                 @endif
-
                 @if(Session::has('status'))
-                    <div class="alert  alert-success alert-dismissible fade show" role="alert">
-                        <strong>Alert!</strong> {{  Session::get('status') }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                @endif
-                @if(Session::has('fail'))
-                    <div class="alert  alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Alert!</strong> {{  Session::get('fail') }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+                  <div class="container-fluid">
+                          <div class="alert  alert-success alert-dismissible fade {{ Session::has('status')? 'show':'hide' }}"
+                               role="alert" id="status_alert">
+                              <strong class="status">Alert!</strong>
+                              {{  Session::get('status') }}
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                  </div>
                 @endif
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     @hasSection('title')
@@ -107,6 +102,11 @@
 @yield('custom-scripts')
 <script type="application/javascript">
     $(document).ready(function () {
+
+        $(".alert-dismissible").fadeTo(2000, 500).slideUp(500, function(){
+            $(".alert-dismissible").alert('close');
+        });
+
         $(".loader").addClass("hidden");
         var ctx;
         var myBarChart;
