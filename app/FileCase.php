@@ -30,8 +30,6 @@ class FileCase extends Model implements Searchable
         'status',
         'number',
         'docs',
-        'user.name',
-        'file.number'
     ];
 
     protected $fillable = [
