@@ -16,6 +16,9 @@
 </head>
 
 <body id="page-top">
+<div class="loader">
+    <img src="{{ asset('img/loading.gif') }}" alt="Loading..." />
+</div>
 <!-- Page Wrapper -->
 <div id="wrapper">
 
@@ -104,6 +107,7 @@
 @yield('custom-scripts')
 <script type="application/javascript">
     $(document).ready(function () {
+        $(".loader").addClass("hidden");
         var ctx;
         var myBarChart;
         let labels = [];
