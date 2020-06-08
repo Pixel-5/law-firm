@@ -122,17 +122,16 @@ class CaseController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $case
-     * @return bool
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy(int $case)
     {
         abort_if(Gate::denies('case_delete'), Response::HTTP_FORBIDDEN,
             $this->message.' delete case');
         if (CaseRepository::deleteCase($case)){
-            Session::flash('status', 'Successfully deleted client case');
-            return true;
+            return response()->json(['status'=>'Successfully deleted client case']);
         }
-        Session::flash('fail', 'Failed to delete client case');
-        return false;
+        return response()->json(['status'=>'Failed to delete client case']);
     }
 }
