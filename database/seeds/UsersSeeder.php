@@ -48,7 +48,7 @@ class UsersSeeder extends Seeder
         foreach ($users as $user) {
             $user->profile()->save(factory(Profile::class)->make());
         }
-        factory(User::class, 7)->create()->each(function ($user) {
+        factory(User::class, 9)->create()->each(function ($user) {
             $user->roles()->sync(random_int(1,3));
             $user->profile()->save(factory(Profile::class)->make());
         });
