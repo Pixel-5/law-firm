@@ -107,6 +107,26 @@
             $(".alert-dismissible").alert('close');
         });
 
+        $(".btn-primary").on('click', function () {
+            $(this).attr('disabled', true);
+            $(this).closest('form').submit();
+            $(this).html(
+                `<i class="fa fa-spinner fa-spin"></i> loading...`);
+        });
+
+        // $(".btn-danger").on('click', function () {
+        //     $(this).attr('disabled', true);
+        //     $(this).closest('form').submit();
+        //
+        // });
+
+        $(".btn-warning").on('click', function () {
+            $(this).attr('disabled', true);
+            $(this).closest('form').submit();
+            $(this).html(
+                `<i class="fa fa-spinner fa-spin"></i> updating...`);
+        });
+
         $(".loader").addClass("hidden");
         var ctx;
         var myBarChart;

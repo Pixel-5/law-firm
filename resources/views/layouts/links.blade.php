@@ -12,6 +12,12 @@
 <link href="{{ asset('css/bootstrap-datetimepicker.css') }}" rel="stylesheet" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
 <style>
+    @media screen and (min-width: 1058px) {
+        body {
+            padding-left: 17px;
+            width: calc(100vw - 17px);
+        }
+    }
     .hidden {
         display: none;
     }

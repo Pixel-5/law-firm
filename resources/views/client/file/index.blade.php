@@ -35,7 +35,7 @@
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 @can('file_create')
-                <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"
                    data-toggle="modal" data-target="#addClientFileModal">
                     <i class="fas fa-file-archive fa-sm text-white-50"></i>
                     New Client File
@@ -63,7 +63,7 @@
                                         <div class="form-group col-md-6">
                                             <label for="inputName">Name</label>
                                             <input type="text" class="form-control" id="name"
-                                                   name="name">
+                                                   name="name" required>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="inputSurname">Surname</label>
@@ -107,17 +107,17 @@
                                     <div class="form-group">
                                         <label for="inputAddress">Physical Address</label>
                                         <input type="text" class="form-control" id="physicalAddress"
-                                               name="physical_address" placeholder="1234 Main St">
+                                               name="physical_address" placeholder="1234 Main St" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputAddress2">Postal Address</label>
                                         <input type="text" class="form-control"
-                                               name="postal_address" id="PostalAddress" >
+                                               name="postal_address" id="PostalAddress" required>
                                     </div>
                                     <div class="form-group">
                                         <div class="custom-file">
                                             <input type="file"
-                                                   name="docs[]" class="custom-file-input"
+                                                   name="docs[]" class="form-control-file"
                                                    id="validatedCustomFile" multiple>
                                             <label class="custom-file-label" for="validatedCustomFile">
                                                 Upload supporting docs...</label>

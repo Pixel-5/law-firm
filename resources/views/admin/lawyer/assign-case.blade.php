@@ -49,7 +49,7 @@
                                 <td>{{ $case->file->name }} {{ $case->file->surname }}</td>
                                 <td>{{ $case->user === null ? "":  $case->user->profile->username}}</td>
                                 <td>
-                                    @include('partials.dropdown-lawyers',[ 'user' => $case->user === null])
+                                    @include('partials.dropdown-lawyers',[ 'user' => $case->user])
                                     <a class="btn btn-warning btn-sm  text-center text-white"
                                        href="{{ route('cases.show', $case->id ) }}">
                                         <i class="fa fa-pencil-alt"></i> Edit</a>
@@ -72,17 +72,8 @@
 @endsection
 
 @section('custom-scripts')
-
-    <!-- Page level plugins -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
     <!-- Custom scripts for all pages-->
-    <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
-    <script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    @include('partials.case-delete-btn')
     <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
@@ -133,9 +124,6 @@
                         _method: 'PUT',
                         'user_id': lawyerId
                     },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
                     success: function(response) {
                         window.location.reload();
                         // $(buttonAssign).parents('.dropdown').find('.btn').html(`<i class="init-icon fa fa-user-circle"></i> Re-assign`);
@@ -153,5 +141,4 @@
 
         } );
     </script>
-    @include('partials.case-delete-btn')
 @endsection
