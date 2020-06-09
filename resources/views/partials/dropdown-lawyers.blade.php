@@ -2,12 +2,12 @@
 @inject('users', 'App\Repository\UserRepositoryInterface')
 
 <span class="dropdown">
-    <button class="btn {{ $user ? 'btn-outline-info': 'btn-outline-success'}}  btn-sm  text-center dropdown-toggle assign"
+    <button class="btn {{ isset($user) ?'btn-outline-success': 'btn-outline-info'}}  btn-sm  text-center dropdown-toggle assign"
             type="button" id="triggerId" data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false">
         <i class="init-icon fa fa-user-circle"></i>
-        @if(!$user)
+        @if(isset($user))
             Re-assign
         @else
             Assign
