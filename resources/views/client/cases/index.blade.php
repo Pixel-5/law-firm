@@ -1,7 +1,6 @@
 @extends('layouts.default')
 <!--  Content -->
-@section('content')
-<div class="container-fluid">
+@section('breadcrumb')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
@@ -19,6 +18,9 @@
             </li>
         </ol>
     </nav>
+@endsection
+@section('content')
+<div class="container-fluid">
     <div class="alert alert-info fade show" role="alert">
         <strong>Client has {{ $file->cases->count() }} cases recorded!</strong> Click the button to register a new case.
         @can('case_create')
@@ -88,10 +90,10 @@
         </div>
         @endcan
     </div>
-    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+    <div class="row-cols-1">
         <input type="hidden" name="_token" value="{{ @csrf_token() }}">
         @foreach($file->cases as $case)
-            <div class="card shadow mb-4">
+            <div class="card shadow mb-4" id="{{ $case->id }}">
             <!-- Card Header - Accordion -->
             <a href="#{{ $case->number }}" class="d-block card-header py-3" data-toggle="collapse"
                role="button" aria-expanded="true" aria-controls="collapseCardExample">
@@ -157,32 +159,21 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                                @can('case_edit')
-                            <a class="btn btn-info btn-sm  text-center text-white"
-                                    href="{{ route('cases.show', $case->id) }}">
-                                <i class="fa fa-file-contract"></i> Edit Case
-                            </a>
-                                @endcan
-                                @can('case_delete')
-                            <button class="delete btn btn-danger btn-sm  text-center text-white"
-                                    data-toggle="modal" data-target="#" id="{{ $case->id }}">
-                                <i class="fa fa-trash"></i> Delete Case
-                            </button>
-                                @endcan
-                                @can('case_assign')
-                            <a class="btn {{ $case->user == null ? 'btn-outline-info': 'btn-outline-success'}}
-                                btn-sm  text-center
-                                dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                               data-toggle="dropdown" aria-haspopup="true"
-                               aria-expanded="false"><i class="fa fa-user-circle">
-                                </i>
-                                @if($case->user != null)
-                                    Re-assign
-                                @else Assign
-                                @endif
-                            </a>
-                                @endcan
-                            @include('partials.dropdown-lawyers')
+                            @can('case_edit')
+                                <a class="btn btn-info btn-sm  text-center text-white"
+                                   href="{{ route('cases.show', $case->id) }}">
+                                    <i class="fa fa-file-contract"></i> Edit Case
+                                </a>
+                            @endcan
+                            @can('case_delete')
+                                    <button class="delete btn btn-danger btn-sm  text-center text-white"
+                                            data-toggle="modal" data-target="#" id="{{ $case->id }}">
+                                        <i class="fa fa-trash"></i> Delete Case
+                                    </button>
+                            @endcan
+                            @can('case_assign')
+                                    @include('partials.dropdown-lawyers', ['user' => $case->user])
+                            @endcan
                             <button class="attach btn btn-secondary btn-sm text-center text-white"
                                     id="{{ $case->id }}"
                                     data-id='{{ $case->id }}'>
@@ -190,7 +181,7 @@
                             </button>
                         </div>
                         <div class="col-md-6 align-items-end">
-                            @if($case->user != null)
+                            @if(isset($case->user))
                                 <div class="row">
                                     <div class="col-md-11">
                                         <div class="d-flex p-2 font-weight-bold" style="float: right;">
@@ -202,7 +193,10 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="d-flex p-2 font-weight-bold" style="float: right;">
-{{--                                        <span >Date of Court Appeal:  {{ $case ?? ''->date_appeal }}</span>--}}
+                                        @if(isset($case->schedule))
+                                            <span >Date of Court Appeal:  {{ $case->schedule->start_date }}
+                                                {{ $case->schedule->end_date }}</span>
+                                            @endif
                                     </div>
                                 </div>
                             </div>
@@ -219,29 +213,33 @@
 @endsection
 <!-- /.container-fluid -->
 @section('custom-scripts')
-@include('partials.case-delete-btn')
-<script type="application/javascript">
-    $(document).ready(function() {
-        $('.dropdown-item').on('click', function(){
-            //Update id
-            let user_id = $(this).attr('id');
-            let case_id = '{{ $case->id ?? null }}';
+    <script src="{{ asset('js/bootbox.min.js') }}"></script>
+    <script type="application/javascript">
+        $(document).ready(function() {
+            $('.dropdown-item').on('click', function(){
+            $("html, body").animate({
+                scrollTop: $(
+                    'html, body').get(0).scrollHeight
+            }, 2000);
+
+            let userId = $(this).attr('id');
+            let caseId = '{{ $case->id ?? null }}';
             let url = '{{ route("cases.update",["case"=> ":id"]) }}';
             let token = $('input[name="_token"]').val();
-
-            if(case_id != null)
+            let buttonAssign = this;
+            $(buttonAssign).parents('.dropdown').find('.btn').html(
+                `<i class="fa fa-spinner fa-spin"></i> assigning...`);
+            $(buttonAssign).parents(".dropdown").find('.btn').attr('disabled', true);
+            if(caseId)
             {
-                url = url.replace(':id', case_id);
+                url = url.replace(':id', caseId);
                 $.ajax({
                     url: url,
                     type: 'POST',
                     data: {
                         '_token' : token,
                         _method: 'PUT',
-                        'user_id': user_id
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        'user_id': userId
                     },
                     success: function(response){
                         console.log("Successfully updated client case");
@@ -252,6 +250,51 @@
                     }
                 });
             }
+        });
+            $('.delete').on('click', function () {
+                let btn = this;
+                $(btn).attr('disabled', true);
+                let id = $(btn).attr('id');
+
+            bootbox.confirm({
+                    title: "Delete Case?",
+                    message: "Do you really want to delete this record?",
+                    buttons: {
+                        cancel: {
+                            label: '<i class="fa fa-times"></i> Cancel'
+                        },
+                        confirm: {
+                            label: '<i class="fa fa-check"></i> Confirm'
+                        }
+                    },
+                    callback: function (result) {
+                        let url = '{{ route("admin.cases.destroy",["case"=> ":id"]) }}';
+                        url = url.replace(':id', id);
+                        if(result){
+                            $(btn).html(
+                                `<i class="fa fa-spinner fa-spin"></i> deleting...`);
+                            // AJAX Request
+                            $.ajax({
+                                url: url,
+                                type: 'POST',
+                                data: {
+                                    '_token' : $('input[name="_token"]').val(),
+                                    _method: 'delete'
+                                },
+                                success: function(response){
+                                    console.log(response.status);
+                                    window.location.reload();
+                                    // $('#status_alert').find('strong.status').html(''+response.status);
+                                },
+                                error: function (response) {
+                                    console.log("error "+ response.data);
+                                }
+                            });
+                        }else{
+                            $(btn).attr('disabled', false);
+                        }
+                    }
+                });
         });
     } );
 </script>
