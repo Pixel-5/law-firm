@@ -27,7 +27,7 @@
         "spatie/laravel-searchable": "^1.6",
         "spatie/laravel-sluggable": "^2.4",
         "spatie/laravel-welcome-notification": "^2.0",
-        "yajra/laravel-datatables-oracle": "^9.7"
+        "yajra/laravel-datatables-oracle": "^9.10"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
