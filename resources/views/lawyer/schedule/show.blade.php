@@ -106,15 +106,6 @@
                                 {{  $schedule->end_time }}
                             </td>
                         </tr>
-                        <tr>
-                            <th>
-                                {{ trans('cruds.event.fields.recurrence') }}
-                            </th>
-                            <td>
-                                {{ App\Schedule::RECURRENCE_RADIO[ $schedule->recurrence] ?? '' }}
-                            </td>
-                        </tr>
-
                         </tbody>
                     </table>
 
