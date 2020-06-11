@@ -30,7 +30,7 @@ class HomeController extends Controller
         $events = [];
         $myCases = CaseRepository::myCases();
         foreach ($myCases as $case) {
-            if ($case->schedule !== null && !empty($case->schedule)){
+            if (!empty($case->schedule)){
                 $schedule = $case->schedule;
                 $events[] = [
                     'title'   => 'Case No: '. $case->number,
