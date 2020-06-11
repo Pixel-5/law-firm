@@ -43,9 +43,9 @@ class UsersSeeder extends Seeder
                 'updated_at'     => now(),
             ],
         ];
-        User::insert($users);
-        $users = User::all();
+
         foreach ($users as $user) {
+            $user = User::create($user);
             $user->profile()->save(factory(Profile::class)->make());
         }
         factory(User::class, 7)->create()->each(function ($user) {
