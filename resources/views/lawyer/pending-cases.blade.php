@@ -64,7 +64,7 @@
                                             <i class="fa fa-calendar"></i>
                                         </a>
                                         <a class="btn btn-info btn-sm  text-center text-white" title="Open file"
-                                           href="{{ route('admin.open.client.cases', $case->file->id) }}">
+                                           href="{{ route('files.show', $case->file->id) }}">
                                             <i class="fa fa-folder-open"></i>
                                         </a>
                                     </td>
