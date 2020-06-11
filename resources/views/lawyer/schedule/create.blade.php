@@ -56,7 +56,7 @@
                                         @php
                                             $hasNoSchedules = false;
                                         @endphp
-                                        @foreach ($cases as $case)
+                                        @foreach ($myCases as $case)
                                             @if ($case->schedule === null)
                                                 @php
                                                     $hasNoSchedules = true;

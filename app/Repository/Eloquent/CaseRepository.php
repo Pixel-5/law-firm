@@ -143,8 +143,7 @@ class CaseRepository extends AbstractBaseRepository implements CaseRepositoryInt
      */
     public function myCases()
     {
-        $lawyer = Auth::user();
-        $myCases = $this->model->where('user_id', $lawyer->id)->get();
+        $myCases = $this->model->where('user_id', Auth::user()->id)->get();
         $myCases = $myCases->load(['file', 'schedule']);
         return $myCases;
     }
