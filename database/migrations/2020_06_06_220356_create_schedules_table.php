@@ -22,7 +22,6 @@ class CreateSchedulesTable extends Migration
             $table->string('venue');
             $table->datetime('start_time');
             $table->datetime('end_time');
-            $table->string('recurrence');
             $table->timestamps();
             $table->softDeletes();
         });
