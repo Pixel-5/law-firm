@@ -30,7 +30,7 @@
             <div class="form-group">
                 <label for="gender">ID/Passport Number</label>
                 <input type="text" class="form-control"
-                       name="id" id="id" required>
+                       name="identifier" id="identifier" required>
             </div>
         </div>
     </div>
@@ -78,7 +78,7 @@
         </div>
         <div class="form-group col-md-6">
             <label for="inputContact">Preferred Email</label>
-            <input type="tel" class="form-control"
+            <input type="email" class="form-control"
                    name="preferred_email" id="preferred_email"
                    required>
         </div>
@@ -88,7 +88,7 @@
             <div class="form-group">
                 <label for="gender">Preferred method of contact</label>
                 <select class="form-control form-control-md"
-                        name="gender" required>
+                        name="preferred_contact" required>
                     <option disabled>Select</option>
                     <option>CELL</option>
                     <option>TEL</option>
@@ -98,7 +98,7 @@
         </div>
         <div class="form-group col-md-6">
             <label for="inputContact">Marital Status</label>
-            <input type="tel" class="form-control"
+            <input type="text" class="form-control"
                    name="marital_status" id="marital_status"
                    required>
         </div>
@@ -121,7 +121,7 @@
     <div class="form-group">
         <label for="inputAddress2">Preferred methods of receiving invoices</label>
         <select class="form-control form-control-md"
-                name="invoice_method" required>
+                name="preferred_invoice" required>
             <option disabled>Select</option>
             <option>contact</option>
             <option>email</option>
