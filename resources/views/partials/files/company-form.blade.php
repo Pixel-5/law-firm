@@ -1,11 +1,5 @@
 
 <div class="container-fluid">
-    <div class="row mt-4">
-        <div class="col col-12">
-            <h6>Document Number: SA/ADMIN/CLI-INFO-FRM/01</h6>
-        </div>
-    </div>
-    <hr>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputName">Name of Company</label>

@@ -64,7 +64,7 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form action="{{ route('admin.files.store') }}"
+                            <form action="{{ route('admin.individual.store') }}"
                                   enctype="multipart/form-data" method="POST">
                                 @csrf
                                 @honeypot
@@ -87,7 +87,7 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <form action="{{ route('admin.files.store') }}"
+                                <form action="{{ route('admin.company.store') }}"
                                       enctype="multipart/form-data" method="POST">
                                     @csrf
                                     @honeypot

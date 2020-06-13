@@ -3,9 +3,9 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use Faker\Generator as Faker;
-use App\Individual;
+use App\MovableProperty;
 
-$factory->define(Individual::class, function (Faker $faker) {
+$factory->define(MovableProperty::class, function (Faker $faker) {
     return [
         //
     ];

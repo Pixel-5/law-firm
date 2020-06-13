@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRetainerFilesTable extends Migration
+class CreateCaseSubCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,14 @@ class CreateRetainerFilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('retainer_files', function (Blueprint $table) {
+        Schema::create('case_sub_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('number')->unique();
-            $table->string('slug');
-            $table->foreignId('individual_files_id')
-                ->constrained()
+            $table->foreignId('category_id')
+                ->constrained('case_categories','id')
                 ->onDelete('CASCADE');
-            $table->foreignId('company_files_id')
-                ->constrained()
-                ->onDelete('CASCADE');
+            $table->string('name');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -34,6 +31,6 @@ class CreateRetainerFilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('retainer_files');
+        Schema::dropIfExists('case_sub_categories');
     }
 }

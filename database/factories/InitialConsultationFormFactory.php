@@ -3,9 +3,9 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use Faker\Generator as Faker;
-use App\Individual;
+use App\InitialConsultationForm;
 
-$factory->define(Individual::class, function (Faker $faker) {
+$factory->define(InitialConsultationForm::class, function (Faker $faker) {
     return [
         //
     ];

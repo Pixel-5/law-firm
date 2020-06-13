@@ -3,9 +3,9 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use Faker\Generator as Faker;
-use App\CompanyFile;
+use App\Company;
 
-$factory->define(CompanyFile::class, function (Faker $faker) {
+$factory->define(Company::class, function (Faker $faker) {
     return [
         //
     ];

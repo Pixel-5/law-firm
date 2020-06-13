@@ -3,9 +3,9 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use Faker\Generator as Faker;
-use App\Individual;
+use App\ClientProperty;
 
-$factory->define(Individual::class, function (Faker $faker) {
+$factory->define(ClientProperty::class, function (Faker $faker) {
     return [
         //
     ];

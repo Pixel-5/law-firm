@@ -11,7 +11,7 @@ use Spatie\Searchable\SearchResult;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class RetainerFile extends Model
+class Retainer extends Model
 {
     use SoftDeletes, HasSlug, Notifiable, LogsActivity, SoftCascadeTrait;
 
@@ -28,8 +28,8 @@ class RetainerFile extends Model
 
     protected $fillable = [
         'number',
-        'individual_files_id',
-        'company_files_id',
+        'individuals_id',
+        'companies_id',
     ];
 
     public function getSearchResult(): SearchResult

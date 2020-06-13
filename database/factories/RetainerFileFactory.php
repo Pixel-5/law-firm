@@ -3,9 +3,9 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use Faker\Generator as Faker;
-use App\RetainerFile;
+use App\Retainer;
 
-$factory->define(RetainerFile::class, function (Faker $faker) {
+$factory->define(Retainer::class, function (Faker $faker) {
     return [
         //
     ];

@@ -3,9 +3,9 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use Faker\Generator as Faker;
-use App\Individual;
+use App\PlotTransfer;
 
-$factory->define(Individual::class, function (Faker $faker) {
+$factory->define(PlotTransfer::class, function (Faker $faker) {
     return [
         //
     ];

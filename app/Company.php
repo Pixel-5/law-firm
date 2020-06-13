@@ -11,59 +11,64 @@ use Spatie\Searchable\SearchResult;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class IndividualFile extends Model
+class Company extends Model
 {
     use SoftDeletes, HasSlug, Notifiable, LogsActivity, SoftCascadeTrait;
 
-    protected static $logName = 'individual';
+    protected static $logName = 'company';
 
     protected static $logOnlyDirty = true;
 
     protected static $submitEmptyLogs = false;
 
-    protected $softCascade = ['retainer'];
 
     protected static $logAttributes = [
-        'surname',
         'name',
-        'dob',
-        'identifier',
-        'gender',
+        'entity',
         'physical_address',
+        'postal_address',
+        'director_name',
+        'director_physical_address',
+        'director_postal_address',
         'tel',
         'cell',
         'fax',
         'email',
         'preferred_email',
         'preferred_contact',
-        'marital_status',
-        'name_spouse',
-        'name_next_kin',
-        'contact_next_kin',
+        'contact_person',
+        'directors_postal_address',
+        'directors_physical_address',
+        'alternative_contact',
         'preferred_invoice',
         'docs',
+        'agreement_service',
     ];
+
+    protected $softCascade = ['retainer'];
 
     protected $fillable = [
         'number',
-        'surname',
         'name',
-        'dob',
-        'identifier',
-        'gender',
+        'entity',
         'physical_address',
+        'postal_address',
+        'director_name',
+        'director_physical_address',
+        'director_postal_address',
         'tel',
         'cell',
         'fax',
         'email',
         'preferred_email',
         'preferred_contact',
-        'marital_status',
-        'name_spouse',
-        'name_next_kin',
-        'contact_next_kin',
+        'contact_person',
+        'directors_postal_address',
+        'directors_physical_address',
+        'alternative_contact',
         'preferred_invoice',
         'docs',
+        'agreement_service',
     ];
 
     public function routeNotificationForNexmo($notification)
@@ -89,7 +94,7 @@ class IndividualFile extends Model
     public function getSlugOptions() : SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom(['name','surname'])
+            ->generateSlugsFrom('name')
             ->saveSlugsTo('slug');
     }
 }
