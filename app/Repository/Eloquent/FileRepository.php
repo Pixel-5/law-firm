@@ -21,7 +21,8 @@ class FileRepository extends AbstractBaseRepository implements FileRepositoryInt
 {
     /**
      * FileRepository constructor.
-     * @param Model $model
+     *
+     * @param File $model
      */
     public function __construct(File $model)
     {
