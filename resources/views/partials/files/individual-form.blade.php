@@ -29,7 +29,7 @@
         </div>
     </div>
     <div class="form-row">
-        <div class="form-group col-md-12">
+        <div class="form-group col-md-6">
             <div class="form-group">
                 <label for="gender">Gender</label>
                 <select class="form-control form-control-md"
@@ -40,6 +40,27 @@
                 </select>
             </div>
         </div>
+        <div class="form-group col-md-6">
+            <div class="form-group">
+                <label for="gender">Is Citizen?</label>
+                <select class="form-control form-control-md"
+                        name="is_citizen" required>
+                    <option disabled>Select</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputAddress">Nationality</label>
+        <input type="text" class="form-control" id="nationality"
+               name="nationality" required>
+    </div>
+    <div class="form-group">
+        <label for="inputAddress">Occupation</label>
+        <input type="text" class="form-control" id="nationality"
+               name="occupation" required>
     </div>
     <div class="form-group">
         <label for="inputAddress">Physical Address</label>

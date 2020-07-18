@@ -28,8 +28,10 @@ class Individual extends Model
         'name',
         'dob',
         'identifier',
+        'nationality',
         'gender',
         'physical_address',
+        'postal_address',
         'tel',
         'cell',
         'fax',
@@ -48,11 +50,12 @@ class Individual extends Model
         'name',
         'number',
         'surname',
-        'name',
+        'slug',
         'dob',
         'identifier',
         'gender',
         'physical_address',
+        'postal_address',
         'tel',
         'cell',
         'fax',
@@ -67,6 +70,7 @@ class Individual extends Model
         'nationality',
         'is_citizen',
         'occupation',
+        'agreement_service',
     ];
 
     public function routeNotificationForNexmo($notification)
@@ -92,7 +96,7 @@ class Individual extends Model
     public function getSlugOptions() : SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom(['name','surname'])
+            ->generateSlugsFrom('number')
             ->saveSlugsTo('slug');
     }
 }

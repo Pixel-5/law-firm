@@ -22,7 +22,11 @@ class CreateIndividualsTable extends Migration
             $table->string('dob');
             $table->string('identifier');
             $table->string('gender');
+            $table->string('nationality');
+            $table->string('occupation');
+            $table->boolean('is_citizen')->default(false);
             $table->string('physical_address');
+            $table->string('postal_address');
             $table->string('tel')->nullable();
             $table->string('cell');
             $table->string('fax')->nullable();
@@ -30,11 +34,12 @@ class CreateIndividualsTable extends Migration
             $table->string('preferred_email');
             $table->string('preferred_contact');
             $table->string('marital_status');
-            $table->string('name_spouse');
+            $table->string('name_spouse')->nullable();
             $table->string('name_next_kin');
             $table->string('contact_next_kin');
             $table->string('preferred_invoice');
             $table->string('docs');
+            $table->boolean('agreement_service')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

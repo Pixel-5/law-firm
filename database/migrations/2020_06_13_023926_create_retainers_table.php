@@ -23,7 +23,9 @@ class CreateRetainersTable extends Migration
             $table->foreignId('companies_id')
                 ->constrained()
                 ->onDelete('CASCADE');
+            $table->boolean('agreement_service')->default(false);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

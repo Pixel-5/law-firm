@@ -62,7 +62,6 @@ class FileRepository extends AbstractBaseRepository implements FileRepositoryInt
             }
         }
          return  $this->create([
-
                     'number'            => $file_no,
                     'name'              => $name,
                     'surname'           => $surname,
@@ -75,7 +74,6 @@ class FileRepository extends AbstractBaseRepository implements FileRepositoryInt
                     'docs'              => is_null($docs) ? "" : implode(",",$files),
              ]);
     }
-
     /**
      * @param $id
      * @return mixed

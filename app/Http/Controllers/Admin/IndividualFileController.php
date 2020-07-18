@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Facade\IndividualFileRepository;
 use App\Http\Controllers\Controller;
+use App\Individual;
 use Illuminate\Http\Request;
+use App\Facade\FileRepository;
+use App\Http\Requests\StoreIndividualFileRequest;
 
 class IndividualFileController extends Controller
 {
@@ -33,9 +37,12 @@ class IndividualFileController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreIndividualFileRequest $request)
     {
-        //
+        return redirect()->back()->with(
+            empty(IndividualFileRepository::storeFile($request)) ?
+                ['fail' => 'Failed to add a client file'] :
+                ['status' => 'Successfully added new Individual client file']);
     }
 
     /**
