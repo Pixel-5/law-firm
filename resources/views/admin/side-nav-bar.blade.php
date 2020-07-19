@@ -38,11 +38,11 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Select File:</h6>
 
-                @foreach($files as $file)
-                    <a class="collapse-item" href="{{ route('cases.show', $file->id) }}">{{ $file->number }}
-                        <span class="badge badge-secondary">{{ $file->cases->count() }}</span>
-                    </a>
-                @endforeach
+{{--                @foreach($files as $file)--}}
+{{--                    <a class="collapse-item" href="{{ route('cases.show', $file->id) }}">{{ $file->number }}--}}
+{{--                        <span class="badge badge-secondary">{{ 0 }}</span>--}}
+{{--                    </a>--}}
+{{--                @endforeach--}}
             </div>
         </div>
     </li>
@@ -85,7 +85,7 @@
                         @if ($case->user_id === $lawyer->id)
                           @php
                               ++$cases;
-                          @endphp  
+                          @endphp
                         @endif
                     @endforeach
                     <a class="collapse-item" href="#">{{ $lawyer->name }}

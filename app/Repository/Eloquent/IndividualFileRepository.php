@@ -36,7 +36,7 @@ class IndividualFileRepository extends AbstractBaseRepository implements FileRep
      */
     public function allFiles(): Collection
     {
-        // TODO: Implement allFiles() method.
+       return $this->model->all();
     }
 
     /**
@@ -110,7 +110,7 @@ class IndividualFileRepository extends AbstractBaseRepository implements FileRep
      */
     public function deleteFile($file)
     {
-        // TODO: Implement deleteFile() method.
+        return $this->delete($file);
     }
 
     /**
@@ -119,7 +119,7 @@ class IndividualFileRepository extends AbstractBaseRepository implements FileRep
      */
     public function findById($id)
     {
-        // TODO: Implement findById() method.
+        //Todo return $this->find($id)->load('cases');
     }
 
     /**
@@ -129,6 +129,6 @@ class IndividualFileRepository extends AbstractBaseRepository implements FileRep
      */
     public function updateFile($file, $request)
     {
-        // TODO: Implement updateFile() method.
+        return $this->update($file,$request->all());
     }
 }

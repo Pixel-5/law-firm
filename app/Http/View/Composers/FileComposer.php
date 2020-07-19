@@ -7,6 +7,7 @@ namespace App\Http\View\Composers;
 
 use App\Facade\CaseRepository;
 use App\Facade\FileRepository;
+use App\Facade\IndividualFileRepository;
 use Illuminate\View\View;
 
 class FileComposer
@@ -14,15 +15,25 @@ class FileComposer
     public function compose(View $view)
     {
         return $view->with([
-            'files' => $this->getFiles(),
-            'myClients' => $this->myClients(),
+            'individuals' => $this->getIndividualFiles(),
+            'companies'   => $this->getIndividualFiles(),
+            'retainers'   => $this->getIndividualFiles(),
+            'myClients'   => $this->myClients(),
 
             ] );
     }
 
-    public function getFiles()
+    public function getIndividualFiles()
     {
-        return FileRepository::allFiles();
+        return IndividualFileRepository::allFiles();;
+    }
+    public function getCompanyFiles()
+    {
+        return IndividualFileRepository::allFiles();
+    }
+    public function getRetainerFiles()
+    {
+        return IndividualFileRepository::allFiles();;
     }
     public function myClients()
     {
