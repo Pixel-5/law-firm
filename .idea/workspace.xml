@@ -20,18 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2a36650-46ac-44ee-b4e4-5b2af27c0aaf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/client/file/company/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/client/file/company/show.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/client/file/individual/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/client/file/individual/show.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/client/file/retainer/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/client/file/retainer/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/View/Composers/FileComposer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/View/Composers/FileComposer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/IndividualFileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/IndividualFileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreIndividualFileRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreIndividualFileRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Individual.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Individual.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/AbstractBaseRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/AbstractBaseRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/IndividualFileRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/IndividualFileRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/side-nav-bar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/side-nav-bar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/client/cases/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/cases/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/client/file/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/file/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/individual-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/individual-form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/default.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,8 +196,17 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/client/file/retainer" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.detected.package.stylelint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.path.for.package.stylelint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="node.js.selected.package.stylelint" value="" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="php.override.implement.member.chooser.php.doc" value="DEFAULT" />
   </component>
@@ -220,7 +228,7 @@
       <updated>1595032307606</updated>
       <workItem from="1595032313499" duration="11508000" />
       <workItem from="1595096387170" duration="2984000" />
-      <workItem from="1595163148791" duration="8550000" />
+      <workItem from="1595163148791" duration="32585000" />
     </task>
     <servers />
   </component>
@@ -248,6 +256,14 @@
       <screen x="0" y="27" width="1600" height="872" />
     </state>
     <state x="608" y="227" width="374" height="455" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.27.1600.872@0.27.1600.872" timestamp="1595037085992" />
+    <state x="536" y="184" width="524" height="492" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1595188169517">
+      <screen x="0" y="27" width="1600" height="872" />
+    </state>
+    <state x="536" y="184" width="524" height="492" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.27.1600.872@0.27.1600.872" timestamp="1595188169517" />
+    <state x="586" y="386" width="424" height="152" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#" timestamp="1595185773688">
+      <screen x="0" y="27" width="1600" height="872" />
+    </state>
+    <state x="586" y="386" width="424" height="152" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#/0.27.1600.872@0.27.1600.872" timestamp="1595185773688" />
     <state x="509" y="166" width="577" height="569" key="NewPhpClassDialog" timestamp="1595038067433">
       <screen x="0" y="27" width="1600" height="872" />
     </state>
@@ -256,5 +272,9 @@
       <screen x="0" y="27" width="1600" height="872" />
     </state>
     <state x="598" y="364" width="399" height="157" key="NewPhpFileDialog/0.27.1600.872@0.27.1600.872" timestamp="1595045742391" />
+    <state x="463" y="206" width="672" height="678" key="search.everywhere.popup" timestamp="1595178861163">
+      <screen x="0" y="27" width="1600" height="872" />
+    </state>
+    <state x="463" y="206" width="672" height="678" key="search.everywhere.popup/0.27.1600.872@0.27.1600.872" timestamp="1595178861163" />
   </component>
 </project>

@@ -42,9 +42,8 @@ abstract  class AbstractBaseRepository implements EloquentRepositoryInterface
     }
 
     /**
-     * @param $id
-     * @param array $attributes
-     * @return void
+     * @param int $id
+     * @return bool
      */
 
     public function delete(int $id)

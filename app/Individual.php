@@ -21,7 +21,7 @@ class Individual extends Model
 
     protected static $submitEmptyLogs = false;
 
-    protected $softCascade = ['retainer'];
+    //protected $softCascade = ['individual'];
 
     protected static $logAttributes = [
         'surname',

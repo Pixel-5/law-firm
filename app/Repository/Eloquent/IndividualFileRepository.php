@@ -3,15 +3,13 @@
 
 namespace App\Repository\Eloquent;
 
-
-use App\File;
 use App\Individual;
 use App\Repository\FileRepositoryInterface;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Gate;
 
 class IndividualFileRepository extends AbstractBaseRepository implements FileRepositoryInterface
 {
@@ -28,7 +26,8 @@ class IndividualFileRepository extends AbstractBaseRepository implements FileRep
      */
     public function update(int $id, array $attributes): bool
     {
-        // TODO: Implement update() method.
+        $attributes['is_citizen'] = $attributes['is_citizen'] === 'Yes';
+        return $this->find($id)->update($attributes);
     }
 
     /**
@@ -41,7 +40,7 @@ class IndividualFileRepository extends AbstractBaseRepository implements FileRep
 
     /**
      * @param $request
-     * @return \App\Repository\Model
+     * @return Model
      */
     public function storeFile($request)
     {
@@ -115,20 +114,20 @@ class IndividualFileRepository extends AbstractBaseRepository implements FileRep
 
     /**
      * @param $id
-     * @return \App\Repository\Model|null
+     * @return void
      */
     public function findById($id)
     {
-        //Todo return $this->find($id)->load('cases');
+        return $this->find($id);
     }
 
     /**
-     * @param $file
+     * @param $id
      * @param $request
      * @return \App\Repository\Model
      */
-    public function updateFile($file, $request)
+    public function updateFile($id, $request)
     {
-        return $this->update($file,$request->all());
+        return $this->update($id,$request->all());
     }
 }

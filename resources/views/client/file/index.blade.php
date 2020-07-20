@@ -50,31 +50,30 @@
                             </button>
                         </div>
                     </div>
-            @endcan
-                <!-- Modal -->
+                    <!-- Modal -->
                     <div class="modal fade" id="individualClientModal" tabindex="-1" role="dialog"
-                     aria-labelledby="individualClientModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="clientModalLabel">
-                                    <b>Client's Information - Individual</b>
-                                </h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+                         aria-labelledby="individualClientModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="clientModalLabel">
+                                        <b>Client's Information - Individual</b>
+                                    </h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="{{ route('admin.individual.store') }}" enctype="multipart/form-data"
+                                      method="POST">
+                                    @csrf
+                                    @honeypot
+                                    <x-individualForm file=""/>
+                                    @include('partials.agreement-service')
+                                    @include('partials.modal-footer-submit-btn')
+                                </form>
                             </div>
-                            <form action="{{ route('admin.individual.store') }}"
-                                  enctype="multipart/form-data" method="POST">
-                                @csrf
-                                @honeypot
-                                 @include('partials.files.individual-form')
-                                @include('partials.agreement-service')
-                                @include('partials.modal-footer-submit-btn')
-                            </form>
                         </div>
                     </div>
-                </div>
                     <div class="modal fade" id="companyClientModal" tabindex="-1" role="dialog"
                          aria-labelledby="companyClientModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg" role="document">
@@ -102,10 +101,12 @@
                          aria-labelledby="retainerClientModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
-                               @include('partials.files.retainer-form')
+                                @include('partials.files.retainer-form')
                             </div>
                         </div>
                     </div>
+                @endcan
+
             </div>
             <div class="row">
                 <div class="container-fluid">
@@ -143,11 +144,10 @@
                                                          aria-labelledby="clientModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-lg" role="document">
                                                             <div class="modal-content">
-                                                                <form action="{{ route('admin.files.update',[$file->id]) }}"
+                                                                <form action="{{ route('admin.individual.update',[$file->id]) }}"
                                                                       enctype="multipart/form-data" method="POST">
                                                                     @csrf
                                                                     @honeypot
-
                                                                     @method('PUT')
                                                                     <div class="modal-header">
                                                                         <h5 class="modal-title" id="clientModalLabel">
@@ -179,7 +179,7 @@
                                                     <td>
                                                         @can('case_access')
                                                             <a class="btn btn-info btn-sm  text-center text-white"
-                                                               href="{{ route('admin.files.show', $file->id) }}">
+                                                               href="{{ route('admin.individual.show', $file->id) }}">
                                                                 <i class="fa fa-file-contract"></i> Open</a>
                                                         @endcan
                                                         @can('file_edit')
@@ -191,7 +191,8 @@
                                                             <button class="delete btn btn-danger btn-sm text-center text-white"
                                                                     id="{{ $file->id }}"
                                                                     data-id='{{ $file->id }}'>
-                                                                <i class="fa fa-trash"></i>Delete</button>
+                                                                <i class="fa fa-trash"></i>Delete
+                                                            </button>
                                                         @endcan
                                                     </td>
 
@@ -380,7 +381,8 @@
                                     <!-- Begin Page Content -->
                                     <input type="hidden" name="_token" value="{{ @csrf_token() }}">
                                     <div class="table-responsive">
-                                        <table id="retainers" class="table table-striped table-bordered nowrap" style="width:100%">
+                                        <table id="retainers" class="table table-striped table-bordered nowrap"
+                                               style="width:100%">
                                             <thead>
                                             <tr>
                                                 <th>#</th>
@@ -503,8 +505,8 @@
                                                         @endcan
                                                         @can('file_edit')
                                                             <a class="btn btn-warning btn-sm  text-center text-white"
-                                                               data-toggle="modal" data-target="#editClientFileModal"><i class="fa
-                                fa-pencil-alt"></i> Edit</a>
+                                                               data-toggle="modal" data-target="#editClientFileModal">
+                                                                <i class="fa fa-pencil-alt"></i> Edit</a>
                                                         @endcan
                                                         @can('file_delete')
                                                             <button class="delete btn btn-danger btn-sm text-center text-white"
@@ -535,157 +537,176 @@
 @endsection
 
 @section('custom-scripts')
-<!-- Custom scripts for all pages-->
-<script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
-<script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
-<script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('js/responsive.bootstrap4.min.js') }}"></script>
-<!-- jQuery library -->
 
-<!-- Latest compiled JavaScript --><!-- Page level plugins -->
-<script src="{{ asset('js/bootbox.min.js') }}"></script>
-<script type="application/javascript">
-    $(document).ready(function() {
-        $('.delete').click(function(){
-            var el = this;
+    <!-- Latest compiled JavaScript --><!-- Page level plugins -->
+    <script src="{{ asset('js/bootbox.min.js') }}"></script>
+    <!-- Page level plugins -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-            // Delete id
-            let file = $(this).data('id');
-            console.log('id = '+file);
-            // Confirm box
-            bootbox.confirm("Do you really want to delete record?", function(result) {
-                let url = '{{ route("admin.files.destroy",["file"=> ":id"]) }}';
-                url = url.replace(':id', file);
-                console.log('url = '+url);
-                if(result){
-                    // AJAX Request
-                    $.ajax({
-                        url: url,
-                        type: 'POST',
-                        data: {
-                            '_token' : $('input[name="_token"]').val(),
-                            'honeypot': 'update',
-                            _method: 'delete'
+
+    <!-- Custom scripts for all pages-->
+    <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('js/responsive.bootstrap4.min.js') }}"></script>
+
+    <script type="application/javascript">
+        $(document).ready(function() {
+            $('#individual').on('click', '.delete', function(){
+                var el = this;
+
+                // Delete id
+                let file = $(this).data('id');
+                console.log('id = '+file);
+
+                bootbox.confirm({
+                    title: "Delete Individual FIle?",
+                    message: "Do you really want to delete this record?",
+                    buttons: {
+                        cancel: {
+                            label: `<i class="fa fa-times"></i> Cancel`
                         },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        success: function(response){
-
-                            // Removing row from HTML Table
-                            console.log(response);
-                            if(response == 1){
-                                $(el).closest('tr').css('background','tomato');
-                                $(el).closest('tr').fadeOut(800,function(){
-                                    $(this).remove();
-                                });
-                                window.location.reload();
-                            }else{
-                                bootbox.alert('Record not deleted.');
-                            }
-
+                        confirm: {
+                            label: `<i class="fa fa-check"></i> Confirm`
                         }
-                    });
-                }
+                    },
+                    callback: function (result) {
+                        let url = '{{ route("admin.individual.destroy",["individual"=> ":id"]) }}';
+                        url = url.replace(':id', file);
+                        if(result){
+                            $(el).html(`<i class="fa fa-spinner fa-spin"></i> deleting...`);
+                            // AJAX Request
+                            $.ajax({
+                                url: url,
+                                type: 'POST',
+                                data: {
+                                    '_token' : '{{ csrf_token() }}',
+                                    _method: 'DELETE'
+                                },
+                                success: function(response){
 
+                                    // Removing row from HTML Table
+                                    console.log(response);
+                                    if(response == 1){
+                                        $(el).closest('tr').css('background','tomato');
+                                        $(el).closest('tr').fadeOut(800,function(){
+                                            $(this).remove();
+                                        });
+                                        window.location.reload();
+                                    }else{
+                                        bootbox.alert('Record not deleted.');
+                                    }
+                                    // var table = $('#individual').DataTable();
+                                    // table.row($(btn).parents('tr')).remove().draw(false); //c
+                                    // window.location.reload();
+                                },
+                                error: function (response) {
+                                    console.log("error "+ response);
+                                }
+                            });
+                        }
+                    }
+                });
             });
-
-        });
-        $('#retainerCompanyForm').hide();
-        $('#retainerIndividualForm').hide();
-        $('#submit_div').hide();
-        $("#retainerType").change(function () {
-           let retainerType = $("#retainerType :selected").text();
-           $('#submit_div').show();
-           switch (retainerType) {
-               case 'Individual':
-                   $('#retainerIndividualForm').show();
-                   $('#retainerCompanyForm').hide();
-                   break;
-               case 'Company':
-                   $('#retainerCompanyForm').show();
-                   $('#retainerIndividualForm').hide();
-                   break;
-               case 'Both':
-                   $('#retainerCompanyForm').show();
-                   $('#retainerIndividualForm').show();
-                   break;
-               default:
-                   $('#retainerCompanyForm').hide();
-                   $('#retainerIndividualForm').hide();
-                   $('#submit_div').hide();
-                   break;
-           }
-        });
-        $('#individual').DataTable( {
-            responsive: {
-                details: {
-                    display: $.fn.dataTable.Responsive.display.modal( {
-                        header: function ( row ) {
-                            var data = row.data();
-                            return 'File Details for '+data[1];
-                        }
-                    } ),
-                    renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
-                        tableClass: 'table'
-                    } )
+            $('#retainerCompanyForm').hide();
+            $('#retainerIndividualForm').hide();
+            $('#submit_div').hide();
+            $("#retainerType").change(function () {
+               let retainerType = $("#retainerType :selected").text();
+               $('#submit_div').show();
+               switch (retainerType) {
+                   case 'Individual':
+                       $('#retainerIndividualForm').show();
+                       $('#retainerCompanyForm').hide();
+                       break;
+                   case 'Company':
+                       $('#retainerCompanyForm').show();
+                       $('#retainerIndividualForm').hide();
+                       break;
+                   case 'Both':
+                       $('#retainerCompanyForm').show();
+                       $('#retainerIndividualForm').show();
+                       break;
+                   default:
+                       $('#retainerCompanyForm').hide();
+                       $('#retainerIndividualForm').hide();
+                       $('#submit_div').hide();
+                       break;
+               }
+            });
+            $('#individual').DataTable( {
+                responsive: {
+                    details: {
+                        display: $.fn.dataTable.Responsive.display.modal( {
+                            header: function ( row ) {
+                                var data = row.data();
+                                return 'File Details for '+data[1];
+                            }
+                        } ),
+                        renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+                            tableClass: 'table'
+                        } )
+                    }
                 }
-            }
-        } );
-        $('#companies').DataTable( {
-            responsive: {
-                details: {
-                    display: $.fn.dataTable.Responsive.display.modal( {
-                        header: function ( row ) {
-                            let data = row.data();
-                            return data[0];
-                        },
-                    } ),
-                    renderer: function ( api, rowIdx, columns ) {
-                        var data = $.map( columns, function ( col, i ) {
-                            return col.columnIndex === 1?
-                                '<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
-                                '<td>'+col.title+':'+'</td> '+
-                                '<td>'+col.data+'</td>'+
-                                '</tr>' :
-                                '';
-                        } ).join('');
+            } );
+            $('#companies').DataTable( {
+                responsive: {
+                    details: {
+                        display: $.fn.dataTable.Responsive.display.modal( {
+                            header: function ( row ) {
+                                let data = row.data();
+                                return data[0];
+                            },
+                        } ),
+                        renderer: function ( api, rowIdx, columns ) {
+                            var data = $.map( columns, function ( col, i ) {
+                                return col.columnIndex === 1?
+                                    '<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
+                                    '<td>'+col.title+':'+'</td> '+
+                                    '<td>'+col.data+'</td>'+
+                                    '</tr>' :
+                                    '';
+                            } ).join('');
 
-                        return data;
-                    }
+                            return data;
+                        }
+                    },
+
+                    "paging": true
                 },
+            } );
+            $('#retainers').DataTable( {
+                responsive: {
+                    details: {
+                        display: $.fn.dataTable.Responsive.display.modal( {
+                            header: function ( row ) {
+                                let data = row.data();
+                                return data[0];
+                            },
+                        } ),
+                        renderer: function ( api, rowIdx, columns ) {
+                            var data = $.map( columns, function ( col, i ) {
+                                return col.columnIndex === 1?
+                                    '<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
+                                    '<td>'+col.title+':'+'</td> '+
+                                    '<td>'+col.data+'</td>'+
+                                    '</tr>' :
+                                    '';
+                            } ).join('');
 
-                "paging": true
-            },
-        } );
-        $('#retainers').DataTable( {
-            responsive: {
-                details: {
-                    display: $.fn.dataTable.Responsive.display.modal( {
-                        header: function ( row ) {
-                            let data = row.data();
-                            return data[0];
-                        },
-                    } ),
-                    renderer: function ( api, rowIdx, columns ) {
-                        var data = $.map( columns, function ( col, i ) {
-                            return col.columnIndex === 1?
-                                '<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
-                                '<td>'+col.title+':'+'</td> '+
-                                '<td>'+col.data+'</td>'+
-                                '</tr>' :
-                                '';
-                        } ).join('');
+                            return data;
+                        }
+                    },
 
-                        return data;
-                    }
+                    "paging": true
                 },
-
-                "paging": true
-            },
+            } );
         } );
-    } );
-</script>
+    </script>
 @endsection

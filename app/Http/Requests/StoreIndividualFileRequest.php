@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Symfony\Component\HttpFoundation\Response;
-use Gate;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Gate;
+
 
 class StoreIndividualFileRequest extends FormRequest
 {
