@@ -50,6 +50,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin',
     //Schedule
     Route::resource('schedule', 'ScheduleController');
 
+    //Forms
+    Route::resource('conveyancing', 'ConveyancingController');
+
     //default dashboard routes
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
     Route::get('/chart', 'HomeController@chart')->name('chart');

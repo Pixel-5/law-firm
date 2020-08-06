@@ -20,17 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2a36650-46ac-44ee-b4e4-5b2af27c0aaf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/client/file/individual/conveyance_form.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/client/file/individual/litigation_form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Company.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Company.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/IndividualFileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/IndividualFileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreIndividualFileRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreIndividualFileRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Individual.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Individual.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/AbstractBaseRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/AbstractBaseRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/IndividualFileRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/IndividualFileRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Retainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Retainer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/client/cases/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/cases/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/client/file/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/file/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/individual-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/individual-form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/default.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,6 +180,10 @@
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-searchable" />
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-sluggable" />
       <path value="$PROJECT_DIR$/vendor/askedio/laravel-soft-cascade" />
+      <path value="$PROJECT_DIR$/vendor/laminas/laminas-diactoros" />
+      <path value="$PROJECT_DIR$/vendor/laminas/laminas-zendframework-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
     </include_path>
   </component>
   <component name="ProjectId" id="1epxOv2aoUzSEdpG7nxrVBBPMbW" />
@@ -191,6 +195,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -268,13 +273,15 @@
       <screen x="0" y="27" width="1600" height="872" />
     </state>
     <state x="509" y="166" width="577" height="569" key="NewPhpClassDialog/0.27.1600.872@0.27.1600.872" timestamp="1595038067433" />
-    <state x="598" y="364" width="399" height="157" key="NewPhpFileDialog" timestamp="1595045742391">
-      <screen x="0" y="27" width="1600" height="872" />
+    <state x="478" y="278" width="324" height="149" key="NewPhpFileDialog" timestamp="1596649787273">
+      <screen x="0" y="0" width="1280" height="720" />
     </state>
+    <state x="478" y="278" width="324" height="149" key="NewPhpFileDialog/0.0.1280.720@0.0.1280.720" timestamp="1596649787273" />
     <state x="598" y="364" width="399" height="157" key="NewPhpFileDialog/0.27.1600.872@0.27.1600.872" timestamp="1595045742391" />
-    <state x="463" y="206" width="672" height="678" key="search.everywhere.popup" timestamp="1595178861163">
-      <screen x="0" y="27" width="1600" height="872" />
+    <state x="370" y="148" width="672" height="560" key="search.everywhere.popup" timestamp="1596690357237">
+      <screen x="0" y="0" width="1280" height="720" />
     </state>
+    <state x="370" y="148" width="672" height="560" key="search.everywhere.popup/0.0.1280.720@0.0.1280.720" timestamp="1596690357237" />
     <state x="463" y="206" width="672" height="678" key="search.everywhere.popup/0.27.1600.872@0.27.1600.872" timestamp="1595178861163" />
   </component>
 </project>

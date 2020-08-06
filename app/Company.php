@@ -97,4 +97,9 @@ class Company extends Model
             ->generateSlugsFrom('name')
             ->saveSlugsTo('slug');
     }
+
+    public function client()
+    {
+        return $this->morphOne('App\Client', 'clientable');
+    }
 }

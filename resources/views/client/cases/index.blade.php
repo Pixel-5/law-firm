@@ -27,7 +27,7 @@
             @can('case_create')
                 <a href="#" class="btn btn-md btn-outline-primary shadow-sm" data-toggle="modal" data-target="#openClientCaseModal">
                     <i class="fa fa-balance-scale fa-sm text-dark-100"></i> Litigation</a>
-                <a href="#" class="btn btn-md btn-outline-primary shadow-sm ml-5" data-toggle="modal" data-target="#openClientCaseModal">
+                <a href="#" class="btn btn-md btn-outline-primary shadow-sm ml-5" data-toggle="modal" data-target="#openClientCoveyanceModal">
                     <i class="fa fa-file-pdf fa-sm text-dark-100"></i> Conveyancing</a>
                 <!-- Modal -->
                 <div class="modal fade" id="openClientCaseModal" tabindex="-1" role="dialog"
@@ -91,131 +91,41 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="modal fade" id="openClientCoveyanceModal" tabindex="-1" role="dialog"
+                     aria-labelledby="openClientCoveyanceModal" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header  alert alert-primary" role="alert">
+                                <h4 class="modal-title">
+                                    Conveyancing Information Form
+                                </h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <form method="POST" action="{{ route('admin.conveyancing.store') }}"
+                                      enctype="multipart/form-data">
+                                    @honeypot
+                                    @csrf
+                                   @include('client.file.individual.conveyance_form',['file'=>$file])
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             @endcan
             @can('file_edit')
                 <a href="#" class="btn btn-md btn-outline-secondary shadow-sm ml-5 float-right" data-toggle="modal" data-target="#openClientCaseModal">
                     <i class="fa fa-pencil-alt fa-sm text-dark-100"></i> Edit File</a>
             @endcan
         </div>
-        {{--    <div class="row-cols-1">--}}
-        {{--        <input type="hidden" name="_token" value="{{ @csrf_token() }}">--}}
-        {{--        @foreach($file->cases as $case)--}}
-        {{--            <div class="card shadow mb-4" id="{{ $case->id }}">--}}
-        {{--            <!-- Card Header - Accordion -->--}}
-        {{--            <a href="#{{ $case->number }}" class="d-block card-header py-3" data-toggle="collapse"--}}
-        {{--               role="button" aria-expanded="true" aria-controls="collapseCardExample">--}}
-        {{--                <h6 class="m-0 font-weight-bold text-primary">Case {{ $case->number }}--}}
-        {{--                    <span class="badge badge-info ">{{ $case->status }}</span>--}}
-        {{--                </h6>--}}
-        {{--            </a>--}}
-        {{--            <!-- Card Content - Collapse -->--}}
-        {{--            <div class="collapse hide" id="{{ $case->number }}">--}}
-        {{--                <div class="card-body">--}}
-        {{--                    <div class="jumbotron jumbotron-fluid">--}}
-        {{--                        <div class="container">--}}
-        {{--                            <h4 class="font-weight-bold">Court Case Information</h4>--}}
-        {{--                            <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>--}}
-        {{--                        </div>--}}
-        {{--                    </div>--}}
-        {{--                    <div class="row">--}}
-        {{--                       <div class="col-md-2 col-sm-6">--}}
-        {{--                           <div class="d-flex p-2 font-weight-bold">--}}
-        {{--                               <h5>Defendant: <span> {{ $case->defendant }}</span>--}}
-        {{--                               </h5>--}}
-        {{--                           </div>--}}
-        {{--                       </div>--}}
-        {{--                        <div class="col-md-1 col-sm-2">--}}
-        {{--                            <div class="d-flex p-2 font-weight-bold">--}}
-        {{--                                VS--}}
-        {{--                            </div>--}}
-        {{--                        </div>--}}
-        {{--                        <div class="col-md-2 col-sm-6">--}}
-        {{--                            <div class="d-flex p-2 font-weight-bold">--}}
-        {{--                                <h5>Plaintiff: <span> {{ $case->plaintiff }}</span>--}}
-        {{--                                </h5>--}}
-        {{--                            </div>--}}
-        {{--                        </div>--}}
-        {{--                        <div class="col-md-7 align-items-end">--}}
-
-        {{--                           <div class="" style="float: right;">--}}
-        {{--                               <div class="d-block p-2 font-weight-bold offset-1">Supporting Docs</div>--}}
-        {{--                               <ul>--}}
-        {{--                                   @foreach(explode(",", $case->docs) as $doc)--}}
-        {{--                                       <div class="alert alert-sm-light  alert-dismissible fade show"--}}
-        {{--                                            role="alert" style="height: 20px">--}}
-        {{--                                           <li class="" style="margin: 0;"><a href="#">{{ $doc }}</a>--}}
-        {{--                                               <button type="button" class="close" data-dismiss="alert"--}}
-        {{--                                                       aria-label="Close">--}}
-        {{--                                                   <span aria-hidden="true" style="color: red;">&times;</span>--}}
-        {{--                                               </button>--}}
-        {{--                                            </li>--}}
-        {{--                                        </div>--}}
-        {{--                                       @endforeach--}}
-        {{--                               </ul>--}}
-        {{--                           </div>--}}
-        {{--                        </div>--}}
-        {{--                    </div>--}}
-        {{--                    <div class="row">--}}
-        {{--                       <div class="col-md-4"></div>--}}
-        {{--                    </div>--}}
-        {{--                    <div class="d-flex p-2 font-weight-bold"><h5>Case Details</h5></div>--}}
-        {{--                    <div class="d-flex p-2">--}}
-        {{--                        {{ $case->details }}--}}
-        {{--                    </div>--}}
-        {{--                    <div class="clearfix"></div>--}}
-
-        {{--                    <div class="row">--}}
-        {{--                        <div class="col-md-6">--}}
-        {{--                            @can('case_edit')--}}
-        {{--                                <a class="btn btn-info btn-sm  text-center text-white"--}}
-        {{--                                   href="{{ route('cases.show', $case->id) }}">--}}
-        {{--                                    <i class="fa fa-file-contract"></i> Edit Case--}}
-        {{--                                </a>--}}
-        {{--                            @endcan--}}
-        {{--                            @can('case_delete')--}}
-        {{--                                    <button class="delete btn btn-danger btn-sm  text-center text-white"--}}
-        {{--                                            data-toggle="modal" data-target="#" id="{{ $case->id }}">--}}
-        {{--                                        <i class="fa fa-trash"></i> Delete Case--}}
-        {{--                                    </button>--}}
-        {{--                            @endcan--}}
-        {{--                            @can('case_assign')--}}
-        {{--                                    @include('partials.dropdown-lawyers', ['user' => $case->user])--}}
-        {{--                            @endcan--}}
-        {{--                            <button class="attach btn btn-secondary btn-sm text-center text-white"--}}
-        {{--                                    id="{{ $case->id }}"--}}
-        {{--                                    data-id='{{ $case->id }}'>--}}
-        {{--                                <i class="fa fa-paperclip"></i> Attach Docs--}}
-        {{--                            </button>--}}
-        {{--                        </div>--}}
-        {{--                        <div class="col-md-6 align-items-end">--}}
-        {{--                            @if(isset($case->user))--}}
-        {{--                                <div class="row">--}}
-        {{--                                    <div class="col-md-11">--}}
-        {{--                                        <div class="d-flex p-2 font-weight-bold" style="float: right;">--}}
-        {{--                                            <span >Assigned Lawyer:  {{ $case->user->name }}</span>--}}
-        {{--                                        </div>--}}
-        {{--                                    </div>--}}
-        {{--                                </div>--}}
-        {{--                            @endif--}}
-        {{--                            <div class="row">--}}
-        {{--                                <div class="col-md-12">--}}
-        {{--                                    <div class="d-flex p-2 font-weight-bold" style="float: right;">--}}
-        {{--                                        @if(isset($case->schedule))--}}
-        {{--                                            <span >Date of Court Appeal:  {{ $case->schedule->start_date }}--}}
-        {{--                                                {{ $case->schedule->end_date }}</span>--}}
-        {{--                                            @endif--}}
-        {{--                                    </div>--}}
-        {{--                                </div>--}}
-        {{--                            </div>--}}
-
-        {{--                        </div>--}}
-        {{--                    </div>--}}
-        {{--                </div>--}}
-
-        {{--            </div>--}}
-        {{--        </div>--}}
-        {{--        @endforeach--}}
-        {{--    </div>--}}
     </div>
 </div>
 <div class="row">
@@ -232,7 +142,6 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <input type="hidden" name="_token" value="{{ @csrf_token() }}">
-
                     </div>
                 </div>
             </div>

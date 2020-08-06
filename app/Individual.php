@@ -99,4 +99,9 @@ class Individual extends Model
             ->generateSlugsFrom('number')
             ->saveSlugsTo('slug');
     }
+
+    public function client()
+    {
+        return $this->morphOne('App\Client', 'clientable');
+    }
 }

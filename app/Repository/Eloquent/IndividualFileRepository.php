@@ -75,7 +75,7 @@ class IndividualFileRepository extends AbstractBaseRepository implements FileRep
                 $files[] = $file_name;
             }
         }
-        return  $this->create([
+        $client =  $this->create([
 
             'name'              => $name,
             'number'            =>$number,
@@ -101,6 +101,7 @@ class IndividualFileRepository extends AbstractBaseRepository implements FileRep
             'docs'              => is_null($docs) ? "" : implode(",",$files),
             'agreement_service' => $agreement_service,
         ]);
+
     }
 
     /**
