@@ -25,7 +25,7 @@
                 <div class="form-group">
                     <label for="dob">Date of Birth</label>
                     <input type="date" class="form-control"
-                           name="dob" id="dob" required
+                           name="dob" id="dob"
                            @if($file != null) value="{{ $file->dob }}" @endif>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                 <div class="form-group">
                     <label for="gender">Gender</label>
                     <select class="form-control form-control-md"
-                            name="gender" required>
+                            name="gender" >
                         <option disabled>Select</option>
                         <option>@if($file != null) {{ $file->gender == 'Male'? 'Male':'Female' }} @else {{ 'Male' }}@endif</option>
                         <option>@if($file != null) {{ $file->gender == 'Male'? 'Female':'Male' }} @else {{ 'Female' }}@endif </option>
@@ -43,7 +43,7 @@
             <div class="form-group col-md-4">
                 <div class="form-group">
                     <label for="gender">Is Citizen?</label>
-                    <select class="form-control form-control-md" name="is_citizen" required>
+                    <select class="form-control form-control-md" name="is_citizen" >
                         <option disabled>Select</option>
                         <option>
                             @if($file != null) {{ $file->is_citizen == 1? 'Yes':'No' }} @else {{ 'Yes' }} @endif</option>
@@ -56,31 +56,31 @@
            <div class="form-group col-md-4">
                <label for="inputAddress">Nationality</label>
                <input type="text" class="form-control" id="nationality"
-                      name="nationality" required @if($file != null) value="{{ $file->nationality }}" @endif>
+                      name="nationality"  @if($file != null) value="{{ $file->nationality }}" @endif>
            </div>
            <div class="form-group col-md-4">
                <label for="inputContact">Marital Status</label>
                <input type="text" class="form-control"
                       name="marital_status" id="marital_status"
-                      required @if($file != null) value="{{ $file->marital_status }}" @endif>
+                       @if($file != null) value="{{ $file->marital_status }}" @endif>
            </div>
        </div>
        <div class="form-row">
            <div class="form-group col-md-4">
                <label for="inputAddress">Occupation</label>
                <input type="text" class="form-control" id="nationality"
-                      name="occupation" required @if($file != null) value="{{ $file->occupation }}" @endif>
+                      name="occupation"  @if($file != null) value="{{ $file->occupation }}" @endif>
            </div>
            <div class="form-group col-md-4">
                <label for="inputAddress">Physical Address</label>
                <input type="text" class="form-control" id="physicalAddress"
-                      name="physical_address" placeholder="1234 Main St" required
+                      name="physical_address" placeholder="1234 Main St"
                       @if($file != null) value="{{ $file->physical_address }}" @endif>
            </div>
            <div class="form-group col-md-4">
                <label for="inputAddress2">Postal Address</label>
                <input type="text" class="form-control"
-                      name="postal_address" id="PostalAddress" required
+                      name="postal_address" id="PostalAddress"
                       @if($file != null) value="{{ $file->postal_address }}" @endif>
            </div>
        </div>
@@ -101,13 +101,13 @@
             <div class="form-group col-md-6">
                 <label for="inputEmail">Email</label>
                 <input type="email" class="form-control" id="email"
-                       name="email" required @if($file != null) value="{{ $file->email }}" @endif>
+                       name="email"  @if($file != null) value="{{ $file->email }}" @endif>
             </div>
             <div class="form-group col-md-6">
                 <label for="inputContact">Preferred Email</label>
                 <input type="email" class="form-control"
                        name="preferred_email" id="preferred_email"
-                       required @if($file != null) value="{{ $file->preferred_email }}" @endif>
+                        @if($file != null) value="{{ $file->preferred_email }}" @endif>
             </div>
         </div>
         <div class="form-row">
@@ -115,7 +115,7 @@
                 <div class="form-group">
                     <label for="gender">Preferred method of contact</label>
                     <select class="form-control form-control-md"
-                            name="preferred_contact" required>
+                            name="preferred_contact" >
                         <option disabled>Select</option>
                         <option>@if($file != null) {{ $file->preferred_contact =='CELL'?'CELL':'TEL' }} @else {{ 'CELL' }} @endif</option>
                         <option>@if($file != null) {{ $file->preferred_contact =='TEL'?'CELL':'FAX' }} @else {{ 'TEL' }} @endif</option>
@@ -126,7 +126,7 @@
             <div class="form-group col-md-6">
                 <label for="inputAddress2">Preferred methods of receiving invoices</label>
                 <select class="form-control form-control-md"
-                        name="preferred_invoice" required>
+                        name="preferred_invoice" >
                     <option disabled>Select</option>
                     <option>@if($file != null) {{ $file->preferred_invoice == 'contact'?'contact':'email' }} @else {{ 'contact' }} @endif</option>
                     <option>@if($file != null) {{ $file->preferred_invoice == 'contact'?'email':'contact' }} @else {{ 'email' }} @endif</option>
@@ -136,18 +136,18 @@
         <div class="form-group">
             <label for="inputAddress2">Name of Spouse (If applicable)</label>
             <input type="text" class="form-control"
-                   name="name_spouse" id="name_spouse" required @if($file != null) value="{{ $file->name_spouse }} @endif">
+                   name="name_spouse" id="name_spouse"  @if($file != null) value="{{ $file->name_spouse }} @endif">
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputAddress2">Name of next of kin</label>
                 <input type="text" class="form-control"
-                       name="name_next_kin" id="name_next_kin" required @if($file != null) value="{{ $file->name_next_kin }}" @endif>
+                       name="name_next_kin" id="name_next_kin"  @if($file != null) value="{{ $file->name_next_kin }}" @endif>
             </div>
             <div class="form-group col-md-6">
                 <label for="inputAddress2">Contact of Next of kin</label>
                 <input type="text" class="form-control"
-                       name="contact_next_kin" id="contact_next_kin" required @if($file != null) value="{{ $file->contact_next_kin }}" @endif>
+                       name="contact_next_kin" id="contact_next_kin"  @if($file != null) value="{{ $file->contact_next_kin }}" @endif>
             </div>
         </div>
 

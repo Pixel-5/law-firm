@@ -105,17 +105,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-
-                                <form method="POST" action="{{ route('admin.conveyancing.store') }}"
-                                      enctype="multipart/form-data">
-                                    @honeypot
-                                    @csrf
-                                   @include('client.file.individual.conveyance_form',['file'=>$file])
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Save</button>
-                                    </div>
-                                </form>
+                                @include('client.file.individual.conveyance_form',['file'=>$file])
                             </div>
                         </div>
                     </div>
@@ -175,6 +165,7 @@
     <script src="{{ asset('js/bootbox.min.js') }}"></script>
     <script type="application/javascript">
         $(document).ready(function() {
+
             $('.dropdown-item').on('click', function(){
             $("html, body").animate({
                 scrollTop: $(
