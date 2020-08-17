@@ -33,17 +33,13 @@ class ScheduleController extends Controller
      *
      * @param StoreScheduleRequest $request
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return RedirectResponse
      */
     public function store(StoreScheduleRequest $request)
     {
         $schedule = ScheduleRepository::createSchedule($request->all());
         return redirect()->route('admin.schedule.index')
-            ->with(empty($schedule))?
-                ['status'=> 'Failed to update schedule'. 'Date & Time slot from '.
-                    $request->start_time . ' to ' . $request->end_time .
-                    ' is unavailable. Please check another available slot'] :
-                ['status'=> 'Successfully scheduled a case'];
+            ->with(['status'=> 'Successfully scheduled a case']);
     }
 
     /**

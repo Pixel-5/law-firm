@@ -62,9 +62,6 @@ class ScheduleController extends Controller
     {
         abort_if(Gate::denies('schedule_show'), Response::HTTP_FORBIDDEN,
             $this->message .' show this schedule');
-
-        $schedule->load('schedule');
-
         return view('lawyer.schedule.show', compact('schedule'));
     }
 

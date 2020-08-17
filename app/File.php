@@ -38,7 +38,6 @@ class File extends Model implements Searchable
 
     protected $softCascade = ['cases'];
 
-
     //
     protected $fillable = [
         'number',

@@ -27,31 +27,38 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin',
     'middleware' => ['auth', 'role:admin,super',ProtectAgainstSpam::class]], function () {
 
     // Permissions
-        Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name(
-            'permissions.massDestroy');
-        Route::resource('permissions', 'PermissionsController');
+    Route::delete('permissions/destroy', 'PermissionsController@massDestroy')
+        ->name('permissions.massDestroy');
+    Route::resource('permissions', 'PermissionsController');
 
     // Roles
-        Route::delete('roles/destroy', 'RolesController@massDestroy')->name('roles.massDestroy');
-        Route::resource('roles', 'RolesController');
+    Route::delete('roles/destroy', 'RolesController@massDestroy')->name('roles.massDestroy');
+    Route::resource('roles', 'RolesController');
 
     // Users
-        Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
-        Route::resource('users', 'UsersController');
+    Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
+    Route::resource('users', 'UsersController');
 
     //File
-        Route::delete('files/destroy', 'FileController@massDestroy')->name('files.massDestroy');
-        Route::resource('files', 'FileController');
+    Route::delete('files/destroy', 'FileController@massDestroy')->name('files.massDestroy');
+    Route::resource('files', 'FileController');
+    Route::resource('individual', 'IndividualFileController');
+    Route::resource('company', 'CompanyFileController');
+    Route::resource('retainer', 'RetainerFileController');
+
 
     //Schedule
-        Route::resource('schedule', 'ScheduleController');
+    Route::resource('schedule', 'ScheduleController');
 
-    //default routes
-        Route::get('/dashboard', 'HomeController@index')->name('dashboard');
-        Route::get('/chart', 'HomeController@chart')->name('chart');
-        Route::get('/assign-cases', 'HomeController@assignCases')->name('assign.lawyer.cases');
-        Route::get('/re-assign-cases', 'HomeController@reAssignCases')->name('re-assign.lawyer.cases');
-        Route::get('/pending/cases', 'HomeController@pendingCases')->name('view.pending-cases');
+    //Forms
+    Route::resource('conveyancing', 'ConveyancingController');
+
+    //default dashboard routes
+    Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+    Route::get('/chart', 'HomeController@chart')->name('chart');
+    Route::get('/assign-cases', 'HomeController@assignCases')->name('assign.lawyer.cases');
+    Route::get('/re-assign-cases', 'HomeController@reAssignCases')->name('re-assign.lawyer.cases');
+    Route::get('/pending/cases', 'HomeController@pendingCases')->name('view.pending-cases');
 });
 
 //lawyer routes, get & post

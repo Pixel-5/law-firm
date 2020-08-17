@@ -21,7 +21,8 @@ class FileRepository extends AbstractBaseRepository implements FileRepositoryInt
 {
     /**
      * FileRepository constructor.
-     * @param Model $model
+     *
+     * @param File $model
      */
     public function __construct(File $model)
     {
@@ -61,7 +62,6 @@ class FileRepository extends AbstractBaseRepository implements FileRepositoryInt
             }
         }
          return  $this->create([
-
                     'number'            => $file_no,
                     'name'              => $name,
                     'surname'           => $surname,
@@ -74,7 +74,6 @@ class FileRepository extends AbstractBaseRepository implements FileRepositoryInt
                     'docs'              => is_null($docs) ? "" : implode(",",$files),
              ]);
     }
-
     /**
      * @param $id
      * @return mixed

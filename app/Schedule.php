@@ -38,26 +38,14 @@ class Schedule extends Model implements Searchable
         'deleted_at',
     ];
 
-    const RECURRENCE_RADIO = [
-        'none'    => 'None',
-        'daily'   => 'Daily',
-        'weekly'  => 'Weekly',
-        'monthly' => 'Monthly',
-    ];
-
     protected $fillable = [
         'name',
         'end_time',
+        'start_time',
         'venue',
         'case_id',
         'user_id',
         'notes',
-        'schedule_id',
-        'start_time',
-        'recurrence',
-        'created_at',
-        'updated_at',
-        'deleted_at',
     ];
 
     public function saveQuietly()

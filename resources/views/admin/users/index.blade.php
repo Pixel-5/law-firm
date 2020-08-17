@@ -60,7 +60,7 @@
                                      </td>
                                      <td>
                                          @can('user_show')
-                                             <a class="btn btn-xs btn-primary" href="{{ route('admin.users.show', $user->id) }}">
+                                             <a class="btn btn-xs btn-primary" href="{{ route('profile.show', $user->id) }}">
                                                  <i class="fa fa-eye"></i>  {{ trans('global.view') }}
                                              </a>
                                          @endcan

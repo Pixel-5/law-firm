@@ -57,7 +57,7 @@
     $(document).ready(function () {
         // page is now ready, initialize the calendar...
         let events= {!! json_encode($events) !!};
-        var calendarEl = document.getElementById('calendar');
+        let calendarEl = document.getElementById('calendar');
 
         var calendar = new FullCalendar.Calendar(calendarEl, {
             plugins: [ 'dayGrid', 'timeGrid', 'list', 'bootstrap' ],

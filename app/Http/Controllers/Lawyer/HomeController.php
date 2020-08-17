@@ -30,11 +30,11 @@ class HomeController extends Controller
         $events = [];
         $myCases = CaseRepository::myCases();
         foreach ($myCases as $case) {
-            if ($case->schedule && $case->schedule->count() > 0){
+            if (!empty($case->schedule)){
                 $schedule = $case->schedule;
                 $events[] = [
                     'title'   => 'Case No: '. $case->number,
-                    'start'   => $schedule->getOriginal('start_time'),
+                    'start'   => $schedule->start_time,
                     'end'     => $schedule->end_time,
                     'venue'   => $schedule->venue,
                     'case'    => $case->number,
@@ -43,8 +43,6 @@ class HomeController extends Controller
                 ];
             }
         }
-
-//        dd($events);
         return view('lawyer.schedule-cases',compact('events'));
     }
 
