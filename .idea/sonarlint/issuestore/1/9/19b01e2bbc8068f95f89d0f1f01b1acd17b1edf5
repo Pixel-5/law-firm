@@ -1,0 +1,7 @@
+
+Iphp:S121E"0Add curly braces around the nested statement(s).(Îâ—Óıÿÿÿÿ
+C	php:S1125F")Remove the literal "false" boolean value.(©áÏ¡ûÿÿÿÿ
+N	php:S11353"4Complete the task associated to this "TODO" comment.(ô»šÿÿÿÿÿ
+F	php:S1144&",Remove this unused private "getcase" method.(¬¾êÿÿÿÿÿ
+P	php:S1185"6Remove this method "__construct" to simply inherit it.(ÑİÖ—øÿÿÿÿ
+r	php:S1488)"]Immediately return this expression instead of assigning it to the temporary variable "$case".(¼ŠÙÇ
