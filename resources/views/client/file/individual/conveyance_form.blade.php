@@ -50,6 +50,7 @@
         <div class="alert alert-secondary" role="alert">
             TRANSACTION TYPE
         </div>
+        <input type="hidden" name="client_id" value="{{ $file->id }}">
         <div class="form-row">
             <div class="form-group col-md-3">
                 <label class="radio-inline"><input type="radio" name="transfer_type" value="Deed of Sale" checked> Deed of Sale</label>
@@ -109,56 +110,7 @@
             <!-- Card Content - Collapse -->
             <div class="collapse hide" id="collapseCardExample3">
                 <div class="card-body">
-                    <div class="container-fluid">
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="dob">PLOT NO</label>
-                                <input type="text" class="form-control"
-                                       name="plot_no" id="plot_no" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">SITUATED AT</label>
-                                <input type="text" class="form-control" id="situated_at"
-                                       name="situated_at" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="deed">TITLE DEED/CERTIFICATE NO</label>
-                                <input type="text" class="form-control" id="certificate"
-                                       name="certificate" required >
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">Is property bounded?</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="Yes"> Yes</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="No" checked> No</label>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Purchase Price</label>
-                                <input type="text" class="form-control" id="price"
-                                       name="price" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Initial Payment Amount</label>
-                                <input type="text" class="form-control" id="initial_payment"
-                                       name="initial_payment" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress2">Other Notes</label>
-                                <textarea rows="5" cols="80"></textarea>
-                            </div>
-                        </div>
-                    </div>
+                    <x-plot-details-form/>
                 </div>
             </div>
         </div>
@@ -176,6 +128,7 @@
         <div class="alert alert-secondary" role="alert">
             TRANSACTION TYPE
         </div>
+        <input type="hidden" name="client_id" value="{{ $file->id }}">
         <div class="form-row">
             <div class="form-group col-md-3">
                 <label class="radio-inline"><input type="radio" name="transfer_type" value="Deed of Sale" checked> Deed of Sale</label>
@@ -235,56 +188,7 @@
             <!-- Card Content - Collapse -->
             <div class="collapse hide" id="collapseCardExample3">
                 <div class="card-body">
-                    <div class="container-fluid">
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="dob">PLOT NO</label>
-                                <input type="text" class="form-control"
-                                       name="plot_no" id="plot_no" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">SITUATED AT</label>
-                                <input type="text" class="form-control" id="situated_at"
-                                       name="situated_at" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="deed">TITLE DEED/CERTIFICATE NO</label>
-                                <input type="text" class="form-control" id="certificate"
-                                       name="certificate" required >
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">Is property bounded?</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="Yes"> Yes</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="No" checked> No</label>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Purchase Price</label>
-                                <input type="text" class="form-control" id="price"
-                                       name="price" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Initial Payment Amount</label>
-                                <input type="text" class="form-control" id="initial_payment"
-                                       name="initial_payment" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress2">Other Notes</label>
-                                <textarea rows="5" cols="80"></textarea>
-                            </div>
-                        </div>
-                    </div>
+                    <x-plot-details-form/>
                 </div>
             </div>
         </div>
@@ -303,6 +207,7 @@
         <div class="alert alert-secondary" role="alert">
             TRANSACTION TYPE
         </div>
+        <input type="hidden" name="client_id" value="{{ $file->id }}">
         <div class="form-row">
             <div class="form-group col-md-3">
                 <label class="radio-inline"><input type="radio" name="transfer_type" value="Deed of Sale" checked> Deed of Sale</label>
@@ -359,56 +264,7 @@
             <!-- Card Content - Collapse -->
             <div class="collapse hide" id="collapseCardExample3">
                 <div class="card-body">
-                    <div class="container">
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="dob">PLOT NO</label>
-                                <input type="text" class="form-control"
-                                       name="plot_no" id="plot_no" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">SITUATED AT</label>
-                                <input type="text" class="form-control" id="situated_at"
-                                       name="situated_at" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="deed">TITLE DEED/CERTIFICATE NO</label>
-                                <input type="text" class="form-control" id="certificate"
-                                       name="certificate" required >
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">Is property bounded?</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="Yes"> Yes</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="No" checked> No</label>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Purchase Price</label>
-                                <input type="text" class="form-control" id="price"
-                                       name="price" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Initial Payment Amount</label>
-                                <input type="text" class="form-control" id="initial_payment"
-                                       name="initial_payment" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress2">Other Notes</label>
-                                <textarea rows="5" cols="80"></textarea>
-                            </div>
-                        </div>
-                    </div>
+                    <x-plot-details-form/>
                 </div>
             </div>
         </div>
@@ -426,6 +282,7 @@
         <div class="alert alert-secondary" role="alert">
             TRANSACTION TYPE
         </div>
+        <input type="hidden" name="client_id" value="{{ $file->id }}">
         <div class="form-row">
             <div class="form-group col-md-3">
                 <label class="radio-inline"><input type="radio" name="transfer_type" value="Deed of Sale" checked> Deed of Sale</label>
@@ -483,56 +340,7 @@
             <!-- Card Content - Collapse -->
             <div class="collapse hide" id="collapseCardExample3">
                 <div class="card-body">
-                    <div class="container">
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="dob">PLOT NO</label>
-                                <input type="text" class="form-control"
-                                       name="plot_no" id="plot_no" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">SITUATED AT</label>
-                                <input type="text" class="form-control" id="situated_at"
-                                       name="situated_at" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="deed">TITLE DEED/CERTIFICATE NO</label>
-                                <input type="text" class="form-control" id="certificate"
-                                       name="certificate" required >
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">Is property bounded?</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="Yes"> Yes</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="No" checked> No</label>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Purchase Price</label>
-                                <input type="text" class="form-control" id="price"
-                                       name="price" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Initial Payment Amount</label>
-                                <input type="text" class="form-control" id="initial_payment"
-                                       name="initial_payment" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress2">Other Notes</label>
-                                <textarea rows="5" cols="80"></textarea>
-                            </div>
-                        </div>
-                    </div>
+                    <x-plot-details-form/>
                 </div>
             </div>
         </div>
@@ -575,6 +383,8 @@
             <!-- Card Content - Collapse -->
             <div class="collapse show" id="collapseCardExample1">
                 <div class="card-body">
+                    <input type="hidden" name="client" value="Transferor">
+                    <input type="hidden" name="client_id" value="{{ $file->id }}">
                     <div id="transferor_individual_form_data">
                         <x-individualTransferorConveyanceForm :file="$file"/>
                     </div>
@@ -611,56 +421,7 @@
             <!-- Card Content - Collapse -->
             <div class="collapse hide" id="collapseCardExample3">
                 <div class="card-body">
-                    <div class="container">
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="dob">PLOT NO</label>
-                                <input type="text" class="form-control"
-                                       name="plot_no" id="plot_no" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">SITUATED AT</label>
-                                <input type="text" class="form-control" id="situated_at"
-                                       name="situated_at" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="deed">TITLE DEED/CERTIFICATE NO</label>
-                                <input type="text" class="form-control" id="certificate"
-                                       name="certificate" required >
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">Is property bounded?</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="Yes"> Yes</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="No" checked> No</label>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Purchase Price</label>
-                                <input type="text" class="form-control" id="price"
-                                       name="price" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Initial Payment Amount</label>
-                                <input type="text" class="form-control" id="initial_payment"
-                                       name="initial_payment" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress2">Other Notes</label>
-                                <textarea rows="5" cols="80"></textarea>
-                            </div>
-                        </div>
-                    </div>
+                    <x-plot-details-form/>
                 </div>
             </div>
         </div>
@@ -720,6 +481,8 @@
             <!-- Card Content - Collapse -->
             <div class="collapse show" id="collapseCardExample2">
                 <div class="card-body">
+                    <input type="hidden" name="client" value="Transferee">
+                    <input type="hidden" name="client_id" value="{{ $file->id }}">
                     <div id="transferee_individual_form">
                         <x-individualTransfereeConveyanceForm :file="$file"/>
                     </div>
@@ -737,56 +500,7 @@
             <!-- Card Content - Collapse -->
             <div class="collapse hide" id="collapseCardExample3">
                 <div class="card-body">
-                    <div class="container">
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="dob">PLOT NO</label>
-                                <input type="text" class="form-control"
-                                       name="plot_no" id="plot_no" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">SITUATED AT</label>
-                                <input type="text" class="form-control" id="situated_at"
-                                       name="situated_at" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="deed">TITLE DEED/CERTIFICATE NO</label>
-                                <input type="text" class="form-control" id="certificate"
-                                       name="certificate" required >
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">Is property bounded?</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="Yes"> Yes</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="No" checked> No</label>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Purchase Price</label>
-                                <input type="text" class="form-control" id="price"
-                                       name="price" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Initial Payment Amount</label>
-                                <input type="text" class="form-control" id="initial_payment"
-                                       name="initial_payment" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress2">Other Notes</label>
-                                <textarea rows="5" cols="80"></textarea>
-                            </div>
-                        </div>
-                    </div>
+                    <x-plot-details-form/>
                 </div>
             </div>
         </div>
@@ -827,6 +541,8 @@
             <!-- Card Content - Collapse -->
             <div class="collapse show" id="collapseCardExample1">
                 <div class="card-body">
+                    <input type="hidden" name="client" value="Transferor">
+                    <input type="hidden" name="client_id" value="{{ $file->id }}">
                     <div id="transferor_company_form_data">
                         <x-companyTransferorConveyanceForm :file="$file"/>
                     </div>
@@ -862,56 +578,7 @@
             <!-- Card Content - Collapse -->
             <div class="collapse hide" id="collapseCardExample3">
                 <div class="card-body">
-                    <div class="container">
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="dob">PLOT NO</label>
-                                <input type="text" class="form-control"
-                                       name="plot_no" id="plot_no" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">SITUATED AT</label>
-                                <input type="text" class="form-control" id="situated_at"
-                                       name="situated_at" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="deed">TITLE DEED/CERTIFICATE NO</label>
-                                <input type="text" class="form-control" id="certificate"
-                                       name="certificate" required >
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">Is property bounded?</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="Yes"> Yes</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="No" checked> No</label>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Purchase Price</label>
-                                <input type="text" class="form-control" id="price"
-                                       name="price" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Initial Payment Amount</label>
-                                <input type="text" class="form-control" id="initial_payment"
-                                       name="initial_payment" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress2">Other Notes</label>
-                                <textarea rows="5" cols="80"></textarea>
-                            </div>
-                        </div>
-                    </div>
+                    <x-plot-details-form/>
                 </div>
             </div>
         </div>
@@ -971,6 +638,8 @@
             <!-- Card Content - Collapse -->
             <div class="collapse show" id="collapseCardExample2">
                 <div class="card-body">
+                    <input type="hidden" name="client" value="Transferee">
+                    <input type="hidden" name="client_id" value="{{ $file->id }}">
                     <div id="transferee_company_form_data">
                         <x-companyTransfereeConveyanceForm :file="$file"/>
                     </div>
@@ -988,56 +657,7 @@
             <!-- Card Content - Collapse -->
             <div class="collapse hide" id="collapseCardExample3">
                 <div class="card-body">
-                    <div class="container">
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="dob">PLOT NO</label>
-                                <input type="text" class="form-control"
-                                       name="plot_no" id="plot_no" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">SITUATED AT</label>
-                                <input type="text" class="form-control" id="situated_at"
-                                       name="situated_at" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="deed">TITLE DEED/CERTIFICATE NO</label>
-                                <input type="text" class="form-control" id="certificate"
-                                       name="certificate" required >
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">Is property bounded?</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="Yes"> Yes</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="No" checked> No</label>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Purchase Price</label>
-                                <input type="text" class="form-control" id="price"
-                                       name="price" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Initial Payment Amount</label>
-                                <input type="text" class="form-control" id="initial_payment"
-                                       name="initial_payment" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress2">Other Notes</label>
-                                <textarea rows="5" cols="80"></textarea>
-                            </div>
-                        </div>
-                    </div>
+                    <x-plot-details-form/>
                 </div>
             </div>
         </div>
@@ -1078,6 +698,8 @@
             <!-- Card Content - Collapse -->
             <div class="collapse show" id="collapseCardExample1">
                 <div class="card-body">
+                    <input type="hidden" name="client" value="Transferor">
+                    <input type="hidden" name="client_id" value="{{ $file->id }}">
                     <div id="transferor_individual_form_data">
                         <x-individualTransferorConveyanceForm :file="$file"/>
                     </div>
@@ -1110,56 +732,7 @@
             <!-- Card Content - Collapse -->
             <div class="collapse hide" id="collapseCardExample3">
                 <div class="card-body">
-                    <div class="container">
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="dob">PLOT NO</label>
-                                <input type="text" class="form-control"
-                                       name="plot_no" id="plot_no" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">SITUATED AT</label>
-                                <input type="text" class="form-control" id="situated_at"
-                                       name="situated_at" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="deed">TITLE DEED/CERTIFICATE NO</label>
-                                <input type="text" class="form-control" id="certificate"
-                                       name="certificate" required >
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">Is property bounded?</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="Yes"> Yes</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="No" checked> No</label>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Purchase Price</label>
-                                <input type="text" class="form-control" id="price"
-                                       name="price" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Initial Payment Amount</label>
-                                <input type="text" class="form-control" id="initial_payment"
-                                       name="initial_payment" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress2">Other Notes</label>
-                                <textarea rows="5" cols="80"></textarea>
-                            </div>
-                        </div>
-                    </div>
+                    <x-plot-details-form/>
                 </div>
             </div>
         </div>
@@ -1217,6 +790,8 @@
             </a>
             <!-- Card Content - Collapse -->
             <div class="collapse show" id="collapseCardExample2">
+                <input type="hidden" name="client" value="Transferee">
+                <input type="hidden" name="client_id" value="{{ $file->id }}">
                 <div id="transferee_individual_form_data">
                     <x-individualTransferorConveyanceForm :file="$file"/>
                 </div>
@@ -1233,56 +808,7 @@
             <!-- Card Content - Collapse -->
             <div class="collapse hide" id="collapseCardExample3">
                 <div class="card-body">
-                    <div class="container">
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="dob">PLOT NO</label>
-                                <input type="text" class="form-control"
-                                       name="plot_no" id="plot_no" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">SITUATED AT</label>
-                                <input type="text" class="form-control" id="situated_at"
-                                       name="situated_at" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="deed">TITLE DEED/CERTIFICATE NO</label>
-                                <input type="text" class="form-control" id="certificate"
-                                       name="certificate" required >
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">Is property bounded?</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="Yes"> Yes</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="No" checked> No</label>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Purchase Price</label>
-                                <input type="text" class="form-control" id="price"
-                                       name="price" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Initial Payment Amount</label>
-                                <input type="text" class="form-control" id="initial_payment"
-                                       name="initial_payment" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress2">Other Notes</label>
-                                <textarea rows="5" cols="80"></textarea>
-                            </div>
-                        </div>
-                    </div>
+                    <x-plot-details-form/>
                 </div>
             </div>
         </div>
@@ -1324,6 +850,8 @@
             <!-- Card Content - Collapse -->
             <div class="collapse show" id="collapseCardExample1">
                 <div class="card-body">
+                    <input type="hidden" name="client" value="Transferor">
+                    <input type="hidden" name="client_id" value="{{ $file->id }}">
                     <div id="transferor_company_form_data">
                         <x-companyTransferorConveyanceForm :file="$file"/>
                     </div>
@@ -1359,56 +887,7 @@
             <!-- Card Content - Collapse -->
             <div class="collapse hide" id="collapseCardExample3">
                 <div class="card-body">
-                    <div class="container">
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="dob">PLOT NO</label>
-                                <input type="text" class="form-control"
-                                       name="plot_no" id="plot_no" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">SITUATED AT</label>
-                                <input type="text" class="form-control" id="situated_at"
-                                       name="situated_at" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="deed">TITLE DEED/CERTIFICATE NO</label>
-                                <input type="text" class="form-control" id="certificate"
-                                       name="certificate" required >
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">Is property bounded?</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="Yes"> Yes</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="No" checked> No</label>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Purchase Price</label>
-                                <input type="text" class="form-control" id="price"
-                                       name="price" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Initial Payment Amount</label>
-                                <input type="text" class="form-control" id="initial_payment"
-                                       name="initial_payment" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress2">Other Notes</label>
-                                <textarea rows="5" cols="80"></textarea>
-                            </div>
-                        </div>
-                    </div>
+                    <x-plot-details-form/>
                 </div>
             </div>
         </div>
@@ -1469,6 +948,8 @@
             <!-- Card Content - Collapse -->
             <div class="collapse show" id="collapseCardExample2">
                 <div class="card-body">
+                    <input type="hidden" name="client" value="Transferee">
+                    <input type="hidden" name="client_id" value="{{ $file->id }}">
                     <div id="transferee_company_form_data">
                         <x-companyTransfereeConveyanceForm :file="$file"/>
                     </div>
@@ -1486,56 +967,7 @@
             <!-- Card Content - Collapse -->
             <div class="collapse hide" id="collapseCardExample3">
                 <div class="card-body">
-                    <div class="container">
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="dob">PLOT NO</label>
-                                <input type="text" class="form-control"
-                                       name="plot_no" id="plot_no" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">SITUATED AT</label>
-                                <input type="text" class="form-control" id="situated_at"
-                                       name="situated_at" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="deed">TITLE DEED/CERTIFICATE NO</label>
-                                <input type="text" class="form-control" id="certificate"
-                                       name="certificate" required >
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">Is property bounded?</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="Yes"> Yes</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="No" checked> No</label>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Purchase Price</label>
-                                <input type="text" class="form-control" id="price"
-                                       name="price" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Initial Payment Amount</label>
-                                <input type="text" class="form-control" id="initial_payment"
-                                       name="initial_payment" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress2">Other Notes</label>
-                                <textarea rows="5" cols="80"></textarea>
-                            </div>
-                        </div>
-                    </div>
+                    <x-plot-details-form/>
                 </div>
             </div>
         </div>
@@ -1626,7 +1058,7 @@
                 $('#transferee_client_info_clear').hide();
 
                 let transferorType = $("#transferor_type :selected").text();
-                let transfereeType = $("#transferor_type :selected").text();
+                let transfereeType = $("#transferee_type :selected").text();
 
                 $('#individualsConveyancing').addClass('hidden');
                 $('#companiesConveyancing').addClass('hidden');
@@ -1702,6 +1134,19 @@
 
             $('#transferor_client_info_clear').on('click',function (){
                 let clientType = $("#transferor_type :selected").text();
+
+                $('#individualsTransferorConveyancing_data').addClass('hidden');
+                $('#individualsTransfereeConveyancing_data').addClass('hidden');
+
+                $('#companiesTransferorConveyancing_data').addClass('hidden');
+                $('#companiesTransfereeConveyancing_data').addClass('hidden');
+
+                $('#individualTransferorCompanyconveyancing_data').addClass('hidden');
+                $('#individualTransfereeCompanyconveyancing_data').addClass('hidden');
+
+                $('#companyTransferorIndividualconveyancing_data').addClass('hidden');
+                $('#companyTransfereeIndividualconveyancing_data').addClass('hidden');
+
                 $('#client_info_transferee').show();
                 $('#transferee_client_info_clear').show();
                 switch (clientType) {
@@ -1712,20 +1157,32 @@
                     case 'Company':
                         $('#client_info_transferee').show();
                         $('#transferee_client_info_clear').hide();
-
                         break;
                 }
 
             });
             $('#transferee_client_info_clear').on('click',function (){
+
+                $('#individualsTransferorConveyancing_data').addClass('hidden');
+                $('#individualsTransfereeConveyancing_data').addClass('hidden');
+
+                $('#companiesTransferorConveyancing_data').addClass('hidden');
+                $('#companiesTransfereeConveyancing_data').addClass('hidden');
+
+                $('#individualTransferorCompanyconveyancing_data').addClass('hidden');
+                $('#individualTransfereeCompanyconveyancing_data').addClass('hidden');
+
+                $('#companyTransferorIndividualconveyancing_data').addClass('hidden');
+                $('#companyTransfereeIndividualconveyancing_data').addClass('hidden');
+
                 let clientType = $("#transferee_type :selected").text();
+
                 $('#client_info_transferor').show();
                 $('#transferor_client_info_clear').show();
                 switch (clientType) {
                     case 'Individual':
                         $('#client_info_transferor').show();
                         $('#transferor_client_info_clear').show();
-
                         break;
                     case 'Company':
                         $('#client_info_transferor').show();
