@@ -20,13 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2a36650-46ac-44ee-b4e4-5b2af27c0aaf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/partials/plot-details.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/client/cases/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/cases/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/client/file/individual/conveyance_form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/file/individual/conveyance_form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/company-conveyance-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/company-conveyance-form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/individual-conveyance-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/individual-conveyance-form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/individual-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/individual-form.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,6 +227,7 @@
       <workItem from="1595096387170" duration="2984000" />
       <workItem from="1595163148791" duration="32585000" />
       <workItem from="1597594947795" duration="31000" />
+      <workItem from="1597868857608" duration="12847000" />
     </task>
     <servers />
   </component>
