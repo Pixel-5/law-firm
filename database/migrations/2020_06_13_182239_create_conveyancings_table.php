@@ -13,17 +13,14 @@ class CreateConveyancingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('conveyancings', function (Blueprint $table) {
+        Schema::create('conveyancing', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('file_id')
-                ->constrained('files', 'id')
-                ->onDelete('cascade');
-            $table->foreignId('conveyancing_form_id')
-                ->constrained('conveyancing_forms','id')
-                ->onDelete('CASCADE');
-            $table->string('number');
-            $table->foreignId('client_type')
-                ->constrained('client_types','id');
+            $table->string('number')->default('SA/CON/FRM/01');
+            $table->foreignId('client_id')
+            ->constrained('clients');
+            $table->string('other_id');
+            $table->string('other_type');
+            $table->foreignId('transaction_id')->constrained('plot_transactions');
             $table->timestamps();
             $table->softDeletes();
         });

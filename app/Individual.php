@@ -104,4 +104,9 @@ class Individual extends Model
     {
         return $this->morphOne('App\Client', 'clientable');
     }
+
+    public function conveyancing()
+    {
+        return $this->hasMany(Conveyancing::class,'client_id');
+    }
 }

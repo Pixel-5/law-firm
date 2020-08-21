@@ -4,12 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ConveyancingForm extends Model
+class Plot extends Model
 {
     protected $fillable = [
-        'conveyance_id',
-        'name',
-        'transaction_type',
         'plot_no',
         'situated_at',
         'title_deed',
@@ -17,6 +14,5 @@ class ConveyancingForm extends Model
         'purchase_price',
         'initial_payment',
         'notes',
-        'plot_transfer_id',
     ];
 }

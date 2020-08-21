@@ -137,22 +137,22 @@
 
                                             <tbody>
 
-                                            @foreach($individuals as $file)
+                                            @foreach($individuals as $individual)
+                                                @if($individual->client != null)
                                                 <tr>
-                                                    <div class="modal fade" id="editClientFileModal{{ $file->id  }}" tabindex="-1"
+                                                    <div class="modal fade" id="editClientFileModal{{ $individual->id  }}" tabindex="-1"
                                                          role="dialog"
                                                          aria-labelledby="clientModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-lg" role="document">
                                                             <div class="modal-content">
-                                                                <form action="{{ route('admin.individual.update',[$file->id]) }}"
+                                                                <form action="{{ route('admin.individual.update',[$individual->id]) }}"
                                                                       enctype="multipart/form-data" method="POST">
                                                                     @csrf
                                                                     @honeypot
                                                                     @method('PUT')
                                                                     <div class="modal-header">
                                                                         <h5 class="modal-title" id="clientModalLabel">
-                                                                            Edit Client File
-                                                                            Information</h5>
+                                                                            Edit Client File Information</h5>
                                                                         <button type="button" class="close" data-dismiss="modal"
                                                                                 aria-label="Close">
                                                                             <span aria-hidden="true">&times;</span>
@@ -160,7 +160,7 @@
                                                                     </div>
                                                                     <div class="modal-body">
                                                                         <x-individualForm
-                                                                            :file="$file"
+                                                                            :file="$individual"
                                                                         />
                                                                     </div>
                                                                     <div class="modal-footer">
@@ -171,32 +171,32 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <td>{{ $file->id }}</td>
-                                                    <td>{{ $file->number }}</td>
-                                                    <td>{{ $file->name }} {{ $file->surname }}</td>
-                                                    <td>{{ $file->email }}</td>
-                                                    <td>{{ $file->tel == 'N/A'? 'N/A': '+267 '.$file->tel }}</td>
+                                                    <td>{{ $individual->id }}</td>
+                                                    <td>{{ $individual->number }}</td>
+                                                    <td>{{ $individual->name }} {{ $individual->surname }}</td>
+                                                    <td>{{ $individual->email }}</td>
+                                                    <td>{{ $individual->cell == 'N/A'? 'N/A': '+267 '.$individual->cell }}</td>
                                                     <td>
                                                         @can('case_access')
                                                             <a class="btn btn-info btn-sm  text-center text-white"
-                                                               href="{{ route('admin.individual.show', $file->id) }}">
+                                                               href="{{ route('admin.client.show', $individual->id) }}">
                                                                 <i class="fa fa-file-contract"></i> Open</a>
                                                         @endcan
                                                         @can('file_edit')
                                                             <a class="btn btn-warning btn-sm  text-center text-white"
-                                                               data-toggle="modal" data-target="#editClientFileModal{{ $file->id }}">
+                                                               data-toggle="modal" data-target="#editClientFileModal{{ $individual->id }}">
                                                                 <i class="fa fa-pencil-alt"></i> Edit</a>
                                                         @endcan
                                                         @can('file_delete')
                                                             <button class="delete btn btn-danger btn-sm text-center text-white"
-                                                                    id="{{ $file->id }}"
-                                                                    data-id='{{ $file->id }}'>
+                                                                    id="{{ $individual->id }}"
+                                                                    data-id='{{ $individual->id }}'>
                                                                 <i class="fa fa-trash"></i>Delete
                                                             </button>
                                                         @endcan
                                                     </td>
-
                                                 </tr>
+                                                @endif
                                             @endforeach
                                             </tbody>
                                         </table>

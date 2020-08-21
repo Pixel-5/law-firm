@@ -25,7 +25,7 @@ class FileComposer
 
     public function getIndividualFiles()
     {
-        return IndividualFileRepository::allFiles();;
+        return IndividualFileRepository::individuals();;
     }
     public function getCompanyFiles()
     {

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePlotTransfersTable extends Migration
+class CreatePlotTransactionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreatePlotTransfersTable extends Migration
      */
     public function up()
     {
-        Schema::create('plot_transfers', function (Blueprint $table) {
+        Schema::create('plot_transactions', function (Blueprint $table) {
             $table->id();
-            $table->string('client_type');
-            $table->string('other_type');
-            $table->foreignId('other_individual_id')
-                ->constrained('individuals','id');
-            $table->foreignId('other_companies_id')
-                ->constrained('companies','id');
+            $table->string('transaction_type');
+            $table->string('client_transaction_type');
+            $table->string('other_transaction_type');
+            $table->foreignId('plot_id')->constrained('plots');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -33,6 +31,6 @@ class CreatePlotTransfersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('plot_transfers');
+        Schema::dropIfExists('plot_transcations');
     }
 }
