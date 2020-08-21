@@ -25,6 +25,7 @@ class Company extends Model
     protected static $logAttributes = [
         'name',
         'entity',
+        'doi',
         'physical_address',
         'postal_address',
         'director_name',

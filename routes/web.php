@@ -52,6 +52,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin',
 
     //Forms
     Route::resource('conveyancing', 'ConveyancingController');
+    Route::resource('client', 'ClientController');
 
     //default dashboard routes
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');

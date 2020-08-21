@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Facade\ConveyancingRepository;
-use App\Facade\IndividualFileRepository;
+use App\Facade\ClientRepository;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreIndividualFileRequest;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
-use function GuzzleHttp\Promise\all;
 
-class IndividualFileController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -38,16 +35,16 @@ class IndividualFileController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param StoreIndividualFileRequest $request
+     * @param Request $request
      * @return Response
      */
-    public function store(StoreIndividualFileRequest $request)
+    public function store(Request $request)
     {
 
-        return redirect()->back()->with(
-            empty(IndividualFileRepository::storeFile($request)) ?
-                ['fail' => 'Failed to add a client file'] :
-                ['status' => 'Successfully added new Individual client file']);
+//        return redirect()->back()->with(
+//            empty(IndividualFileRepository::storeFile($request)) ?
+//                ['fail' => 'Failed to add a client file'] :
+//                ['status' => 'Successfully added new Individual client file']);
     }
 
     /**
@@ -58,8 +55,10 @@ class IndividualFileController extends Controller
      */
     public function show($id)
     {
+
         abort_if(Gate::denies('file_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        $file =  IndividualFileRepository::findById($id);
+        $file =  ClientRepository::findById($id);
+        //dd($file);
         return view('client.cases.index',compact('file'));
     }
 

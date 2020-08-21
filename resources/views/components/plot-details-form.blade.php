@@ -22,9 +22,9 @@
     </div>
     <div class="form-row">
         <div class="form-group col-md-12">
-            <label for="gender">Is property bounded?</label>
-            <label class="radio-inline"><input type="radio" name="optradio" value="Yes"> Yes</label>
-            <label class="radio-inline"><input type="radio" name="optradio" value="No" checked> No</label>
+            <label for="property_bounded">Is property bounded?</label>
+            <label class="radio-inline"><input type="radio" name="property_bounded" value="Yes"> Yes</label>
+            <label class="radio-inline"><input type="radio" name="property_bounded" value="No" checked> No</label>
         </div>
     </div>
     <div class="form-row">

@@ -10,7 +10,7 @@
                    href="{{  route($isLawyer? 'lawyer.dashboard': 'admin.dashboard') }}">Home
                 </a></li>
             <li class="breadcrumb-item"><a href="{{ route('files.index') }}">Files</a></li>
-            <li class="breadcrumb-item"><a>{{ $file->number }}</a></li>
+            <li class="breadcrumb-item"><a>{{ $file->clientable->number }}</a></li>
             <li class="offset-11 d-sm-block" style="height: 10px;margin-top: -30px;">
                 <a href="{{ url()->previous() }}" title="Back">
                     <i class="fa fa-2x fa-chevron-circle-left"></i>
@@ -25,10 +25,19 @@
         <div class="alert alert-primary fade show" role="alert">
             {{--        --}}
             @can('case_create')
-                <a href="#" class="btn btn-md btn-outline-primary shadow-sm" data-toggle="modal" data-target="#openClientCaseModal">
-                    <i class="fa fa-balance-scale fa-sm text-dark-100"></i> Litigation</a>
-                <a href="#" class="btn btn-md btn-outline-primary shadow-sm ml-5" data-toggle="modal" data-target="#openClientCoveyanceModal">
-                    <i class="fa fa-file-pdf fa-sm text-dark-100"></i> Conveyancing</a>
+                <div class="row-cols-3">
+                    <a href="#" class="btn btn-md btn-outline-primary shadow-sm" data-toggle="modal" data-target="#openClientCaseModal">
+                        <i class="fa fa-balance-scale fa-sm text-dark-100"></i> Litigation
+                    </a>
+                    <a href="#" class="btn btn-md btn-outline-primary shadow-sm" style="font-size: 14px;" data-toggle="modal" data-target="#openClientCoveyanceModal">
+                        <i class="fa fa-file-pdf fa-sm text-dark-100"></i> Conveyance
+                    </a>
+                    @can('file_edit')
+                        <a href="#" class="btn d-sm-block btn-outline-secondary shadow-sm float-right" data-toggle="modal" data-target="#openClientCaseModal">
+                            <i class="fa fa-pencil-alt fa-sm text-dark-100"></i> Edit</a>
+                    @endcan
+                </div>
+
                 <!-- Modal -->
                 <div class="modal fade" id="openClientCaseModal" tabindex="-1" role="dialog"
                      aria-labelledby="openClientCaseModalLabel" aria-hidden="true">
@@ -55,7 +64,7 @@
                                         <input type="hidden" name="number" class="form-control"
                                                id="number"  value="{{ \Illuminate\Support\Str::caseNumber() }}">
                                         <input type="hidden" name="file_id" class="form-control"
-                                               id="file_id"  value="{{ $file->id }}">
+                                               id="file_id"  value="{{ $file->clientable->id }}">
                                     </div>
                                     <div class="form-group ">
                                         <label for="inputPlaintiffName">Plaintiff Name</label>
@@ -105,15 +114,11 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                @include('client.file.individual.conveyance_form',['file'=>$file])
+                                @include('client.file.individual.conveyance_form',['file'=>$file->clientable])
                             </div>
                         </div>
                     </div>
                 </div>
-            @endcan
-            @can('file_edit')
-                <a href="#" class="btn btn-md btn-outline-secondary shadow-sm ml-5 float-right" data-toggle="modal" data-target="#openClientCaseModal">
-                    <i class="fa fa-pencil-alt fa-sm text-dark-100"></i> Edit File</a>
             @endcan
         </div>
     </div>
@@ -145,13 +150,95 @@
             <a href="#collapseCardExample2" class="d-block card-header py-3" data-toggle="collapse" role="button"
                aria-expanded="true" aria-controls="collapseCardExample2">
                 <h5 class="m-0 font-weight-bold text-primary"> Conveyancing
-                    <span class="badge badge-primary">2</span></h5>
+                    <span class="badge badge-primary">{{ $file->conveyancing->count() }}</span></h5>
             </a>
             <!-- Card Content - Collapse -->
             <div class="collapse hide" id="collapseCardExample2">
                 <div class="card-body">
                     <input type="hidden" name="_token" value="{{ @csrf_token() }}">
                     <div class="table-responsive">
+                       <table id="conveyance" class="table table-striped table-bordered nowrap" style="width:100%">
+                           <thead>
+                           <tr>
+                               <th>#</th>
+                               <th>Plot No</th>
+                               <th>Transaction Type</th>
+                               <th>Client</th>
+                               <th>Other</th>
+                               <th>Other Type</th>
+                               <th>Action</th>
+                           </tr>
+                           </thead>
+
+                           <tbody>
+
+                           @foreach($file->conveyancing as $conveyance)
+                               <tr>
+                                   <div class="modal fade" id="editClientFileModal{{ $conveyance->id  }}" tabindex="-1"
+                                        role="dialog"
+                                        aria-labelledby="clientModalLabel" aria-hidden="true">
+                                       <div class="modal-dialog modal-lg" role="document">
+                                           <div class="modal-content">
+                                               <form action="{{ route('admin.individual.update',[$conveyance->id]) }}"
+                                                     enctype="multipart/form-data" method="POST">
+                                                   @csrf
+                                                   @honeypot
+                                                   @method('PUT')
+                                                   <div class="modal-header">
+                                                       <h5 class="modal-title" id="clientModalLabel">
+                                                           Edit Client File Information</h5>
+                                                       <button type="button" class="close" data-dismiss="modal"
+                                                               aria-label="Close">
+                                                           <span aria-hidden="true">&times;</span>
+                                                       </button>
+                                                   </div>
+                                                   <div class="modal-body">
+                                                       <x-individualForm
+                                                           :file="$conveyance"
+                                                       />
+                                                   </div>
+                                                   <div class="modal-footer">
+                                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                       <button type="submit" class="btn btn-primary">Save file</button>
+                                                   </div>
+                                               </form>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <td>{{ $conveyance->id }}</td>
+                                   <th>{{ $conveyance->transaction->plot->plot_no }}</th>
+                                   <td>{{ $conveyance->transaction->transaction_type }}</td>
+                                   <td>{{ $conveyance->transaction->client_transaction_type }}</td>
+                                   <th>{{ $conveyance->transaction->other_transaction_type }}</th>
+                                   <th>{{ $conveyance->other_type }}</th>
+                                   <td>
+                                       @can('case_access')
+                                           <a class="btn btn-info btn-sm  text-center text-white"
+                                              href="{{ route('admin.client.show', $conveyance->id) }}">
+                                               <i class="fa fa-file-contract"></i> view</a>
+                                       @endcan
+                                           @can('case_access')
+                                               <a class="btn btn-primary btn-sm  text-center text-white"
+                                                  href="{{ route('admin.client.show', $conveyance->id) }}">
+                                                   <i class="fa fa-file-contract"></i> assign</a>
+                                           @endcan
+                                       @can('file_edit')
+                                           <a class="btn btn-warning btn-sm  text-center text-white"
+                                              data-toggle="modal" data-target="#editClientFileModal{{ $conveyance->id }}">
+                                               <i class="fa fa-pencil-alt"></i> Edit</a>
+                                       @endcan
+                                       @can('file_delete')
+                                           <button class="delete btn btn-danger btn-sm text-center text-white"
+                                                   id="{{ $conveyance->id }}"
+                                                   data-id='{{ $conveyance->id }}'>
+                                               <i class="fa fa-trash"></i>Delete
+                                           </button>
+                                       @endcan
+                                   </td>
+                               </tr>
+                           @endforeach
+                           </tbody>
+                       </table>
                     </div>
                 </div>
             </div>
@@ -246,6 +333,82 @@
                     }
                 });
         });
+            $('#conveyance').on('click', '.delete', function(){
+                var el = this;
+
+                // Delete id
+                let file = $(this).data('id');
+                console.log('id = '+file);
+
+                bootbox.confirm({
+                    title: "Delete Individual FIle?",
+                    message: "Do you really want to delete this record?",
+                    buttons: {
+                        cancel: {
+                            label: `<i class="fa fa-times"></i> Cancel`
+                        },
+                        confirm: {
+                            label: `<i class="fa fa-check"></i> Confirm`
+                        }
+                    },
+                    callback: function (result) {
+                        let url = '{{ route("admin.individual.destroy",["individual"=> ":id"]) }}';
+                        url = url.replace(':id', file);
+                        if(result){
+                            $(el).html(`<i class="fa fa-spinner fa-spin"></i> deleting...`);
+                            // AJAX Request
+                            $.ajax({
+                                url: url,
+                                type: 'POST',
+                                data: {
+                                    '_token' : '{{ csrf_token() }}',
+                                    _method: 'DELETE'
+                                },
+                                success: function(response){
+
+                                    // Removing row from HTML Table
+                                    console.log(response);
+                                    if(response == 1){
+                                        $(el).closest('tr').css('background','tomato');
+                                        $(el).closest('tr').fadeOut(800,function(){
+                                            $(this).remove();
+                                        });
+                                        window.location.reload();
+                                    }else{
+                                        bootbox.alert('Record not deleted.');
+                                    }
+                                    // var table = $('#individual').DataTable();
+                                    // table.row($(btn).parents('tr')).remove().draw(false); //c
+                                    // window.location.reload();
+                                },
+                                error: function (response) {
+                                    console.log("error "+ response);
+                                }
+                            });
+                        }
+                    }
+                });
+            });
+            $('#conveyance').DataTable( {
+                processing: true,
+                responsive: {
+                    details: {
+                        display: $.fn.dataTable.Responsive.display.modal( {
+                            header: function ( row ) {
+                                let data = row.data();
+                                return 'Case Details for '+data[1];
+                            }
+                        } ),
+                        renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+                            tableClass: 'table'
+                        } )
+                    }
+                },
+                "columnDefs": [
+                    { "visible": false, "targets": groupColumn },
+                ],
+                "displayLength": 10,
+            } );
     } );
 </script>
 @endsection

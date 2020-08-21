@@ -3,15 +3,17 @@
 
 namespace App\Repository\Eloquent;
 
+use App\Client;
 use App\Individual;
 use App\Repository\FileRepositoryInterface;
+use App\Repository\IndividualFileRepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Gate;
 
-class IndividualFileRepository extends AbstractBaseRepository implements FileRepositoryInterface
+class IndividualFileRepository extends AbstractBaseRepository implements IndividualFileRepositoryInterface
 {
 
     public function __construct(Individual $model)
@@ -33,10 +35,13 @@ class IndividualFileRepository extends AbstractBaseRepository implements FileRep
     /**
      * @return Collection
      */
-    public function allFiles(): Collection
+    public function individuals()
     {
-       return $this->model->all();
+        $individuals = $this->model->all()->load('client');
+        return $individuals;
     }
+
+
 
     /**
      * @param $request
@@ -75,7 +80,7 @@ class IndividualFileRepository extends AbstractBaseRepository implements FileRep
                 $files[] = $file_name;
             }
         }
-        $client =  $this->create([
+        $individual =  $this->create([
 
             'name'              => $name,
             'number'            =>$number,
@@ -102,6 +107,13 @@ class IndividualFileRepository extends AbstractBaseRepository implements FileRep
             'agreement_service' => $agreement_service,
         ]);
 
+        $client = Client::create([
+            'clientable_id' => $individual->id,
+            'clientable_type' => 'App\Individual'
+        ]);
+
+        return $individual;
+
     }
 
     /**
@@ -119,7 +131,9 @@ class IndividualFileRepository extends AbstractBaseRepository implements FileRep
      */
     public function findById($id)
     {
-        return $this->find($id);
+        $conveyance =  $this->find($id);
+        $conveyance->load(['conveyancing']);
+        return $conveyance;
     }
 
     /**
@@ -131,4 +145,5 @@ class IndividualFileRepository extends AbstractBaseRepository implements FileRep
     {
         return $this->update($id,$request->all());
     }
+
 }

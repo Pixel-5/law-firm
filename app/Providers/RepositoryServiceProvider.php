@@ -4,7 +4,11 @@ namespace App\Providers;
 
 
 use App\Repository\CaseRepositoryInterface;
+use App\Repository\ClientRepositoryInterface;
+use App\Repository\ConveyancingRepositoryInterface;
 use App\Repository\Eloquent\CaseRepository;
+use App\Repository\Eloquent\ClientRepository;
+use App\Repository\Eloquent\ConveyancingRepository;
 use App\Repository\Eloquent\FileRepository;
 use App\Repository\Eloquent\IndividualFileRepository;
 use App\Repository\Eloquent\ProfileRepository;
@@ -40,6 +44,8 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(ScheduleRepositoryInterface::class, ScheduleRepository::class);
         $this->app->bind(ProfileRepositoryInterface::class, ProfileRepository::class);
         $this->app->bind(IndividualFileRepositoryInterface::class, IndividualFileRepository::class);
+        $this->app->bind(ConveyancingRepositoryInterface::class, ConveyancingRepository::class);
+        $this->app->bind(ClientRepositoryInterface::class, ClientRepository::class);
     }
 
     /**
@@ -53,5 +59,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->singleton('ScheduleRepository', ScheduleRepositoryInterface::class);
         $this->app->singleton('ProfileRepository', ProfileRepositoryInterface::class);
         $this->app->singleton('IndividualFileRepository', IndividualFileRepositoryInterface::class);
+        $this->app->singleton('ConveyancingRepository', ConveyancingRepositoryInterface::class);
+        $this->app->singleton('ClientRepository', ClientRepositoryInterface::class);
     }
 }

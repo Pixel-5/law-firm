@@ -10,7 +10,7 @@ interface FileRepositoryInterface
     /**
      * @return Collection
      */
-    public function allFiles(): Collection;
+    public function allFiles();
 
     /**
      * @param $request

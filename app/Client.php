@@ -15,4 +15,14 @@ class Client extends Model
     {
         return $this->morphTo();
     }
+
+    public function conveyancing()
+    {
+        return $this->hasMany(Conveyancing::class);
+    }
+
+    public function litigation()
+    {
+        return $this->hasMany(Litigation::class);
+    }
 }
