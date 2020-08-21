@@ -44,58 +44,72 @@
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="openClientCaseModalLabel">Court Case Information</h5>
+                                <h5 class="modal-title" id="openClientCaseModalLabel">Litigation Information Form</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <div class="alert alert-primary" role="alert">
-                                    In the High Court of the Republic of Botswana
-                                </div>
-                                <form method="POST" action="{{ route('cases.store') }}"
-                                      enctype="multipart/form-data">
-                                    @honeypot
-                                    @csrf
-                                    <div class="form-group ">
-                                        <label for="inputCaseNumber">Case Number</label>
-                                        <input type="text" class="form-control" disabled
-                                               value="{{ \Illuminate\Support\Str::caseNumber() }}">
-                                        <input type="hidden" name="number" class="form-control"
-                                               id="number"  value="{{ \Illuminate\Support\Str::caseNumber() }}">
-                                        <input type="hidden" name="file_id" class="form-control"
-                                               id="file_id"  value="{{ $file->clientable->id }}">
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="inputPlaintiffName">Plaintiff Name</label>
-                                        <input type="text" class="form-control" id="plaintiff" name="plaintiff"
-                                               required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputDefendantName">Defendant Name</label>
-                                        <input type="text" class="form-control" id="defendant" name="defendant"
-                                               required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputDetails">Case Details</label>
-                                        <textarea class="form-control text-left" aria-label="With textarea" name="details"
-                                                  rows="10" cols="50"  required></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="validatedCustomFile"
-                                                   name="docs[]" multiple>
-                                            <label class="custom-file-label"
-                                                   for="validatedCustomFile">Upload Supporting
-                                                Docs...</label>
-                                            <div class="invalid-feedback">Scan Supporting Documents</div>
+                               @if($file->clientable_type =='App\Individual')
+                                    <form id="individualLitigation_data" method="POST" action="{{ route('admin.litigation.store') }}"
+                                          enctype="multipart/form-data">
+                                        @honeypot
+                                        @csrf
+                                        <div class="container-fluid">
+                                            <div class="container-fluid">
+                                                <div class="alert alert-secondary" role="alert">
+                                                    CLIENT'S INFORMATION - INDIVIDUAL
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-10">
+                                                        <select class="form-control form-control-md"  name="category" required>
+                                                            <option disabled selected value="">Select Litigation Category</option>
+                                                            <option value="matrimonial">A (Matrimonial)</option>
+                                                            <option>B</option>
+                                                            <option>C</option>
+                                                            <option>D</option>
+                                                            <option>E</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="client_id" value="{{ $file->clientable->id }}">
+                                            <x-individualForm :file="$file->clientable"/>
                                         </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Save case</button>
-                                    </div>
-                                </form>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                        </div>
+                                    </form>
+                                @else
+                                    <form id="companyLitigation_data" method="POST" action="{{ route('admin.litigation.store') }}"
+                                          enctype="multipart/form-data">
+                                        @honeypot
+                                        @csrf
+                                        <div class="container-fluid">
+                                            <div class="alert alert-secondary" role="alert">
+                                                CLIENT'S INFORMATION - COMPANY
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-10">
+                                                    <select class="form-control form-control-md"  name="category" required>
+                                                        <option disabled selected value="">Select Litigation Category</option>
+                                                        <option>B</option>
+                                                        <option>C</option>
+                                                        <option>D</option>
+                                                        <option>E</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="client_id" value="{{ $file->clientable->id }}">
+                                            {{--        <x-companyForm :file="$file"/>--}}
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                        </div>
+                                    </form>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -130,13 +144,87 @@
             <a href="#collapseCardExample1" class="d-block card-header py-3" data-toggle="collapse" role="button"
                aria-expanded="true" aria-controls="collapseCardExample1">
                 <h5 class="m-0 font-weight-bold text-primary"> Litigation
-                    <span class="badge badge-primary">10</span></h5>
+                    <span class="badge badge-primary">{{ $file->litigation->count() }}</span></h5>
             </a>
             <!-- Card Content - Collapse -->
             <div class="collapse hide" id="collapseCardExample1">
                 <div class="card-body">
+                    <input type="hidden" name="_token" value="{{ @csrf_token() }}">
                     <div class="table-responsive">
-                        <input type="hidden" name="_token" value="{{ @csrf_token() }}">
+                        <table id="litigationTable" class="table table-striped table-bordered nowrap" style="width:100%">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Form No</th>
+                                <th>Category</th>
+                                <th>Initial Consultation Form</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($file->litigation as $litigation)
+                                <tr>
+                                    <div class="modal fade" id="editClientFileModal{{ $litigation->id  }}" tabindex="-1"
+                                         role="dialog"
+                                         aria-labelledby="clientModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <form action="{{ route('admin.individual.update',[$litigation->id]) }}"
+                                                      enctype="multipart/form-data" method="POST">
+                                                    @csrf
+                                                    @honeypot
+                                                    @method('PUT')
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="clientModalLabel">
+                                                            Edit Client Litigation Form</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Save file</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <td>{{ $litigation->id }}</td>
+                                    <td>{{ $litigation->number }}</td>
+                                    <th>{{ $litigation->category }}</th>
+                                    <td>{{ $litigation->initial_consultation_id }}</td>
+                                    <td>
+                                        @can('case_access')
+                                            <a class="btn btn-info btn-sm  text-center text-white"
+                                               href="{{ route('admin.client.show', $litigation->id) }}">
+                                                <i class="fa fa-file-contract"></i> view</a>
+                                        @endcan
+                                        @can('case_access')
+                                            <a class="btn btn-primary btn-sm  text-center text-white"
+                                               href="{{ route('admin.client.show', $litigation->id) }}">
+                                                <i class="fa fa-file-contract"></i> assign</a>
+                                        @endcan
+                                        @can('file_edit')
+                                            <a class="btn btn-warning btn-sm  text-center text-white"
+                                               data-toggle="modal" data-target="#editClientFileModal{{ $litigation->id }}">
+                                                <i class="fa fa-pencil-alt"></i> Edit</a>
+                                        @endcan
+                                        @can('file_delete')
+                                            <button class="delete btn btn-danger btn-sm text-center text-white"
+                                                    id="{{ $litigation->id }}"
+                                                    data-id='{{ $litigation->id }}'>
+                                                <i class="fa fa-trash"></i>Delete
+                                            </button>
+                                        @endcan
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -157,86 +245,84 @@
                 <div class="card-body">
                     <input type="hidden" name="_token" value="{{ @csrf_token() }}">
                     <div class="table-responsive">
-                       <table id="conveyance" class="table table-striped table-bordered nowrap" style="width:100%">
+                       <table id="conveyanceTable" class="table table-striped table-bordered nowrap" style="width:100%">
                            <thead>
-                           <tr>
-                               <th>#</th>
-                               <th>Plot No</th>
-                               <th>Transaction Type</th>
-                               <th>Client</th>
-                               <th>Other</th>
-                               <th>Other Type</th>
-                               <th>Action</th>
-                           </tr>
-                           </thead>
-
-                           <tbody>
-
-                           @foreach($file->conveyancing as $conveyance)
                                <tr>
-                                   <div class="modal fade" id="editClientFileModal{{ $conveyance->id  }}" tabindex="-1"
-                                        role="dialog"
-                                        aria-labelledby="clientModalLabel" aria-hidden="true">
-                                       <div class="modal-dialog modal-lg" role="document">
-                                           <div class="modal-content">
-                                               <form action="{{ route('admin.individual.update',[$conveyance->id]) }}"
-                                                     enctype="multipart/form-data" method="POST">
-                                                   @csrf
-                                                   @honeypot
-                                                   @method('PUT')
-                                                   <div class="modal-header">
-                                                       <h5 class="modal-title" id="clientModalLabel">
-                                                           Edit Client File Information</h5>
-                                                       <button type="button" class="close" data-dismiss="modal"
-                                                               aria-label="Close">
-                                                           <span aria-hidden="true">&times;</span>
-                                                       </button>
-                                                   </div>
-                                                   <div class="modal-body">
-                                                       <x-individualForm
-                                                           :file="$conveyance"
-                                                       />
-                                                   </div>
-                                                   <div class="modal-footer">
-                                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                       <button type="submit" class="btn btn-primary">Save file</button>
-                                                   </div>
-                                               </form>
+                                   <th>#</th>
+                                   <th>Plot No</th>
+                                   <th>Transaction Type</th>
+                                   <th>Client</th>
+                                   <th>Other</th>
+                                   <th>Other Type</th>
+                                   <th>Action</th>
+                               </tr>
+                           </thead>
+                           <tbody>
+                               @foreach($file->conveyancing as $conveyance)
+                                   <tr>
+                                       <div class="modal fade" id="editClientFileModal{{ $conveyance->id  }}" tabindex="-1"
+                                            role="dialog"
+                                            aria-labelledby="clientModalLabel" aria-hidden="true">
+                                           <div class="modal-dialog modal-lg" role="document">
+                                               <div class="modal-content">
+                                                   <form action="{{ route('admin.individual.update',[$conveyance->id]) }}"
+                                                         enctype="multipart/form-data" method="POST">
+                                                       @csrf
+                                                       @honeypot
+                                                       @method('PUT')
+                                                       <div class="modal-header">
+                                                           <h5 class="modal-title" id="clientModalLabel">
+                                                               Edit Client File Information</h5>
+                                                           <button type="button" class="close" data-dismiss="modal"
+                                                                   aria-label="Close">
+                                                               <span aria-hidden="true">&times;</span>
+                                                           </button>
+                                                       </div>
+                                                       <div class="modal-body">
+                                                           <x-individualForm
+                                                               :file="$conveyance"
+                                                           />
+                                                       </div>
+                                                       <div class="modal-footer">
+                                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                           <button type="submit" class="btn btn-primary">Save file</button>
+                                                       </div>
+                                                   </form>
+                                               </div>
                                            </div>
                                        </div>
-                                   </div>
-                                   <td>{{ $conveyance->id }}</td>
-                                   <th>{{ $conveyance->transaction->plot->plot_no }}</th>
-                                   <td>{{ $conveyance->transaction->transaction_type }}</td>
-                                   <td>{{ $conveyance->transaction->client_transaction_type }}</td>
-                                   <th>{{ $conveyance->transaction->other_transaction_type }}</th>
-                                   <th>{{ $conveyance->other_type }}</th>
-                                   <td>
-                                       @can('case_access')
-                                           <a class="btn btn-info btn-sm  text-center text-white"
-                                              href="{{ route('admin.client.show', $conveyance->id) }}">
-                                               <i class="fa fa-file-contract"></i> view</a>
-                                       @endcan
+                                       <td>{{ $conveyance->id }}</td>
+                                       <th>{{ $conveyance->transaction->plot->plot_no }}</th>
+                                       <td>{{ $conveyance->transaction->transaction_type }}</td>
+                                       <td>{{ $conveyance->transaction->client_transaction_type }}</td>
+                                       <th>{{ $conveyance->transaction->other_transaction_type }}</th>
+                                       <th>{{ $conveyance->other_type }}</th>
+                                       <td>
                                            @can('case_access')
-                                               <a class="btn btn-primary btn-sm  text-center text-white"
+                                               <a class="btn btn-info btn-sm  text-center text-white"
                                                   href="{{ route('admin.client.show', $conveyance->id) }}">
-                                                   <i class="fa fa-file-contract"></i> assign</a>
+                                                   <i class="fa fa-file-contract"></i> view</a>
                                            @endcan
-                                       @can('file_edit')
-                                           <a class="btn btn-warning btn-sm  text-center text-white"
-                                              data-toggle="modal" data-target="#editClientFileModal{{ $conveyance->id }}">
-                                               <i class="fa fa-pencil-alt"></i> Edit</a>
-                                       @endcan
-                                       @can('file_delete')
-                                           <button class="delete btn btn-danger btn-sm text-center text-white"
-                                                   id="{{ $conveyance->id }}"
-                                                   data-id='{{ $conveyance->id }}'>
-                                               <i class="fa fa-trash"></i>Delete
-                                           </button>
-                                       @endcan
-                                   </td>
-                               </tr>
-                           @endforeach
+                                               @can('case_access')
+                                                   <a class="btn btn-primary btn-sm  text-center text-white"
+                                                      href="{{ route('admin.client.show', $conveyance->id) }}">
+                                                       <i class="fa fa-file-contract"></i> assign</a>
+                                               @endcan
+                                           @can('file_edit')
+                                               <a class="btn btn-warning btn-sm  text-center text-white"
+                                                  data-toggle="modal" data-target="#editClientFileModal{{ $conveyance->id }}">
+                                                   <i class="fa fa-pencil-alt"></i> Edit</a>
+                                           @endcan
+                                           @can('file_delete')
+                                               <button class="delete btn btn-danger btn-sm text-center text-white"
+                                                       id="{{ $conveyance->id }}"
+                                                       data-id='{{ $conveyance->id }}'>
+                                                   <i class="fa fa-trash"></i>Delete
+                                               </button>
+                                           @endcan
+                                       </td>
+                                   </tr>
+                               @endforeach
                            </tbody>
                        </table>
                     </div>
@@ -245,14 +331,12 @@
         </div>
     </div>
 </div>
-
 @endsection
 <!-- /.container-fluid -->
 @section('custom-scripts')
     <script src="{{ asset('js/bootbox.min.js') }}"></script>
     <script type="application/javascript">
         $(document).ready(function() {
-
             $('.dropdown-item').on('click', function(){
             $("html, body").animate({
                 scrollTop: $(
@@ -333,7 +417,7 @@
                     }
                 });
         });
-            $('#conveyance').on('click', '.delete', function(){
+            $('#litigationTable').on('click', '.delete', function(){
                 var el = this;
 
                 // Delete id
@@ -389,7 +473,84 @@
                     }
                 });
             });
-            $('#conveyance').DataTable( {
+            $('#litigationTable').DataTable( {
+                processing: true,
+                responsive: {
+                    details: {
+                        display: $.fn.dataTable.Responsive.display.modal( {
+                            header: function ( row ) {
+                                let data = row.data();
+                                return 'Case Details for '+data[1];
+                            }
+                        } ),
+                        renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+                            tableClass: 'table'
+                        } )
+                    }
+                },
+                "columnDefs": [
+                    { "visible": false, "targets": groupColumn },
+                ],
+                "displayLength": 10,
+            } );
+
+            $('#conveyanceTable').on('click', '.delete', function(){
+                var el = this;
+
+                // Delete id
+                let file = $(this).data('id');
+                console.log('id = '+file);
+
+                bootbox.confirm({
+                    title: "Delete Individual FIle?",
+                    message: "Do you really want to delete this record?",
+                    buttons: {
+                        cancel: {
+                            label: `<i class="fa fa-times"></i> Cancel`
+                        },
+                        confirm: {
+                            label: `<i class="fa fa-check"></i> Confirm`
+                        }
+                    },
+                    callback: function (result) {
+                        let url = '{{ route("admin.individual.destroy",["individual"=> ":id"]) }}';
+                        url = url.replace(':id', file);
+                        if(result){
+                            $(el).html(`<i class="fa fa-spinner fa-spin"></i> deleting...`);
+                            // AJAX Request
+                            $.ajax({
+                                url: url,
+                                type: 'POST',
+                                data: {
+                                    '_token' : '{{ csrf_token() }}',
+                                    _method: 'DELETE'
+                                },
+                                success: function(response){
+
+                                    // Removing row from HTML Table
+                                    console.log(response);
+                                    if(response == 1){
+                                        $(el).closest('tr').css('background','tomato');
+                                        $(el).closest('tr').fadeOut(800,function(){
+                                            $(this).remove();
+                                        });
+                                        window.location.reload();
+                                    }else{
+                                        bootbox.alert('Record not deleted.');
+                                    }
+                                    // var table = $('#individual').DataTable();
+                                    // table.row($(btn).parents('tr')).remove().draw(false); //c
+                                    // window.location.reload();
+                                },
+                                error: function (response) {
+                                    console.log("error "+ response);
+                                }
+                            });
+                        }
+                    }
+                });
+            });
+            $('#conveyanceTable').DataTable( {
                 processing: true,
                 responsive: {
                     details: {

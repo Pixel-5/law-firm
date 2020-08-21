@@ -16,14 +16,12 @@ class CreateLitigationsTable extends Migration
         Schema::create('litigations', function (Blueprint $table) {
             $table->id();
             $table->string('number');
+            $table->string('category');
             $table->foreignId('initial_consultation_id')
-                ->constrained('initial_consultation_forms', 'id')
-                ->onDelete('cascade');
-            $table->foreignId('file_id')
-                ->constrained('files', 'id')
+                ->nullable();
+            $table->foreignId('client_id')
+                ->constrained('clients')
                 ->onDelete('CASCADE');
-            $table->foreignId('client_type')
-                ->constrained('client_types','id');
             $table->timestamps();
             $table->softDeletes();
         });

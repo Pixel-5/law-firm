@@ -20,36 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2a36650-46ac-44ee-b4e4-5b2af27c0aaf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Facade/ClientRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Facade/ConveyancingRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Facade/LitigationRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Repository/ClientRepositoryInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Repository/ConveyancingRepositoryInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Repository/Eloquent/ClientRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Repository/Eloquent/ConveyancingRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Repository/Eloquent/LitigationRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Repository/LitigationRepositoryInterface.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Company.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Company.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Conveyancing.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Conveyancing.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/ConveyancingForm.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ConveyancingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ConveyancingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/IndividualFileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/IndividualFileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/View/Composers/FileComposer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/View/Composers/FileComposer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Individual.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Individual.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ClientController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Litigation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Litigation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Providers/RepositoryServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RepositoryServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/IndividualFileRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/IndividualFileRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/FileRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/FileRepositoryInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/IndividualFileRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/IndividualFileRepositoryInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_023822_create_individuals_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_13_023822_create_individuals_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_023844_create_companies_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_13_023844_create_companies_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_175614_create_plot_transfers_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_175655_create_conveyancing_forms_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_182239_create_conveyancings_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_13_182239_create_conveyancings_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_06_043629_create_clients_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_13_043629_create_clients_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/ClientRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/ClientRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_182209_create_litigations_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_13_182209_create_litigations_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/client/cases/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/cases/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/client/file/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/file/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/client/file/individual/conveyance_form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/file/individual/conveyance_form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/plot-details-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/plot-details-form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/client/file/individual/litigation_form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/file/individual/litigation_form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/links.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/links.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -259,7 +241,7 @@
       <workItem from="1595096387170" duration="2984000" />
       <workItem from="1595163148791" duration="32585000" />
       <workItem from="1597594947795" duration="31000" />
-      <workItem from="1597868857608" duration="50076000" />
+      <workItem from="1597868857608" duration="65513000" />
     </task>
     <servers />
   </component>
@@ -279,10 +261,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="473" y="83" width="383" height="554" key="#com.intellij.ide.util.MemberChooser" timestamp="1598018942490">
+    <state x="473" y="83" width="383" height="554" key="#com.intellij.ide.util.MemberChooser" timestamp="1598043352878">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="473" y="83" width="383" height="554" key="#com.intellij.ide.util.MemberChooser/0.0.1280.720@0.0.1280.720" timestamp="1598018942490" />
+    <state x="473" y="83" width="383" height="554" key="#com.intellij.ide.util.MemberChooser/0.0.1280.720@0.0.1280.720" timestamp="1598043352878" />
     <state x="591" y="128" width="414" height="670" key="#com.intellij.ide.util.MemberChooser/0.27.1600.872@0.27.1600.872" timestamp="1595037156693" />
     <state x="486" y="165" width="324" height="376" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1597956801179">
       <screen x="0" y="0" width="1280" height="720" />
@@ -298,20 +280,28 @@
       <screen x="0" y="27" width="1600" height="872" />
     </state>
     <state x="586" y="386" width="424" height="152" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#/0.27.1600.872@0.27.1600.872" timestamp="1595185773688" />
-    <state x="407" y="115" width="599" height="494" key="NewPhpClassDialog" timestamp="1598012061792">
+    <state x="94" y="94" width="1093" height="533" key="DiffContextDialog" timestamp="1598035773621">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="407" y="115" width="599" height="494" key="NewPhpClassDialog/0.0.1280.720@0.0.1280.720" timestamp="1598012061792" />
+    <state x="94" y="94" width="1093" height="533" key="DiffContextDialog/0.0.1280.720@0.0.1280.720" timestamp="1598035773621" />
+    <state x="480" y="176" width="599" height="494" key="NewPhpClassDialog" timestamp="1598043504574">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="480" y="176" width="599" height="494" key="NewPhpClassDialog/0.0.1280.720@0.0.1280.720" timestamp="1598043504574" />
     <state x="509" y="166" width="577" height="569" key="NewPhpClassDialog/0.27.1600.872@0.27.1600.872" timestamp="1595038067433" />
     <state x="478" y="278" width="324" height="149" key="NewPhpFileDialog" timestamp="1597959725661">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="478" y="278" width="324" height="149" key="NewPhpFileDialog/0.0.1280.720@0.0.1280.720" timestamp="1597959725661" />
     <state x="598" y="364" width="399" height="157" key="NewPhpFileDialog/0.27.1600.872@0.27.1600.872" timestamp="1595045742391" />
-    <state x="370" y="148" width="672" height="560" key="search.everywhere.popup" timestamp="1596690357237">
+    <state x="236" y="59" key="VCS.ChangeListViewerDialog" timestamp="1598035672696">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="370" y="148" width="672" height="560" key="search.everywhere.popup/0.0.1280.720@0.0.1280.720" timestamp="1596690357237" />
+    <state x="236" y="59" key="VCS.ChangeListViewerDialog/0.0.1280.720@0.0.1280.720" timestamp="1598035672696" />
+    <state x="369" y="148" width="672" height="560" key="search.everywhere.popup" timestamp="1598038621857">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="369" y="148" width="672" height="560" key="search.everywhere.popup/0.0.1280.720@0.0.1280.720" timestamp="1598038621857" />
     <state x="463" y="206" width="672" height="678" key="search.everywhere.popup/0.27.1600.872@0.27.1600.872" timestamp="1595178861163" />
   </component>
 </project>

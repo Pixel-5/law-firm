@@ -30,7 +30,8 @@ class ClientRepository extends AbstractBaseRepository
         $client->load([
             'conveyancing',
             'conveyancing.transaction',
-            'conveyancing.transaction.plot'
+            'conveyancing.transaction.plot',
+            'litigation',
         ]);
         return $client;
     }

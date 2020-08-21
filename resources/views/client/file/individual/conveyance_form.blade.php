@@ -1,11 +1,4 @@
-<style>
-    .hidden
-    {
-        visibility: hidden;
-        display: none;
-    }
 
-</style>
 <div class="container-fluid">
     <div class="form-row">
         <div class="form-group col-10">
@@ -688,7 +681,6 @@
         <button type="submit" class="btn btn-primary">Save</button>
     </div>
 </form>
-
 @section('custom-scripts')
     <script type="application/javascript">
         $(document).ready(function (){
@@ -704,7 +696,6 @@
 
             $('#companyTransferorIndividualconveyancing_data').addClass('hidden');
             $('#companyTransfereeIndividualconveyancing_data').addClass('hidden');
-
 
             $("#client_info_transferor").on('click',function (){
 
@@ -844,6 +835,7 @@
                         break;
                 }
             });
+
         });
     </script>
 @endsection

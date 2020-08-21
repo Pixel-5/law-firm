@@ -18,7 +18,9 @@
             width: calc(100vw - 17px);
         }
     }
-    .hidden {
+    .hidden
+    {
+        visibility: hidden;
         display: none;
     }
     .loader {

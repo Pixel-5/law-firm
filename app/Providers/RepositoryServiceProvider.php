@@ -11,17 +11,18 @@ use App\Repository\Eloquent\ClientRepository;
 use App\Repository\Eloquent\ConveyancingRepository;
 use App\Repository\Eloquent\FileRepository;
 use App\Repository\Eloquent\IndividualFileRepository;
+use App\Repository\Eloquent\LitigationRepository;
 use App\Repository\Eloquent\ProfileRepository;
 use App\Repository\Eloquent\ScheduleRepository;
 use App\Repository\EloquentRepositoryInterface;
 use App\Repository\FileRepositoryInterface;
 use App\Repository\IndividualFileRepositoryInterface;
+use App\Repository\LitigationRepositoryInterface;
 use App\Repository\ProfileRepositoryInterface;
 use App\Repository\ScheduleRepositoryInterface;
 use App\Repository\UserRepositoryInterface;
 use App\Repository\Eloquent\UserRepository;
 use App\Repository\Eloquent\AbstractBaseRepository;
-use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
 /**
@@ -46,6 +47,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(IndividualFileRepositoryInterface::class, IndividualFileRepository::class);
         $this->app->bind(ConveyancingRepositoryInterface::class, ConveyancingRepository::class);
         $this->app->bind(ClientRepositoryInterface::class, ClientRepository::class);
+        $this->app->bind(LitigationRepositoryInterface::class, LitigationRepository::class);
     }
 
     /**
@@ -61,5 +63,6 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->singleton('IndividualFileRepository', IndividualFileRepositoryInterface::class);
         $this->app->singleton('ConveyancingRepository', ConveyancingRepositoryInterface::class);
         $this->app->singleton('ClientRepository', ClientRepositoryInterface::class);
+        $this->app->singleton('LitigationRepository', LitigationRepositoryInterface::class);
     }
 }
