@@ -115,7 +115,7 @@
                         <a href="#collapseCardExample1" class="d-block card-header py-3" data-toggle="collapse" role="button"
                            aria-expanded="true" aria-controls="collapseCardExample1">
                             <h5 class="m-0 font-weight-bold text-primary"> Individual Clients <span class="badge badge-primary">
-                                       {{ $individuals->count() }}</span></h5>
+                                       {{ $individuals }}</span></h5>
                         </a>
                         <!-- Card Content - Collapse -->
                         <div class="collapse hide" id="collapseCardExample1">
@@ -137,15 +137,16 @@
 
                                             <tbody>
 
-                                            @foreach($individuals as $individual)
-                                                @if($individual->client != null)
+                                            @foreach($clients as $client)
+                                                @if($client->clientable_type == 'App\Individual')
+
                                                 <tr>
-                                                    <div class="modal fade" id="editClientFileModal{{ $individual->id  }}" tabindex="-1"
+                                                    <div class="modal fade" id="editClientFileModal{{ $client->clientable->id  }}" tabindex="-1"
                                                          role="dialog"
                                                          aria-labelledby="clientModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-lg" role="document">
                                                             <div class="modal-content">
-                                                                <form action="{{ route('admin.individual.update',[$individual->id]) }}"
+                                                                <form action="{{ route('admin.individual.update',[$client->clientable->id]) }}"
                                                                       enctype="multipart/form-data" method="POST">
                                                                     @csrf
                                                                     @honeypot
@@ -160,7 +161,7 @@
                                                                     </div>
                                                                     <div class="modal-body">
                                                                         <x-individualForm
-                                                                            :file="$individual"
+                                                                            :file="$client->clientable"
                                                                         />
                                                                     </div>
                                                                     <div class="modal-footer">
@@ -171,26 +172,26 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <td>{{ $individual->id }}</td>
-                                                    <td>{{ $individual->number }}</td>
-                                                    <td>{{ $individual->name }} {{ $individual->surname }}</td>
-                                                    <td>{{ $individual->email }}</td>
-                                                    <td>{{ $individual->cell == 'N/A'? 'N/A': '+267 '.$individual->cell }}</td>
+                                                    <td>{{ $client->clientable->id }}</td>
+                                                    <td>{{ $client->clientable->number }}</td>
+                                                    <td>{{ $client->clientable->name }} {{ $client->clientable->surname }}</td>
+                                                    <td>{{ $client->clientable->email }}</td>
+                                                    <td>{{ $client->clientable->cell == 'N/A'? 'N/A': '+267 '.$client->cell }}</td>
                                                     <td>
                                                         @can('case_access')
                                                             <a class="btn btn-info btn-sm  text-center text-white"
-                                                               href="{{ route('admin.client.show', $individual->id) }}">
+                                                               href="{{ route('admin.client.show', $client->clientable->id) }}">
                                                                 <i class="fa fa-file-contract"></i> Open</a>
                                                         @endcan
                                                         @can('file_edit')
                                                             <a class="btn btn-warning btn-sm  text-center text-white"
-                                                               data-toggle="modal" data-target="#editClientFileModal{{ $individual->id }}">
+                                                               data-toggle="modal" data-target="#editClientFileModal{{ $client->clientable->id }}">
                                                                 <i class="fa fa-pencil-alt"></i> Edit</a>
                                                         @endcan
                                                         @can('file_delete')
                                                             <button class="delete btn btn-danger btn-sm text-center text-white"
-                                                                    id="{{ $individual->id }}"
-                                                                    data-id='{{ $individual->id }}'>
+                                                                    id="{{ $client->clientable->id }}"
+                                                                    data-id='{{ $client->clientable->id }}'>
                                                                 <i class="fa fa-trash"></i>Delete
                                                             </button>
                                                         @endcan
@@ -214,7 +215,7 @@
                         <a href="#collapseCardExample2" class="d-block card-header py-3" data-toggle="collapse" role="button"
                            aria-expanded="true" aria-controls="collapseCardExample2">
                             <h5 class="m-0 font-weight-bold text-primary"> Company Clients <span class="badge badge-primary">
-                                       {{ $companies->count() }}</span></h5>
+                                       {{ $companies }}</span></h5>
                         </a>
                         <!-- Card Content - Collapse -->
                         <div class="collapse hide" id="collapseCardExample2">
@@ -235,14 +236,15 @@
 
                                         <tbody>
 
-                                        @foreach($companies as $file)
+                                        @foreach($clients as $client)
+                                            @if($client->clientable_type == 'App\Company')
                                             <tr>
                                                 <div class="modal fade" id="editClientFileModal" tabindex="-1"
                                                      role="dialog"
                                                      aria-labelledby="clientModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog modal-lg" role="document">
                                                         <div class="modal-content">
-                                                            <form action="{{ route('admin.files.update',[$file->id]) }}"
+                                                            <form action="{{ route('admin.files.update',[$client->clientable->id]) }}"
                                                                   enctype="multipart/form-data" method="POST">
                                                                 @csrf
                                                                 @honeypot
@@ -258,70 +260,7 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <div class="form-row">
-                                                                        <div class="form-group col-md-6">
-                                                                            <label for="inputName">Name</label>
-                                                                            <input type="text" class="form-control"
-                                                                                   id="name"
-                                                                                   name="name" value="{{ $file->name }}">
-                                                                        </div>
-                                                                        <div class="form-group col-md-6">
-                                                                            <label for="inputSurname">Surname</label>
-                                                                            <input type="text" class="form-control"
-                                                                                   id="surname"
-                                                                                   name="surname" value="{{ $file->surname }}">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-row">
-                                                                        <div class="form-group col-md-6">
-                                                                            <label for="inputEmail">Email</label>
-                                                                            <input type="email" class="form-control"
-                                                                                   id="email"
-                                                                                   name="email" value="{{ $file->email }}">
-                                                                        </div>
-                                                                        <div class="form-group col-md-6">
-                                                                            <label for="inputContact">Contact</label>
-                                                                            <input type="tel" class="form-control"
-                                                                                   name="contact" id="inputContact"
-                                                                                   value="{{ $file->contact }}">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-row">
-                                                                        <div class="form-group col-md-6">
-                                                                            <div class="form-group">
-                                                                                <label for="dob">Date of Birth</label>
-                                                                                <input type="date" class="form-control"
-                                                                                       name="dob" id="dob"
-                                                                                       value="{{ $file->dob }}">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group col-md-6">
-                                                                            <div class="form-group">
-                                                                                <label for="contact">Gender</label>
-                                                                                <select class="form-control form-control-md"
-                                                                                        name="gender" value="{{ $file->gender }}">
-                                                                                    <option disabled>Select</option>
-                                                                                    <option>Male</option>
-                                                                                    <option>Female</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label for="inputAddress">Physical Address</label>
-                                                                        <input type="text" class="form-control" id="inputAddress"
-                                                                               name="physical_address"
-                                                                               placeholder="1234 Main St"
-                                                                               value="{{ $file->physical_address }}"
-                                                                        >
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label for="inputAddress2">Postal Address</label>
-                                                                        <input type="text" class="form-control"
-                                                                               name="postal_address" id="inputAddress2"
-                                                                               value="{{ $file->postal_address }}"
-                                                                        >
-                                                                    </div>
+
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -331,31 +270,32 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <td>{{ $file->id }}</td>
-                                                <td>{{ $file->number }}</td>
-                                                <td>{{ $file->name }} {{ $file->surname }}</td>
-                                                <td>{{ $file->email }}</td>
-                                                <td>{{ $file->tel == 'N/A'? 'N/A': '+267 '.$file->tel }}</td>
+                                                <td>{{ $client->clientable->id }}</td>
+                                                <td>{{ $client->clientable->number }}</td>
+                                                <td>{{ $client->clientable->name }} {{ $file->surname }}</td>
+                                                <td>{{ $client->clientable->email }}</td>
+                                                <td>{{ $client->clientable->tel == 'N/A'? $client->clientable->cell : '+267 '.$client->clientable->tel }}</td>
                                                 <td>
                                                     @can('case_access')
                                                         <a class="btn btn-info btn-sm  text-center text-white"
-                                                           href="{{ route('admin.files.show', $file->id) }}">
+                                                           href="{{ route('admin.files.show', $client->clientable->id) }}">
                                                             <i class="fa fa-file-contract"></i> Open</a>
                                                     @endcan
                                                     @can('file_edit')
                                                         <a class="btn btn-warning btn-sm  text-center text-white"
-                                                           data-toggle="modal" data-target="#editClientFileModal"><i class="fa
-                                fa-pencil-alt"></i> Edit</a>
+                                                           data-toggle="modal" data-target="#editClientFileModal">
+                                                            <i class="fa fa-pencil-alt"></i> Edit</a>
                                                     @endcan
                                                     @can('file_delete')
                                                         <button class="delete btn btn-danger btn-sm text-center text-white"
-                                                                id="{{ $file->id }}"
-                                                                data-id='{{ $file->id }}'>
-                                                            <i class="fa fa-trash"></i>Delete</button>
+                                                                id="{{ $client->clientable->id }}"
+                                                                data-id='{{ $client->clientable->id }}'>
+                                                            <i class="fa fa-trash"></i>Delete
+                                                        </button>
                                                     @endcan
                                                 </td>
-
                                             </tr>
+                                            @endif
                                         @endforeach
                                         </tbody>
                                     </table>
@@ -372,7 +312,7 @@
                         <a href="#collapseCardExample3" class="d-block card-header py-3" data-toggle="collapse" role="button"
                            aria-expanded="true" aria-controls="collapseCardExample3">
                             <h5 class="m-0 font-weight-bold text-primary">  Retainers Clients
-                                <span class="badge badge-primary">{{ $retainers->count() }}</span></h5>
+                                <span class="badge badge-primary">{{ $retainers }}</span></h5>
                         </a>
                         <!-- Card Content - Collapse -->
                         <div class="collapse hide" id="collapseCardExample3">
@@ -396,14 +336,15 @@
 
                                             <tbody>
 
-                                            @foreach($retainers as $file)
+                                            @foreach($clients as $client)
+                                                @if($client->clientable_type == 'App\Retainer')
                                                 <tr>
                                                     <div class="modal fade" id="editClientFileModal" tabindex="-1"
                                                          role="dialog"
                                                          aria-labelledby="clientModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-lg" role="document">
                                                             <div class="modal-content">
-                                                                <form action="{{ route('admin.files.update',[$file->id]) }}"
+                                                                <form action="{{ route('admin.files.update',[$client->clientable->id]) }}"
                                                                       enctype="multipart/form-data" method="POST">
                                                                     @csrf
                                                                     @honeypot
@@ -419,70 +360,6 @@
                                                                         </button>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        <div class="form-row">
-                                                                            <div class="form-group col-md-6">
-                                                                                <label for="inputName">Name</label>
-                                                                                <input type="text" class="form-control"
-                                                                                       id="name"
-                                                                                       name="name" value="{{ $file->name }}">
-                                                                            </div>
-                                                                            <div class="form-group col-md-6">
-                                                                                <label for="inputSurname">Surname</label>
-                                                                                <input type="text" class="form-control"
-                                                                                       id="surname"
-                                                                                       name="surname" value="{{ $file->surname }}">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-row">
-                                                                            <div class="form-group col-md-6">
-                                                                                <label for="inputEmail">Email</label>
-                                                                                <input type="email" class="form-control"
-                                                                                       id="email"
-                                                                                       name="email" value="{{ $file->email }}">
-                                                                            </div>
-                                                                            <div class="form-group col-md-6">
-                                                                                <label for="inputContact">Contact</label>
-                                                                                <input type="tel" class="form-control"
-                                                                                       name="contact" id="inputContact"
-                                                                                       value="{{ $file->contact }}">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-row">
-                                                                            <div class="form-group col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label for="dob">Date of Birth</label>
-                                                                                    <input type="date" class="form-control"
-                                                                                           name="dob" id="dob"
-                                                                                           value="{{ $file->dob }}">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="form-group col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label for="contact">Gender</label>
-                                                                                    <select class="form-control form-control-md"
-                                                                                            name="gender" value="{{ $file->gender }}">
-                                                                                        <option disabled>Select</option>
-                                                                                        <option>Male</option>
-                                                                                        <option>Female</option>
-                                                                                    </select>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="inputAddress">Physical Address</label>
-                                                                            <input type="text" class="form-control" id="inputAddress"
-                                                                                   name="physical_address"
-                                                                                   placeholder="1234 Main St"
-                                                                                   value="{{ $file->physical_address }}"
-                                                                            >
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="inputAddress2">Postal Address</label>
-                                                                            <input type="text" class="form-control"
-                                                                                   name="postal_address" id="inputAddress2"
-                                                                                   value="{{ $file->postal_address }}"
-                                                                            >
-                                                                        </div>
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -492,15 +369,15 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <td>{{ $file->id }}</td>
-                                                    <td>{{ $file->number }}</td>
-                                                    <td>{{ $file->name }} {{ $file->surname }}</td>
-                                                    <td>{{ $file->email }}</td>
-                                                    <td>{{ $file->tel == 'N/A'? 'N/A': '+267 '.$file->tel }}</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
                                                     <td>
                                                         @can('case_access')
                                                             <a class="btn btn-info btn-sm  text-center text-white"
-                                                               href="{{ route('admin.files.show', $file->id) }}">
+                                                               href="{{ route('admin.files.show', $client->clientable->id) }}">
                                                                 <i class="fa fa-file-contract"></i> Open</a>
                                                         @endcan
                                                         @can('file_edit')
@@ -510,13 +387,14 @@
                                                         @endcan
                                                         @can('file_delete')
                                                             <button class="delete btn btn-danger btn-sm text-center text-white"
-                                                                    id="{{ $file->id }}"
-                                                                    data-id='{{ $file->id }}'>
+                                                                    id="{{ $client->clientable->id }}"
+                                                                    data-id='{{ $client->clientable->id }}'>
                                                                 <i class="fa fa-trash"></i>Delete</button>
                                                         @endcan
                                                     </td>
 
                                                 </tr>
+                                                @endif
                                             @endforeach
                                             </tbody>
                                         </table>

@@ -6,6 +6,7 @@ namespace App\Http\View\Composers;
 
 
 use App\Facade\CaseRepository;
+use App\Facade\ClientRepository;
 use App\Facade\FileRepository;
 use App\Facade\IndividualFileRepository;
 use Illuminate\View\View;
@@ -15,28 +16,53 @@ class FileComposer
     public function compose(View $view)
     {
         return $view->with([
-            'individuals' => $this->getIndividualFiles(),
-            'companies'   => $this->getIndividualFiles(),
-            'retainers'   => $this->getIndividualFiles(),
+            'clients' => $this->getClients(),
             'myClients'   => $this->myClients(),
-
+            'individuals' => $this->countIndividuals(),
+            'companies'      => $this->countCompanies(),
+            'retainers'    => $this->countRetainers(),
             ] );
     }
 
-    public function getIndividualFiles()
+    public function getClients()
     {
-        return IndividualFileRepository::individuals();;
-    }
-    public function getCompanyFiles()
-    {
-        return IndividualFileRepository::allFiles();
-    }
-    public function getRetainerFiles()
-    {
-        return IndividualFileRepository::allFiles();;
+        return ClientRepository::clients();
     }
     public function myClients()
     {
         return FileRepository::myClients();
+    }
+
+    public function countIndividuals()
+    {
+        $count = 0;
+        foreach (ClientRepository::clients() as $client){
+            if ($client->clientable_type == 'App\Individual'){
+                $count += 1;
+            }
+        }
+        return $count;
+    }
+
+    public function countCompanies()
+    {
+        $count = 0;
+        foreach (ClientRepository::clients() as $client){
+            if ($client->clientable_type == 'App\Company'){
+                $count += 1;
+            }
+        }
+        return $count;
+    }
+
+    public function countRetainers()
+    {
+        $count = 0;
+        foreach (ClientRepository::clients() as $client){
+            if ($client->clientable_type == 'App\Retainer'){
+                $count += 1;
+            }
+        }
+        return $count;
     }
 }
