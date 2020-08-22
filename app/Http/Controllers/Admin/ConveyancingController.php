@@ -6,13 +6,15 @@ use App\Facade\ConveyancingRepository;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Session;
 
 class ConveyancingController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return void
      */
     public function index()
     {
@@ -22,7 +24,7 @@ class ConveyancingController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return void
      */
     public function create()
     {
@@ -57,8 +59,8 @@ class ConveyancingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param int $id
+     * @return void
      */
     public function edit($id)
     {
@@ -83,11 +85,17 @@ class ConveyancingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return Response
+     * @param int $id
+     * @return bool
      */
     public function destroy($id)
     {
-        //
+        abort_if(Gate::denies('file_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        if (ConveyancingRepository::deleteConveyance($id)){
+            Session::flash('status', 'Successfully deleted client conveyance');
+            return true;
+        }
+        Session::flash('fail', 'Failed to delete client conveyance');
+        return false;
     }
 }

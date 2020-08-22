@@ -35,4 +35,9 @@ class LitigationRepository extends AbstractBaseRepository
             'category'  =>$request->category,
         ]);
     }
+
+    public function deleteLitigation(int $id)
+    {
+        return $this->delete($id);
+    }
 }

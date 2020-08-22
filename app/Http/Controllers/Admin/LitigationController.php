@@ -6,6 +6,8 @@ use App\Facade\LitigationRepository;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Session;
 
 class LitigationController extends Controller
 {
@@ -88,6 +90,13 @@ class LitigationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        abort_if(Gate::denies('file_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        if (LitigationRepository::deleteLitigation($id)){
+            Session::flash('status', 'Successfully deleted client litigation');
+            return true;
+        }
+
+        Session::flash('fail', 'Failed to delete client litigation');
+        return false;
     }
 }

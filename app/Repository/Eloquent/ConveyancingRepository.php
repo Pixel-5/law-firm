@@ -126,4 +126,9 @@ class ConveyancingRepository extends AbstractBaseRepository
         ]);
 
     }
+
+    public function deleteConveyance(int $id)
+    {
+        return $this->delete($id);
+    }
 }

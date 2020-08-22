@@ -353,7 +353,7 @@
 
     <script type="application/javascript">
         $(document).ready(function() {
-            console.log("assigning lawyer...");
+
             $('#individualsTransferorConveyancing_data').addClass('hidden');
             $('#individualsTransfereeConveyancing_data').addClass('hidden');
 
@@ -540,6 +540,7 @@
                 },
                 "displayLength": 10,
             } );
+
             $('#conveyanceTable').on('click', '.dropdown-item', function (e) {
                 e.preventDefault();
 
@@ -600,6 +601,115 @@
                     }
                 });
             });
+
+            $('#conveyanceTable').on('click', '.delete', function(e){
+                let el = this;
+                e.preventDefault();
+
+                // Delete id
+                let client = $(this).data('id');
+                bootbox.confirm({
+                    title: "Delete Individual Conveyance?",
+                    message: "Do you really want to delete this record?",
+                    buttons: {
+                        cancel: {
+                            label: `<i class="fa fa-times"></i> Cancel`
+                        },
+                        confirm: {
+                            label: `<i class="fa fa-check"></i> Confirm`
+                        }
+                    },
+                    callback: function (result) {
+                        let url = '{{ route("admin.conveyancing.destroy",["conveyancing"=> ":id"]) }}';
+                        url = url.replace(':id', client);
+                        if(result){
+                            $(el).html(`<i class="fa fa-spinner fa-spin"></i> deleting...`);
+                            // AJAX Request
+                            $.ajax({
+                                url: url,
+                                type: 'POST',
+                                data: {
+                                    '_token' : '{{ csrf_token() }}',
+                                    _method: 'DELETE'
+                                },
+                                success: function(response){
+
+                                    // Removing row from HTML Table
+                                    console.log(response);
+                                    if(response == 1){
+                                        $(el).closest('tr').css('background','tomato');
+                                        $(el).closest('tr').fadeOut(800,function(){
+                                            $(this).remove();
+                                        });
+                                        window.location.reload();
+                                    }else{
+                                        bootbox.alert('Record not deleted.');
+                                    }
+                                    // var table = $('#individual').DataTable();
+                                    // table.row($(btn).parents('tr')).remove().draw(false); //c
+                                    // window.location.reload();
+                                },
+                                error: function (response) {
+                                    console.log("error "+ response);
+                                }
+                            });
+                        }
+                    }
+                });
+            });
+            $('#litigationTable').on('click', '.delete', function(e){
+                let el = this;
+                e.preventDefault();
+
+                // Delete id
+                let client = $(this).data('id');
+                bootbox.confirm({
+                    title: "Delete Individual File?",
+                    message: "Do you really want to delete this record?",
+                    buttons: {
+                        cancel: {
+                            label: `<i class="fa fa-times"></i> Cancel`
+                        },
+                        confirm: {
+                            label: `<i class="fa fa-check"></i> Confirm`
+                        }
+                    },
+                    callback: function (result) {
+                        let url = '{{ route("admin.litigation.destroy",["litigation"=> ":id"]) }}';
+                        url = url.replace(':id', client);
+                        if(result){
+                            $(el).html(`<i class="fa fa-spinner fa-spin"></i> deleting...`);
+                            // AJAX Request
+                            $.ajax({
+                                url: url,
+                                type: 'POST',
+                                data: {
+                                    '_token' : '{{ csrf_token() }}',
+                                    _method: 'DELETE'
+                                },
+                                success: function(response){
+
+                                    // Removing row from HTML Table
+                                    console.log(response);
+                                    if(response == 1){
+                                        $(el).closest('tr').css('background','tomato');
+                                        $(el).closest('tr').fadeOut(800,function(){
+                                            $(this).remove();
+                                        });
+                                        window.location.reload();
+                                    }else{
+                                        bootbox.alert('Record not deleted.');
+                                    }
+                                },
+                                error: function (response) {
+                                    console.log("error "+ response);
+                                }
+                            });
+                        }
+                    }
+                });
+            });
+
 
         } );
 </script>
