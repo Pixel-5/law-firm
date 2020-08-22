@@ -24,7 +24,7 @@ class LitigationRepository extends AbstractBaseRepository
      */
     public function update(int $id, array $attributes): bool
     {
-        // TODO: Implement update() method.
+        return $this->find($id)->update($attributes);
     }
 
     public function createLitigation(Request $request)

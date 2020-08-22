@@ -77,15 +77,12 @@ class ClientController extends Controller
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param  int  $id
-     * @return Response
+     * @param int $id
+     * @return void
      */
     public function update(Request $request, $id)
     {
-        abort_if(Gate::denies('file_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        return back()->with(IndividualFileRepository::updateFile($id,$request)?
-            ['status' => 'Successfully updated Individual file']:
-            ['fail' => 'Failed to update client Individual file']);
+
     }
 
     /**
@@ -97,7 +94,7 @@ class ClientController extends Controller
     public function destroy($id)
     {
         abort_if(Gate::denies('file_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        if (IndividualFileRepository::deleteFile($id)){
+        if (ClientRepository::deleteClient($id)){
             Session::flash('status', 'Successfully deleted client file');
             return true;
         }

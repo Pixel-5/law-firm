@@ -103,9 +103,14 @@ class User extends Authenticatable implements Searchable
         return $this->belongsToMany(Role::class);
     }
 
-    public function cases()
+    public function conveyancing()
     {
-        return $this->hasMany(FileCase::class);
+        return $this->hasMany(Conveyancing::class);
+    }
+
+    public function litigation()
+    {
+        return $this->hasMany(Litigation::class);
     }
 
     public function userSchedule()

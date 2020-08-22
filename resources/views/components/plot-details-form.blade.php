@@ -3,20 +3,20 @@
         <div class="form-group col-md-12">
             <label for="dob">PLOT NO</label>
             <input type="text" class="form-control"
-                   name="plot_no" id="plot_no" required>
+                   name="plot_no" required>
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-12">
             <label for="gender">SITUATED AT</label>
-            <input type="text" class="form-control" id="situated_at"
+            <input type="text" class="form-control"
                    name="situated_at" required>
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-12">
             <label for="deed">TITLE DEED/CERTIFICATE NO</label>
-            <input type="text" class="form-control" id="certificate"
+            <input type="text" class="form-control"
                    name="certificate" required >
         </div>
     </div>
@@ -30,14 +30,14 @@
     <div class="form-row">
         <div class="form-group col-md-12">
             <label for="inputAddress">Purchase Price</label>
-            <input type="text" class="form-control" id="price"
+            <input type="text" class="form-control"
                    name="price" required>
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-12">
             <label for="inputAddress">Initial Payment Amount</label>
-            <input type="text" class="form-control" id="initial_payment"
+            <input type="text" class="form-control"
                    name="initial_payment" required>
         </div>
     </div>

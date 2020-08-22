@@ -176,11 +176,11 @@
                                                     <td>{{ $client->clientable->number }}</td>
                                                     <td>{{ $client->clientable->name }} {{ $client->clientable->surname }}</td>
                                                     <td>{{ $client->clientable->email }}</td>
-                                                    <td>{{ $client->clientable->cell == 'N/A'? 'N/A': '+267 '.$client->cell }}</td>
+                                                    <td>{{ $client->clientable->cell == 'N/A'? 'N/A': '+267 '.$client->clientable->cell }}</td>
                                                     <td>
                                                         @can('case_access')
                                                             <a class="btn btn-info btn-sm  text-center text-white"
-                                                               href="{{ route('admin.client.show', $client->clientable->id) }}">
+                                                               href="{{ route('admin.client.show', $client->id) }}">
                                                                 <i class="fa fa-file-contract"></i> Open</a>
                                                         @endcan
                                                         @can('file_edit')
@@ -190,8 +190,8 @@
                                                         @endcan
                                                         @can('file_delete')
                                                             <button class="delete btn btn-danger btn-sm text-center text-white"
-                                                                    id="{{ $client->clientable->id }}"
-                                                                    data-id='{{ $client->clientable->id }}'>
+                                                                    id="{{ $client->id }}"
+                                                                    data-id='{{ $client->id }}'>
                                                                 <i class="fa fa-trash"></i>Delete
                                                             </button>
                                                         @endcan
@@ -440,11 +440,9 @@
                 var el = this;
 
                 // Delete id
-                let file = $(this).data('id');
-                console.log('id = '+file);
-
+                let client = $(this).data('id');
                 bootbox.confirm({
-                    title: "Delete Individual FIle?",
+                    title: "Delete Individual File?",
                     message: "Do you really want to delete this record?",
                     buttons: {
                         cancel: {
@@ -455,8 +453,8 @@
                         }
                     },
                     callback: function (result) {
-                        let url = '{{ route("admin.individual.destroy",["individual"=> ":id"]) }}';
-                        url = url.replace(':id', file);
+                        let url = '{{ route("admin.client.destroy",["client"=> ":id"]) }}';
+                        url = url.replace(':id', client);
                         if(result){
                             $(el).html(`<i class="fa fa-spinner fa-spin"></i> deleting...`);
                             // AJAX Request
@@ -492,6 +490,7 @@
                     }
                 });
             });
+
             $('#retainerCompanyForm').hide();
             $('#retainerIndividualForm').hide();
             $('#submit_div').hide();
@@ -585,6 +584,6 @@
                     "paging": true
                 },
             } );
-        } );
+        });
     </script>
 @endsection

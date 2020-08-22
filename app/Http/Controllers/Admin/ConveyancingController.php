@@ -74,7 +74,10 @@ class ConveyancingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return back()->with(ConveyancingRepository::update($id,$request->all())?
+            ['status' => 'Successfully updated client conveyance']:
+            ['fail'  => 'Failed to update client conveyance']
+        );
     }
 
     /**

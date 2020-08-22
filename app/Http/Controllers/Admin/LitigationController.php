@@ -32,7 +32,7 @@ class LitigationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return Response
      */
     public function store(Request $request)
@@ -68,13 +68,16 @@ class LitigationController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id
      * @return Response
      */
     public function update(Request $request, $id)
     {
-        //
+        return back()->with(LitigationRepository::update($id,$request->all())?
+            ['status' => 'Successfully updated client litigation']:
+            ['fail'  => 'Failed to update client litigation']
+        );
     }
 
     /**

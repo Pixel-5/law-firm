@@ -18,6 +18,8 @@ class CreateConveyancingsTable extends Migration
             $table->string('number')->default('SA/CON/FRM/01');
             $table->foreignId('client_id')
             ->constrained('clients');
+            $table->foreignId('user_id')
+                ->nullable();
             $table->string('other_id');
             $table->string('other_type');
             $table->foreignId('transaction_id')->constrained('plot_transactions');
