@@ -6,6 +6,8 @@ use App\Facade\LitigationRepository;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Session;
 
 class LitigationController extends Controller
 {
@@ -32,7 +34,7 @@ class LitigationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return Response
      */
     public function store(Request $request)
@@ -68,13 +70,16 @@ class LitigationController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id
      * @return Response
      */
     public function update(Request $request, $id)
     {
-        //
+        return back()->with(LitigationRepository::update($id,$request->all())?
+            ['status' => 'Successfully updated client litigation']:
+            ['fail'  => 'Failed to update client litigation']
+        );
     }
 
     /**
@@ -85,6 +90,13 @@ class LitigationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        abort_if(Gate::denies('file_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        if (LitigationRepository::deleteLitigation($id)){
+            Session::flash('status', 'Successfully deleted client litigation');
+            return true;
+        }
+
+        Session::flash('fail', 'Failed to delete client litigation');
+        return false;
     }
 }

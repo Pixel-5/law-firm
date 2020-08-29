@@ -31,7 +31,7 @@ class ConveyancingRepository extends AbstractBaseRepository
      */
     public function update(int $id, array $attributes): bool
     {
-        // TODO: Implement update() method.
+        return $this->find($id)->update($attributes);
     }
 
     public function createConveyance(Request $request)
@@ -125,5 +125,10 @@ class ConveyancingRepository extends AbstractBaseRepository
             'transaction_id'    => $transaction->id
         ]);
 
+    }
+
+    public function deleteConveyance(int $id)
+    {
+        return $this->delete($id);
     }
 }

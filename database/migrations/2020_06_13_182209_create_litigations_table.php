@@ -19,6 +19,8 @@ class CreateLitigationsTable extends Migration
             $table->string('category');
             $table->foreignId('initial_consultation_id')
                 ->nullable();
+            $table->foreignId('user_id')
+                ->nullable();
             $table->foreignId('client_id')
                 ->constrained('clients')
                 ->onDelete('CASCADE');

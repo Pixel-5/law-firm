@@ -40,4 +40,9 @@ class ClientRepository extends AbstractBaseRepository
     {
         return $this->model->all();
     }
+
+    public function deleteClient(int $id)
+    {
+        return $this->delete($id);
+    }
 }

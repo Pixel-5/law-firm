@@ -2,8 +2,8 @@
     <div class="form-row">
         <div class="form-group col-md-12">
             <label for="companyName">Company Name</label>
-            <input type="text" class="form-control" id="transferor_name"
-                   name="transferor_name"   @if($file != null) value="{{ $file->name }}" @endif>
+            <input type="text" class="form-control"
+                   name="transferor_name" @if($file != null) value="{{ $file->name }}" @endif>
         </div>
     </div>
     <div class="form-row">
@@ -11,7 +11,7 @@
             <div class="form-group">
                 <label for="companyNo">Company No</label>
                 <input type="text" class="form-control"
-                       name="transferor_no" id="transferor_no"
+                       name="transferor_no"
                        @if($file != null) value="{{ $file->c_no }}" @endif>
             </div>
         </div>
@@ -21,7 +21,7 @@
             <div class="form-group">
                 <label for="doi">Date of Incorporation</label>
                 <input type="date" class="form-control"
-                       name="transferor_doi" id="transferor_dob"
+                       name="transferor_doi"
                        @if($file != null) value="{{ $file->doi }}" @endif>
             </div>
         </div>
@@ -30,7 +30,7 @@
         <div class="form-group col-md-12">
             <label for="shareholders">Names of Shareholder</label>
             <input type="text" class="form-control"
-                   name="transferor_shareholders" id="transferor_shareholders"
+                   name="transferor_shareholders"
                     @if($file != null) value="{{ $file->shareholders }}" @endif>
         </div>
     </div>
@@ -38,14 +38,14 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Physical Address</label>
-            <input type="text" class="form-control" id="physicalAddress"
+            <input type="text" class="form-control"
                    name="transferor_physical_address"
                    @if($file != null) value="{{ $file->physical_address }}" @endif>
         </div>
         <div class="form-group col-md-6">
             <label for="inputAddress2">Postal Address</label>
             <input type="text" class="form-control"
-                   name="transferor_postal_address" id="transferee_PostalAddress"
+                   name="transferor_postal_address"
                    @if($file != null) value="{{ $file->postal_address }}" @endif>
         </div>
     </div>
@@ -54,18 +54,18 @@
             <label >Contacts (TEL|CELL|ALTERNATIVE NO)</label>
             <div class="input-group">
                 <input type="tel" @if($file != null) value="{{ $file->tel }}" @endif
-                class="form-control" id="tel" name="transferor_tel">
+                class="form-control"  name="transferor_tel">
                 <input type="tel" @if($file != null) value="{{ $file->cell }}" @endif
-                class="form-control" name="transferor_cell" id="cell">
+                class="form-control" name="transferor_cell" >
                 <input type="tel" @if($file != null) value="{{ $file->alt_contact }}" @endif
-                class="form-control" id="tel" name="transferor_alt_contact">
+                class="form-control" name="transferor_alt_contact">
             </div>
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-12">
             <label for="inputEmail">Email</label>
-            <input type="email" class="form-control" id="transferee_email"
+            <input type="email" class="form-control"
                    name="transferor_email"  @if($file != null) value="{{ $file->email }}" @endif>
         </div>
     </div>
