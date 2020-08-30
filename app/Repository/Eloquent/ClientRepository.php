@@ -5,6 +5,8 @@ namespace App\Repository\Eloquent;
 
 
 use App\Client;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 
 class ClientRepository extends AbstractBaseRepository
 {
@@ -44,5 +46,14 @@ class ClientRepository extends AbstractBaseRepository
     public function deleteClient(int $id)
     {
         return $this->delete($id);
+    }
+
+    public function myClients()
+    {
+        return $this->model->whereHas('conveyancing', function (Builder $query) {
+            $query->where('user_id',Auth::user()->id);
+        })->whereHas('litigation',function (Builder $query){
+            $query->where('user_id',Auth::user()->id);
+        })->get();
     }
 }

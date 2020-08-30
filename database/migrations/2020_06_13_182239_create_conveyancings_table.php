@@ -15,7 +15,7 @@ class CreateConveyancingsTable extends Migration
     {
         Schema::create('conveyancing', function (Blueprint $table) {
             $table->id();
-            $table->string('number')->default('SA/CON/FRM/01');
+            $table->string('number');
             $table->foreignId('client_id')
             ->constrained('clients');
             $table->foreignId('user_id')

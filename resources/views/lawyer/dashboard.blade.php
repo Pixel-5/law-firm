@@ -11,18 +11,48 @@
         <!-- Content Row -->
         <div class="row">
             <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4 offset-md-1 offset-lg-1">
+            <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card border-left-primary shadow h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                    <a href="{{ route('lawyer.cases') }}">Assigned Cases (Clients)</a>
+                                    <a href="{{ route('lawyer.cases') }}">Litigation (Clients)</a>
                                 </div>
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-auto">
                                         <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                            <span class="badge badge-primary">{{ $myCases->count() }}</span>
+                                            <span class="badge badge-primary">{{ $myLitigation->count() }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="progress progress-sm mr-2">
+                                            <div class="progress-bar bg-info" role="progressbar" style="width: 70%"
+                                                 aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-folder-open fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    <a href="{{ route('lawyer.cases') }}">Conveyancing (Clients)</a>
+                                </div>
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col-auto">
+                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                            <span class="badge badge-primary">{{ $myConveyancing->count() }}</span>
                                         </div>
                                     </div>
                                     <div class="col">
@@ -49,7 +79,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-info text-uppercase
                                         mb-1">
-                                    <a href="{{ route('lawyer.schedule') }}">Schedule Case</a>
+                                    <a href="{{ route('lawyer.schedule') }}">My Schedule</a>
                                 </div>
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-auto">
@@ -85,7 +115,7 @@
                             <div class="col mr-2">
 
                                 <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                    <a href="{{ route('lawyer.pending.cases') }}">Pending request</a>
+                                    <a href="{{ route('lawyer.pending.cases') }}">Pending Requests</a>
                                 </div>
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-auto">
@@ -113,11 +143,11 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xl-9 col-lg-9 offset-lg-1 offset-md-1 ">
+            <div class="col-xl-12 col-lg-12">
                 <!-- Bar Chart -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">My Case Summary</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Litigation & Conveyancing Summary</h6>
                     </div>
                     <div class="card-body">
                         <div class="chart-bar">

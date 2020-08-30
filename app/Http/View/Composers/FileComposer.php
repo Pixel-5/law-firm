@@ -30,7 +30,7 @@ class FileComposer
     }
     public function myClients()
     {
-        return FileRepository::myClients();
+        return ClientRepository::myClients();
     }
 
     public function countIndividuals()

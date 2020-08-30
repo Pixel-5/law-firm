@@ -7,6 +7,7 @@ namespace App\Repository\Eloquent;
 use App\Litigation;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class LitigationRepository extends AbstractBaseRepository
@@ -39,5 +40,18 @@ class LitigationRepository extends AbstractBaseRepository
     public function deleteLitigation(int $id)
     {
         return $this->delete($id);
+    }
+
+    public function getLitigation()
+    {
+        return $this->model->whereHas('user')->with(['client', 'user'])->cursor();
+    }
+
+    public function getMyLitigation()
+    {
+        //Todo load schedule
+        $myLitigation = $this->model->where('user_id', Auth::user()->id)->get();
+        $myLitigation = $myLitigation->load(['client']);
+        return $myLitigation;
     }
 }

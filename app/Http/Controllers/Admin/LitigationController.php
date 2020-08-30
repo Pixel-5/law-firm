@@ -72,14 +72,24 @@ class LitigationController extends Controller
      *
      * @param Request $request
      * @param  int  $id
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
     {
-        return back()->with(LitigationRepository::update($id,$request->all())?
-            ['status' => 'Successfully updated client litigation']:
-            ['fail'  => 'Failed to update client litigation']
-        );
+        if ($request->ajax()){
+            if (LitigationRepository::update($id,$request->all())){
+                Session::flash('status', 'Successfully assigned lawyer a litigation');
+                return true;
+            }
+            Session::flash('fail', 'Failed to assign a lawyer a litigation');
+            return false;
+        }else{
+            if (LitigationRepository::update($id,$request->all()))
+                Session::flash('status', 'Successfully updated client litigation');
+            else
+                Session::flash('fail', 'Failed to update client litigation');
+        }
+        return back();
     }
 
     /**
