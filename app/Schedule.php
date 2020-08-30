@@ -43,9 +43,11 @@ class Schedule extends Model implements Searchable
         'end_time',
         'start_time',
         'venue',
-        'case_id',
         'user_id',
         'notes',
+        'scheduleable_id',
+        'scheduleable_type',
+        'category'
     ];
 
     public function saveQuietly()
@@ -57,6 +59,21 @@ class Schedule extends Model implements Searchable
     public function case()
     {
         return $this->belongsTo(FileCase::class);
+    }
+
+    public function scheduleable()
+    {
+        return $this->morphTo();
+    }
+
+    public function conveyancing()
+    {
+        return $this->belongsTo(Conveyancing::class);
+    }
+
+    public function litigation()
+    {
+        return $this->belongsTo(Litigation::class);
     }
 
 //    public function getDescriptionForEvent(string $eventName): string

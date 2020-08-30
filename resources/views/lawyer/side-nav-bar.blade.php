@@ -37,7 +37,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">List of Litigation:</h6>
                 @foreach ($myLitigation as $case)
-                    <a class="collapse-item" href="{{ route('cases.show', $case->id) }}">{{ $case->number }} </a>
+                    <a class="collapse-item" href="{{ route('lawyer.litigation.show', $case->id) }}">{{ $case->number }} </a>
                 @endforeach
             </div>
         </div>
@@ -53,7 +53,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">List of Conveyancing:</h6>
                 @foreach ($myConveyancing as $conveyance)
-                    <a class="collapse-item" href="{{ route('cases.show', $case->id) }}">{{ $conveyance->number }} </a>
+                    <a class="collapse-item" href="{{ route('lawyer.conveyancing.show', $conveyance->id) }}">{{ $conveyance->number }} </a>
                 @endforeach
             </div>
         </div>

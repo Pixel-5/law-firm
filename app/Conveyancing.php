@@ -15,7 +15,8 @@ class Conveyancing extends Model
         'other_id',
         'other_type',
         'transaction_id',
-        'user_id'
+        'user_id',
+        'status'
     ];
 
     public function transaction()
@@ -31,5 +32,10 @@ class Conveyancing extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function schedule()
+    {
+        return $this->morphOne(Schedule::class,'scheduleable');
     }
 }

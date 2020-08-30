@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class MatrimonyForm extends Model
 {
     protected $fillable = [
-        'initial_consultation_form_id',
-        'file_note_form_id',
+        'litigation_id',
         'client_id',
         'spouse_id',
         'regime',

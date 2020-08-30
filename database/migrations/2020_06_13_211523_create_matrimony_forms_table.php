@@ -15,8 +15,8 @@ class CreateMatrimonyFormsTable extends Migration
     {
         Schema::create('matrimony_forms', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('initial_consultation_id')
-                ->constrained('initial_consultation_forms', 'id')
+            $table->foreignId('litigation_id')
+                ->constrained('litigation')
                 ->onDelete('cascade');
             $table->foreignId('spouse_id')
                 ->constrained('individuals','id');

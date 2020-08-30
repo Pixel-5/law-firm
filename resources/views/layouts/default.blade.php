@@ -12,7 +12,6 @@
     <title>@yield('title')</title>
     @include('layouts.links')
     @yield('custom-links')
-
 </head>
 
 <body id="page-top">

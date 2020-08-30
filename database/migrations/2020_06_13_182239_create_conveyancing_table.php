@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateConveyancingsTable extends Migration
+class CreateConveyancingTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,6 +16,7 @@ class CreateConveyancingsTable extends Migration
         Schema::create('conveyancing', function (Blueprint $table) {
             $table->id();
             $table->string('number');
+            $table->string('status')->default('pending');
             $table->foreignId('client_id')
             ->constrained('clients');
             $table->foreignId('user_id')

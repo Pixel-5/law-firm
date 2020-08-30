@@ -4,6 +4,8 @@
 namespace App\Repository\Eloquent;
 
 
+use App\FileNoteForm;
+use App\InitialConsultationForm;
 use App\Litigation;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -37,21 +39,70 @@ class LitigationRepository extends AbstractBaseRepository
         ]);
     }
 
+    public function allLitigation()
+    {
+        return $this->model->all();
+    }
+
     public function deleteLitigation(int $id)
     {
         return $this->delete($id);
     }
 
-    public function getLitigation()
+    public function assignedLitigation()
     {
         return $this->model->whereHas('user')->with(['client', 'user'])->cursor();
     }
 
     public function getMyLitigation()
     {
-        //Todo load schedule
         $myLitigation = $this->model->where('user_id', Auth::user()->id)->get();
-        $myLitigation = $myLitigation->load(['client']);
+        $myLitigation = $myLitigation->load(['client','schedule']);
         return $myLitigation;
+    }
+
+    public function getLitigation($id)
+    {
+        $myLitigation = $this->find($id);
+        $myLitigation = $myLitigation->load(['client','schedule','notes','consultation','user']);
+        return $myLitigation;
+    }
+
+    public function storeFormNote(Request $request)
+    {
+        return FileNoteForm::create($request->all());
+    }
+
+    public function storeInitialConsultation(Request $request)
+    {
+        return InitialConsultationForm::create($request->all());
+    }
+
+    public function storeFileNote(Request $request)
+    {
+        return FileNoteForm::create($request->all());
+    }
+
+    public function updateLitigation($id,$request)
+    {
+        return $this->update($id, $request);
+    }
+
+    public function updateInitialConsultation($id,$request)
+    {
+        $consultation = InitialConsultationForm::find($id);
+        return $consultation->update($request);
+    }
+
+    public function updateFileNote($id,$request)
+    {
+        $note = FileNoteForm::find($id);
+        return $note->update($request);
+    }
+
+    public function deleteFileNote($id)
+    {
+        $note = FileNoteForm::find($id);
+        return $note->delete();
     }
 }

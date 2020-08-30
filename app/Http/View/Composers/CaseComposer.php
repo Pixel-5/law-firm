@@ -14,13 +14,13 @@ class CaseComposer
     public function compose(View $view)
     {
         return $view->with( [
-            'myUnScheduledCases'=>$this->myUnScheduledCases(),
-            'cases' => $this->allCases(),
-            'scheduledCases'=> $this->scheduledCases(),
-            'unScheduledCases' => $this->unscheduledCases(),
-            'unAssignedCases' => $this->unAssignedCases(),
-            'assignedCases' => $this->assignedCases(),
-            'pendingCases' => $this->pendingCases(),
+//            'myUnScheduledCases'=>$this->myUnScheduledCases(),
+//            'cases' => $this->allCases(),
+//            'scheduledCases'=> $this->scheduledCases(),
+//            'unScheduledCases' => $this->unscheduledCases(),
+//            'unAssignedCases' => $this->unAssignedCases(),
+                'assignedCases' => $this->assignedCases(),
+//            'pendingCases' => $this->pendingCases(),
             'myLitigation' => $this->myLitigation(),
             'myConveyancing' =>$this->myConveyancing()
         ]);
@@ -62,7 +62,7 @@ class CaseComposer
     }
     public function assignedCases()
     {
-        return CaseRepository::assignedCases();
+        return LitigationRepository::getMyLitigation();
     }
 
     public function pendingCases()

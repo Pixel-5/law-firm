@@ -15,15 +15,16 @@ class CreateInitialConsultationFormsTable extends Migration
     {
         Schema::create('initial_consultation_forms', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->default('');
-            $table->string('other_party');
-            $table->foreignId('attorney_id')
-                ->constrained('users', 'id');
-            $table->datetime('start_time');
-            $table->datetime('end_time');
-            $table->foreignId('venue_id')
-                ->constrained();
+            $table->string('number');
+            $table->string('matter');
             $table->text('description');
+            $table->foreignId('litigation_id')
+                ->constrained('litigation')
+                ->onDelete('CASCADE');
+            $table->time('start_time');
+            $table->time('end_time');
+            $table->date('date');
+            $table->string('venue');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -13,23 +13,23 @@ class CreateFileNoteFormsTable extends Migration
      */
     public function up()
     {
+
         Schema::create('file_note_forms', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('number');
             $table->foreignId('litigation_id')
-                ->constrained()
+                ->constrained('litigation')
                 ->onDelete('cascade');
-            $table->string('matter');
             $table->string('other_party');
+            $table->string('judge_name');
             $table->string('other_attorneys');
-            $table->foreignId('attorney')
-                ->constrained('users', 'id');
-            $table->datetime('start_time');
-            $table->datetime('end_time');
+            $table->date('date');
+            $table->time('start_time');
+            $table->time('end_time');
             $table->string('venue');
             $table->text('description');
-            $table->string('time_taken');
-            $table->string('hourly_rate');
+            $table->time('time_taken');
+            $table->double('hourly_rate');
             $table->timestamps();
             $table->softDeletes();
         });

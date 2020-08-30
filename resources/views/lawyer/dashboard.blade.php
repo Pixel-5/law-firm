@@ -17,7 +17,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                    <a href="{{ route('lawyer.cases') }}">Litigation (Clients)</a>
+                                    <a href="{{ route('lawyer.litigation.index') }}">Litigation (Cases)</a>
                                 </div>
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-auto">
@@ -47,7 +47,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                    <a href="{{ route('lawyer.cases') }}">Conveyancing (Clients)</a>
+                                    <a href="{{ route('lawyer.conveyancing.index') }}">Conveyancing</a>
                                 </div>
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-auto">
@@ -85,7 +85,7 @@
                                     <div class="col-auto">
                                         <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
                                             <span class="badge badge-primary">
-                                                {{ auth()->user()->userSchedule->count() }}
+{{--                                                {{ auth()->user()->userSchedule->count() }}--}}
                                             </span>
                                         </div>
                                     </div>
@@ -122,7 +122,7 @@
                                         <div class="h5 mb-0 mr-3 font-weight-bold
                                             text-gray-800">
                                              <span class="badge badge-primary">
-                                                 {{ count($myUnScheduledCases) }}
+{{--                                                 {{ count($myUnScheduledCases) }}--}}
                                             </span>
                                         </div>
                                     </div>

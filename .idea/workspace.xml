@@ -20,20 +20,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2a36650-46ac-44ee-b4e4-5b2af27c0aaf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/lawyer/conveyancing.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/lawyer/litigation.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/lawyer/matrimony-form.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/lawyer/show-litigation.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Facade/LitigationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Facade/LitigationRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ConveyancingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ConveyancingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/LitigationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/LitigationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreIndividualFileRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreIndividualFileRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Conveyancing.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Conveyancing.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/FileNoteForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/FileNoteForm.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/View/Composers/CaseComposer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/View/Composers/CaseComposer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/View/Composers/FileComposer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/View/Composers/FileComposer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/ClientRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/ClientRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/ConveyancingRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/ConveyancingRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/InitialConsultationForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/InitialConsultationForm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Litigation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Litigation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/MatrimonyForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/MatrimonyForm.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/LitigationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/LitigationRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_182239_create_conveyancings_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_13_182239_create_conveyancings_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/client/cases/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/cases/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Schedule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Schedule.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Venue.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Venue.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_15_180641_create_venues_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_15_180641_create_venue_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_06_220356_create_schedules_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_13_220356_create_schedules_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_053902_create_initial_consultation_forms_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_13_053902_create_initial_consultation_forms_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_182209_create_litigations_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_13_182209_create_litigation_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_182239_create_conveyancings_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_13_182239_create_conveyancing_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_182243_create_file_note_forms_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_13_182243_create_file_note_forms_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_211523_create_matrimony_forms_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_13_211523_create_matrimony_forms_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/side-nav-bar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/side-nav-bar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/assigned-cases.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/lawyer/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/dashboard.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/lawyer/side-nav-bar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/side-nav-bar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/default.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/partials/case-delete-btn.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/case-delete-btn.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,12 +236,13 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\MoffatMore\Documents\Projects\law-firm\app\Http\Controllers\Admin" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/views/client/file/retainer" />
       <recent name="$PROJECT_DIR$/resources/views/client/file/individual" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\MoffatMore\Documents\Projects\law-firm\app\Http\Controllers\Lawyer" />
+      <recent name="C:\Users\MoffatMore\Documents\Projects\law-firm\app\Http\Controllers\Admin" />
     </key>
   </component>
   <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
@@ -249,7 +266,11 @@
       <workItem from="1598741192719" duration="615000" />
       <workItem from="1598741846260" duration="249000" />
       <workItem from="1598742115791" duration="344000" />
-      <workItem from="1598742512624" duration="4240000" />
+      <workItem from="1598742512624" duration="34968000" />
+      <workItem from="1598778977822" duration="1874000" />
+      <workItem from="1598802494484" duration="4685000" />
+      <workItem from="1598809136846" duration="1347000" />
+      <workItem from="1598810721250" duration="18561000" />
     </task>
     <servers />
   </component>
@@ -278,15 +299,15 @@
     </state>
     <state x="473" y="83" width="383" height="554" key="#com.intellij.ide.util.MemberChooser/0.0.1280.720@0.0.1280.720" timestamp="1598043352878" />
     <state x="591" y="128" width="414" height="670" key="#com.intellij.ide.util.MemberChooser/0.27.1600.872@0.27.1600.872" timestamp="1595037156693" />
-    <state x="486" y="165" width="324" height="376" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1597956801179">
+    <state x="486" y="165" width="324" height="376" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1598776514012">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="486" y="165" width="324" height="376" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.720@0.0.1280.720" timestamp="1597956801179" />
+    <state x="486" y="165" width="324" height="376" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.720@0.0.1280.720" timestamp="1598776514012" />
     <state x="608" y="227" width="374" height="455" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.27.1600.872@0.27.1600.872" timestamp="1595037085992" />
-    <state x="429" y="130" width="524" height="492" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1598746026613">
+    <state x="429" y="130" width="524" height="492" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1598830974267">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="429" y="130" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.720@0.0.1280.720" timestamp="1598746026613" />
+    <state x="429" y="130" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.720@0.0.1280.720" timestamp="1598830974267" />
     <state x="536" y="184" width="524" height="492" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.27.1600.872@0.27.1600.872" timestamp="1595188169517" />
     <state x="586" y="386" width="424" height="152" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#" timestamp="1595185773688">
       <screen x="0" y="27" width="1600" height="872" />
@@ -301,10 +322,10 @@
     </state>
     <state x="480" y="176" width="599" height="494" key="NewPhpClassDialog/0.0.1280.720@0.0.1280.720" timestamp="1598043504574" />
     <state x="509" y="166" width="577" height="569" key="NewPhpClassDialog/0.27.1600.872@0.27.1600.872" timestamp="1595038067433" />
-    <state x="478" y="278" width="324" height="149" key="NewPhpFileDialog" timestamp="1597959725661">
+    <state x="478" y="278" width="324" height="157" key="NewPhpFileDialog" timestamp="1598771070322">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="478" y="278" width="324" height="149" key="NewPhpFileDialog/0.0.1280.720@0.0.1280.720" timestamp="1597959725661" />
+    <state x="478" y="278" width="324" height="157" key="NewPhpFileDialog/0.0.1280.720@0.0.1280.720" timestamp="1598771070322" />
     <state x="598" y="364" width="399" height="157" key="NewPhpFileDialog/0.27.1600.872@0.27.1600.872" timestamp="1595045742391" />
     <state x="150" y="0" key="SettingsEditor" timestamp="1598742872728">
       <screen x="0" y="0" width="1280" height="720" />

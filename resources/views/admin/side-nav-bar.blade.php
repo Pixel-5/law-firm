@@ -56,16 +56,16 @@
         <div id="collapseCases" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">List of Active cases:</h6>
-                @foreach($scheduledCases as $case)
-                    @if (\Carbon\Carbon::parse($case->schedule->end_time)->timestamp >
-                                \Carbon\Carbon::parse(now())->timestamp)
-                        <a class="collapse-item" href="#">{{ $case->number }}
-                            <span class="badge badge-secondary">
-                            <i class="fa fa-clock"></i>
-                        </span>
-                        </a>
-                    @endif
-                @endforeach
+{{--                @foreach($scheduledCases as $case)--}}
+{{--                    @if (\Carbon\Carbon::parse($case->schedule->end_time)->timestamp >--}}
+{{--                                \Carbon\Carbon::parse(now())->timestamp)--}}
+{{--                        <a class="collapse-item" href="#">{{ $case->number }}--}}
+{{--                            <span class="badge badge-secondary">--}}
+{{--                            <i class="fa fa-clock"></i>--}}
+{{--                        </span>--}}
+{{--                        </a>--}}
+{{--                    @endif--}}
+{{--                @endforeach--}}
             </div>
         </div>
     </li>
