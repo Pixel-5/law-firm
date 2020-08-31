@@ -22,12 +22,14 @@ class Schedule extends Model implements Searchable
     protected static $submitEmptyLogs = false;
 
     protected static $logAttributes = [
-        'name',
+        'scheduleable_id',
+        'scheduleable_type',
+        'category',
         'start_time',
         'end_time',
         'venue',
         'notes',
-        'case.number'
+        'attorney_id'
     ];
 
     protected $dates = [
@@ -39,15 +41,14 @@ class Schedule extends Model implements Searchable
     ];
 
     protected $fillable = [
-        'name',
+        'scheduleable_id',
+        'scheduleable_type',
+        'attorney_id',
+        'category',
         'end_time',
         'start_time',
         'venue',
-        'user_id',
         'notes',
-        'scheduleable_id',
-        'scheduleable_type',
-        'category'
     ];
 
     public function saveQuietly()
@@ -55,10 +56,6 @@ class Schedule extends Model implements Searchable
         return static::withoutEvents(function () {
             return $this->save();
         });
-    }
-    public function case()
-    {
-        return $this->belongsTo(FileCase::class);
     }
 
     public function scheduleable()

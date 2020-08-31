@@ -22,7 +22,7 @@ class LitigationController extends Controller
 
     public function index()
     {
-        return view('lawyer.litigation');
+        return view('lawyer.litigation.index');
     }
 
     /**

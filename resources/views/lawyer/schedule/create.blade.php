@@ -12,6 +12,8 @@
                 </li>
                 @if(auth()->user()->roles->first()->title === 'Lawyer')
                 <li class="breadcrumb-item"><a href="{{ route('lawyer.schedule') }}">My Schedule</a></li>
+                @else
+                    <li class="breadcrumb-item"><a href="{{ route('admin.users.show',1) }}">Schedule</a></li>
                 @endif
                 <li class="breadcrumb-item active" aria-current="page">Create Schedule</li>
                 <li class="offset-11 d-sm-block" style="height: 10px;margin-top: -30px;">
@@ -56,7 +58,7 @@
                                         @php
                                             $hasNoSchedules = false;
                                         @endphp
-                                        @foreach ($myCases as $case)
+                                        @foreach ($myUnScheduled as $case)
                                             @if ($case->schedule === null)
                                                 @php
                                                     $hasNoSchedules = true;

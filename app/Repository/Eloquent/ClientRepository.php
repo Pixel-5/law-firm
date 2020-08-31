@@ -56,4 +56,18 @@ class ClientRepository extends AbstractBaseRepository
             $query->where('user_id',Auth::user()->id);
         })->get();
     }
+
+    public function myUnScheduled()
+    {
+//        dd($this->model->whereHas('conveyancing',function (Builder $query){
+//
+//        })->with('conveyancing')->get());
+        return $this->model->whereHas('conveyancing', function (Builder $query) {
+            $query->where('user_id',Auth::user()->id);
+            $query->doesntHave('schedule');
+        })->whereHas('litigation',function (Builder $query){
+            $query->where('user_id',Auth::user()->id);
+            $query->doesntHave('schedule');
+        })->with(['conveyancing','litigation'])->get();
+    }
 }

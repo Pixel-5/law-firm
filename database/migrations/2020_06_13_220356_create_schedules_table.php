@@ -16,6 +16,9 @@ class CreateSchedulesTable extends Migration
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
             $table->string('category')->default('client');
+            $table->foreignId('attorney_id')
+                ->constrained('users')
+                ->onDelete('CASCADE');
             $table->integer('scheduleable_id');
             $table->string('scheduleable_type');
             $table->text('notes')->nullable();

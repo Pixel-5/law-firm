@@ -20,24 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2a36650-46ac-44ee-b4e4-5b2af27c0aaf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Repository/CompanyFileRepositoryInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Repository/Eloquent/CompanyFileRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/lawyer/conveyancing/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/lawyer/conveyancing/show.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/lawyer/litigation/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/lawyer/litigation/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/ConveyancingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/ConveyancingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Plot.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Plot.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/RepositoryServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RepositoryServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/ConveyancingRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/ConveyancingRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/IndividualFileRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/IndividualFileRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/View/Components/PlotDetailsForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/View/Components/PlotDetailsForm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/company-transferee-conveyance-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/company-transferee-conveyance-form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/company-transferor-conveyance-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/company-transferor-conveyance-form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/conveyancing.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/FileCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/FileCase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/LitigationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/LitigationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/ScheduleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/ScheduleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/View/Composers/CaseComposer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/View/Composers/CaseComposer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/ClientRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/ClientRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/ScheduleRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/ScheduleRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Schedule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Schedule.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_220356_create_schedules_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_13_220356_create_schedules_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/litigation.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/litigation/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/litigation/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/schedule/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/schedule/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/schedule/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/schedule/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/schedule/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/schedule/show.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,7 +257,8 @@
       <workItem from="1598802494484" duration="4685000" />
       <workItem from="1598809136846" duration="1347000" />
       <workItem from="1598810721250" duration="25825000" />
-      <workItem from="1598839577176" duration="1435000" />
+      <workItem from="1598839577176" duration="5362000" />
+      <workItem from="1598877335369" duration="12304000" />
     </task>
     <servers />
   </component>

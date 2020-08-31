@@ -5,6 +5,7 @@ namespace App\Http\View\Composers;
 
 
 use App\Facade\CaseRepository;
+use App\Facade\ClientRepository;
 use App\Facade\ConveyancingRepository;
 use App\Facade\LitigationRepository;
 use Illuminate\View\View;
@@ -14,7 +15,7 @@ class CaseComposer
     public function compose(View $view)
     {
         return $view->with( [
-//            'myUnScheduledCases'=>$this->myUnScheduledCases(),
+            'myUnScheduled'=>$this->myUnScheduled(),
 //            'cases' => $this->allCases(),
 //            'scheduledCases'=> $this->scheduledCases(),
 //            'unScheduledCases' => $this->unscheduledCases(),
@@ -26,8 +27,8 @@ class CaseComposer
         ]);
     }
 
-    public function myUnScheduledCases(){
-        return CaseRepository::myUnScheduledCases();
+    public function myUnScheduled(){
+        return ClientRepository::myUnScheduled();
     }
 
     public function myLitigation()

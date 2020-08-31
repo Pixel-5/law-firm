@@ -18,7 +18,7 @@
                 <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('lawyer.schedule') }}">
                         Schedule</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">{{ $schedule->case->number }}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $schedule->scheduleable->number }}</li>
                <li class="offset-11 d-sm-block" style="height: 10px;margin-top: -30px;">
                    <a href="{{ url()->previous() }}" title="Back">
                        <i class="fa fa-2x fa-chevron-circle-left"></i>
@@ -32,12 +32,14 @@
     <div class="container-fluid">
         <div class="modal-content">
             <div class="modal-header">
-                <h5><b>Schedule details</b></h5>
+                <h5><b>{{ class_basename($schedule->scheduleable) }} Schedule details</b></h5>
                 <div class="align-items-end">
 
                     @can('case_access')
                         <a  class="btn btn-xs btn-outline-secondary" title="View Case"
-                            href="{{ route('cases.show', $schedule->case->id) }}">
+                            href="{{ class_basename($schedule->scheduleable) == 'Litigation'?
+                                    route('lawyer.litigation.show',$schedule->scheduleable->id):
+                                    route('lawyer.conveyancing.show',$schedule->scheduleable->id) }}">
                             <i class="fa fa-eye"></i>
                         </a>
                     @endcan
@@ -61,6 +63,7 @@
                     @endcan
                 </div>
             </div>
+{{--            @dd($schedule->scheduleable->id)--}}
 
             <div class="modal-body">
                 <div class="mb-2">
@@ -68,10 +71,10 @@
                         <tbody>
                         <tr>
                             <th>
-                                Case Number
+                                Number
                             </th>
                             <td>
-                                {{ $schedule->case->number }}
+                                {{ $schedule->scheduleable->number }}
                             </td>
                         </tr>
                         <tr>
@@ -79,7 +82,7 @@
                                 Client Name
                             </th>
                             <td>
-                                {{  $schedule->case->file->name }} {{  $schedule->case->file->surname }}
+                                {{  $schedule->scheduleable->client->clientable->name }} {{  $schedule->scheduleable->client->clientable->surname }}
                             </td>
                         </tr>
                         <tr>
@@ -104,6 +107,14 @@
                             </th>
                             <td>
                                 {{  $schedule->end_time }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Notes
+                            </th>
+                            <td>
+                                {{  $schedule->notes }}
                             </td>
                         </tr>
                         </tbody>

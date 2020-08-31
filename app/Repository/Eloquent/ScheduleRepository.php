@@ -11,6 +11,7 @@ use App\Schedule;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pipeline\Pipeline;
 use App\Facade\CaseRepository;
+use Illuminate\Support\Facades\Auth;
 
 class ScheduleRepository extends AbstractBaseRepository implements ScheduleRepositoryInterface
 {
@@ -30,13 +31,6 @@ class ScheduleRepository extends AbstractBaseRepository implements ScheduleRepos
         return $this->find($id)->update($attributes);
     }
 
-    public function getSchedule($id)
-    {
-        $schedule = $this->find($id);
-        $schedule = $schedule->load(['case']);
-        return $schedule;
-    }
-
     private function getCase($id)
     {
         $case = CaseRepository::showCase($id);
@@ -50,7 +44,7 @@ class ScheduleRepository extends AbstractBaseRepository implements ScheduleRepos
 
     public function deleteSchedule($id)
     {
-        // TODO: Implement deleteSchedule() method.
+
     }
 
     public function updateSchedule($id, $request)
@@ -77,7 +71,21 @@ class ScheduleRepository extends AbstractBaseRepository implements ScheduleRepos
     public function schedules()
     {
         $schedule = $this->model->all();
-        $schedule = $schedule->load(['case','case.file','case.user']);
+        $schedule = $schedule->load(['conveyancing','litigation']);
+        return $schedule;
+    }
+
+    public function mySchedule()
+    {
+        $schedule = $this->model->where('attorney_id',Auth::user()->id)->get();
+        $schedule = $schedule->load(['scheduleable']);
+        return $schedule;
+    }
+
+    public function getSchedule($id)
+    {
+        $schedule = $this->find($id);
+        $schedule = $schedule->load(['scheduleable.client.clientable',]);
         return $schedule;
     }
 }
