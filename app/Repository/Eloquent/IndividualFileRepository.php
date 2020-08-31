@@ -125,6 +125,11 @@ class IndividualFileRepository extends AbstractBaseRepository implements Individ
         return $this->delete($file);
     }
 
+    public function getFile($id)
+    {
+        return $this->find($id);
+    }
+
     /**
      * @param $id
      * @return void

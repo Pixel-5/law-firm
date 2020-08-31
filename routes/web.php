@@ -85,7 +85,7 @@ Route::group(
             'destroy' => 'admin.litigation.destroy',
             'create' => 'admin.litigation.create',
         ]);
-        Route::resource('conveyancing', 'LitigationController')->names([
+        Route::resource('conveyancing', 'ConveyancingController')->names([
             'destroy' => 'admin.conveyancing.destroy',
             'create' => 'admin.conveyancing.create',
         ]);

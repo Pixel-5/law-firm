@@ -134,16 +134,22 @@ class ConveyancingRepository extends AbstractBaseRepository
         return $this->delete($id);
     }
 
-    public function getConveyancing()
+    public function getConveyancing($id)
+    {
+        $conveyancing =  $this->find($id);
+        $conveyancing = $conveyancing->load(['transaction','client','schedule','user']);
+        return $conveyancing;
+    }
+
+    public function getAssignedConveyancing()
     {
         return $this->model->whereHas('user')->with(['client', 'user'])->cursor();
     }
 
     public function getMyConveyancing()
     {
-        //TODO load schedule
         $myConveyancing = $this->model->where('user_id', Auth::user()->id)->get();
-        $myConveyancing = $myConveyancing->load(['client']);
+        $myConveyancing = $myConveyancing->load(['client','schedule','transaction']);
         return $myConveyancing;
     }
 }

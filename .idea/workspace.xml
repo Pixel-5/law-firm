@@ -20,35 +20,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2a36650-46ac-44ee-b4e4-5b2af27c0aaf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/lawyer/conveyancing.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/lawyer/litigation.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/lawyer/matrimony-form.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/lawyer/show-litigation.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Repository/CompanyFileRepositoryInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Repository/Eloquent/CompanyFileRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/lawyer/conveyancing/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/lawyer/conveyancing/show.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/lawyer/litigation/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/lawyer/litigation/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Conveyancing.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Conveyancing.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/FileNoteForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/FileNoteForm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/View/Composers/CaseComposer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/View/Composers/CaseComposer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/InitialConsultationForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/InitialConsultationForm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Litigation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Litigation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/MatrimonyForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/MatrimonyForm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/LitigationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/LitigationRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Schedule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Schedule.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Venue.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Venue.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/ConveyancingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/ConveyancingController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Plot.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Plot.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/RepositoryServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RepositoryServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/ConveyancingRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/ConveyancingRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/IndividualFileRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/IndividualFileRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/View/Components/PlotDetailsForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/View/Components/PlotDetailsForm.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_15_180641_create_venues_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_15_180641_create_venue_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_06_220356_create_schedules_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_13_220356_create_schedules_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_053902_create_initial_consultation_forms_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_13_053902_create_initial_consultation_forms_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_182209_create_litigations_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_13_182209_create_litigation_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_182239_create_conveyancings_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_13_182239_create_conveyancing_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_182243_create_file_note_forms_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_13_182243_create_file_note_forms_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_211523_create_matrimony_forms_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_13_211523_create_matrimony_forms_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/side-nav-bar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/side-nav-bar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/assigned-cases.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/side-nav-bar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/side-nav-bar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partials/case-delete-btn.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/case-delete-btn.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/company-transferee-conveyance-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/company-transferee-conveyance-form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/company-transferor-conveyance-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/company-transferor-conveyance-form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/conveyancing.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -236,13 +224,13 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/resources/views/client/file/retainer" />
-      <recent name="$PROJECT_DIR$/resources/views/client/file/individual" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\MoffatMore\Documents\Projects\law-firm\app\Http\Controllers\Lawyer" />
       <recent name="C:\Users\MoffatMore\Documents\Projects\law-firm\app\Http\Controllers\Admin" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/client/file/retainer" />
+      <recent name="$PROJECT_DIR$/resources/views/client/file/individual" />
     </key>
   </component>
   <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
@@ -270,7 +258,8 @@
       <workItem from="1598778977822" duration="1874000" />
       <workItem from="1598802494484" duration="4685000" />
       <workItem from="1598809136846" duration="1347000" />
-      <workItem from="1598810721250" duration="18561000" />
+      <workItem from="1598810721250" duration="25825000" />
+      <workItem from="1598839577176" duration="1435000" />
     </task>
     <servers />
   </component>
@@ -294,10 +283,10 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="234" y="0" key="#Plugins/0.0.1280.720@0.0.1280.720" timestamp="1598742059823" />
-    <state x="473" y="83" width="383" height="554" key="#com.intellij.ide.util.MemberChooser" timestamp="1598043352878">
+    <state x="473" y="83" width="389" height="554" key="#com.intellij.ide.util.MemberChooser" timestamp="1598838081355">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="473" y="83" width="383" height="554" key="#com.intellij.ide.util.MemberChooser/0.0.1280.720@0.0.1280.720" timestamp="1598043352878" />
+    <state x="473" y="83" width="389" height="554" key="#com.intellij.ide.util.MemberChooser/0.0.1280.720@0.0.1280.720" timestamp="1598838081355" />
     <state x="591" y="128" width="414" height="670" key="#com.intellij.ide.util.MemberChooser/0.27.1600.872@0.27.1600.872" timestamp="1595037156693" />
     <state x="486" y="165" width="324" height="376" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1598776514012">
       <screen x="0" y="0" width="1280" height="720" />
@@ -317,15 +306,15 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="94" y="94" width="1093" height="533" key="DiffContextDialog/0.0.1280.720@0.0.1280.720" timestamp="1598035773621" />
-    <state x="480" y="176" width="599" height="494" key="NewPhpClassDialog" timestamp="1598043504574">
+    <state x="480" y="176" width="599" height="526" key="NewPhpClassDialog" timestamp="1598838069141">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="480" y="176" width="599" height="494" key="NewPhpClassDialog/0.0.1280.720@0.0.1280.720" timestamp="1598043504574" />
+    <state x="480" y="176" width="599" height="526" key="NewPhpClassDialog/0.0.1280.720@0.0.1280.720" timestamp="1598838069141" />
     <state x="509" y="166" width="577" height="569" key="NewPhpClassDialog/0.27.1600.872@0.27.1600.872" timestamp="1595038067433" />
-    <state x="478" y="278" width="324" height="157" key="NewPhpFileDialog" timestamp="1598771070322">
+    <state x="478" y="278" width="324" height="157" key="NewPhpFileDialog" timestamp="1598832441005">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="478" y="278" width="324" height="157" key="NewPhpFileDialog/0.0.1280.720@0.0.1280.720" timestamp="1598771070322" />
+    <state x="478" y="278" width="324" height="157" key="NewPhpFileDialog/0.0.1280.720@0.0.1280.720" timestamp="1598832441005" />
     <state x="598" y="364" width="399" height="157" key="NewPhpFileDialog/0.27.1600.872@0.27.1600.872" timestamp="1595045742391" />
     <state x="150" y="0" key="SettingsEditor" timestamp="1598742872728">
       <screen x="0" y="0" width="1280" height="720" />

@@ -14,6 +14,7 @@
         "bugsnag/bugsnag-laravel": "^2.17",
         "davejamesmiller/laravel-breadcrumbs": "5.x",
         "fideloper/proxy": "^4.2",
+        "fragkp/laravel-route-breadcrumb": "^3.0",
         "fruitcake/laravel-cors": "^1.0",
         "gr8shivam/laravel-sms-api": "^3.0",
         "guzzlehttp/guzzle": "^6.3",

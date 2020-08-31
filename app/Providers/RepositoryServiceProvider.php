@@ -5,9 +5,11 @@ namespace App\Providers;
 
 use App\Repository\CaseRepositoryInterface;
 use App\Repository\ClientRepositoryInterface;
+use App\Repository\CompanyFileRepositoryInterface;
 use App\Repository\ConveyancingRepositoryInterface;
 use App\Repository\Eloquent\CaseRepository;
 use App\Repository\Eloquent\ClientRepository;
+use App\Repository\Eloquent\CompanyFileRepository;
 use App\Repository\Eloquent\ConveyancingRepository;
 use App\Repository\Eloquent\FileRepository;
 use App\Repository\Eloquent\IndividualFileRepository;
@@ -48,6 +50,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(ConveyancingRepositoryInterface::class, ConveyancingRepository::class);
         $this->app->bind(ClientRepositoryInterface::class, ClientRepository::class);
         $this->app->bind(LitigationRepositoryInterface::class, LitigationRepository::class);
+        $this->app->bind(CompanyFileRepositoryInterface::class, CompanyFileRepository::class);
     }
 
     /**

@@ -15,4 +15,9 @@ class Plot extends Model
         'initial_payment',
         'notes',
     ];
+
+    public function transaction()
+    {
+        return $this->hasOne(PlotTransaction::class);
+    }
 }

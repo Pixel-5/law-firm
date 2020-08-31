@@ -14,7 +14,7 @@
                        href="{{  route($isLawyer? 'lawyer.dashboard': 'admin.dashboard') }}">Home
                     </a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Assigned Litigation</li>
+                <li class="breadcrumb-item active" aria-current="page">Assigned Conveyancing</li>
                 <li class="offset-11 d-sm-block" style="height: 10px;margin-top: -30px;">
                     <a href="{{ url()->previous() }}" title="Back">
                         <i class="fa fa-2x fa-chevron-circle-left"></i>
@@ -34,8 +34,10 @@
                         <table id="example" class="table hover table-striped table-bordered nowrap" style="width:100%">
                             <thead>
                             <tr>
-                                <th>Litigation No</th>
+                                <th>No</th>
                                 <th>Client</th>
+                                <th>Transaction</th>
+                                <th>Plot No</th>
                                 <th>Schedule</th>
                                 <th>Status</th>
                                 <th>Action</th>
@@ -43,25 +45,31 @@
                             </thead>
 
                             <tbody>
-                            @inject('litigation','App\Repository\LitigationRepositoryInterface')
-                            @foreach ($litigation->getMyLitigation() as $case)
+                            @inject('conveyancings','App\Repository\ConveyancingRepositoryInterface')
+                            @foreach ($conveyancings->getMyConveyancing() as $conveyancing)
                                 <tr>
-                                    <td>{{ $case->number }}</td>
-                                    <td>{{ $case->client->clientable->name }} {{ $case->client->clientable->surname }}</td>
+                                    <td>{{ $conveyancing->number }}</td>
+                                    <td>{{ $conveyancing->client->clientable->name }} {{ $conveyancing->client->clientable->surname }}</td>
                                     <td>
-                                        @if ($case->schedule !== null)
-                                            Start: {{ $case->schedule->start_time }}<br>
-                                            End: {{ $case->schedule->end_time }}<br>
-                                            Venue: {{ $case->schedule->venue }}
+                                        {{ $conveyancing->transaction->transaction_type  }}
+                                    </td>
+                                    <td>
+                                        {{ $conveyancing->transaction->plot->plot_no  }}
+                                    </td>
+                                    <td>
+                                        @if ($conveyancing->schedule !== null)
+                                            Start: {{ $conveyancing->schedule->start_time }}<br>
+                                            End: {{ $conveyancing->schedule->end_time }}<br>
+                                            Venue: {{ $conveyancing->schedule->venue }}
                                         @endif
                                     </td>
                                     <td>
-                                        <span class="badge badge-info">{{ $case->status }}</span>
+                                        <span class="badge badge-info">{{ $conveyancing->status }}</span>
                                     </td>
                                     <td>
                                         <a class="btn btn-outline-info btn-sm  text-center"
-                                           href="{{ route('cases.show', $case->id ) }}">
-                                            <i class="fa fa-eye"></i> view case</a>
+                                           href="{{ route('lawyer.conveyancing.show', $conveyancing->id ) }}">
+                                            <i class="fa fa-eye"></i> view</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -93,7 +101,6 @@
     <script src="{{ asset('js/responsive.bootstrap4.min.js') }}"></script>
     <script type="application/javascript">
         $(document).ready(function() {
-            let groupColumn = 0;
             $('#example').DataTable( {
                 responsive: {
                     details: {
