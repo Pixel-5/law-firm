@@ -105,4 +105,11 @@ class LitigationRepository extends AbstractBaseRepository
         $note = FileNoteForm::find($id);
         return $note->delete();
     }
+
+    public function all()
+    {
+        $litigation = $this->model->all();
+        $litigation = $litigation->load(['client','schedule']);
+        return $litigation;
+    }
 }

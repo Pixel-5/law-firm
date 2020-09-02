@@ -148,7 +148,6 @@
                 const lastConveyancingYearKey = Object.keys(conveyancing).sort().reverse()[0];
                 let lastConveyancingValue = conveyancing[lastConveyancingYearKey];
                // sortByMonth(lastConveyancingValue.months);
-                console.log( lastConveyancingValue.months);
                 for (const key in lastConveyancingValue.months) {
                     month = lastConveyancingValue.months[key];
                     conveyancing_labels.push(month.name);

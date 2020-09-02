@@ -152,4 +152,11 @@ class ConveyancingRepository extends AbstractBaseRepository
         $myConveyancing = $myConveyancing->load(['client','schedule','transaction']);
         return $myConveyancing;
     }
+
+    public function all()
+    {
+        $conveyancing = $this->model->all();
+        $conveyancing = $conveyancing->load(['client','schedule','transaction']);
+        return $conveyancing;
+    }
 }
