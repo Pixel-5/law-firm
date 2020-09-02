@@ -44,7 +44,7 @@ class Schedule extends Model implements Searchable
         'scheduleable_id',
         'scheduleable_type',
         'attorney_id',
-        'category',
+        'schedule_appointment',
         'end_time',
         'start_time',
         'venue',

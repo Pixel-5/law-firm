@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Lawyer;
 
-use App\Facade\CaseRepository;
 use App\Facade\ClientRepository;
 use App\Facade\ScheduleRepository;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Gate;
 
 class HomeController extends Controller
 {
@@ -33,7 +31,7 @@ class HomeController extends Controller
         $myCases = ScheduleRepository::mySchedule();
         foreach ($myCases as $schedule) {
             $events[] = [
-                'title'   => 'Schedule No: '. $schedule->scheduleable->number,
+                'title'   => class_basename($schedule->scheduleable) .' No: '. $schedule->scheduleable->number ,
                 'start'   => $schedule->start_time,
                 'end'     => $schedule->end_time,
                 'venue'   => $schedule->venue,
@@ -46,7 +44,7 @@ class HomeController extends Controller
 
     public function chart(): JsonResponse
     {
-        $data = CaseRepository::getMyChartData();
+        $data = ClientRepository::getMyChartData();
         return response()->json($data);
     }
 }

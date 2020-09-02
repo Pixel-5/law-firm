@@ -71,7 +71,7 @@
                         <tbody>
                         <tr>
                             <th>
-                                Number
+                               {{ class_basename($schedule->scheduleable) }} Number
                             </th>
                             <td>
                                 {{ $schedule->scheduleable->number }}
@@ -83,6 +83,14 @@
                             </th>
                             <td>
                                 {{  $schedule->scheduleable->client->clientable->name }} {{  $schedule->scheduleable->client->clientable->surname }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Schedule Reason
+                            </th>
+                            <td>
+                                {{  ucfirst($schedule->schedule_appointment) . ' Appointment' }}
                             </td>
                         </tr>
                         <tr>

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyEventRequest;
 use App\Http\Requests\StoreScheduleRequest;
 use App\Http\Requests\UpdateScheduleRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,7 +34,7 @@ class ScheduleController extends Controller
 
     public function store(StoreScheduleRequest $request)
     {
-        Schedule::create($request->all());
+        ScheduleRepository::createSchedule($request);
         return redirect()->route('lawyer.schedule')->with('status', 'Successfully scheduled a case');
     }
 

@@ -183,39 +183,4 @@ class CaseRepository extends AbstractBaseRepository implements CaseRepositoryInt
        ];
     }
 
-    public function getMyChartData()
-    {
-
-        $data = [];
-        $starts = $this->model->where('user_id', auth()->user()->id)
-            ->get()
-            ->groupBy(function($date) {
-                return Carbon::parse($date->created_at)->format('Y'); // grouping by years
-            })->map(function($case){
-                return $case->groupBy(function($date){
-                    return Carbon::parse($date->created_at)->format('m'); // grouping by years
-                });
-            });
-        foreach ($starts as $year => $months) {
-            $months_data = [];
-            $total = 0;
-            foreach ($months as $key =>$value) {
-                $key = Carbon::create()->startOfMonth()->month((int)$key)->startOfMonth()->shortMonthName;
-                $months_data[] =[
-                    'name' => $key,
-                    'value' =>$value->count()
-                ] ;
-                $total = $total + $value->count();
-            }
-
-            $data[(string)$year] = [
-                'months'=> $months_data,
-                'total_cases' => $total
-            ];
-        }
-        return [
-            'years' => $data
-        ];
-    }
-
 }

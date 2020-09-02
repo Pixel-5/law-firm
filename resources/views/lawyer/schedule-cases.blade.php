@@ -83,7 +83,7 @@
             ],
             customButtons: {
                 addEventButton: {
-                    text: 'Schedule Case',
+                    text: 'Schedule',
                     click: function() {
                         window.location.href='{{ route("lawyer.schedule.create") }}';
                     }

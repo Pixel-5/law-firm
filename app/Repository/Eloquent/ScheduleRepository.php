@@ -37,9 +37,19 @@ class ScheduleRepository extends AbstractBaseRepository implements ScheduleRepos
         $case = $case->load('user');
         return $case;
     }
-    public function createSchedule(array $attributes)
+    public function createSchedule($request)
     {
-        return $this->create($attributes);
+
+        return $this->create([
+            'schedule_appointment'  => $request->schedule_appointment,
+            'attorney_id' => $request->attorney_id,
+            'scheduleable_id' => $request->scheduleable_id,
+            'scheduleable_type' => $request->scheduleable_type == 'litigation'? 'App\Litigation':'App\Conveyancing',
+            'notes' => $request->notes,
+            'venue' =>$request->venue,
+            'start_time' => $request->start_time,
+            'end_time' => $request->end_time
+        ]);
     }
 
     public function deleteSchedule($id)

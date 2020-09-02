@@ -5,6 +5,9 @@ namespace App\Repository\Eloquent;
 
 
 use App\Client;
+use App\Conveyancing;
+use App\Litigation;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 
@@ -48,6 +51,27 @@ class ClientRepository extends AbstractBaseRepository
         return $this->delete($id);
     }
 
+    public function unscheduledCases()
+    {
+        $myUnscheduledClients = array();
+        $lawyer = Auth::user();
+        $myLitigation = Litigation::where('user_id', $lawyer->id)->get();
+        $myLitigation = $myLitigation->load(['schedule']);
+        foreach ($myLitigation as $myCase) {
+            if($myCase->schedule === null){
+                $myUnscheduledClients[] = $myCase;
+            }
+        }
+        $myConveyancing = Conveyancing::where('user_id', $lawyer->id)->get();
+        $myConveyancing = $myConveyancing->load(['schedule']);
+        foreach ($myConveyancing as $myConveyance) {
+            if($myConveyance->schedule === null){
+                $myUnscheduledClients[] = $myConveyance;
+            }
+        }
+        return $myUnscheduledClients;
+    }
+
     public function myClients()
     {
         return $this->model->whereHas('conveyancing', function (Builder $query) {
@@ -57,17 +81,187 @@ class ClientRepository extends AbstractBaseRepository
         })->get();
     }
 
-    public function myUnScheduled()
+    public function myAssignedClients()
     {
-//        dd($this->model->whereHas('conveyancing',function (Builder $query){
-//
-//        })->with('conveyancing')->get());
         return $this->model->whereHas('conveyancing', function (Builder $query) {
             $query->where('user_id',Auth::user()->id);
-            $query->doesntHave('schedule');
         })->whereHas('litigation',function (Builder $query){
             $query->where('user_id',Auth::user()->id);
-            $query->doesntHave('schedule');
-        })->with(['conveyancing','litigation'])->get();
+        })->with(['conveyancing','conveyancing.schedule','litigation','litigation.schedule',])->get();
     }
+    public function getMyChartData()
+    {
+
+        $litigation_data = [];
+        $conveyancing_data = [];
+        $litigation = Litigation::where('user_id', auth()->user()->id)
+            ->get()
+            ->groupBy(function($date) {
+                return Carbon::parse($date->created_at)->format('Y'); // grouping by years
+            })->map(function($case){
+                return $case->groupBy(function($date){
+                    return Carbon::parse($date->created_at)->format('m'); // grouping by years
+                });
+            });
+        $conveyancing = Conveyancing::where('user_id', auth()->user()->id)
+            ->get()
+            ->groupBy(function($date) {
+                return Carbon::parse($date->created_at)->format('Y'); // grouping by years
+            })->map(function($case){
+                return $case->groupBy(function($date){
+                    return Carbon::parse($date->created_at)->format('m'); // grouping by years
+                });
+            });
+        foreach ($litigation as $year => $months) {
+            $months_data = [
+                [
+                    'name' => 'Jan',
+                    'value' => 0
+                ],
+                [
+                    'name' => 'Feb',
+                    'value' => 0
+                ],
+                [
+                    'name' => 'Mar',
+                    'value' => 0
+                ],
+                [
+                    'name' => 'Apr',
+                    'value' => 0
+                ],
+                [
+                    'name' => 'May',
+                    'value' => 0
+                ],
+                [
+                    'name' => 'Jun',
+                    'value' => 0
+                ],
+                [
+                    'name' => 'Jul',
+                    'value' => 0
+                ],
+                [
+                    'name' => 'Aug',
+                    'value' => 0
+                ],
+                [
+                    'name' => 'Sep',
+                    'value' => 0
+                ],
+                [
+                    'name' => 'Oct',
+                    'value' => 0
+                ],
+                [
+                    'name' => 'Nov',
+                    'value' => 0
+                ],
+                [
+                    'name' => 'Dec',
+                    'value' => 0
+                ],
+            ];
+            $total = 0;
+            foreach ($months as $key =>$value) {
+                $key = Carbon::create()->startOfMonth()->month((int)$key)->startOfMonth()->shortMonthName;
+                foreach ($months_data as &$data){
+                    if ($data['name'] == $key)
+                        $data['value'] = $value->count();
+                }
+                $total = $total + $value->count();
+            }
+
+            $litigation_data[(string)$year] = [
+                'months'=> $months_data,
+                'total_cases' => $total
+            ];
+        }
+
+        foreach ($conveyancing as $year => $months) {
+            $months_data = [
+                [
+                    'name' => 'Jan',
+                    'value' => 0
+                ],
+                [
+                    'name' => 'Feb',
+                    'value' => 0
+                ],
+                [
+                    'name' => 'Mar',
+                    'value' => 0
+                ],
+                [
+                    'name' => 'Apr',
+                    'value' => 0
+                ],
+                [
+                    'name' => 'May',
+                    'value' => 0
+                ],
+                [
+                    'name' => 'Jun',
+                    'value' => 0
+                ],
+                [
+                    'name' => 'Jul',
+                    'value' => 0
+                ],
+                [
+                    'name' => 'Aug',
+                    'value' => 0
+                ],
+                [
+                    'name' => 'Sep',
+                    'value' => 0
+                ],
+                [
+                    'name' => 'Oct',
+                    'value' => 0
+                ],
+                [
+                    'name' => 'Nov',
+                    'value' => 0
+                ],
+                [
+                    'name' => 'Dec',
+                    'value' => 0
+                ],
+            ];
+            $total = 0;
+            foreach ($months as $key =>$value) {
+                $key = Carbon::create()->startOfMonth()->month((int)$key)->startOfMonth()->shortMonthName;
+                foreach ($months_data as &$data){
+                    if ($data['name'] == $key)
+                        $data['value'] = $value->count();
+                }
+                $total = $total + $value->count();
+            }
+
+
+            $conveyancing_data[(string)$year] = [
+                'months'=> $months_data,
+                'total_cases' => $total
+            ];
+        }
+
+        return [
+            'litigation' => $litigation_data,
+            'conveyancing' => $conveyancing_data
+        ];
+    }
+
+    public function reGenerateArray(&$arr, $key, $value)
+    {
+        array_walk($arr, function (&$v, $k ) use ($key, $value) {
+            if($k === $key) {
+                $v['value'] = $value;
+            } elseif("array" == gettype($v)) {
+                $this->reGenerateArray($v,$key,$value);
+            }
+        });
+    }
+
 }

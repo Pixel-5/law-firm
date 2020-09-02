@@ -15,7 +15,7 @@ class CreateSchedulesTable extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
-            $table->string('category')->default('client');
+            $table->string('schedule_appointment')->default('client');
             $table->foreignId('attorney_id')
                 ->constrained('users')
                 ->onDelete('CASCADE');

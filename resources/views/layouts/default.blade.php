@@ -77,6 +77,15 @@
 <script type="application/javascript">
     $(document).ready(function () {
 
+        var conveyancing_labels;
+        var litigation_labels;
+        var ctx;
+        var max;
+        var url;
+        var myBarChart;
+        var labels;
+        var litigation_data;
+        var conveyancing_data;
         $(".alert-dismissible").fadeTo(2000, 500).slideUp(500, function(){
             $(".alert-dismissible").alert('close');
         });
@@ -102,11 +111,11 @@
         // });
 
         $(".loader").addClass("hidden");
-        var ctx;
-        var myBarChart;
-        let labels = [];
-        let data = [];
-
+        litigation_labels = [];
+        litigation_data = [];
+        conveyancing_data = [];
+        conveyancing_labels = [];
+        max =0;
         function sortByMonth(arr) {
 
             var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -117,36 +126,62 @@
             });
         }
         // Bar Chart Example
-        let url = '{{ route(auth()->user()->roles->first()->title === 'Lawyer'? 'lawyer.chart':'admin.chart') }}';
+        url = '{{ route(auth()->user()->roles->first()->title === 'Lawyer'? 'lawyer.chart':'admin.chart') }}';
         $.ajax({
             url: url,
             method: 'GET',
             success: function(response) {
-                const years = response.years;
-                const lastYearKey = Object.keys(years).sort().reverse()[0];
-                let lastValue = years[lastYearKey];
-                sortByMonth(lastValue.months);
+                var labels;
+                let month;
+                const litigation = response.litigation;
+                const lastLitigationYearKey = Object.keys(litigation).sort().reverse()[0];
+                let lastLitigationValue = litigation[lastLitigationYearKey];
+                //sortByMonth(lastLitigationValue.months);
 
-                for (const key in lastValue.months) {
-                    const month = lastValue.months[key];
-                    labels.push(month.name);
-                    data.push(month.value);
+                for (const key in lastLitigationValue.months) {
+                    month = lastLitigationValue.months[key];
+                    litigation_labels.push(month.name);
+                    litigation_data.push(month.value);
                 }
+
+                const conveyancing = response.conveyancing;
+                const lastConveyancingYearKey = Object.keys(conveyancing).sort().reverse()[0];
+                let lastConveyancingValue = conveyancing[lastConveyancingYearKey];
+               // sortByMonth(lastConveyancingValue.months);
+                console.log( lastConveyancingValue.months);
+                for (const key in lastConveyancingValue.months) {
+                    month = lastConveyancingValue.months[key];
+                    conveyancing_labels.push(month.name);
+                    conveyancing_data.push(month.value);
+                }
+                max = Math.max(lastLitigationValue.total_cases, lastConveyancingValue.total_cases);
                 ctx = document.getElementById("casesBarChart");
+                labels = [...new Set([...litigation_labels ,...conveyancing_labels])];
                 myBarChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: labels,
-                        datasets: [{
-                            label: "# of Cases",
-                            backgroundColor: "#4e73df",
-                            hoverBackgroundColor: "#2e59d9",
-                            borderColor: "#4e73df",
-                            data: data,
-                        }],
+                        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                        datasets: [
+                            {
+                                label: "# of Litigation",
+                                backgroundColor: "#4e73df",
+                                hoverBackgroundColor: "#2e59d9",
+                                borderColor: "#4e73df",
+                                data: litigation_data,
+                            },
+                            {
+                                label: "# of Conveyancing",
+                                backgroundColor: "#FF5733",
+                                hoverBackgroundColor: "#CB3B1C",
+                                borderColor: "#E15E42",
+                                data: conveyancing_data,
+                            }
+                        ],
                     },
                     options: {
                         maintainAspectRatio: false,
+                        responsive:true,
                         layout: {
                             padding: {
                                 left: 10,
@@ -172,7 +207,7 @@
                             yAxes: [{
                                 ticks: {
                                     min: 0,
-                                    max: lastValue.total_cases,
+                                    max: max,
                                     maxTicksLimit: 6,
                                     padding: 10,
                                     // Include a dollar sign in the ticks
@@ -187,7 +222,8 @@
                                     borderDash: [2],
                                     zeroLineBorderDash: [2]
                                 }
-                            }],
+                            },
+                            ],
                         },
                         legend: {
                             display: true
