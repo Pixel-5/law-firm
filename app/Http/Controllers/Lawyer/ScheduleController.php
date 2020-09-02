@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyEventRequest;
 use App\Http\Requests\StoreScheduleRequest;
 use App\Http\Requests\UpdateScheduleRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,9 +20,8 @@ class ScheduleController extends Controller
     {
         abort_if(Gate::denies('schedule_access'), Response::HTTP_FORBIDDEN,
             $this->message.' access schedules');
-        $schedules = Schedule::withCount('schedules')
+        $schedules = Schedule::withCount('scheduleable')
             ->get();
-
         return view('lawyer.schedule.index', compact('schedules'));
     }
 
@@ -29,24 +29,21 @@ class ScheduleController extends Controller
     {
         abort_if(Gate::denies('schedule_create'), Response::HTTP_FORBIDDEN,
             $this->message .' create this schedule');
-
         return view('lawyer.schedule.create');
     }
 
     public function store(StoreScheduleRequest $request)
     {
-        Schedule::create($request->all());
+        ScheduleRepository::createSchedule($request);
         return redirect()->route('lawyer.schedule')->with('status', 'Successfully scheduled a case');
     }
 
-    public function edit(Schedule $schedule)
+    public function edit($schedule)
     {
         abort_if(Gate::denies('schedule_edit'), Response::HTTP_FORBIDDEN,
             $this->message .' edit this schedule');
-
-        $schedule->load('schedule')
-            ->loadCount('schedules');
-
+        $schedule = ScheduleRepository::getSchedule($schedule);
+        //dd($schedule);
         return view('lawyer.schedule.edit', compact('schedule'));
     }
 
@@ -58,11 +55,12 @@ class ScheduleController extends Controller
         return redirect()->route('lawyer.schedule');
     }
 
-    public function show(Schedule $schedule)
+    public function show($schedule)
     {
         abort_if(Gate::denies('schedule_show'), Response::HTTP_FORBIDDEN,
             $this->message .' show this schedule');
-        return view('lawyer.schedule.show', compact('schedule'));
+        $schedule = ScheduleRepository::getSchedule($schedule);
+        return view('lawyer.schedule.show')->with('schedule',$schedule);
     }
 
     public function destroy(Schedule $schedule)
@@ -77,7 +75,6 @@ class ScheduleController extends Controller
     public function massDestroy(MassDestroyEventRequest $request)
     {
         Schedule::whereIn('id', request('ids'))->delete();
-
         return response(null, Response::HTTP_NO_CONTENT);
     }
 }

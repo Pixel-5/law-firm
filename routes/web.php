@@ -79,16 +79,25 @@ Route::group(
         Route::delete('schedules/destroy', 'ScheduleController@massDestroy')->name('events.massDestroy');
         Route::resource('schedule', 'ScheduleController');
 
+        //Litigation & Conveyancing
+        //Common Forms
+        Route::resource('litigation', 'LitigationController')->names([
+            'destroy' => 'admin.litigation.destroy',
+            'create' => 'admin.litigation.create',
+        ]);
+        Route::resource('conveyancing', 'ConveyancingController')->names([
+            'destroy' => 'admin.conveyancing.destroy',
+            'create' => 'admin.conveyancing.create',
+        ]);
+        Route::resource('initial-consultation-form', 'InitialConsultationFormController');
+        Route::resource('note-form', 'NoteFormController');
+        Route::resource('matrimony-form', 'MatrimonyFormController');
+
     });
 
 //Admin & Lawyer routes
-
-//Case & Case Schedule
+//Litigation, Conveyancing & Schedule
 Route::group(['middleware' => ['auth', 'role:lawyer,super,admin']], function (){
-    Route::resource('cases', 'CaseController')->names([
-        'destroy' => 'admin.cases.destroy',
-        'create' => 'admin.cases.create',
-    ]);
     Route::resource('files', 'Admin\FileController');
     Route::delete('cases/destroy', 'CaseController@massDestroy')->name('admin.cases.massDestroy');
 
@@ -105,7 +114,6 @@ Route::group(['middleware' => ['auth', 'role:lawyer,super,admin']], function (){
     Route::resource('user','UserController')->only([
         'update'
     ]);
-
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'super.', 'namespace' => 'Admin','middleware' => ['auth', 'role:super']],

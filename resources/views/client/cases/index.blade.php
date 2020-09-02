@@ -573,7 +573,6 @@
             });
             $('#litigationTable').on('click', '.dropdown-item', function (e) {
                 e.preventDefault();
-
                 let lawyerId = $(this).attr('id');
                 let url = '{{ route("admin.litigation.update",["litigation"=> ":id"]) }}';
                 let token = $('input[name="_token"]').val();
@@ -601,7 +600,6 @@
                     }
                 });
             });
-
             $('#conveyanceTable').on('click', '.delete', function(e){
                 let el = this;
                 e.preventDefault();

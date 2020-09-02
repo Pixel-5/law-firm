@@ -12,6 +12,8 @@
                 </li>
                 @if(auth()->user()->roles->first()->title === 'Lawyer')
                 <li class="breadcrumb-item"><a href="{{ route('lawyer.schedule') }}">My Schedule</a></li>
+                @else
+                    <li class="breadcrumb-item"><a href="{{ route('admin.users.show',1) }}">Schedule</a></li>
                 @endif
                 <li class="breadcrumb-item active" aria-current="page">Create Schedule</li>
                 <li class="offset-11 d-sm-block" style="height: 10px;margin-top: -30px;">
@@ -22,11 +24,18 @@
             </ol>
         </nav>
     </div>
+    @if($errors->any())
+      <div class="container-fluid">
+          <div class="alert alert-danger alert-dismissible ">
+              {!! implode('', $errors->all('<div>:message</div>')) !!}
+          </div>
+      </div>
+    @endif
     <div class="container-fluid">
         <div class="row">
             <div class="col col-md-12  col-lg-12 col-sm-6 offset-0">
                 <div class="card">
-                    <div class="card-header">{{ trans('global.case') }} {{ trans('global.schedule') }}
+                    <div class="card-header">{{ trans('global.schedule') . ' Details' }}
                     </div>
 
                     <div class="card-body">
@@ -35,76 +44,124 @@
                               method="POST" id="form">
                             @csrf
                             @honeypot
+                            <input type="hidden" id="lawyer" class="form-control" name="attorney_id"
+                                   value="{{ isset($case)? $case->user->name : \Illuminate\Support\Facades\Auth::user()->id }}" >
                             @if(isset($case))
-                                <div class="form-group">
-                                    <label for="case_number">Case Number</label>
-                                    <input type="text" id="case_number" class="form-control"
-                                           value="{{ $case->number }}" readonly>
-
-                                    <input type="hidden" id="case_id" name="case_id" class="form-control"
-                                           value="{{ $case->id }}">
-                                </div>
                                 <div class="form-group">
                                     <label for="lawyer">Lawyer</label>
                                     <input type="text" id="lawyer" class="form-control"
                                            value="{{ $case->user->name }}" readonly>
+
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="scheduleable_type" value="litigation">
+                                            {{ class_basename($case) }}
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="case_number">
+                                        {{ isset($case) ?class_basename($case) . 'Number' : '' }}
+                                    </label>
+                                    <input type="text" id="scheduleable_id" class="form-control"
+                                           value="{{ $case->number }}" readonly>
+
+                                    <input type="hidden" id="scheduleable_id" name="scheduleable_id" class="form-control"
+                                           value="{{ $case->id }}">
                                 </div>
                             @else
-                                <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                                    <label for="case_id">Case No</label>
-                                    <select id="case_id" class="form-control" name="case_id">
-                                        @php
-                                            $hasNoSchedules = false;
-                                        @endphp
-                                        @foreach ($myCases as $case)
-                                            @if ($case->schedule === null)
-                                                @php
-                                                    $hasNoSchedules = true;
-                                                @endphp
-                                                <option value="{{ $case->id }}" class="collapse-item">
-                                                    {{ $case->number }}
-                                                </option>
-                                            @endif
-                                        @endforeach
-                                        @if (!$hasNoSchedules)
-                                            <option class="collapse-item" readonly="true" >
-                                                No case to schedule at the moment
-                                            </option>
-                                        @endif
+                                <div class="form-row ml-1">
+                                    <label for="category" class="alert alert-secondary container">Schedule Reason</label>
+                                </div>
+                                <div class="form-row">
+                                    <div  class="form-group col-4 {{ $errors->has('schedule_appointment') ? 'has-error' : '' }}">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="schedule_appointment" value="client"
+                                                   @if(old('schedule_appointment') != null)
+                                                   checked="{{ old('schedule_appointment') == 'client' }}"
+                                                @endif>
+                                            Client Appointment
+                                        </label>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="schedule_appointment" value="court"
+                                                   @if(old('schedule_appointment') != null)
+                                                   checked="{{ old('schedule_appointment') == 'court' }}"
+                                                @endif>
+                                            Court Appointment
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group   {{ old('schedule_appointment') == 'court'? 'd-block': 'hidden' }}"
+                                     id="court_venue"> <label for="venue" id="venueLabel" class="alert {{ $errors->has('venue') ? 'alert-danger' : 'alert-secondary ' }} container"> Venue</label>
+                                    <select id="court_ap_venue" class="form-control" name="venue">
+                                        <option selected value="">Choose Location...</option>
+                                        <option>Molepolole Magistrate</option>
+                                        <option>Broadhurst Magistrate</option>
+                                        <option>Ext 10 Magistrate</option>
+                                        <option>High Court</option>
+                                        <option>Lobatse Magistrate</option>
                                     </select>
-                                    @if($errors->has('case_id'))
-                                        <em class="invalid-feedback" >
-                                            {{ $errors->first('case_id') }}
+                                    @error('venue')
+                                    <em class="invalid-feedback d-block" id="venue_error">{{ $message }}</em>
+                                    @enderror
+                                </div>
+                                <div class="form-group {{ $errors->has('venue') ? 'has-error' : '' }} {{ old('schedule_appointment') == 'client'? 'd-block': 'hidden' }}"
+                                     id="client_venue">
+                                    <label for="client_venue" class="alert alert-secondary container">Venue</label>
+                                    <input type="text" id="client_venue_input"  name="venue" class="form-control"
+                                           value="{{ old('schedule_appointment') == 'client'? old('venue') : '' }}">
+                                    @error('client_ap_venue')
+                                    <em class="invalid-feedback">{{ $message }}</em>
+                                    @enderror
+                                </div>
+                                <div class="form-row ml-1">
+                                    <label for="category" class="alert alert-secondary container">Schedule Category</label>
+                                </div>
+                                <div class="form-row {{ $errors->has('scheduleable_type') ? 'has-error' : '' }}">
+                                    <div class="form-group col-md-4">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="scheduleable_type" value="litigation"
+                                                   @if(old('scheduleable_type') != null)
+                                                   checked="{{ old('scheduleable_type') == 'litigation' }}"
+                                                @endif>
+                                            Litigation
+                                        </label>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="scheduleable_type" value="conveyancing"
+                                                   @if(old('scheduleable_type') != null)
+                                                   checked="{{ old('scheduleable_type') == 'conveyancing' }}"
+                                                    @endif>
+                                            Conveyancing
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group hidden" id="numberField">
+                                    <label for="number" id="numberLabel" class="alert alert-secondary container">Number</label>
+                                    <select id="number" class="form-control" name="scheduleable_id" required>
+                                    </select>
+                                    @if($errors->has('scheduleable_id'))
+                                        <em class="invalid-feedback d-block" >
+                                            {{ $errors->first('scheduleable_id') }}
                                         </em>
                                     @endif
                                 </div>
-                            @endif
-                            <div class="form-group {{ $errors->has('venue') ? 'has-error' : '' }}">
-                                <label for="venue">Venue</label>
-                                <select id="venue" class="form-control venue" required name="venue"
-                                        {{ isset($hasNoSchedules)? !$hasNoSchedules? 'disabled':'':'' }}>
-                                    <option>Choose Location...</option>
-                                    <option>Molepolole Magistrate</option>
-                                    <option>Broadhurst Magistrate</option>
-                                    <option>Ext 10 Magistrate</option>
-                                    <option>High Court</option>
-                                    <option>Lobatse Magistrate</option>
-                                </select>
-                                @if($errors->has('venue'))
-                                    <em class="invalid-feedback" >
-                                        {{ $errors->first('venue') }}
-                                    </em>
-                                @endif
-                            </div>
-                            <div class="form-group {{ $errors->has('notes') ? 'has-error' : '' }}">
-                                <label for="notes">Notes</label>
-                                <textarea type="text" id="notes" name="notes" class="form-control"
-                                  {{ isset($hasNoSchedules)? !$hasNoSchedules? 'disabled':'':'' }}>
 
-                            </textarea>
+                            @endif
+
+                            <div class="form-group {{ $errors->has('notes') ? 'has-error' : '' }}">
+                                <label for="notes" class="alert alert-secondary container">Notes</label>
+                                <textarea type="text" id="notes" name="notes" class="form-control"
+                                  {{ isset($hasNoSchedules)? !$hasNoSchedules? 'disabled':'':'' }}></textarea>
                             </div>
                             <div class="form-group {{ $errors->has('start_time') ? 'has-error' : '' }}">
-                                <label for="start_time">{{ trans('cruds.event.fields.start_time') }}*</label>
+                                <label for="start_time" class="alert alert-secondary container">{{ trans('cruds.event.fields.start_time') }}*</label>
                                 <input type="text" id="start_time" name="start_time" class="form-control datetime"
                                        value="{{ old('start_time', isset($event) ? $event->start_time : '') }}"
                                        required {{ isset($hasNoSchedules)? !$hasNoSchedules? 'disabled':'':'' }}>
@@ -119,7 +176,7 @@
                                 </p>
                             </div>
                             <div class="form-group {{ $errors->has('end_time') ? 'has-error' : '' }}">
-                                <label for="end_time">{{ trans('cruds.event.fields.end_time') }}*</label>
+                                <label for="end_time" class="alert alert-secondary container">{{ trans('cruds.event.fields.end_time') }}*</label>
                                 <input type="text" id="end_time" name="end_time" class="form-control datetime"
                                        value="{{ old('end_time', isset($event) ? $event->end_time : '') }}"
                                        required {{ isset($hasNoSchedules)? !$hasNoSchedules? 'disabled':'':'' }}>
@@ -149,17 +206,125 @@
     <script type="application/javascript">
 
         $(document).ready(function () {
+
+            @if( old('scheduleable_type') != null)
+                @if($errors->has('scheduleable_id'))
+                    $('#numberLabel').removeClass('alert-secondary');
+                    $('#numberLabel').addClass('alert-danger');
+                @endif
+
+                @if(old('scheduleable_type') == 'litigation')
+                    $('#number').find('option').remove();
+                    $('#numberField').removeClass('hidden');
+
+                    $('#numberLabel').html('Litigation Number');
+                    @foreach($myAssignedClients as $myAssignedClient)
+                        @foreach($myAssignedClient->litigation as $litigation)
+                            @if($litigation->schedule === null)
+                                @if($litigation->id == old('scheduleable_id'))
+                                     $('#number').append(`<option value="{{ $litigation->id }}" selected>{{ $litigation->number }}</option>`);
+                                @else
+                                    $('#number').append(`<option value="{{ $litigation->id }}">{{ $litigation->number }}</option>`);
+                                @endif
+                            @endif
+                        @endforeach
+                    @endforeach
+                    @else
+                    $('#number').find('option').remove();
+                    $('#numberField').removeClass('hidden');
+                    $('#numberLabel').html('Conveyancing Number');
+                    $('#number').append(`<option disabled selected>Select Conveyancing Number</option>`);
+                    @foreach($myAssignedClients as $myAssignedClient)
+                        @foreach($myAssignedClient->conveyancing as $conveyancing)
+                            @if($conveyancing->schedule === null)
+                                 @if($conveyancing->id == old('scheduleable_id'))
+                                    $('#number').append(`<option value="{{ $conveyancing->id }}" selected>{{ $conveyancing->number }}</option>`);
+                                 @else
+                                 $('#number').append(`<option value="{{ $conveyancing->id }}">{{ $conveyancing->number }}</option>`);
+                                 @endif
+                            @endif
+                        @endforeach
+                    @endforeach
+                @endif
+            @endif
+            $('input[type=radio][name=scheduleable_type]').change(function() {
+                var conveyancing;
+                var litigation;
+                var schedule_appointment
+                if (this.value === 'litigation') {
+                    $('#number').find('option').remove();
+                    $('#numberField').removeClass('hidden');
+                    $('#numberLabel').html('Litigation Number');
+                    $('#number').append(`<option value="" selected>Select Litigation Number</option>`);
+                    schedule_appointment = $('input[type=radio][name=schedule_appointment]:checked').val();
+                    console.log(schedule_appointment+' schedule');
+                    @foreach($myAssignedClients as $myAssignedClient)
+                        @foreach($myAssignedClient->litigation as $litigation)
+                            @if($litigation->schedule !== null)
+                            litigation = '{{ $litigation->schedule->schedule_appointment }}';
+                            console.log(litigation);
+                            if (litigation !== schedule_appointment){
+                                $('#number').append(`<option value="{{ $litigation->id }}">{{ $litigation->number }}</option>`);
+                            }
+                            @else
+                                $('#number').append(`<option value="{{ $litigation->id }}">{{ $litigation->number }}</option>`);
+                             @endif
+                        @endforeach
+                    @endforeach
+                }
+                else if (this.value === 'conveyancing') {
+                    $('#number').find('option').remove();
+                    $('#numberField').removeClass('hidden');
+                    $('#numberLabel').html('Conveyancing Number');
+                    $('#number').append(`<option value="" selected>Select Conveyancing Number</option>`);
+                    schedule_appointment = $('input[type=radio][name=schedule_appointment]:checked').val();
+                    @foreach($myAssignedClients as $myAssignedClient)
+                        @foreach($myAssignedClient->conveyancing as $conveyancing)
+                            @if($conveyancing->schedule !== null)
+                                conveyancing = '{{ $conveyancing->schedule->schedule_appointment }}';
+                                if (conveyancing != schedule_appointment){
+                                    $('#number').append(`<option value="{{ $conveyancing->id }}">{{ $conveyancing->number }}</option>`);
+                                }
+                            @else
+                            $('#number').append(`<option value="{{ $conveyancing->id }}">{{ $conveyancing->number }}</option>`);
+                            @endif
+                        @endforeach
+                    @endforeach
+                }
+            });
+
+            $('input[type=radio][name=schedule_appointment]').change(function() {
+                $('input[type=radio][name=scheduleable_type]').prop('checked', false);
+                if (this.value === 'client') {
+                    $('#court_venue').addClass('hidden');
+                    $('#court_ap_venue').prop('required', false);
+                    $('#court_ap_venue').prop('disabled', true);
+
+                    $('#client_venue').removeClass('hidden');
+                    $('#client_venue_input').prop('disabled', false);
+                    $('#client_venue_input').prop('required', true);
+                }
+                else if (this.value === 'court') {
+                    $('#client_venue').addClass('hidden');
+                    $('#client_venue_input').prop('disabled', true);
+                    $('#client_venue_input').prop('required', false);
+
+                    $('#court_venue').removeClass('hidden');
+                    $('#court_ap_venue').prop('required', true);
+                    $('#court_ap_venue').prop('disabled', false);
+                }
+            });
+
             let url = '{{ route('check-schedule') }}';
             let token = $('input[name="_token"]').val();
             let start_time = $('#start_time').val();
             let end_time = $('#end_time').val();
             let venue = $("#venue option:selected").text();
-            let case_id = '{{ isset($case)? $case->id : $schedule->case->id }}';
 
             $("select.venue").change(function () {
                 venue = $(this).children("option:selected").val();
                 if ((start_time !== '') && (end_time !== '')){
-                    checkSchedule(start_time, end_time, venue, url, token,case_id);
+                    checkSchedule(start_time, end_time, venue, url, token);
                 }
             });
 
@@ -180,7 +345,7 @@
                 } else {
                     $("#start_time_errors").text("");
                     $("#start_time_errors").css({'display': 'none'});
-                    checkSchedule(start_time, end_time, venue, url, token,case_id);
+                    checkSchedule(start_time, end_time, venue, url, token);
                 }
             });
 
@@ -195,12 +360,12 @@
                 }else{
                     $("#end_time_errors").text("");
                     $("#end_time_errors").css({'display': 'none'});
-                    checkSchedule(start_time, end_time, venue, url, token,case_id);
+                    checkSchedule(start_time, end_time, venue, url, token);
                 }
             });
 
         });
-        function checkSchedule(start_time, end_time, venue, url, token,case_id) {
+        function checkSchedule(start_time, end_time, venue, url, token) {
             $.ajax({
                 url: url,
                 type: 'POST',
@@ -210,7 +375,6 @@
                     'start_time': start_time,
                     'end_time': end_time,
                     'venue': venue,
-                    'case': case_id
                 },
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

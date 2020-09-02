@@ -12,7 +12,7 @@
                 <label for="companyNo">Company No</label>
                 <input type="text" class="form-control"
                        name="transferee_no"
-                       @if($file != null) value="{{ $file->c_no }}" @endif>
+                       @if($file != null) value="{{ $file->number }}" @endif>
             </div>
         </div>
     </div>

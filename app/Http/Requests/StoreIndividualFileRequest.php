@@ -51,13 +51,7 @@ class StoreIndividualFileRequest extends FormRequest
             'postal_address' => [
                 'required',
             ],
-            'tel' => [
-                'required',
-            ],
             'cell' => [
-                'required',
-            ],
-            'fax' => [
                 'required',
             ],
             'email' => [
@@ -70,9 +64,6 @@ class StoreIndividualFileRequest extends FormRequest
                 'required',
             ],
             'marital_status' => [
-                'required',
-            ],
-            'name_spouse' => [
                 'required',
             ],
             'name_next_kin' => [

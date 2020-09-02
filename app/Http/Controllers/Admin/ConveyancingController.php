@@ -72,14 +72,25 @@ class ConveyancingController extends Controller
      *
      * @param Request $request
      * @param  int  $id
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
     {
-        return back()->with(ConveyancingRepository::update($id,$request->all())?
-            ['status' => 'Successfully updated client conveyance']:
-            ['fail'  => 'Failed to update client conveyance']
-        );
+        //
+        if ($request->ajax()){
+            if (ConveyancingRepository::update($id,$request->all())){
+                Session::flash('status', 'Successfully assigned lawyer a conveyance');
+                return true;
+            }
+            Session::flash('fail', 'Failed to assign a lawyer a conveyance');
+            return false;
+        }else{
+            if (ConveyancingRepository::update($id,$request->all()))
+                Session::flash('status', 'Successfully updated client conveyance');
+            else
+                Session::flash('fail', 'Failed to update client conveyance');
+        }
+        return back();
     }
 
     /**

@@ -10,6 +10,7 @@ use App\Individual;
 use App\Plot;
 use App\PlotTransaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class ConveyancingRepository extends AbstractBaseRepository
@@ -119,6 +120,7 @@ class ConveyancingRepository extends AbstractBaseRepository
         ]);
 
         return $this->create([
+            'number'            => Str::caseNumber(),
             'client_id'         => $request->client_id,
             'other_id'          => $otherParty->id,
             'other_type'        => $request->other_type,
@@ -130,5 +132,24 @@ class ConveyancingRepository extends AbstractBaseRepository
     public function deleteConveyance(int $id)
     {
         return $this->delete($id);
+    }
+
+    public function getConveyancing($id)
+    {
+        $conveyancing =  $this->find($id);
+        $conveyancing = $conveyancing->load(['transaction','client','schedule','user']);
+        return $conveyancing;
+    }
+
+    public function getAssignedConveyancing()
+    {
+        return $this->model->whereHas('user')->with(['client', 'user'])->cursor();
+    }
+
+    public function getMyConveyancing()
+    {
+        $myConveyancing = $this->model->where('user_id', Auth::user()->id)->get();
+        $myConveyancing = $myConveyancing->load(['client','schedule','transaction']);
+        return $myConveyancing;
     }
 }

@@ -20,6 +20,8 @@ class Venue extends Model
 
     protected static $submitEmptyLogs = false;
 
+    protected $table = 'venue';
+
     protected $fillable = [
         'name',
         'location',

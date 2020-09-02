@@ -21,11 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b2a36650-46ac-44ee-b4e4-5b2af27c0aaf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ConveyancingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ConveyancingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/LitigationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/LitigationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/ConveyancingRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/ConveyancingRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/LitigationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/LitigationRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/client/cases/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/cases/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/UserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/side-nav-bar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/side-nav-bar.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +191,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/client/file/retainer" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.stylelint" value="true" />
@@ -209,17 +206,19 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="php.override.implement.member.chooser.php.doc" value="DEFAULT" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\MoffatMore\Documents\Projects\law-firm\app\Http\Controllers\Admin" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/views/client/file/retainer" />
       <recent name="$PROJECT_DIR$/resources/views/client/file/individual" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\MoffatMore\Documents\Projects\law-firm\app\Http\Controllers\Lawyer" />
+      <recent name="C:\Users\MoffatMore\Documents\Projects\law-firm\app\Http\Controllers\Admin" />
+    </key>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -234,12 +233,28 @@
       <workItem from="1595096387170" duration="2984000" />
       <workItem from="1595163148791" duration="32585000" />
       <workItem from="1597594947795" duration="31000" />
-      <workItem from="1597868857608" duration="83813000" />
+      <workItem from="1597868857608" duration="84885000" />
+      <workItem from="1598722639267" duration="1225000" />
+      <workItem from="1598724896729" duration="1690000" />
+      <workItem from="1598741192719" duration="615000" />
+      <workItem from="1598741846260" duration="249000" />
+      <workItem from="1598742115791" duration="344000" />
+      <workItem from="1598742512624" duration="34968000" />
+      <workItem from="1598778977822" duration="1874000" />
+      <workItem from="1598802494484" duration="4685000" />
+      <workItem from="1598809136846" duration="1347000" />
+      <workItem from="1598810721250" duration="25825000" />
+      <workItem from="1598839577176" duration="5362000" />
+      <workItem from="1598877335369" duration="12866000" />
+      <workItem from="1598909271603" duration="28573000" />
+      <workItem from="1598970496509" duration="29694000" />
+      <workItem from="1599010578569" duration="203000" />
+      <workItem from="1599010882354" duration="2555000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -254,20 +269,25 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="473" y="83" width="383" height="554" key="#com.intellij.ide.util.MemberChooser" timestamp="1598043352878">
+    <state x="234" y="0" key="#Plugins" timestamp="1598742059823">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="473" y="83" width="383" height="554" key="#com.intellij.ide.util.MemberChooser/0.0.1280.720@0.0.1280.720" timestamp="1598043352878" />
+    <state x="234" y="0" key="#Plugins/0.0.1280.720@0.0.1280.720" timestamp="1598742059823" />
+    <state x="473" y="83" width="389" height="554" key="#com.intellij.ide.util.MemberChooser" timestamp="1598838081355">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="473" y="83" width="389" height="554" key="#com.intellij.ide.util.MemberChooser/0.0.1280.720@0.0.1280.720" timestamp="1598838081355" />
     <state x="591" y="128" width="414" height="670" key="#com.intellij.ide.util.MemberChooser/0.27.1600.872@0.27.1600.872" timestamp="1595037156693" />
-    <state x="486" y="165" width="324" height="376" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1597956801179">
+    <state x="486" y="165" width="324" height="376" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1598776514012">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="486" y="165" width="324" height="376" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.720@0.0.1280.720" timestamp="1597956801179" />
+    <state x="486" y="165" width="324" height="376" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.720@0.0.1280.720" timestamp="1598776514012" />
     <state x="608" y="227" width="374" height="455" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.27.1600.872@0.27.1600.872" timestamp="1595037085992" />
-    <state x="429" y="130" width="524" height="492" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1598066057056">
-      <screen x="0" y="0" width="1280" height="720" />
+    <state x="-1064" y="537" width="524" height="492" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1598995059454">
+      <screen x="-1600" y="374" width="1600" height="900" />
     </state>
-    <state x="429" y="130" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.720@0.0.1280.720" timestamp="1598066057056" />
+    <state x="-1064" y="537" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.720/-1600.374.1600.900@-1600.374.1600.900" timestamp="1598995059454" />
+    <state x="429" y="130" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.720@0.0.1280.720" timestamp="1598830974267" />
     <state x="536" y="184" width="524" height="492" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.27.1600.872@0.27.1600.872" timestamp="1595188169517" />
     <state x="586" y="386" width="424" height="152" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#" timestamp="1595185773688">
       <screen x="0" y="27" width="1600" height="872" />
@@ -277,23 +297,33 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="94" y="94" width="1093" height="533" key="DiffContextDialog/0.0.1280.720@0.0.1280.720" timestamp="1598035773621" />
-    <state x="480" y="176" width="599" height="494" key="NewPhpClassDialog" timestamp="1598043504574">
+    <state x="480" y="176" width="599" height="526" key="NewPhpClassDialog" timestamp="1598838069141">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="480" y="176" width="599" height="494" key="NewPhpClassDialog/0.0.1280.720@0.0.1280.720" timestamp="1598043504574" />
+    <state x="480" y="176" width="599" height="526" key="NewPhpClassDialog/0.0.1280.720@0.0.1280.720" timestamp="1598838069141" />
     <state x="509" y="166" width="577" height="569" key="NewPhpClassDialog/0.27.1600.872@0.27.1600.872" timestamp="1595038067433" />
-    <state x="478" y="278" width="324" height="149" key="NewPhpFileDialog" timestamp="1597959725661">
+    <state x="478" y="278" width="324" height="157" key="NewPhpFileDialog" timestamp="1598832441005">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="478" y="278" width="324" height="149" key="NewPhpFileDialog/0.0.1280.720@0.0.1280.720" timestamp="1597959725661" />
+    <state x="478" y="278" width="324" height="157" key="NewPhpFileDialog/0.0.1280.720@0.0.1280.720" timestamp="1598832441005" />
     <state x="598" y="364" width="399" height="157" key="NewPhpFileDialog/0.27.1600.872@0.27.1600.872" timestamp="1595045742391" />
+    <state x="-1412" y="374" key="SettingsEditor" timestamp="1599010796882">
+      <screen x="-1600" y="374" width="1600" height="900" />
+    </state>
+    <state x="-1412" y="374" key="SettingsEditor/0.0.1280.720/-1600.374.1600.900@-1600.374.1600.900" timestamp="1599010796882" />
+    <state x="150" y="0" key="SettingsEditor/0.0.1280.720@0.0.1280.720" timestamp="1598742872727" />
     <state x="236" y="59" key="VCS.ChangeListViewerDialog" timestamp="1598035672696">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="236" y="59" key="VCS.ChangeListViewerDialog/0.0.1280.720@0.0.1280.720" timestamp="1598035672696" />
-    <state x="369" y="148" width="672" height="560" key="search.everywhere.popup" timestamp="1598038621857">
-      <screen x="0" y="0" width="1280" height="720" />
+    <state x="-1144" y="392" key="run.anything.popup" timestamp="1598999232160">
+      <screen x="-1600" y="374" width="1600" height="900" />
     </state>
+    <state x="-1144" y="392" key="run.anything.popup/0.0.1280.720/-1600.374.1600.900@-1600.374.1600.900" timestamp="1598999232160" />
+    <state x="-1139" y="559" width="840" height="700" key="search.everywhere.popup" timestamp="1598913719144">
+      <screen x="-1600" y="374" width="1600" height="900" />
+    </state>
+    <state x="-1139" y="559" width="840" height="700" key="search.everywhere.popup/0.0.1280.720/-1600.374.1600.900@-1600.374.1600.900" timestamp="1598913719144" />
     <state x="369" y="148" width="672" height="560" key="search.everywhere.popup/0.0.1280.720@0.0.1280.720" timestamp="1598038621857" />
     <state x="463" y="206" width="672" height="678" key="search.everywhere.popup/0.27.1600.872@0.27.1600.872" timestamp="1595178861163" />
   </component>

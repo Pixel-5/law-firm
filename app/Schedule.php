@@ -22,12 +22,14 @@ class Schedule extends Model implements Searchable
     protected static $submitEmptyLogs = false;
 
     protected static $logAttributes = [
-        'name',
+        'scheduleable_id',
+        'scheduleable_type',
+        'category',
         'start_time',
         'end_time',
         'venue',
         'notes',
-        'case.number'
+        'attorney_id'
     ];
 
     protected $dates = [
@@ -39,12 +41,13 @@ class Schedule extends Model implements Searchable
     ];
 
     protected $fillable = [
-        'name',
+        'scheduleable_id',
+        'scheduleable_type',
+        'attorney_id',
+        'schedule_appointment',
         'end_time',
         'start_time',
         'venue',
-        'case_id',
-        'user_id',
         'notes',
     ];
 
@@ -54,9 +57,20 @@ class Schedule extends Model implements Searchable
             return $this->save();
         });
     }
-    public function case()
+
+    public function scheduleable()
     {
-        return $this->belongsTo(FileCase::class);
+        return $this->morphTo();
+    }
+
+    public function conveyancing()
+    {
+        return $this->belongsTo(Conveyancing::class);
+    }
+
+    public function litigation()
+    {
+        return $this->belongsTo(Litigation::class);
     }
 
 //    public function getDescriptionForEvent(string $eventName): string
