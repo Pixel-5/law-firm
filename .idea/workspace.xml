@@ -21,20 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b2a36650-46ac-44ee-b4e4-5b2af27c0aaf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/ScheduleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/ScheduleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreScheduleRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreScheduleRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/View/Composers/CaseComposer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/View/Composers/CaseComposer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/CaseRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/CaseRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/ClientRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/ClientRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/ScheduleRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/ScheduleRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Schedule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Schedule.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_220356_create_schedules_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_13_220356_create_schedules_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/lawyer/pending-cases.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/pending-cases.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/schedule-cases.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/schedule-cases.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/schedule/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/schedule/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/schedule/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/schedule/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/default.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/scripts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/scripts.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +206,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="php.override.implement.member.chooser.php.doc" value="DEFAULT" />
-    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -260,6 +248,8 @@
       <workItem from="1598877335369" duration="12866000" />
       <workItem from="1598909271603" duration="28573000" />
       <workItem from="1598970496509" duration="29694000" />
+      <workItem from="1599010578569" duration="203000" />
+      <workItem from="1599010882354" duration="1841000" />
     </task>
     <servers />
   </component>
@@ -317,10 +307,10 @@
     </state>
     <state x="478" y="278" width="324" height="157" key="NewPhpFileDialog/0.0.1280.720@0.0.1280.720" timestamp="1598832441005" />
     <state x="598" y="364" width="399" height="157" key="NewPhpFileDialog/0.27.1600.872@0.27.1600.872" timestamp="1595045742391" />
-    <state x="-1412" y="374" key="SettingsEditor" timestamp="1598973032519">
+    <state x="-1412" y="374" key="SettingsEditor" timestamp="1599010796882">
       <screen x="-1600" y="374" width="1600" height="900" />
     </state>
-    <state x="-1412" y="374" key="SettingsEditor/0.0.1280.720/-1600.374.1600.900@-1600.374.1600.900" timestamp="1598973032519" />
+    <state x="-1412" y="374" key="SettingsEditor/0.0.1280.720/-1600.374.1600.900@-1600.374.1600.900" timestamp="1599010796882" />
     <state x="150" y="0" key="SettingsEditor/0.0.1280.720@0.0.1280.720" timestamp="1598742872727" />
     <state x="236" y="59" key="VCS.ChangeListViewerDialog" timestamp="1598035672696">
       <screen x="0" y="0" width="1280" height="720" />
