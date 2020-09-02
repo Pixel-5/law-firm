@@ -44,7 +44,7 @@ class UserRepository extends AbstractBaseRepository implements UserRepositoryInt
         $user = $this->model->findOrFail($id);
         $user->load(['roles','profile']);
         if (!empty($user->roles) && $user->roles->first()->title === 'Lawyer'){
-            $user->loadCount('cases');
+            $user->loadCount('litigation','conveyancing');
         }
         return $user;
     }

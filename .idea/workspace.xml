@@ -21,8 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b2a36650-46ac-44ee-b4e4-5b2af27c0aaf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/pending-cases.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/pending-cases.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/scripts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/scripts.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/UserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/side-nav-bar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/side-nav-bar.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -249,7 +249,7 @@
       <workItem from="1598909271603" duration="28573000" />
       <workItem from="1598970496509" duration="29694000" />
       <workItem from="1599010578569" duration="203000" />
-      <workItem from="1599010882354" duration="1841000" />
+      <workItem from="1599010882354" duration="2555000" />
     </task>
     <servers />
   </component>

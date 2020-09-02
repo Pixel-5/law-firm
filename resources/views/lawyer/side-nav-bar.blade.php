@@ -59,36 +59,28 @@
         </div>
     </li>
 
-    @can('schedule_access')
-        <li class="nav-item">
-            <a href="{{ route("lawyer.schedule.index") }}"
-               class="nav-link {{ request()->is('lawyer/schedules') || request()->is('lawyer/schedules/*') ? 'active' : '' }}">
-                <i class="fa-fw fas fa-calendar nav-icon"></i>
-                <span>My Schedules</span>
-            </a>
-        </li>
 
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePending"
-           aria-expanded="true" aria-controls="collapseClients">
-            <i class="fa fa-folder-open"></i>
-            <span>Pending Request</span>
-        </a>
-        <div id="collapsePending" class="collapse" aria-labelledby="collapseClients" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">
-                    List of Pending Request:
-                    <span class="badge badge-secondary">{{ $myClients->count() }}</span>
-                </h6>
-                @foreach ($myClients as $client)
-                    <a class="collapse-item" href="#">{{ $client->clientable->name }} {{ $client->clientable->surname }}
-                @endforeach
-            </div>
-        </div>
-    </li>
+{{--    <li class="nav-item">--}}
+{{--        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePending"--}}
+{{--           aria-expanded="true" aria-controls="collapseClients">--}}
+{{--            <i class="fa fa-folder-open"></i>--}}
+{{--            <span>Pending Request</span>--}}
+{{--        </a>--}}
+{{--        <div id="collapsePending" class="collapse" aria-labelledby="collapseClients" data-parent="#accordionSidebar">--}}
+{{--            <div class="bg-white py-2 collapse-inner rounded">--}}
+{{--                <h6 class="collapse-header">--}}
+{{--                    List of Pending Request:--}}
+{{--                    <span class="badge badge-secondary">{{ $myClients->count() }}</span>--}}
+{{--                </h6>--}}
+{{--                @foreach ($myClients as $client)--}}
+{{--                    <a class="collapse-item" href="#">{{ $client->clientable->name }} {{ $client->clientable->surname }}--}}
+{{--                @endforeach--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </li>--}}
     <!-- Divider -->
     <hr class="sidebar-divider">
-    @endcan
+
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseClients"
            aria-expanded="true" aria-controls="collapseClients">
