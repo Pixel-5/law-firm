@@ -26,7 +26,7 @@
 
             <div class="card shadow mb-4">
                 <!-- Card Header - Accordion -->
-                @inject('litigation','App\Repository\LitigationRepositoryInterface')
+
                 <a href="#collapseLitigationCard" class="d-block card-header py-3" data-toggle="collapse" role="button"
                    aria-expanded="true" aria-controls="collapseLitigationCard">
                     <h6 class="m-0 font-weight-bold text-primary">Pending Litigation
@@ -48,7 +48,8 @@
                                 </thead>
 
                                 <tbody>
-                                @foreach ($litigation->all() as $case)
+                                @inject('litigation','App\Repository\LitigationRepositoryInterface')
+                                @foreach ($litigation->allLitigation() as $case)
                                     @if ($case->user === null)
                                         <tr>
                                             <td>{{ $case->number }}</td>

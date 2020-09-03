@@ -54,8 +54,9 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                   @if($file->clientable_type =='App\Individual')
-                                        <form id="individualLitigation_data" method="POST" action="{{ route('admin.litigation.store') }}"
+                                   @if(class_basename($file->clientable) =='Individual')
+                                        <form id="individualLitigation_data" method="POST"
+                                              action="{{ route('admin.litigation.store') }}"
                                               enctype="multipart/form-data">
                                             @honeypot
                                             @csrf
@@ -77,7 +78,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <input type="hidden" name="client_id" value="{{ $file->clientable->id }}">
+                                                <input type="hidden" name="client_id" value="{{ $file->id }}">
                                                 <x-individualForm :file="$file->clientable"/>
                                             </div>
                                             <div class="modal-footer">
@@ -105,7 +106,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <input type="hidden" name="client_id" value="{{ $file->clientable->id }}">
+                                                <input type="hidden" name="client_id" value="{{ $file->id }}">
                                                 {{--        <x-companyForm :file="$file"/>--}}
                                             </div>
                                             <div class="modal-footer">
@@ -132,7 +133,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    @include('client.file.individual.conveyance_form',['file'=>$file->clientable])
+                                    @include('client.file.individual.conveyance_form',['file'=>$file])
                                 </div>
                             </div>
                         </div>

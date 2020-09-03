@@ -23,6 +23,7 @@ class CreatePlotsTable extends Migration
             $table->string('initial_payment');
             $table->text('notes')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

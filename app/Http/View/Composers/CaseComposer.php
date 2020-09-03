@@ -44,7 +44,7 @@ class CaseComposer
 
     public function litigation()
     {
-        return LitigationRepository::all();
+        return LitigationRepository::allLitigation();
     }
 
     public function conveyancing()

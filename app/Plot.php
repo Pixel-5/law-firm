@@ -2,10 +2,29 @@
 
 namespace App;
 
+use Askedio\SoftCascade\Traits\SoftCascadeTrait;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Searchable\SearchResult;
 
 class Plot extends Model
 {
+    use SoftDeletes, SoftCascadeTrait;
+
+
+    protected $softCascade = ['plot'];
+
+    protected static $logAttributes = [
+        'number',
+        'situated_at',
+        'title_deed',
+        'category',
+        'property_bounded',
+        'notes',
+        'purchase_price',
+        'initial_payment',
+    ];
+
     protected $fillable = [
         'plot_no',
         'situated_at',
@@ -20,4 +39,5 @@ class Plot extends Model
     {
         return $this->hasOne(PlotTransaction::class);
     }
+
 }

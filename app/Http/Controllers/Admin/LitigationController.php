@@ -6,6 +6,7 @@ use App\Facade\LitigationRepository;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Gate;
@@ -38,10 +39,11 @@ class LitigationController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return Response
+     * @return RedirectResponse
      */
     public function store(Request $request)
     {
+        LitigationRepository::createLitigation($request);
         return redirect()->back()
             ->with(empty(LitigationRepository::createLitigation($request)) ?
                 ['fail' => 'Failed to add a client litigation'] :
@@ -75,7 +77,7 @@ class LitigationController extends Controller
      *
      * @param Request $request
      * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function update(Request $request, $id)
     {

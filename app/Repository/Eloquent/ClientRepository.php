@@ -255,7 +255,6 @@ class ClientRepository extends AbstractBaseRepository
                 'total_cases' => $total
             ];
         }
-
         return [
             'litigation' => $litigation_data,
             'conveyancing' => $conveyancing_data

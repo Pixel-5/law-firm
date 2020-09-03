@@ -33,7 +33,7 @@ class LitigationRepository extends AbstractBaseRepository
     public function createLitigation(Request $request)
     {
         return $this->create([
-            'number'    =>Str::caseNumber(),
+            'number'    => Str::caseNumber(),
             'client_id' =>$request->client_id,
             'category'  =>$request->category,
         ]);
@@ -41,7 +41,9 @@ class LitigationRepository extends AbstractBaseRepository
 
     public function allLitigation()
     {
-        return $this->model->all();
+        $litigation = $this->model->all();
+        $litigation = $litigation->load(['client','schedule','user']);
+        return $litigation;
     }
 
     public function deleteLitigation(int $id)
@@ -104,12 +106,5 @@ class LitigationRepository extends AbstractBaseRepository
     {
         $note = FileNoteForm::find($id);
         return $note->delete();
-    }
-
-    public function all()
-    {
-        $litigation = $this->model->all();
-        $litigation = $litigation->load(['client','schedule']);
-        return $litigation;
     }
 }

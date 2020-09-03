@@ -73,7 +73,7 @@
                     <input type="hidden" name="client" value="Transferor">
                     <input type="hidden" name="client_id" value="{{ $file->id }}">
                     <div id="transferor_individual_form_data">
-                        <x-individualTransferorConveyanceForm :file="$file"/>
+                        <x-individualTransferorConveyanceForm :file="$file->clientable"/>
                     </div>
                 </div>
             </div>
@@ -175,7 +175,7 @@
                     <input type="hidden" name="client" value="Transferee">
                     <input type="hidden" name="client_id" value="{{ $file->id }}">
                     <div id="transferee_individual_form">
-                        <x-individualTransfereeConveyanceForm :file="$file"/>
+                        <x-individualTransfereeConveyanceForm :file="$file->clientable"/>
                     </div>
                 </div>
             </div>
@@ -235,7 +235,7 @@
                     <input type="hidden" name="client" value="Transferor">
                     <input type="hidden" name="client_id" value="{{ $file->id }}">
                     <div id="transferor_company_form_data">
-                        <x-companyTransferorConveyanceForm :file="$file"/>
+                        <x-companyTransferorConveyanceForm :file="$file->clientable"/>
                     </div>
                 </div>
             </div>
@@ -336,7 +336,7 @@
                     <input type="hidden" name="client" value="Transferee">
                     <input type="hidden" name="client_id" value="{{ $file->id }}">
                     <div id="transferee_company_form_data">
-                        <x-companyTransfereeConveyanceForm :file="$file"/>
+                        <x-companyTransfereeConveyanceForm :file="$file->clientable"/>
                     </div>
                 </div>
             </div>
@@ -396,7 +396,7 @@
                     <input type="hidden" name="client" value="Transferor">
                     <input type="hidden" name="client_id" value="{{ $file->id }}">
                     <div id="transferor_individual_form_data">
-                        <x-individualTransferorConveyanceForm :file="$file"/>
+                        <x-individualTransferorConveyanceForm :file="$file->clientable"/>
                     </div>
                 </div>
             </div>
@@ -492,7 +492,7 @@
                 <input type="hidden" name="client" value="Transferee">
                 <input type="hidden" name="client_id" value="{{ $file->id }}">
                 <div id="transferee_individual_form_data">
-                    <x-individualTransferorConveyanceForm :file="$file"/>
+                    <x-individualTransferorConveyanceForm :file="$file->clientable"/>
                 </div>
             </div>
         </div>
@@ -552,7 +552,7 @@
                     <input type="hidden" name="client" value="Transferor">
                     <input type="hidden" name="client_id" value="{{ $file->id }}">
                     <div id="transferor_company_form_data">
-                        <x-companyTransferorConveyanceForm :file="$file"/>
+                        <x-companyTransferorConveyanceForm :file="$file->clientable"/>
                     </div>
                 </div>
             </div>
@@ -654,7 +654,7 @@
                     <input type="hidden" name="client" value="Transferee">
                     <input type="hidden" name="client_id" value="{{ $file->id }}">
                     <div id="transferee_company_form_data">
-                        <x-companyTransfereeConveyanceForm :file="$file"/>
+                        <x-companyTransfereeConveyanceForm :file="$file->clientable"/>
                     </div>
                 </div>
             </div>

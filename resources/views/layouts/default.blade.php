@@ -116,44 +116,45 @@
         conveyancing_data = [];
         conveyancing_labels = [];
         max =0;
-        function sortByMonth(arr) {
-
-            var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-            arr.sort(function(a, b){
-                return months.indexOf(a.name)
-                    - months.indexOf(b.name);
-            });
-        }
         // Bar Chart Example
         url = '{{ route(auth()->user()->roles->first()->title === 'Lawyer'? 'lawyer.chart':'admin.chart') }}';
         $.ajax({
             url: url,
             method: 'GET',
             success: function(response) {
+                var conveyancing;
                 var labels;
                 let month;
                 const litigation = response.litigation;
-                const lastLitigationYearKey = Object.keys(litigation).sort().reverse()[0];
-                let lastLitigationValue = litigation[lastLitigationYearKey];
-                //sortByMonth(lastLitigationValue.months);
-
-                for (const key in lastLitigationValue.months) {
-                    month = lastLitigationValue.months[key];
-                    litigation_labels.push(month.name);
-                    litigation_data.push(month.value);
+                if (!Array.isArray( litigation)){
+                    const lastLitigationYearKey = Object.keys(litigation).sort().reverse()[0];
+                    let lastLitigationValue = litigation[lastLitigationYearKey];
+                    //sortByMonth(lastLitigationValue.months);
+                    for (const key in lastLitigationValue.months) {
+                        month = lastLitigationValue.months[key];
+                        litigation_labels.push(month.name);
+                        litigation_data.push(month.value);
+                    }
+                    max = lastLitigationValue.total_cases;
                 }
 
-                const conveyancing = response.conveyancing;
-                const lastConveyancingYearKey = Object.keys(conveyancing).sort().reverse()[0];
-                let lastConveyancingValue = conveyancing[lastConveyancingYearKey];
-               // sortByMonth(lastConveyancingValue.months);
-                for (const key in lastConveyancingValue.months) {
-                    month = lastConveyancingValue.months[key];
-                    conveyancing_labels.push(month.name);
-                    conveyancing_data.push(month.value);
+                conveyancing = response.conveyancing;
+                console.log(Array.isArray( conveyancing));
+                if (!Array.isArray( conveyancing)){
+                    const lastConveyancingYearKey = Object.keys(conveyancing).sort().reverse()[0];
+                    let lastConveyancingValue = conveyancing[lastConveyancingYearKey];
+
+                    // sortByMonth(lastConveyancingValue.months);
+                    if (lastConveyancingValue !== null || lastConveyancingValue != undefined){
+                        for (const key in lastConveyancingValue.months) {
+                            month = lastConveyancingValue.months[key];
+                            conveyancing_labels.push(month.name);
+                            conveyancing_data.push(month.value);
+                        }
+                    }
+                    max = Math.max(max, lastConveyancingValue.total_cases);
                 }
-                max = Math.max(lastLitigationValue.total_cases, lastConveyancingValue.total_cases);
+
                 ctx = document.getElementById("casesBarChart");
                 labels = [...new Set([...litigation_labels ,...conveyancing_labels])];
                 myBarChart = new Chart(ctx, {
