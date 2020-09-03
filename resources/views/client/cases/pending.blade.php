@@ -59,7 +59,7 @@
                                             </td>
                                             <td>
                                                 <a class="btn btn-secondary btn-sm  text-center text-white" title="View Case"
-                                                   href="{{ route('lawyer.litigation.show', $case->id ) }}">
+                                                   href="{{ route('admin.litigation.show', $case->id ) }}">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
                                                 <a class="btn btn-primary btn-sm  text-center text-white" title="Schedule case"
@@ -67,7 +67,7 @@
                                                     <i class="fa fa-calendar"></i>
                                                 </a>
                                                 <a class="btn btn-info btn-sm  text-center text-white" title="Open file"
-                                                   href="{{ route('admin.client.show', $case->client->clientable->id) }}">
+                                                   href="{{ route('admin.client.show', $case->client->id) }}">
                                                     <i class="fa fa-folder-open"></i>
                                                 </a>
                                             </td>
@@ -112,11 +112,11 @@
                                             </td>
                                             <td>
                                                 <a class="btn btn-secondary btn-sm  text-center text-white" title="View Conveyancing"
-                                                   href="{{ route('lawyer.conveyancing.show', $conveyance->id ) }}">
+                                                   href="{{ route('admin.conveyancing.show', $conveyance->id ) }}">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
                                                 <a class="btn btn-info btn-sm  text-center text-white" title="Open file"
-                                                   href="{{ route('files.show', $conveyance->id) }}">
+                                                   href="{{ route('admin.client.show', $conveyance->client->id) }}">
                                                     <i class="fa fa-folder-open"></i>
                                                 </a>
                                             </td>
