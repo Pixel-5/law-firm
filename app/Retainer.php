@@ -23,14 +23,14 @@ class Retainer extends Model implements Searchable
     protected static $submitEmptyLogs = false;
 
     protected static $logAttributes = [
-        'individual.name',
-        'company.name',
+        'client.name',
     ];
 
     protected $fillable = [
         'number',
         'individuals_id',
         'companies_id',
+        'type',
     ];
 
     public function getSearchResult(): SearchResult
@@ -57,5 +57,15 @@ class Retainer extends Model implements Searchable
     public function client()
     {
         return $this->morphOne('App\Client', 'clientable');
+    }
+
+    public function individual()
+    {
+        return $this->belongsTo(Individual::class);
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
     }
 }

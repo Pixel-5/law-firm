@@ -110,4 +110,9 @@ class Individual extends Model implements Searchable
     {
         return $this->hasMany(Conveyancing::class,'client_id');
     }
+
+    public function retainer()
+    {
+        return $this->hasOne(Retainer::class);
+    }
 }

@@ -104,4 +104,10 @@ class Company extends Model implements Searchable
     {
         return $this->morphOne('App\Client', 'clientable');
     }
+
+    public function retainer()
+    {
+        return $this->hasOne(Retainer::class);
+    }
+
 }

@@ -95,7 +95,7 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        abort_if(Gate::denies('file_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('file_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         if (ClientRepository::deleteClient($id)){
             Session::flash('status', 'Successfully deleted client file');
             return true;

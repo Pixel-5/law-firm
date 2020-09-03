@@ -20,15 +20,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2a36650-46ac-44ee-b4e4-5b2af27c0aaf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Facade/CompanyFileRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Facade/RetainerFileRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Repository/Eloquent/RetainerFileRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Repository/RetainerFileRepositoryInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CompanyFileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CompanyFileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/IndividualFileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/IndividualFileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Company.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Company.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ClientController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/LitigationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/LitigationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/RetainerFileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/RetainerFileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/View/Composers/FileComposer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/View/Composers/FileComposer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Individual.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Individual.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Providers/RepositoryServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RepositoryServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/ClientRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/ClientRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/CompanyFileRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/CompanyFileRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/IndividualFileRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/IndividualFileRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Retainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Retainer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_023926_create_retainers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_13_023926_create_retainers_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/side-nav-bar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/side-nav-bar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/client/file/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/file/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/partials/files/company-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/files/company-form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/partials/files/individual-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/files/individual-form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/partials/files/retainer-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/files/retainer-form.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,6 +226,7 @@
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="php.override.implement.member.chooser.php.doc" value="DEFAULT" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -225,7 +239,7 @@
       <recent name="$PROJECT_DIR$/resources/views/client/file/individual" />
     </key>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -258,12 +272,13 @@
       <workItem from="1599010578569" duration="203000" />
       <workItem from="1599010882354" duration="8343000" />
       <workItem from="1599022857814" duration="4556000" />
-      <workItem from="1599057350396" duration="23354000" />
+      <workItem from="1599057350396" duration="42619000" />
+      <workItem from="1599170007205" duration="1833000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -282,22 +297,26 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="234" y="0" key="#Plugins/0.0.1280.720@0.0.1280.720" timestamp="1598742059823" />
-    <state x="-1009" y="478" width="389" height="554" key="#com.intellij.ide.util.MemberChooser" timestamp="1599074506101">
+    <state x="-1009" y="478" width="389" height="554" key="#com.intellij.ide.util.MemberChooser" timestamp="1599100022504">
       <screen x="-1600" y="374" width="1600" height="900" />
     </state>
-    <state x="-1009" y="478" key="#com.intellij.ide.util.MemberChooser/0.0.1280.720/-1600.374.1600.900@-1600.374.1600.900" timestamp="1599074506101" />
+    <state x="-1009" y="478" key="#com.intellij.ide.util.MemberChooser/0.0.1280.720/-1600.374.1600.900@-1600.374.1600.900" timestamp="1599100022504" />
     <state x="473" y="83" width="389" height="554" key="#com.intellij.ide.util.MemberChooser/0.0.1280.720@0.0.1280.720" timestamp="1598838081355" />
     <state x="591" y="128" width="414" height="670" key="#com.intellij.ide.util.MemberChooser/0.27.1600.872@0.27.1600.872" timestamp="1595037156693" />
+    <state x="-1120" y="560" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1599169616278">
+      <screen x="-1600" y="374" width="1600" height="900" />
+    </state>
+    <state x="-1120" y="560" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1280.720/-1600.374.1600.900@-1600.374.1600.900" timestamp="1599169616278" />
     <state x="-992" y="580" width="324" height="376" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1599096790680">
       <screen x="-1600" y="374" width="1600" height="900" />
     </state>
     <state x="-992" y="580" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.720/-1600.374.1600.900@-1600.374.1600.900" timestamp="1599096790680" />
     <state x="486" y="165" width="324" height="376" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.720@0.0.1280.720" timestamp="1598776514012" />
     <state x="608" y="227" width="374" height="455" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.27.1600.872@0.27.1600.872" timestamp="1595037085992" />
-    <state x="-1064" y="537" width="524" height="492" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1599097082936">
+    <state x="-1064" y="537" width="524" height="492" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1599106249287">
       <screen x="-1600" y="374" width="1600" height="900" />
     </state>
-    <state x="-1064" y="537" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.720/-1600.374.1600.900@-1600.374.1600.900" timestamp="1599097082936" />
+    <state x="-1064" y="537" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.720/-1600.374.1600.900@-1600.374.1600.900" timestamp="1599106249287" />
     <state x="429" y="130" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.720@0.0.1280.720" timestamp="1598830974267" />
     <state x="536" y="184" width="524" height="492" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.27.1600.872@0.27.1600.872" timestamp="1595188169517" />
     <state x="586" y="386" width="424" height="152" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#" timestamp="1595185773688">
@@ -308,10 +327,10 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="94" y="94" width="1093" height="533" key="DiffContextDialog/0.0.1280.720@0.0.1280.720" timestamp="1598035773621" />
-    <state x="-1000" y="594" width="599" height="526" key="NewPhpClassDialog" timestamp="1599096910259">
+    <state x="-1000" y="594" width="599" height="526" key="NewPhpClassDialog" timestamp="1599099927586">
       <screen x="-1600" y="374" width="1600" height="900" />
     </state>
-    <state x="-1000" y="594" key="NewPhpClassDialog/0.0.1280.720/-1600.374.1600.900@-1600.374.1600.900" timestamp="1599096910259" />
+    <state x="-1000" y="594" key="NewPhpClassDialog/0.0.1280.720/-1600.374.1600.900@-1600.374.1600.900" timestamp="1599099927586" />
     <state x="480" y="176" width="599" height="526" key="NewPhpClassDialog/0.0.1280.720@0.0.1280.720" timestamp="1598838069141" />
     <state x="509" y="166" width="577" height="569" key="NewPhpClassDialog/0.27.1600.872@0.27.1600.872" timestamp="1595038067433" />
     <state x="-1002" y="722" width="324" height="157" key="NewPhpFileDialog" timestamp="1599018833799">

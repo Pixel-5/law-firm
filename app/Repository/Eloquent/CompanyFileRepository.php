@@ -37,27 +37,27 @@ class CompanyFileRepository extends AbstractBaseRepository implements ClientRepo
 
     public function storeFile(Request $request)
     {
-        $docs                           = $request->file('docs');
+        $docs                           = $request->file('cdocs');
         $number                         = Str::fileNumber();
-        $name                           = $request->name;
+        $name                           = $request->cname;
         $doi                            = $request->doi;
-        $email                          = $request->email;
+        $email                          = $request->cemail;
         $entity                         = $request->entity;
         $director_name                  = $request->director_name;
-        $physical_address               = $request->physical_address;
-        $postal_address                 = $request->postal_address;
-        $tel                            = $request->tel;
+        $physical_address               = $request->cphysical_address;
+        $postal_address                 = $request->cpostal_address;
+        $tel                            = $request->ctel;
         $director_physical_address      = $request->director_physical_address;
-        $preferred_contact              = $request->preferred_contact;
-        $preferred_email                = $request->preferred_email;
+        $preferred_contact              = $request->cpreferred_contact;
+        $preferred_email                = $request->cpreferred_email;
         $director_postal_address        = $request->director_postal_address;
         $shareholders                   = $request->shareholders;
-        $fax                            = $request->fax;
-        $cell                           = $request->cell;
+        $fax                            = $request->cfax;
+        $cell                           = $request->ccell;
         $directors_physical_address     = $request->directors_physical_address;
-        $preferred_invoice              = $request->preferred_invoice;
+        $preferred_invoice              = $request->cpreferred_invoice;
         $directors_postal_address       = $request->directors_postal_address;
-        $alternative_contact            = $request->alternative_contact;
+        $alternative_contact            = $request->calternative_contact;
         $agreement_service              = $request->agreement_service == 'on';
 
         if (!empty($docs)){

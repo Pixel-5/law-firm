@@ -38,9 +38,12 @@
                 <h6 class="collapse-header">Select File:</h6>
                 @inject('clients','App\Repository\ClientRepositoryInterface')
                 @foreach($clients->clients() as $client)
-                    <a class="collapse-item" href="{{ route('files.show', $client->id) }}">{{ $client->clientable->number }}
-                        <span class="badge badge-secondary">{{ 0 }}</span>
-                    </a>
+                    @if($client->clientable != null)
+                        <a class="collapse-item" href="{{ route('files.show', $client->id) }}">
+                                {{ $client->clientable->number }}
+                            <span class="badge badge-secondary">{{ 0 }}</span>
+                        </a>
+                    @endif
                 @endforeach
             </div>
         </div>

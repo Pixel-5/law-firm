@@ -48,6 +48,17 @@ class ClientRepository extends AbstractBaseRepository
 
     public function deleteClient(int $id)
     {
+        $client = $this->findById($id);
+//        if ($client->conveyancing != null)
+//        {
+//            $conveyancing = Conveyancing::find($client->conveyancing->id);
+//            $conveyancing->delete();
+//        }
+//        else if ($client->litigation != null)
+//        {
+//            $litigation = Litigation::delete($client->litigation->id);
+//            $litigation->delete();
+//        }
         return $this->delete($id);
     }
 

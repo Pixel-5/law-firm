@@ -29,7 +29,7 @@ class Client extends Model implements Searchable
         'clientable.physical_address',
     ];
 
-    protected $softCascade = ['clients'];
+    protected $softCascade = ['litigation','conveyancing'];
 
 
     protected $fillable = [

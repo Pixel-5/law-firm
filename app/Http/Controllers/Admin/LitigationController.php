@@ -43,7 +43,6 @@ class LitigationController extends Controller
      */
     public function store(Request $request)
     {
-        LitigationRepository::createLitigation($request);
         return redirect()->back()
             ->with(empty(LitigationRepository::createLitigation($request)) ?
                 ['fail' => 'Failed to add a client litigation'] :
