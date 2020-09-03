@@ -67,5 +67,6 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->singleton('ConveyancingRepository', ConveyancingRepositoryInterface::class);
         $this->app->singleton('ClientRepository', ClientRepositoryInterface::class);
         $this->app->singleton('LitigationRepository', LitigationRepositoryInterface::class);
+        $this->app->singleton('CompanyFileRepository',CompanyFileRepositoryInterface::class);
     }
 }

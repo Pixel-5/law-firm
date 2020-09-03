@@ -160,9 +160,7 @@
                                                                         </button>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        <x-individualForm
-                                                                            :file="$client->clientable"
-                                                                        />
+                                                                        <x-individualForm :file="$client->clientable"/>
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -272,9 +270,9 @@
                                                 </div>
                                                 <td>{{ $client->clientable->id }}</td>
                                                 <td>{{ $client->clientable->number }}</td>
-                                                <td>{{ $client->clientable->name }} {{ $file->surname }}</td>
+                                                <td>{{ $client->clientable->name }}</td>
                                                 <td>{{ $client->clientable->email }}</td>
-                                                <td>{{ $client->clientable->tel == 'N/A'? $client->clientable->cell : '+267 '.$client->clientable->tel }}</td>
+                                                <td>{{ $client->clientable->tel == null ? '+267 '.$client->clientable->cell : '+267 '.$client->clientable->tel }}</td>
                                                 <td>
                                                     @can('case_access')
                                                         <a class="btn btn-info btn-sm  text-center text-white"
@@ -348,7 +346,6 @@
                                                                       enctype="multipart/form-data" method="POST">
                                                                     @csrf
                                                                     @honeypot
-
                                                                     @method('PUT')
                                                                     <div class="modal-header">
                                                                         <h5 class="modal-title" id="clientModalLabel">

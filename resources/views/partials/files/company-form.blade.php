@@ -39,7 +39,7 @@
         <div class="form-group  col-md-12">
             <label for="inputAddress">Physical Address</label>
             <input type="text" class="form-control" id="physicalAddress"
-                   name="director_physical_address" placeholder="1234 Main St" required>
+                   name="director_physical_address" required>
         </div>
     </div>
     <div class="form-row">
@@ -80,7 +80,7 @@
             <div class="form-group">
                 <label for="gender">Preferred method of contact</label>
                 <select class="form-control form-control-md"
-                        name="gender" required>
+                        name="preferred_contact" required>
                     <option disabled>Select</option>
                     <option>CELL</option>
                     <option>TEL</option>
@@ -120,7 +120,7 @@
         <div class="form-group col-md-12">
             <label for="inputAddress2">Preferred methods of receiving invoices</label>
             <select class="form-control form-control-md"
-                    name="invoice_method" required>
+                    name="preferred_invoice" required>
                 <option disabled>Select</option>
                 <option>contact</option>
                 <option>email</option>

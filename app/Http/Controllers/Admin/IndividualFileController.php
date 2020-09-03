@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Facade\ConveyancingRepository;
 use App\Facade\IndividualFileRepository;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreIndividualFileRequest;
 use Illuminate\Http\Response;
@@ -39,7 +40,7 @@ class IndividualFileController extends Controller
      * Store a newly created resource in storage.
      *
      * @param StoreIndividualFileRequest $request
-     * @return Response
+     * @return RedirectResponse
      */
     public function store(StoreIndividualFileRequest $request)
     {

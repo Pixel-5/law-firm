@@ -113,7 +113,6 @@ class IndividualFileRepository extends AbstractBaseRepository implements Individ
         ]);
 
         return $individual;
-
     }
 
     /**
