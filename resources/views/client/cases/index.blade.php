@@ -281,9 +281,7 @@
                                                                </button>
                                                            </div>
                                                            <div class="modal-body">
-                                                               <x-individualForm
-                                                                   :file="$conveyance"
-                                                               />
+                                                               <x-individualForm :file="$conveyance"/>
                                                            </div>
                                                            <div class="modal-footer">
                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -639,7 +637,7 @@
                                     // window.location.reload();
                                 },
                                 error: function (response) {
-                                    console.log("error "+ response);
+                                    console.log("error "+ response.responseText);
                                 }
                             });
                         }

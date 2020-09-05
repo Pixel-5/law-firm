@@ -572,7 +572,7 @@
                     <div id="transferor_individual_form">
                         <input type="hidden" name="other_type" value="Individual">
                         <input type="hidden" name="other" value="Transferee">
-                        <x-individualTransferorConveyanceForm file=""/>
+                        <x-individualTransfereeConveyanceForm file=""/>
                     </div>
                 </div>
             </div>

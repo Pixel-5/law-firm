@@ -18,7 +18,7 @@ class CreatePlotTransactionsTable extends Migration
             $table->string('transaction_type');
             $table->string('client_transaction_type');
             $table->string('other_transaction_type');
-            $table->foreignId('plot_id')->constrained('plots');
+            $table->foreignId('conveyancing_id')->constrained('conveyancing');
             $table->timestamps();
             $table->softDeletes();
         });

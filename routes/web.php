@@ -17,6 +17,12 @@
     |
     */
 
+Route::get('/',function(){
+    return view('welcome');
+});
+
+
+
 Route::redirect('/',   '/redirectUser');
 Route::get('/redirectUser','RedirectUserController');
 Route::middleware(ProtectAgainstSpam::class)->group(function() {

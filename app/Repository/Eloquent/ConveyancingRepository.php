@@ -37,15 +37,6 @@ class ConveyancingRepository extends AbstractBaseRepository
 
     public function createConveyance(Request $request)
     {
-        $plot = Plot::create([
-            'plot_no' => $request->plot_no,
-            'situated_at' => $request->situated_at,
-            'title_deed' => $request->certificate,
-            'property_bounded' => $request->property_bounded == 'Yes',
-            'purchase_price' => $request->price,
-            'initial_payment' => $request->initial_payment,
-            'notes' => $request->notes,
-        ]);
 
         $other_type =  $request->other_type;
         $other = $request->other;
@@ -54,8 +45,8 @@ class ConveyancingRepository extends AbstractBaseRepository
             case 'Individual':
                 if ($other == 'Transferor'){
                     $otherParty = Individual::create([
-                        'name'              => Str::fileNumber(),
-                        'number'            =>$request->transferor_name,
+                        'name'              =>$request->transferor_name,
+                        'number'            => Str::fileNumber(),
                         'surname'           =>$request->transferor_surname,
                         'dob'               =>$request->transferor_dob,
                         'identifier'        =>$request->transferor_identifier,
@@ -69,8 +60,8 @@ class ConveyancingRepository extends AbstractBaseRepository
                 ]);
                 }else{
                     $otherParty = Individual::create([
-                        'name'              => Str::fileNumber(),
-                        'number'            =>$request->transferee_name,
+                        'number'            => Str::fileNumber(),
+                        'name'              =>$request->transferee_name,
                         'surname'           =>$request->transferee_surname,
                         'dob'               =>$request->transferee_dob,
                         'identifier'        =>$request->transferee_identifier,
@@ -112,21 +103,32 @@ class ConveyancingRepository extends AbstractBaseRepository
                }
                 break;
         }
-        $transaction = PlotTransaction::create([
-            'transaction_type' => $request->transfer_type,
-            'client_transaction_type' =>$request->client,
-            'other_transaction_type' =>$request->other,
-            'plot_id' => $plot->id
-        ]);
-
-        return $this->create([
+        $conveyancing =  $this->create([
             'number'            => Str::caseNumber(),
             'client_id'         => $request->client_id,
             'other_id'          => $otherParty->id,
             'other_type'        => $request->other_type,
-            'transaction_id'    => $transaction->id
         ]);
 
+        $transaction = PlotTransaction::create([
+            'transaction_type' => $request->transfer_type,
+            'client_transaction_type' =>$request->client,
+            'other_transaction_type' =>$request->other,
+            'conveyancing_id' => $conveyancing->id
+        ]);
+
+         Plot::create([
+            'plot_no' => $request->plot_no,
+            'situated_at' => $request->situated_at,
+            'title_deed' => $request->certificate,
+            'property_bounded' => $request->property_bounded == 'Yes',
+            'purchase_price' => $request->price,
+            'initial_payment' => $request->initial_payment,
+            'notes' => $request->notes,
+            'plot_transaction_id'  => $transaction->id
+        ]);
+
+        return $conveyancing;
     }
 
     public function deleteConveyance(int $id)

@@ -23,7 +23,7 @@ class Conveyancing extends Model implements Searchable
 
     protected static $submitEmptyLogs = false;
 
-    protected $softCascade = ['conveyancing'];
+    protected $softCascade = ['transaction'];
 
     protected static $logAttributes = [
         'number',
@@ -47,7 +47,7 @@ class Conveyancing extends Model implements Searchable
 
     public function transaction()
     {
-        return $this->belongsTo(PlotTransaction::class);
+        return $this->hasOne(PlotTransaction::class);
     }
 
     public function client()

@@ -11,9 +11,6 @@ class Plot extends Model
 {
     use SoftDeletes, SoftCascadeTrait;
 
-
-    protected $softCascade = ['plot'];
-
     protected static $logAttributes = [
         'number',
         'situated_at',
@@ -23,6 +20,7 @@ class Plot extends Model
         'notes',
         'purchase_price',
         'initial_payment',
+        'transaction_id',
     ];
 
     protected $fillable = [
@@ -33,11 +31,12 @@ class Plot extends Model
         'purchase_price',
         'initial_payment',
         'notes',
+        'plot_transaction_id'
     ];
 
     public function transaction()
     {
-        return $this->hasOne(PlotTransaction::class);
+        return $this->belongsTo(PlotTransaction::class);
     }
 
 }
