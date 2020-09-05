@@ -22,7 +22,7 @@ class Litigation extends Model implements Searchable
 
     protected static $submitEmptyLogs = false;
 
-    protected $softCascade = ['litigation'];
+    protected $softCascade = ['consultation','notes','matrimony','schedule'];
 
     protected static $logAttributes = [
         'number',

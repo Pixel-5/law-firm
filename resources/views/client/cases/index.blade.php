@@ -689,7 +689,7 @@
                                     }
                                 },
                                 error: function (response) {
-                                    console.log("error "+ response);
+                                    console.log("error "+ response.responseText);
                                 }
                             });
                         }
