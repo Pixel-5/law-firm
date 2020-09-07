@@ -23,7 +23,6 @@ class CreateConveyancingTable extends Migration
                 ->nullable();
             $table->string('other_id');
             $table->string('other_type');
-            $table->foreignId('transaction_id')->constrained('plot_transactions');
             $table->timestamps();
             $table->softDeletes();
         });

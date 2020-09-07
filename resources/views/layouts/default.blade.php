@@ -49,6 +49,18 @@
                           </div>
                   </div>
                 @endif
+                @if(Session::has('fail'))
+                    <div class="container-fluid">
+                        <div class="alert  alert-danger alert-dismissible fade {{ Session::has('status')? 'show':'hide' }}"
+                             role="alert" id="status_alert">
+                            <strong class="status">Alert!</strong>
+                            {{  Session::get('fail') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                @endif
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     @hasSection('title')
                         <h1 class="h3 mb-0 text-gray-800">@yield('title')</h1>
@@ -116,45 +128,45 @@
         conveyancing_data = [];
         conveyancing_labels = [];
         max =0;
-        function sortByMonth(arr) {
-
-            var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-            arr.sort(function(a, b){
-                return months.indexOf(a.name)
-                    - months.indexOf(b.name);
-            });
-        }
         // Bar Chart Example
         url = '{{ route(auth()->user()->roles->first()->title === 'Lawyer'? 'lawyer.chart':'admin.chart') }}';
         $.ajax({
             url: url,
             method: 'GET',
             success: function(response) {
+                var conveyancing;
                 var labels;
                 let month;
                 const litigation = response.litigation;
-                const lastLitigationYearKey = Object.keys(litigation).sort().reverse()[0];
-                let lastLitigationValue = litigation[lastLitigationYearKey];
-                //sortByMonth(lastLitigationValue.months);
-
-                for (const key in lastLitigationValue.months) {
-                    month = lastLitigationValue.months[key];
-                    litigation_labels.push(month.name);
-                    litigation_data.push(month.value);
+                if (!Array.isArray( litigation)){
+                    const lastLitigationYearKey = Object.keys(litigation).sort().reverse()[0];
+                    let lastLitigationValue = litigation[lastLitigationYearKey];
+                    //sortByMonth(lastLitigationValue.months);
+                    for (const key in lastLitigationValue.months) {
+                        month = lastLitigationValue.months[key];
+                        litigation_labels.push(month.name);
+                        litigation_data.push(month.value);
+                    }
+                    max = lastLitigationValue.total_cases;
                 }
 
-                const conveyancing = response.conveyancing;
-                const lastConveyancingYearKey = Object.keys(conveyancing).sort().reverse()[0];
-                let lastConveyancingValue = conveyancing[lastConveyancingYearKey];
-               // sortByMonth(lastConveyancingValue.months);
-                console.log( lastConveyancingValue.months);
-                for (const key in lastConveyancingValue.months) {
-                    month = lastConveyancingValue.months[key];
-                    conveyancing_labels.push(month.name);
-                    conveyancing_data.push(month.value);
+                conveyancing = response.conveyancing;
+                console.log(Array.isArray( conveyancing));
+                if (!Array.isArray( conveyancing)){
+                    const lastConveyancingYearKey = Object.keys(conveyancing).sort().reverse()[0];
+                    let lastConveyancingValue = conveyancing[lastConveyancingYearKey];
+
+                    // sortByMonth(lastConveyancingValue.months);
+                    if (lastConveyancingValue !== null || lastConveyancingValue != undefined){
+                        for (const key in lastConveyancingValue.months) {
+                            month = lastConveyancingValue.months[key];
+                            conveyancing_labels.push(month.name);
+                            conveyancing_data.push(month.value);
+                        }
+                    }
+                    max = Math.max(max, lastConveyancingValue.total_cases);
                 }
-                max = Math.max(lastLitigationValue.total_cases, lastConveyancingValue.total_cases);
+
                 ctx = document.getElementById("casesBarChart");
                 labels = [...new Set([...litigation_labels ,...conveyancing_labels])];
                 myBarChart = new Chart(ctx, {

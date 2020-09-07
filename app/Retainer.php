@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Searchable\Searchable;
 use Spatie\Searchable\SearchResult;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Retainer extends Model
+class Retainer extends Model implements Searchable
 {
     use SoftDeletes, HasSlug, Notifiable, LogsActivity, SoftCascadeTrait;
 
@@ -22,14 +23,14 @@ class Retainer extends Model
     protected static $submitEmptyLogs = false;
 
     protected static $logAttributes = [
-        'individual.name',
-        'company.name',
+        'client.name',
     ];
 
     protected $fillable = [
         'number',
         'individuals_id',
         'companies_id',
+        'type',
     ];
 
     public function getSearchResult(): SearchResult
@@ -56,5 +57,15 @@ class Retainer extends Model
     public function client()
     {
         return $this->morphOne('App\Client', 'clientable');
+    }
+
+    public function individual()
+    {
+        return $this->belongsTo(Individual::class);
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
     }
 }

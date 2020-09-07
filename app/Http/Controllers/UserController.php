@@ -25,4 +25,5 @@ class UserController extends Controller
         }
         return redirect()->back()->with('status','Failed to upload a profile');
     }
+
 }

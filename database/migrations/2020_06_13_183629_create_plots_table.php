@@ -22,7 +22,9 @@ class CreatePlotsTable extends Migration
             $table->string('purchase_price');
             $table->string('initial_payment');
             $table->text('notes')->nullable();
+            $table->foreignId('plot_transaction_id')->constrained('plot_transactions');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

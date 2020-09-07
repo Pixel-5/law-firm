@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Facade\ClientRepository;
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
 
 class ClientController extends Controller
 {
@@ -51,15 +54,14 @@ class ClientController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return void
+     * @return Application|Factory|View
      */
     public function show($id)
     {
 
         abort_if(Gate::denies('file_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $file =  ClientRepository::findById($id);
-        //dd($file);
-        return view('client.cases.index',compact('file'));
+        return view('client.cases.index')->with('file',$file);
     }
 
     /**
@@ -93,7 +95,7 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        abort_if(Gate::denies('file_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('file_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         if (ClientRepository::deleteClient($id)){
             Session::flash('status', 'Successfully deleted client file');
             return true;

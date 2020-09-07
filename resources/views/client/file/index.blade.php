@@ -123,7 +123,7 @@
                                 <div class="table-responsive">
                                     <input type="hidden" name="_token" value="{{ @csrf_token() }}">
                                     <div class="table-responsive">
-                                        <table id="individual" class="table table-striped table-bordered nowrap" style="width:100%">
+                                        <table id="individuals" class="table table-striped table-bordered nowrap" style="width:100%">
                                             <thead>
                                             <tr>
                                                 <th>#</th>
@@ -138,7 +138,7 @@
                                             <tbody>
 
                                             @foreach($clients as $client)
-                                                @if($client->clientable_type == 'App\Individual')
+                                                @if(class_basename($client->clientable) == 'Individual')
 
                                                 <tr>
                                                     <div class="modal fade" id="editClientFileModal{{ $client->clientable->id  }}" tabindex="-1"
@@ -160,9 +160,7 @@
                                                                         </button>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        <x-individualForm
-                                                                            :file="$client->clientable"
-                                                                        />
+                                                                        <x-individualForm :file="$client->clientable"/>
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -272,13 +270,13 @@
                                                 </div>
                                                 <td>{{ $client->clientable->id }}</td>
                                                 <td>{{ $client->clientable->number }}</td>
-                                                <td>{{ $client->clientable->name }} {{ $file->surname }}</td>
+                                                <td>{{ $client->clientable->name }}</td>
                                                 <td>{{ $client->clientable->email }}</td>
-                                                <td>{{ $client->clientable->tel == 'N/A'? $client->clientable->cell : '+267 '.$client->clientable->tel }}</td>
+                                                <td>{{ $client->clientable->tel == null ? '+267 '.$client->clientable->cell : '+267 '.$client->clientable->tel }}</td>
                                                 <td>
                                                     @can('case_access')
                                                         <a class="btn btn-info btn-sm  text-center text-white"
-                                                           href="{{ route('admin.files.show', $client->clientable->id) }}">
+                                                           href="{{ route('admin.client.show', $client->id) }}">
                                                             <i class="fa fa-file-contract"></i> Open</a>
                                                     @endcan
                                                     @can('file_edit')
@@ -327,9 +325,8 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>File No</th>
-                                                <th>Client</th>
-                                                <th>Email</th>
-                                                <th>Contact</th>
+                                                <th>Client Name</th>
+                                                <th>Retainer Type</th>
                                                 <th>Action</th>
                                             </tr>
                                             </thead>
@@ -337,7 +334,7 @@
                                             <tbody>
 
                                             @foreach($clients as $client)
-                                                @if($client->clientable_type == 'App\Retainer')
+                                                @if(class_basename($client->clientable) == 'Retainer')
                                                 <tr>
                                                     <div class="modal fade" id="editClientFileModal" tabindex="-1"
                                                          role="dialog"
@@ -348,7 +345,6 @@
                                                                       enctype="multipart/form-data" method="POST">
                                                                     @csrf
                                                                     @honeypot
-
                                                                     @method('PUT')
                                                                     <div class="modal-header">
                                                                         <h5 class="modal-title" id="clientModalLabel">
@@ -369,15 +365,30 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
+                                                    <td>{{ $client->clientable->id }}</td>
+                                                    <td>{{ $client->clientable->number }}</td>
+                                                    @if($client->clientable->type == 'company')
+                                                        @inject('company','App\Repository\CompanyFileRepositoryInterface')
+                                                        @php
+                                                           $company =  $company->getFile($client->clientable->companies_id)
+                                                        @endphp
+                                                        @if($company != null)
+                                                        <td>{{ $company->name }}</td>
+                                                        @endif
+                                                    @elseif($client->clientable->type == 'individual' || $client->clientable->type == 'both')
+                                                        @inject('individual','App\Repository\IndividualFileRepositoryInterface')
+                                                        @php
+                                                            $individual =  $individual->getFile($client->clientable->individuals_id)
+                                                        @endphp
+                                                        @if($individual != null)
+                                                            <td>{{ $individual->name }}</td>
+                                                        @endif
+                                                    @endif
+                                                    <td>{{ $client->clientable->type }}</td>
                                                     <td>
                                                         @can('case_access')
                                                             <a class="btn btn-info btn-sm  text-center text-white"
-                                                               href="{{ route('admin.files.show', $client->clientable->id) }}">
+                                                               href="{{ route('admin.client.show', $client->id) }}">
                                                                 <i class="fa fa-file-contract"></i> Open</a>
                                                         @endcan
                                                         @can('file_edit')
@@ -387,8 +398,8 @@
                                                         @endcan
                                                         @can('file_delete')
                                                             <button class="delete btn btn-danger btn-sm text-center text-white"
-                                                                    id="{{ $client->clientable->id }}"
-                                                                    data-id='{{ $client->clientable->id }}'>
+                                                                    id="{{ $client->id }}"
+                                                                    data-id='{{ $client->id }}'>
                                                                 <i class="fa fa-trash"></i>Delete</button>
                                                         @endcan
                                                     </td>
@@ -418,17 +429,6 @@
 
     <!-- Latest compiled JavaScript --><!-- Page level plugins -->
     <script src="{{ asset('js/bootbox.min.js') }}"></script>
-    <!-- Page level plugins -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
-
-    <!-- Custom scripts for all pages-->
-    <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
-    <script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
@@ -436,11 +436,12 @@
 
     <script type="application/javascript">
         $(document).ready(function() {
-            $('#individual').on('click', '.delete', function(){
+            $('#individuals').on('click', '.delete', function(){
                 var el = this;
-
+                console.log("individual btn clicked");
                 // Delete id
                 let client = $(this).data('id');
+                console.log(client);
                 bootbox.confirm({
                     title: "Delete Individual File?",
                     message: "Do you really want to delete this record?",
@@ -483,7 +484,117 @@
                                     // window.location.reload();
                                 },
                                 error: function (response) {
-                                    console.log("error "+ response);
+                                    console.log("error "+ response.responseText);
+                                }
+                            });
+                        }
+                    }
+                });
+            });
+            $('#companies').on('click', '.delete', function(){
+                var el = this;
+                console.log("individual btn clicked");
+                // Delete id
+                let client = $(this).data('id');
+                console.log(client);
+                bootbox.confirm({
+                    title: "Delete Individual File?",
+                    message: "Do you really want to delete this record?",
+                    buttons: {
+                        cancel: {
+                            label: `<i class="fa fa-times"></i> Cancel`
+                        },
+                        confirm: {
+                            label: `<i class="fa fa-check"></i> Confirm`
+                        }
+                    },
+                    callback: function (result) {
+                        let url = '{{ route("admin.client.destroy",["client"=> ":id"]) }}';
+                        url = url.replace(':id', client);
+                        if(result){
+                            $(el).html(`<i class="fa fa-spinner fa-spin"></i> deleting...`);
+                            // AJAX Request
+                            $.ajax({
+                                url: url,
+                                type: 'POST',
+                                data: {
+                                    '_token' : '{{ csrf_token() }}',
+                                    _method: 'DELETE'
+                                },
+                                success: function(response){
+
+                                    // Removing row from HTML Table
+                                    console.log(response);
+                                    if(response == 1){
+                                        $(el).closest('tr').css('background','tomato');
+                                        $(el).closest('tr').fadeOut(800,function(){
+                                            $(this).remove();
+                                        });
+                                        window.location.reload();
+                                    }else{
+                                        bootbox.alert('Record not deleted.');
+                                    }
+                                    // var table = $('#individual').DataTable();
+                                    // table.row($(btn).parents('tr')).remove().draw(false); //c
+                                    // window.location.reload();
+                                },
+                                error: function (response) {
+                                    console.log("error "+ response.responseText);
+                                }
+                            });
+                        }
+                    }
+                });
+            });
+            $('#retainers').on('click', '.delete', function(){
+                var el = this;
+                console.log("individual btn clicked");
+                // Delete id
+                let client = $(this).data('id');
+                console.log(client);
+                bootbox.confirm({
+                    title: "Delete Individual File?",
+                    message: "Do you really want to delete this record?",
+                    buttons: {
+                        cancel: {
+                            label: `<i class="fa fa-times"></i> Cancel`
+                        },
+                        confirm: {
+                            label: `<i class="fa fa-check"></i> Confirm`
+                        }
+                    },
+                    callback: function (result) {
+                        let url = '{{ route("admin.client.destroy",["client"=> ":id"]) }}';
+                        url = url.replace(':id', client);
+                        if(result){
+                            $(el).html(`<i class="fa fa-spinner fa-spin"></i> deleting...`);
+                            // AJAX Request
+                            $.ajax({
+                                url: url,
+                                type: 'POST',
+                                data: {
+                                    '_token' : '{{ csrf_token() }}',
+                                    _method: 'DELETE'
+                                },
+                                success: function(response){
+
+                                    // Removing row from HTML Table
+                                    console.log(response);
+                                    if(response == 1){
+                                        $(el).closest('tr').css('background','tomato');
+                                        $(el).closest('tr').fadeOut(800,function(){
+                                            $(this).remove();
+                                        });
+                                        window.location.reload();
+                                    }else{
+                                        bootbox.alert('Record not deleted.');
+                                    }
+                                    // var table = $('#individual').DataTable();
+                                    // table.row($(btn).parents('tr')).remove().draw(false); //c
+                                    // window.location.reload();
+                                },
+                                error: function (response) {
+                                    console.log("error "+ response.responseText);
                                 }
                             });
                         }
@@ -491,33 +602,39 @@
                 });
             });
 
-            $('#retainerCompanyForm').hide();
-            $('#retainerIndividualForm').hide();
+            $('#individual').hide();
+            $('#company').hide();
+            $('#both').hide();
             $('#submit_div').hide();
             $("#retainerType").change(function () {
+
                let retainerType = $("#retainerType :selected").text();
                $('#submit_div').show();
+
                switch (retainerType) {
                    case 'Individual':
-                       $('#retainerIndividualForm').show();
-                       $('#retainerCompanyForm').hide();
+                       $('#individual').show();
+                       $('#company').hide();
+                       $('#both').hide();
                        break;
                    case 'Company':
-                       $('#retainerCompanyForm').show();
-                       $('#retainerIndividualForm').hide();
+                       $('#company').show();
+                       $('#individual').hide();
+                       $('#both').hide();
                        break;
                    case 'Both':
-                       $('#retainerCompanyForm').show();
-                       $('#retainerIndividualForm').show();
+                       $('#both').show();
+                       $('#individual').hide();
+                       $('#company').hide();
                        break;
                    default:
-                       $('#retainerCompanyForm').hide();
-                       $('#retainerIndividualForm').hide();
+                       $('#individual').hide();
+                       $('#company').hide();
                        $('#submit_div').hide();
                        break;
                }
             });
-            $('#individual').DataTable( {
+            $('#individuals').DataTable( {
                 responsive: {
                     details: {
                         display: $.fn.dataTable.Responsive.display.modal( {

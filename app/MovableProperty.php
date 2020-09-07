@@ -11,6 +11,11 @@ class MovableProperty extends Model
         'location',
         'possession',
         'value',
-        'title_holder'
+        'fully_paid_for'
     ];
+
+    public function property()
+    {
+        return $this->morphOne(ClientProperty::class);
+    }
 }

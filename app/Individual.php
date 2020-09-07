@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Searchable\Searchable;
 use Spatie\Searchable\SearchResult;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Individual extends Model
+class Individual extends Model implements Searchable
 {
     use SoftDeletes, HasSlug, Notifiable, LogsActivity, SoftCascadeTrait;
 
@@ -21,7 +22,7 @@ class Individual extends Model
 
     protected static $submitEmptyLogs = false;
 
-    //protected $softCascade = ['individual'];
+    protected $softCascade = ['individual'];
 
     protected static $logAttributes = [
         'surname',
@@ -108,5 +109,10 @@ class Individual extends Model
     public function conveyancing()
     {
         return $this->hasMany(Conveyancing::class,'client_id');
+    }
+
+    public function retainer()
+    {
+        return $this->hasOne(Retainer::class);
     }
 }

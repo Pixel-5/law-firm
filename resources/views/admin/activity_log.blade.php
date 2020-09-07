@@ -40,7 +40,7 @@
                                     </div>
                                     <div class="col">
                                         <div class="progress progress-sm mr-2">
-                                            <div class="progress-bar bg-info" role="progressbar" style="width: {{ $files->count() }}%"
+                                            <div class="progress-bar bg-info" role="progressbar" style="width: 10%"
                                                  aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </div>
@@ -65,13 +65,13 @@
                                     <div class="col-auto">
                                         <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
                                     <span class="badge badge-primary">
-                                         {{ $files->count() }}
+
                                       </span>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="progress progress-sm mr-2">
-                                            <div class="progress-bar bg-info" role="progressbar" style="width: {{ $files->count() }}%"
+                                            <div class="progress-bar bg-info" role="progressbar" style="width: 10%"
                                                  aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </div>
@@ -96,13 +96,13 @@
                                     <div class="col-auto">
                                         <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
                                     <span class="badge badge-primary">
-                                         {{ $files->count() }}
+
                                       </span>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="progress progress-sm mr-2">
-                                            <div class="progress-bar bg-info" role="progressbar" style="width: {{ $files->count() }}%"
+                                            <div class="progress-bar bg-info" role="progressbar" style="width: 10%"
                                                  aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </div>
@@ -138,7 +138,6 @@
                                     <th></th>
                                 </tr>
                                 </thead>
-
                                 <tbody>
                                 @foreach($usersActivityLog->get() as $activityLog)
                                     <tr>
@@ -182,7 +181,7 @@
                 <!-- Card Header - Accordion -->
                 <a href="#collapseCardExample2" class="d-block card-header py-3" data-toggle="collapse" role="button"
                    aria-expanded="true" aria-controls="collapseCardExample2">
-                    <h5 class="m-0 font-weight-bold text-primary">   File Activities <span class="badge badge-primary">
+                    <h5 class="m-0 font-weight-bold text-primary">File Activities <span class="badge badge-primary">
                                        {{ $filesActivityLog->count() }}</span></h5>
                 </a>
                 <!-- Card Content - Collapse -->
@@ -212,9 +211,12 @@
                                                     {{ $activityLog->causer === null ? 'System Developer':
                                                        $activityLog->causer->name }} {{ $activityLog->description }}
                                                     file
-                                                    {{ $activityLog->subject->number }} for client
-                                                    {{ $activityLog->subject->name }}
-                                                    {{ $activityLog->subject->surname }}
+                                                    {{ $activityLog->subject->clientable->number }} for
+                                                    {{ class_basename($activityLog->subject->clientable) }} client
+                                                    {{  $activityLog->subject->clientable->name }}
+                                                    @if(class_basename($activityLog->subject->clientable) == 'Individual')
+                                                    {{ $activityLog->subject->clientable->surname }}
+                                                    @endif
                                                     {{ \Carbon\CarbonImmutable::parse($activityLog->created_at)->calendar() }}
 
                                                 </div>
@@ -260,7 +262,7 @@
                 <!-- Card Header - Accordion -->
                 <a href="#collapseCardExample3" class="d-block card-header py-3" data-toggle="collapse" role="button"
                    aria-expanded="true" aria-controls="collapseCardExample3">
-                    <h5 class="m-0 font-weight-bold text-primary">  Case Activities
+                    <h5 class="m-0 font-weight-bold text-primary">Litigation Activities
                         <span class="badge badge-primary">{{ $casesActivityLog->count() }}</span></h5>
                 </a>
                 <!-- Card Content - Collapse -->
@@ -295,7 +297,7 @@
                                                         case
                                                         {{ $activityLog->subject->number }}
                                                         for file
-                                                        {{ $activityLog->subject->file->number }}
+                                                        {{ $activityLog->subject->client->clientable->number }}
                                                         {{ \Carbon\CarbonImmutable::parse($activityLog->created_at)->calendar() }}
                                                         <br>
                                                         @if ($activityLog->description === 'updated')
@@ -339,6 +341,93 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="container-fluid">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Accordion -->
+                <a href="#collapseCardExample5" class="d-block card-header py-3" data-toggle="collapse" role="button"
+                   aria-expanded="true" aria-controls="collapseCardExample5">
+                    <h5 class="m-0 font-weight-bold text-primary">Conveyancing Activities
+                        <span class="badge badge-primary">{{ $conveyancingActivityLog->count() }}</span></h5>
+                </a>
+                <!-- Card Content - Collapse -->
+                <div class="collapse hide" id="collapseCardExample5">
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Begin Page Content -->
+                            <div class="table-responsive">
+                                <table id="caseActivities" cellspacing="0" width="100%"
+                                       class="table display hover table-light table-bordered nowrap" >
+                                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    @foreach($conveyancingActivityLog->get() as $activityLog)
+                                        <tr>
+                                            <td class="d-xl-none">
+                                                <strong class="alert-heading"> {{ $activityLog->subject->number }}
+                                                    was {{ $activityLog->description }}</strong>
+                                            </td>
+                                            <td>
+                                                <div class="alert {{ $activityLog->description === 'created'? 'alert-success':
+                                        ($activityLog->description === 'updated'? 'alert-warning': 'alert-danger')}}"
+                                                     role="alert">
+                                                    <div>
+                                                        {{ $activityLog->causer === null ? 'System Developer':
+                                                      $activityLog->causer->name }} {{ $activityLog->description }}
+                                                        conveyancing
+                                                        {{ $activityLog->subject->number }}
+                                                        for file
+                                                        {{ $activityLog->subject->client->clientable->number }}
+                                                        {{ \Carbon\CarbonImmutable::parse($activityLog->created_at)->calendar() }}
+                                                        <br>
+                                                        @if ($activityLog->description === 'updated')
+                                                            <a class="alert alert-link" data-toggle="collapse" href="#content{{ $activityLog->id }}"
+                                                               aria-expanded="false">
+                                                                show change details of case
+                                                            </a>
+                                                            <div class="collapse" id="content{{ $activityLog->id }}">
+                                                                <span class="badge badge-primary">New</span>
+                                                                <ul>
+                                                                    @foreach($activityLog->getExtraProperty('attributes') as $key=> $attribute)
+                                                                        <li>
+                                                                            {{ $key === 'user.name'? 'Lawyer: ': $key.': ' }}
+                                                                            {{ $attribute ??  'None' }}
+                                                                        </li>
+                                                                    @endforeach
+                                                                </ul>
+                                                                <span class="badge badge-secondary">Old</span>
+                                                                <ul>
+                                                                    @foreach($activityLog->getExtraProperty('old') as $key=> $attribute)
+                                                                        <li> {{ $key === 'user.name'? 'Lawyer:': $key. ': ' }}
+                                                                            {{ $attribute ??  'None' }}
+                                                                        </li>
+                                                                    @endforeach
+                                                                </ul>
+                                                            </div>
+                                                        @endif
+                                                    </div>
+
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.container-fluid -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="container-fluid">
             <div class="card shadow mb-4">

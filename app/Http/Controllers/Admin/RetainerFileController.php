@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Facade\RetainerFileRepository;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class RetainerFileController extends Controller
@@ -30,12 +32,15 @@ class RetainerFileController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return RedirectResponse
      */
     public function store(Request $request)
     {
-        //
+        return redirect()->back()
+            ->with(empty(RetainerFileRepository::storeFile($request)) ?
+                ['fail' => 'Failed to add a retainer client file'] :
+                ['status' => 'Successfully added Retainer client file']);
     }
 
     /**
@@ -63,7 +68,7 @@ class RetainerFileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

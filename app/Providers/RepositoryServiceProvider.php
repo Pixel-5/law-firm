@@ -15,12 +15,14 @@ use App\Repository\Eloquent\FileRepository;
 use App\Repository\Eloquent\IndividualFileRepository;
 use App\Repository\Eloquent\LitigationRepository;
 use App\Repository\Eloquent\ProfileRepository;
+use App\Repository\Eloquent\RetainerFileRepository;
 use App\Repository\Eloquent\ScheduleRepository;
 use App\Repository\EloquentRepositoryInterface;
 use App\Repository\FileRepositoryInterface;
 use App\Repository\IndividualFileRepositoryInterface;
 use App\Repository\LitigationRepositoryInterface;
 use App\Repository\ProfileRepositoryInterface;
+use App\Repository\RetainerFileRepositoryInterface;
 use App\Repository\ScheduleRepositoryInterface;
 use App\Repository\UserRepositoryInterface;
 use App\Repository\Eloquent\UserRepository;
@@ -51,6 +53,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(ClientRepositoryInterface::class, ClientRepository::class);
         $this->app->bind(LitigationRepositoryInterface::class, LitigationRepository::class);
         $this->app->bind(CompanyFileRepositoryInterface::class, CompanyFileRepository::class);
+        $this->app->bind(RetainerFileRepositoryInterface::class, RetainerFileRepository::class);
     }
 
     /**
@@ -67,5 +70,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->singleton('ConveyancingRepository', ConveyancingRepositoryInterface::class);
         $this->app->singleton('ClientRepository', ClientRepositoryInterface::class);
         $this->app->singleton('LitigationRepository', LitigationRepositoryInterface::class);
+        $this->app->singleton('CompanyFileRepository',CompanyFileRepositoryInterface::class);
+        $this->app->singleton('RetainerFileRepository',RetainerFileRepositoryInterface::class);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Facade\CaseRepository;
+use App\Facade\ClientRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Gate;
 
@@ -50,7 +51,7 @@ class HomeController
 
     public function chart(): JsonResponse
     {
-        $data = CaseRepository::getChartData();
+        $data = ClientRepository::getChartData();
         return response()->json($data);
     }
 }

@@ -20,9 +20,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2a36650-46ac-44ee-b4e4-5b2af27c0aaf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_06_13_211523_create_matrimony_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/lawyer/litigation/matrimony/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/side-nav-bar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/side-nav-bar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ClientChildren.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ClientChildren.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ClientProperty.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ClientProperty.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ClientSpouse.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ClientSpouse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/FinancialNeeds.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/FinancialNeeds.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/LitigationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/LitigationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/MatrimonyFormController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/MatrimonyController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ImmovableProperty.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ImmovableProperty.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Litigation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Litigation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/MatrimonyForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Matrimony.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/MovableProperty.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/MovableProperty.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/LitigationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/LitigationRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/MatrimonyFormFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/MatrimonyFormFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_151252_create_client_spouses_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_13_151252_create_client_spouses_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_151514_create_client_children_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_13_221514_create_client_children_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_153835_create_movable_properties_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_13_153835_create_movable_properties_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_154009_create_immovable_properties_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_13_154009_create_immovable_properties_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_154532_create_financial_needs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_13_224532_create_financial_needs_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_202014_create_client_properties_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_13_212014_create_client_properties_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_211523_create_matrimony_forms_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/client/cases/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/cases/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/litigation/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/litigation/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/litigation/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/litigation/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/matrimony-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/litigation/matrimony/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/show-litigation.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/default.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,6 +234,7 @@
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="php.override.implement.member.chooser.php.doc" value="DEFAULT" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -214,11 +242,14 @@
       <recent name="$PROJECT_DIR$/resources/views/client/file/individual" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\MoffatMore\Documents\Projects\law-firm\resources\views\lawyer\litigation\matrimony" />
+      <recent name="C:\Users\MoffatMore\Documents\Projects\law-firm\resources\views\lawyer\litigation" />
+      <recent name="C:\Users\MoffatMore\Documents\Projects\law-firm\resources\views\admin\client" />
       <recent name="C:\Users\MoffatMore\Documents\Projects\law-firm\app\Http\Controllers\Lawyer" />
       <recent name="C:\Users\MoffatMore\Documents\Projects\law-firm\app\Http\Controllers\Admin" />
     </key>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -249,12 +280,17 @@
       <workItem from="1598909271603" duration="28573000" />
       <workItem from="1598970496509" duration="29694000" />
       <workItem from="1599010578569" duration="203000" />
-      <workItem from="1599010882354" duration="2555000" />
+      <workItem from="1599010882354" duration="8343000" />
+      <workItem from="1599022857814" duration="4556000" />
+      <workItem from="1599057350396" duration="42619000" />
+      <workItem from="1599170007205" duration="2071000" />
+      <workItem from="1599284013415" duration="8324000" />
+      <workItem from="1599348361126" duration="38935000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -273,21 +309,27 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="234" y="0" key="#Plugins/0.0.1280.720@0.0.1280.720" timestamp="1598742059823" />
-    <state x="473" y="83" width="389" height="554" key="#com.intellij.ide.util.MemberChooser" timestamp="1598838081355">
-      <screen x="0" y="0" width="1280" height="720" />
-    </state>
-    <state x="473" y="83" width="389" height="554" key="#com.intellij.ide.util.MemberChooser/0.0.1280.720@0.0.1280.720" timestamp="1598838081355" />
-    <state x="591" y="128" width="414" height="670" key="#com.intellij.ide.util.MemberChooser/0.27.1600.872@0.27.1600.872" timestamp="1595037156693" />
-    <state x="486" y="165" width="324" height="376" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1598776514012">
-      <screen x="0" y="0" width="1280" height="720" />
-    </state>
-    <state x="486" y="165" width="324" height="376" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.720@0.0.1280.720" timestamp="1598776514012" />
-    <state x="608" y="227" width="374" height="455" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.27.1600.872@0.27.1600.872" timestamp="1595037085992" />
-    <state x="-1064" y="537" width="524" height="492" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1598995059454">
+    <state x="-1009" y="478" width="389" height="554" key="#com.intellij.ide.util.MemberChooser" timestamp="1599100022504">
       <screen x="-1600" y="374" width="1600" height="900" />
     </state>
-    <state x="-1064" y="537" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.720/-1600.374.1600.900@-1600.374.1600.900" timestamp="1598995059454" />
-    <state x="429" y="130" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.720@0.0.1280.720" timestamp="1598830974267" />
+    <state x="-1009" y="478" key="#com.intellij.ide.util.MemberChooser/0.0.1280.720/-1600.374.1600.900@-1600.374.1600.900" timestamp="1599100022504" />
+    <state x="473" y="83" width="389" height="554" key="#com.intellij.ide.util.MemberChooser/0.0.1280.720@0.0.1280.720" timestamp="1598838081355" />
+    <state x="591" y="128" width="414" height="670" key="#com.intellij.ide.util.MemberChooser/0.27.1600.872@0.27.1600.872" timestamp="1595037156693" />
+    <state x="-1120" y="560" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1599169616278">
+      <screen x="-1600" y="374" width="1600" height="900" />
+    </state>
+    <state x="-1120" y="560" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1280.720/-1600.374.1600.900@-1600.374.1600.900" timestamp="1599169616278" />
+    <state x="486" y="165" width="324" height="376" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1599463121872">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="-992" y="580" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.720/-1600.374.1600.900@-1600.374.1600.900" timestamp="1599096790680" />
+    <state x="486" y="165" width="324" height="376" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.720@0.0.1280.720" timestamp="1599463121872" />
+    <state x="608" y="227" width="374" height="455" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.27.1600.872@0.27.1600.872" timestamp="1595037085992" />
+    <state x="429" y="130" width="524" height="492" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1599459835335">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="-1064" y="537" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.720/-1600.374.1600.900@-1600.374.1600.900" timestamp="1599106249287" />
+    <state x="429" y="130" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.720@0.0.1280.720" timestamp="1599459835335" />
     <state x="536" y="184" width="524" height="492" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.27.1600.872@0.27.1600.872" timestamp="1595188169517" />
     <state x="586" y="386" width="424" height="152" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#" timestamp="1595185773688">
       <screen x="0" y="27" width="1600" height="872" />
@@ -297,15 +339,17 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="94" y="94" width="1093" height="533" key="DiffContextDialog/0.0.1280.720@0.0.1280.720" timestamp="1598035773621" />
-    <state x="480" y="176" width="599" height="526" key="NewPhpClassDialog" timestamp="1598838069141">
-      <screen x="0" y="0" width="1280" height="720" />
+    <state x="-1000" y="594" width="599" height="526" key="NewPhpClassDialog" timestamp="1599099927586">
+      <screen x="-1600" y="374" width="1600" height="900" />
     </state>
+    <state x="-1000" y="594" key="NewPhpClassDialog/0.0.1280.720/-1600.374.1600.900@-1600.374.1600.900" timestamp="1599099927586" />
     <state x="480" y="176" width="599" height="526" key="NewPhpClassDialog/0.0.1280.720@0.0.1280.720" timestamp="1598838069141" />
     <state x="509" y="166" width="577" height="569" key="NewPhpClassDialog/0.27.1600.872@0.27.1600.872" timestamp="1595038067433" />
-    <state x="478" y="278" width="324" height="157" key="NewPhpFileDialog" timestamp="1598832441005">
+    <state x="478" y="278" width="324" height="157" key="NewPhpFileDialog" timestamp="1599474300346">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="478" y="278" width="324" height="157" key="NewPhpFileDialog/0.0.1280.720@0.0.1280.720" timestamp="1598832441005" />
+    <state x="-1002" y="722" key="NewPhpFileDialog/0.0.1280.720/-1600.374.1600.900@-1600.374.1600.900" timestamp="1599018833799" />
+    <state x="478" y="278" width="324" height="157" key="NewPhpFileDialog/0.0.1280.720@0.0.1280.720" timestamp="1599474300346" />
     <state x="598" y="364" width="399" height="157" key="NewPhpFileDialog/0.27.1600.872@0.27.1600.872" timestamp="1595045742391" />
     <state x="-1412" y="374" key="SettingsEditor" timestamp="1599010796882">
       <screen x="-1600" y="374" width="1600" height="900" />
@@ -316,10 +360,10 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="236" y="59" key="VCS.ChangeListViewerDialog/0.0.1280.720@0.0.1280.720" timestamp="1598035672696" />
-    <state x="-1144" y="392" key="run.anything.popup" timestamp="1598999232160">
+    <state x="-1144" y="392" key="run.anything.popup" timestamp="1599096992022">
       <screen x="-1600" y="374" width="1600" height="900" />
     </state>
-    <state x="-1144" y="392" key="run.anything.popup/0.0.1280.720/-1600.374.1600.900@-1600.374.1600.900" timestamp="1598999232160" />
+    <state x="-1144" y="392" key="run.anything.popup/0.0.1280.720/-1600.374.1600.900@-1600.374.1600.900" timestamp="1599096992022" />
     <state x="-1139" y="559" width="840" height="700" key="search.everywhere.popup" timestamp="1598913719144">
       <screen x="-1600" y="374" width="1600" height="900" />
     </state>

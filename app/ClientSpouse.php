@@ -16,5 +16,13 @@ class ClientSpouse extends Model
         'nationality',
         'is_citizen',
         'occupation',
+        'is_resident',
+        'resident_since',
+        'marriage_certificate_copy'
     ];
+
+    public function spouse()
+    {
+        return $this->belongsTo(Client::class);
+    }
 }

@@ -17,12 +17,9 @@ class CreateRetainersTable extends Migration
             $table->id();
             $table->string('number')->unique();
             $table->string('slug');
-            $table->foreignId('individuals_id')
-                ->constrained()
-                ->onDelete('CASCADE');
-            $table->foreignId('companies_id')
-                ->constrained()
-                ->onDelete('CASCADE');
+            $table->string('type');
+            $table->foreignId('individuals_id')->nullable();
+            $table->foreignId('companies_id')->nullable();
             $table->boolean('agreement_service')->default(false);
             $table->timestamps();
             $table->softDeletes();

@@ -17,6 +17,12 @@
     |
     */
 
+Route::get('/',function(){
+    return view('welcome');
+});
+
+
+
 Route::redirect('/',   '/redirectUser');
 Route::get('/redirectUser','RedirectUserController');
 Route::middleware(ProtectAgainstSpam::class)->group(function() {
@@ -58,9 +64,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin',
     //default dashboard routes
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
     Route::get('/chart', 'HomeController@chart')->name('chart');
-    Route::get('/assign-cases', 'HomeController@assignCases')->name('assign.lawyer.cases');
-    Route::get('/re-assign-cases', 'HomeController@reAssignCases')->name('re-assign.lawyer.cases');
-    Route::get('/pending/cases', 'HomeController@pendingCases')->name('view.pending-cases');
+    Route::get('/pending/', 'HomeController@pendingCases')->name('view.pending-cases');
 });
 
 //lawyer routes, get & post
@@ -91,7 +95,7 @@ Route::group(
         ]);
         Route::resource('initial-consultation-form', 'InitialConsultationFormController');
         Route::resource('note-form', 'NoteFormController');
-        Route::resource('matrimony-form', 'MatrimonyFormController');
+        Route::resource('matrimony-form', 'MatrimonyController');
 
     });
 

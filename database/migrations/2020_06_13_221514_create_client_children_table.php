@@ -15,16 +15,16 @@ class CreateClientChildrenTable extends Migration
     {
         Schema::create('client_children', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('client_id')
-                ->constrained('individuals', 'id')
+            $table->foreignId('matrimony_id')
+                ->constrained('matrimony')
                 ->onDelete('CASCADE');
             $table->string('name');
             $table->string('dob');
             $table->string('school');
             $table->string('standard');
             $table->string('residence_place');
-            $table->boolean('marital')->default(false);
-            $table->boolean('non_marital')->default(false);
+            $table->string('marital')->nullable();
+            $table->string('non_marital')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

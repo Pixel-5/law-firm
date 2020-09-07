@@ -16,15 +16,14 @@ class CaseComposer
     {
         return $view->with( [
             'myAssignedClients'=>$this->myAssignedClients(),
-//            'cases' => $this->allCases(),
-//            'scheduledCases'=> $this->scheduledCases(),
+            'litigation' => $this->litigation(),
+            'conveyancing'=> $this->conveyancing(),
             'myUnScheduledClients' => $this->unscheduledCases(),
-//            'unScheduledConveyancing' => $this->unscheduledCases(),
-//            'unAssignedCases' => $this->unAssignedCases(),
-                'assignedCases' => $this->assignedCases(),
-//            'pendingCases' => $this->pendingCases(),
+            'assignedCases' => $this->assignedCases(),
+            'pendingClients' => $this->pendingClients(),
             'myLitigation' => $this->myLitigation(),
-            'myConveyancing' =>$this->myConveyancing()
+            'myConveyancing' =>$this->myConveyancing(),
+            'unAssignedClients'=>$this->unAssignedClients()
         ]);
     }
 
@@ -43,14 +42,14 @@ class CaseComposer
         return ConveyancingRepository::getMyConveyancing();
     }
 
-    public function allCases()
+    public function litigation()
     {
-        return CaseRepository::allCases();
+        return LitigationRepository::allLitigation();
     }
 
-    public function scheduledCases()
+    public function conveyancing()
     {
-        return CaseRepository::scheduledCases();
+        return ConveyancingRepository::all();
     }
 
     public function unscheduledCases()
@@ -67,10 +66,13 @@ class CaseComposer
         return LitigationRepository::getMyLitigation();
     }
 
-    public function pendingCases()
+    public function pendingClients()
     {
-        return CaseRepository::pendingCases();
+        return ClientRepository::pendingClients();
     }
 
-
+    public function unAssignedClients()
+    {
+        return ClientRepository::unAssignedClients();
+    }
 }

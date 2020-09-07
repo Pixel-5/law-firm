@@ -37,7 +37,7 @@ class FileComposer
     {
         $count = 0;
         foreach (ClientRepository::clients() as $client){
-            if ($client->clientable_type == 'App\Individual'){
+            if (class_basename($client->clientable) == 'Individual'){
                 $count += 1;
             }
         }
@@ -48,7 +48,7 @@ class FileComposer
     {
         $count = 0;
         foreach (ClientRepository::clients() as $client){
-            if ($client->clientable_type == 'App\Company'){
+            if (class_basename($client->clientable) == 'Company'){
                 $count += 1;
             }
         }
@@ -59,7 +59,7 @@ class FileComposer
     {
         $count = 0;
         foreach (ClientRepository::clients() as $client){
-            if ($client->clientable_type == 'App\Retainer'){
+            if (class_basename($client->clientable) == 'Retainer'){
                 $count += 1;
             }
         }

@@ -34,7 +34,8 @@
                         <a href="#" class="btn btn-md btn-outline-primary shadow-sm" data-toggle="modal" data-target="#openClientCaseModal">
                             <i class="fa fa-balance-scale fa-sm text-dark-100"></i> Litigation
                         </a>
-                        <a href="#" class="btn btn-md btn-outline-primary shadow-sm" style="font-size: 14px;" data-toggle="modal" data-target="#openClientCoveyanceModal">
+                        <a href="#" class="btn btn-md btn-outline-primary shadow-sm" style="font-size: 14px;"
+                           data-toggle="modal" data-target="#openClientConveyanceModal">
                             <i class="fa fa-file-pdf fa-sm text-dark-100"></i> Conveyance
                         </a>
                         @can('file_edit')
@@ -54,8 +55,9 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                   @if($file->clientable_type =='App\Individual')
-                                        <form id="individualLitigation_data" method="POST" action="{{ route('admin.litigation.store') }}"
+                                   @if(class_basename($file->clientable) =='Individual')
+                                        <form id="individualLitigation_data" method="POST"
+                                              action="{{ route('admin.litigation.store') }}"
                                               enctype="multipart/form-data">
                                             @honeypot
                                             @csrf
@@ -77,7 +79,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <input type="hidden" name="client_id" value="{{ $file->clientable->id }}">
+                                                <input type="hidden" name="client_id" value="{{ $file->id }}">
                                                 <x-individualForm :file="$file->clientable"/>
                                             </div>
                                             <div class="modal-footer">
@@ -105,8 +107,8 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <input type="hidden" name="client_id" value="{{ $file->clientable->id }}">
-                                                {{--        <x-companyForm :file="$file"/>--}}
+                                                <input type="hidden" name="client_id" value="{{ $file->id }}">
+                                                <x-companyConveyanceForm :file="$file->clientable"/>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -119,8 +121,8 @@
                         </div>
                     </div>
 
-                    <div class="modal fade" id="openClientCoveyanceModal" tabindex="-1" role="dialog"
-                         aria-labelledby="openClientCoveyanceModal" aria-hidden="true">
+                    <div class="modal fade" id="openClientConveyanceModal" tabindex="-1" role="dialog"
+                         aria-labelledby="openClientConveyanceModal" aria-hidden="true">
                         <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
                                 <div class="modal-header  alert alert-primary" role="alert">
@@ -132,7 +134,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    @include('client.file.individual.conveyance_form',['file'=>$file->clientable])
+                                    @include('client.file.individual.conveyance_form',['file'=>$file])
                                 </div>
                             </div>
                         </div>
@@ -173,7 +175,7 @@
                                              aria-labelledby="clientModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-lg" role="document">
                                                 <div class="modal-content">
-                                                    <form action="{{ route('admin.individual.update',[$litigation->id]) }}"
+                                                    <form action="{{ route('admin.litigation.update',[$litigation->id]) }}"
                                                           enctype="multipart/form-data" method="POST">
                                                         @csrf
                                                         @honeypot
@@ -187,6 +189,36 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
+                                                            @if(class_basename($file->clientable) == 'Individual')
+                                                                <div class="form-row">
+                                                                    <div class="form-group col-10">
+                                                                        <select class="form-control form-control-md"  name="category" required>
+                                                                            <option disabled selected value="">Select Litigation Category</option>
+                                                                            <option value="matrimonial">A (Matrimonial)</option>
+                                                                            <option>B</option>
+                                                                            <option>C</option>
+                                                                            <option>D</option>
+                                                                            <option>E</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+                                                            @else
+                                                                <div class="form-row">
+                                                                    <div class="form-group col-10">
+                                                                        <select class="form-control form-control-md"
+                                                                                name="category" required>
+                                                                            <option disabled selected value="">
+                                                                                Select Litigation Category
+                                                                            </option>
+                                                                            <option>B</option>
+                                                                            <option>C</option>
+                                                                            <option>D</option>
+                                                                            <option>E</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            @endif
 
                                                         </div>
                                                         <div class="modal-footer">
@@ -280,9 +312,7 @@
                                                                </button>
                                                            </div>
                                                            <div class="modal-body">
-                                                               <x-individualForm
-                                                                   :file="$conveyance"
-                                                               />
+                                                               <x-individualForm :file="$conveyance"/>
                                                            </div>
                                                            <div class="modal-footer">
                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -336,21 +366,10 @@
 
     <script src="{{ asset('js/bootbox.min.js') }}"></script>
     <!-- Page level plugins -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
-
-    <!-- Custom scripts for all pages-->
-    <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
-    <script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('js/responsive.bootstrap4.min.js') }}"></script>
-
     <script type="application/javascript">
         $(document).ready(function() {
 
@@ -648,7 +667,7 @@
                                     // window.location.reload();
                                 },
                                 error: function (response) {
-                                    console.log("error "+ response);
+                                    console.log("error "+ response.responseText);
                                 }
                             });
                         }
@@ -700,7 +719,7 @@
                                     }
                                 },
                                 error: function (response) {
-                                    console.log("error "+ response);
+                                    console.log("error "+ response.responseText);
                                 }
                             });
                         }
