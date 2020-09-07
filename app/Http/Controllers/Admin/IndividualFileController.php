@@ -42,7 +42,7 @@ class IndividualFileController extends Controller
      * @param StoreIndividualFileRequest $request
      * @return RedirectResponse
      */
-    public function store(StoreIndividualFileRequest $request)
+    public function store(Request $request)
     {
 
         return redirect()->back()->with(
