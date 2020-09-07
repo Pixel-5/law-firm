@@ -64,4 +64,9 @@ class Client extends Model implements Searchable
             $url
         );
     }
+
+    public function spouse()
+    {
+        return $this->hasOne(ClientSpouse::class,'client_id');
+    }
 }

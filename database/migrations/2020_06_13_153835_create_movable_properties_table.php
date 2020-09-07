@@ -19,7 +19,7 @@ class CreateMovablePropertiesTable extends Migration
             $table->string('possession');
             $table->string('value');
             $table->string('type');
-            $table->string('title_holder');
+            $table->string('fully_paid_for');
             $table->timestamps();
             $table->softDeletes();
         });

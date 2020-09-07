@@ -6,6 +6,7 @@ use App\Facade\LitigationRepository;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
@@ -38,12 +39,12 @@ class LitigationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return Response
+     * @param Request $request
+     * @return RedirectResponse
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -57,7 +58,7 @@ class LitigationController extends Controller
         abort_if(Gate::denies('case_show'), Response::HTTP_FORBIDDEN,
             $this->message.' view litigation');
         $file =  LitigationRepository::getLitigation($id);
-        return view('lawyer.show-litigation',compact('file'));
+        return view('lawyer.litigation.show',compact('file'));
     }
 
     /**
@@ -74,7 +75,7 @@ class LitigationController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id
      * @return Response
      */

@@ -34,7 +34,8 @@
                         <a href="#" class="btn btn-md btn-outline-primary shadow-sm" data-toggle="modal" data-target="#openClientCaseModal">
                             <i class="fa fa-balance-scale fa-sm text-dark-100"></i> Litigation
                         </a>
-                        <a href="#" class="btn btn-md btn-outline-primary shadow-sm" style="font-size: 14px;" data-toggle="modal" data-target="#openClientCoveyanceModal">
+                        <a href="#" class="btn btn-md btn-outline-primary shadow-sm" style="font-size: 14px;"
+                           data-toggle="modal" data-target="#openClientConveyanceModal">
                             <i class="fa fa-file-pdf fa-sm text-dark-100"></i> Conveyance
                         </a>
                         @can('file_edit')
@@ -107,7 +108,7 @@
                                                     </div>
                                                 </div>
                                                 <input type="hidden" name="client_id" value="{{ $file->id }}">
-                                                {{--        <x-companyForm :file="$file"/>--}}
+                                                <x-companyConveyanceForm :file="$file->clientable"/>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -120,8 +121,8 @@
                         </div>
                     </div>
 
-                    <div class="modal fade" id="openClientCoveyanceModal" tabindex="-1" role="dialog"
-                         aria-labelledby="openClientCoveyanceModal" aria-hidden="true">
+                    <div class="modal fade" id="openClientConveyanceModal" tabindex="-1" role="dialog"
+                         aria-labelledby="openClientConveyanceModal" aria-hidden="true">
                         <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
                                 <div class="modal-header  alert alert-primary" role="alert">
@@ -174,7 +175,7 @@
                                              aria-labelledby="clientModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-lg" role="document">
                                                 <div class="modal-content">
-                                                    <form action="{{ route('admin.individual.update',[$litigation->id]) }}"
+                                                    <form action="{{ route('admin.litigation.update',[$litigation->id]) }}"
                                                           enctype="multipart/form-data" method="POST">
                                                         @csrf
                                                         @honeypot
@@ -188,6 +189,36 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
+                                                            @if(class_basename($file->clientable) == 'Individual')
+                                                                <div class="form-row">
+                                                                    <div class="form-group col-10">
+                                                                        <select class="form-control form-control-md"  name="category" required>
+                                                                            <option disabled selected value="">Select Litigation Category</option>
+                                                                            <option value="matrimonial">A (Matrimonial)</option>
+                                                                            <option>B</option>
+                                                                            <option>C</option>
+                                                                            <option>D</option>
+                                                                            <option>E</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+                                                            @else
+                                                                <div class="form-row">
+                                                                    <div class="form-group col-10">
+                                                                        <select class="form-control form-control-md"
+                                                                                name="category" required>
+                                                                            <option disabled selected value="">
+                                                                                Select Litigation Category
+                                                                            </option>
+                                                                            <option>B</option>
+                                                                            <option>C</option>
+                                                                            <option>D</option>
+                                                                            <option>E</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            @endif
 
                                                         </div>
                                                         <div class="modal-footer">
@@ -339,7 +370,6 @@
     <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('js/responsive.bootstrap4.min.js') }}"></script>
-
     <script type="application/javascript">
         $(document).ready(function() {
 

@@ -70,7 +70,7 @@ class Litigation extends Model implements Searchable
 
     public function matrimony()
     {
-        return $this->hasOne(MatrimonyForm::class);
+        return $this->hasOne(Matrimony::class);
     }
 
     public function getSearchResult(): SearchResult

@@ -95,7 +95,7 @@ Route::group(
         ]);
         Route::resource('initial-consultation-form', 'InitialConsultationFormController');
         Route::resource('note-form', 'NoteFormController');
-        Route::resource('matrimony-form', 'MatrimonyFormController');
+        Route::resource('matrimony-form', 'MatrimonyController');
 
     });
 

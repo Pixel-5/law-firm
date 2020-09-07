@@ -16,16 +16,18 @@ class CreateClientSpousesTable extends Migration
         Schema::create('client_spouses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('client_id')
-                ->constrained('individuals','id')
+                ->constrained('clients')
                 ->onDelete('CASCADE');
             $table->string('name');
             $table->string('physical_address');
             $table->string('postal_address');
             $table->date('marriage_date');
-            $table->date('marriage_place');
+            $table->string('marriage_place');
             $table->string('nationality');
-            $table->boolean('is_citizen')->default(true);
             $table->string('occupation');
+            $table->boolean('is_resident')->default(true);
+            $table->date('resident_since')->nullable();
+            $table->string('marriage_certificate_copy')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

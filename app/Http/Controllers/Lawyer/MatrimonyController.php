@@ -6,15 +6,17 @@ use App\Facade\LitigationRepository;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\View\View;
 
-class MatrimonyFormController extends Controller
+class MatrimonyController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -24,7 +26,7 @@ class MatrimonyFormController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Application|Factory|View
+     * @return void
      */
     public function create()
     {
@@ -34,12 +36,15 @@ class MatrimonyFormController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return RedirectResponse
      */
     public function store(Request $request)
     {
-        //
+        return redirect()->route('lawyer.litigation.show',$request->litigation_id)
+            ->with(empty(LitigationRepository::createMatrimony($request)) ?
+                ['fail' => 'Failed to add a client litigation'] :
+                ['status' => 'Successfully added client litigation']);
     }
 
     /**
@@ -57,20 +62,21 @@ class MatrimonyFormController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Application|Factory|View|void
      */
     public function edit($id)
     {
-        //
+        $file = LitigationRepository::getLitigation($id);
+        return view('lawyer.litigation.matrimony.edit',compact('file'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param int $id
+     * @return void
      */
     public function update(Request $request, $id)
     {
@@ -80,8 +86,8 @@ class MatrimonyFormController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return void
      */
     public function destroy($id)
     {

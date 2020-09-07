@@ -49,6 +49,18 @@
                           </div>
                   </div>
                 @endif
+                @if(Session::has('fail'))
+                    <div class="container-fluid">
+                        <div class="alert  alert-danger alert-dismissible fade {{ Session::has('status')? 'show':'hide' }}"
+                             role="alert" id="status_alert">
+                            <strong class="status">Alert!</strong>
+                            {{  Session::get('fail') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                @endif
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     @hasSection('title')
                         <h1 class="h3 mb-0 text-gray-800">@yield('title')</h1>

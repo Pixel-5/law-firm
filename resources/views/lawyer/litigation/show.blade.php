@@ -266,7 +266,7 @@
                             <i class="fa fa-file-contract fa-sm text-dark-100"></i> Initial Consultation Form
                         </a>
                     @endcan
-                    @if($file->category =='matrimony' && $file->consultation != null)
+                    @if($file->category === 'matrimony' && ($file->consultation !== null && $file->matrimony === null))
                         @can('case_create')
                             <a href="{{ route('lawyer.matrimony-form.show',['matrimony_form'=>$file]) }}"
                                class="btn btn-md btn-outline-secondary shadow-sm">
@@ -274,8 +274,16 @@
                             </a>
                         @endcan
                     @endif
-                    @if(($file->consultation != null &&
-                        ($file->category !='matrimony' || ($file->category =='matrimony' && $file->matrimony != null))))
+                        @if($file->category === 'matrimony' && ($file->consultation !== null && $file->matrimony !== null))
+                            @can('case_create')
+                                <a href="{{ route('lawyer.matrimony-form.edit',['matrimony_form'=>$file]) }}"
+                                   class="btn btn-md btn-outline-success shadow-sm">
+                                    <i class="fa fa-pencil-alt fa-sm text-dark-100"></i> Matrimony Form
+                                </a>
+                            @endcan
+                        @endif
+                    @if(($file->consultation != null & ($file->category != 'matrimony' ||
+                            ($file->category == 'matrimony' && $file->matrimony != null))))
                         @can('case_create')
                             <a href="#" class="btn btn-md btn-outline-info shadow-sm" data-toggle="modal"
                                data-target="#openFileNoteFormModal">

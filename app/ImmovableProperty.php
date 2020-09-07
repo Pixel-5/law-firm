@@ -11,6 +11,11 @@ class ImmovableProperty extends Model
         'type',
         'development',
         'value',
-        'title_holder',
+        'fully_paid_for',
     ];
+
+    public function property()
+    {
+        return $this->morphOne(ClientProperty::class);
+    }
 }
