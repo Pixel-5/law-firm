@@ -20,10 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2a36650-46ac-44ee-b4e4-5b2af27c0aaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_053430_create_case_categories_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_053601_create_case_sub_categories_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_053902_create_initial_consultation_forms_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_13_182210_create_initial_consultation_forms_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_13_182156_create_client_type_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Individual.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Individual.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/client/cases/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/cases/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,7 +258,8 @@
       <workItem from="1599057350396" duration="42619000" />
       <workItem from="1599170007205" duration="2071000" />
       <workItem from="1599284013415" duration="8324000" />
-      <workItem from="1599348361126" duration="40318000" />
+      <workItem from="1599348361126" duration="40994000" />
+      <workItem from="1599636197444" duration="961000" />
     </task>
     <servers />
   </component>

@@ -234,11 +234,11 @@
                                         <th>{{ $litigation->category }}</th>
                                         <td>{{ $litigation->user != null ? $litigation->user->name: "" }}</td>
                                         <td>
-                                            @can('case_access')
-                                                <a class="btn btn-info btn-sm  text-center text-white"
-                                                   href="{{ route('admin.client.show', $litigation->id) }}">
-                                                    <i class="fa fa-eye"></i> view</a>
-                                            @endcan
+{{--                                            @can('case_access')--}}
+{{--                                                <a class="btn btn-info btn-sm  text-center text-white"--}}
+{{--                                                   href="{{ route('admin.client.show', $litigation->id) }}">--}}
+{{--                                                    <i class="fa fa-eye"></i> view</a>--}}
+{{--                                            @endcan--}}
                                             @can('case_access')
                                                 @include('partials.dropdown-lawyers',[ 'user' => $litigation->user])
                                             @endcan
