@@ -20,7 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2a36650-46ac-44ee-b4e4-5b2af27c0aaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Individual.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Individual.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/MatrimonyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/MatrimonyController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/View/Composers/CaseComposer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/View/Composers/CaseComposer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/ClientRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/ClientRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/activity_log.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/activity_log.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/individual-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/individual-form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/top-nav-bar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/top-nav-bar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/partials/dropdown-lawyers.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/dropdown-lawyers.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -257,7 +264,8 @@
       <workItem from="1599170007205" duration="2071000" />
       <workItem from="1599284013415" duration="8324000" />
       <workItem from="1599348361126" duration="40994000" />
-      <workItem from="1599636197444" duration="1686000" />
+      <workItem from="1599636197444" duration="6976000" />
+      <workItem from="1599798709525" duration="277000" />
     </task>
     <servers />
   </component>

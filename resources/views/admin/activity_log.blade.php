@@ -198,10 +198,13 @@
 
                                 <tbody>
                                 @foreach($filesActivityLog->get() as $activityLog)
+                                    @if($activityLog->subject !== null)
                                     <tr>
                                         <td class="d-xl-none">
+
                                             <strong class="alert-heading"> {{ $activityLog->subject->number }} was
                                                 {{ $activityLog->description }}</strong>
+
                                         </td>
                                         <td>
                                             <div class="alert {{ $activityLog->description === 'created'? 'alert-success':
@@ -211,9 +214,9 @@
                                                     {{ $activityLog->causer === null ? 'System Developer':
                                                        $activityLog->causer->name }} {{ $activityLog->description }}
                                                     file
-                                                    {{ $activityLog->subject->clientable->number }} for
-                                                    {{ class_basename($activityLog->subject->clientable) }} client
-                                                    {{  $activityLog->subject->clientable->name }}
+                                                    {{ $activityLog->subject->clientable != null ?$activityLog->subject->clientable->number : ''}} for
+                                                    {{ $activityLog->subject->clientable != null? class_basename($activityLog->subject->clientable) :''}} client
+                                                    {{  $activityLog->subject->clientable != null? $activityLog->subject->clientable->name : ''}}
                                                     @if(class_basename($activityLog->subject->clientable) == 'Individual')
                                                     {{ $activityLog->subject->clientable->surname }}
                                                     @endif
@@ -247,6 +250,7 @@
                                             </div>
                                         </td>
                                     </tr>
+                                    @endif
                                 @endforeach
                                 </tbody>
                             </table>
@@ -368,6 +372,7 @@
 
                                     <tbody>
                                     @foreach($conveyancingActivityLog->get() as $activityLog)
+                                        @if($activityLog->subject != null)
                                         <tr>
                                             <td class="d-xl-none">
                                                 <strong class="alert-heading"> {{ $activityLog->subject->number }}
@@ -416,6 +421,7 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                        @endif
                                     @endforeach
                                     </tbody>
                                 </table>

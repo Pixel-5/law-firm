@@ -56,7 +56,7 @@ class MatrimonyController extends Controller
     public function show($id)
     {
         $file = LitigationRepository::getLitigation($id);
-        return view('lawyer.matrimony-form',compact('file'));
+        return view('lawyer.litigation.matrimony.show',compact('file'));
     }
 
     /**

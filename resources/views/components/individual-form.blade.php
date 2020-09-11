@@ -152,13 +152,10 @@
         </div>
         @if($file == null)
             <div class="form-group">
-                <div class="custom-file">
-                    <input type="file"
-                           name="docs[]" class="form-control-file"
-                            multiple>
-                    <label class="custom-file-label" for="validatedCustomFile">
-                        Upload supporting docs...</label>
-                    <div class="invalid-feedback">Scan Supporting Documents</div>
+                <label for="attach_agreement_copies"> Scan documents</label>
+                <div class="file-upload-wrapper">
+                    <input type="file" id="docs" multiple
+                           name="docs[]" class="file-upload" />
                 </div>
             </div>
         @endif
