@@ -27,7 +27,7 @@ class CompanyFileRepository extends AbstractBaseRepository implements ClientRepo
      */
     public function update(int $id, array $attributes): bool
     {
-        // TODO: Implement update() method.
+        return $this->find($id)->update($attributes);
     }
 
     public function getFile($id)

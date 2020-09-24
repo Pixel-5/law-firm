@@ -19,9 +19,9 @@ class CreateActivityLogTable extends Migration
             $table->string('subject_type')->nullable();
             $table->unsignedBigInteger('causer_id')->nullable();
             $table->string('causer_type')->nullable();
+            $table->string('status')->default('pending');
             $table->json('properties')->nullable();
             $table->timestamps();
-
             $table->index('log_name');
             $table->index(['subject_id', 'subject_type'], 'subject');
             $table->index(['causer_id', 'causer_type'], 'causer');

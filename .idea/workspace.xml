@@ -20,14 +20,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2a36650-46ac-44ee-b4e4-5b2af27c0aaf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/client/conveyancing/show.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/client/litigation/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/MatrimonyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Lawyer/MatrimonyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/View/Composers/CaseComposer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/View/Composers/CaseComposer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/ClientRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/ClientRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/LitigationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/LitigationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Individual.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Individual.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/CompanyFileRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/CompanyFileRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/ConveyancingRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/ConveyancingRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Eloquent/LitigationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Eloquent/LitigationRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_04_205201_create_activity_log_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_04_205201_create_activity_log_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/activity_log.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/activity_log.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/client/conveyancing/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/client/conveyancing/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/client/litigation/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/client/litigation/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/client/cases/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/cases/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/client/cases/pending.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/cases/pending.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/client/file/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/file/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/components/individual-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/individual-form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/top-nav-bar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/top-nav-bar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partials/dropdown-lawyers.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/dropdown-lawyers.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/litigation/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/litigation/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lawyer/pending-cases.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lawyer/pending-cases.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/partials/files/company-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/files/company-form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,16 +229,16 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/resources/views/client/file/retainer" />
-      <recent name="$PROJECT_DIR$/resources/views/client/file/individual" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\MoffatMore\Documents\Projects\law-firm\app\Http\Controllers" />
       <recent name="C:\Users\MoffatMore\Documents\Projects\law-firm\resources\views\lawyer\litigation\matrimony" />
       <recent name="C:\Users\MoffatMore\Documents\Projects\law-firm\resources\views\lawyer\litigation" />
       <recent name="C:\Users\MoffatMore\Documents\Projects\law-firm\resources\views\admin\client" />
       <recent name="C:\Users\MoffatMore\Documents\Projects\law-firm\app\Http\Controllers\Lawyer" />
-      <recent name="C:\Users\MoffatMore\Documents\Projects\law-firm\app\Http\Controllers\Admin" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/client/file/retainer" />
+      <recent name="$PROJECT_DIR$/resources/views/client/file/individual" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -265,7 +279,18 @@
       <workItem from="1599284013415" duration="8324000" />
       <workItem from="1599348361126" duration="40994000" />
       <workItem from="1599636197444" duration="6976000" />
-      <workItem from="1599798709525" duration="277000" />
+      <workItem from="1599798709525" duration="483000" />
+      <workItem from="1599799785910" duration="6815000" />
+      <workItem from="1600413519146" duration="916000" />
+      <workItem from="1600414748599" duration="438000" />
+      <workItem from="1600417433800" duration="11947000" />
+      <workItem from="1600448787369" duration="1982000" />
+      <workItem from="1600507541700" duration="598000" />
+      <workItem from="1600533535760" duration="12237000" />
+      <workItem from="1600775540198" duration="1823000" />
+      <workItem from="1600952227544" duration="1880000" />
+      <workItem from="1600959635423" duration="594000" />
+      <workItem from="1600962201645" duration="2647000" />
     </task>
     <servers />
   </component>
@@ -325,11 +350,11 @@
     <state x="-1000" y="594" key="NewPhpClassDialog/0.0.1280.720/-1600.374.1600.900@-1600.374.1600.900" timestamp="1599099927586" />
     <state x="480" y="176" width="599" height="526" key="NewPhpClassDialog/0.0.1280.720@0.0.1280.720" timestamp="1598838069141" />
     <state x="509" y="166" width="577" height="569" key="NewPhpClassDialog/0.27.1600.872@0.27.1600.872" timestamp="1595038067433" />
-    <state x="478" y="278" width="324" height="157" key="NewPhpFileDialog" timestamp="1599474300346">
+    <state x="478" y="278" width="324" height="157" key="NewPhpFileDialog" timestamp="1600423701209">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="-1002" y="722" key="NewPhpFileDialog/0.0.1280.720/-1600.374.1600.900@-1600.374.1600.900" timestamp="1599018833799" />
-    <state x="478" y="278" width="324" height="157" key="NewPhpFileDialog/0.0.1280.720@0.0.1280.720" timestamp="1599474300346" />
+    <state x="478" y="278" width="324" height="157" key="NewPhpFileDialog/0.0.1280.720@0.0.1280.720" timestamp="1600423701209" />
     <state x="598" y="364" width="399" height="157" key="NewPhpFileDialog/0.27.1600.872@0.27.1600.872" timestamp="1595045742391" />
     <state x="-1412" y="374" key="SettingsEditor" timestamp="1599010796882">
       <screen x="-1600" y="374" width="1600" height="900" />
@@ -340,15 +365,17 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="236" y="59" key="VCS.ChangeListViewerDialog/0.0.1280.720@0.0.1280.720" timestamp="1598035672696" />
-    <state x="-1144" y="392" key="run.anything.popup" timestamp="1599096992022">
-      <screen x="-1600" y="374" width="1600" height="900" />
+    <state x="365" y="14" key="run.anything.popup" timestamp="1600537206730">
+      <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="-1144" y="392" key="run.anything.popup/0.0.1280.720/-1600.374.1600.900@-1600.374.1600.900" timestamp="1599096992022" />
-    <state x="-1139" y="559" width="840" height="700" key="search.everywhere.popup" timestamp="1598913719144">
-      <screen x="-1600" y="374" width="1600" height="900" />
+    <state x="365" y="14" key="run.anything.popup/0.0.1280.720@0.0.1280.720" timestamp="1600537206730" />
+    <state x="489" y="89" width="840" height="700" key="search.everywhere.popup" timestamp="1599808360497">
+      <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="-1139" y="559" width="840" height="700" key="search.everywhere.popup/0.0.1280.720/-1600.374.1600.900@-1600.374.1600.900" timestamp="1598913719144" />
-    <state x="369" y="148" width="672" height="560" key="search.everywhere.popup/0.0.1280.720@0.0.1280.720" timestamp="1598038621857" />
+    <state x="489" y="89" width="840" height="700" key="search.everywhere.popup/0.0.1280.720/3200.0.1600.900@0.0.1280.720" timestamp="1599808360497" />
+    <state x="369" y="148" width="672" height="560" key="search.everywhere.popup/0.0.1280.720@0.0.1280.720" timestamp="1599800466932" />
     <state x="463" y="206" width="672" height="678" key="search.everywhere.popup/0.27.1600.872@0.27.1600.872" timestamp="1595178861163" />
   </component>
 </project>

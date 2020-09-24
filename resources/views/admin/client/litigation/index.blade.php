@@ -79,7 +79,7 @@
                                     <td>
                                         @can('case_access')
                                             <a class="btn btn-info btn-sm  text-center text-white"
-                                               href="{{ route('admin.client.show', $case->client->clientable->id) }}">
+                                               href="{{ route('client.show', $case->client->clientable->id) }}">
                                                 <i class="fa fa-eye"></i> view</a>
                                         @endcan
                                         @can('case_access')

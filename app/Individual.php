@@ -81,7 +81,7 @@ class Individual extends Model implements Searchable
 
     public function getSearchResult(): SearchResult
     {
-        $url = route('files.show', $this->id);
+        $url = route('client.show', $this->id);
         return new SearchResult(
             $this,
             $this->number,

@@ -58,13 +58,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin',
 
     //Forms
     Route::resource('conveyancing', 'ConveyancingController');
-    Route::resource('client', 'ClientController');
     Route::resource('litigation', 'LitigationController');
 
     //default dashboard routes
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
     Route::get('/chart', 'HomeController@chart')->name('chart');
     Route::get('/pending/', 'HomeController@pendingCases')->name('view.pending-cases');
+
 });
 
 //lawyer routes, get & post
@@ -118,10 +118,22 @@ Route::group(['middleware' => ['auth', 'role:lawyer,super,admin']], function (){
     Route::resource('user','UserController')->only([
         'update'
     ]);
+    Route::resource('client', 'ClientController');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'super.', 'namespace' => 'Admin','middleware' => ['auth', 'role:super']],
     function (){
-    Route::get('/activity-logs', 'HomeController@activityLogs')->name('activity.logs');
+        Route::get('/activity-logs', 'HomeController@activityLogs')->name('activity.logs');
+        Route::get('/litigation/{litigation}/updated/{activity}', 'HomeController@showUpdatedLitigation')->name('updated-litigation');
+        Route::get('/litigation/{id}/deleted/{activity}', 'HomeController@showDeletedLitigation')->name('deleted-litigation');
+        Route::get('/litigation/{id}/activity/{activity}/restore', 'HomeController@restoreDeletedLitigation')->name('restore-litigation');
+
+        Route::get('/conveyancing/{id}/updated/{activity}', 'HomeController@showUpdatedConveyancing')->name('updated-conveyancing');
+        Route::get('/conveyancing/{id}/deleted/{activity}', 'HomeController@deletedConveyancing')->name('deleted-conveyancing');
+        Route::get('/client/{id}/updated/{activity}', 'HomeController@showUpdatedClient')->name('updated-client');
+        Route::get('/client/{id}/deleted/{activity}', 'HomeController@showDeletedClient')->name('deleted-client');
+
+        Route::get('/activity/{activity}', 'HomeController@resolveActivity')->name('resolve-activity');
+
 });
 

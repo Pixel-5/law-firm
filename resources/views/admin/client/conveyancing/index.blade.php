@@ -84,7 +84,7 @@
                                     <td>
                                         @can('case_access')
                                             <a class="btn btn-info btn-sm  text-center text-white"
-                                               href="{{ route('admin.client.show', $conveyance->id) }}">
+                                               href="{{ route('client.show', $conveyance->id) }}">
                                                 <i class="fa fa-eye"></i> view</a>
                                         @endcan
                                         @can('case_access')

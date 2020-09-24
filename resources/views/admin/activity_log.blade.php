@@ -29,7 +29,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a
-                                            href="{{ route('admin.files.index') }}">Users Logged In Today</a></div>
+                                        href="{{ route('admin.files.index') }}">Users Logged In Today</a></div>
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-auto">
                                         <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
@@ -123,7 +123,7 @@
                 <!-- Card Header - Accordion -->
                 <a href="#collapseCardExample1" class="d-block card-header py-3" data-toggle="collapse" role="button"
                    aria-expanded="true" aria-controls="collapseCardExample1">
-                    <h5 class="m-0 font-weight-bold text-primary">  User Activities <span class="badge badge-primary">
+                    <h5 class="m-0 font-weight-bold text-primary"> User Activities <span class="badge badge-primary">
                                        {{ $usersActivityLog->count() }}</span></h5>
                 </a>
                 <!-- Card Content - Collapse -->
@@ -131,7 +131,7 @@
                     <div class="card-body">
                         <div class="table-responsive">
                             <table id="userActivities" cellspacing="0" width="100%"
-                                   class="table display hover table-light table-bordered nowrap" >
+                                   class="table display hover table-light table-bordered nowrap">
                                 <thead>
                                 <tr>
                                     <th></th>
@@ -188,7 +188,8 @@
                 <div class="collapse hide" id="collapseCardExample2">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="fileActivities" cellspacing="0" width="100%" class="table display hover table-light table-bordered nowrap" >
+                            <table id="fileActivities" cellspacing="0" width="100%"
+                                   class="table display hover table-light table-bordered nowrap">
                                 <thead>
                                 <tr>
                                     <th></th>
@@ -199,57 +200,60 @@
                                 <tbody>
                                 @foreach($filesActivityLog->get() as $activityLog)
                                     @if($activityLog->subject !== null)
-                                    <tr>
-                                        <td class="d-xl-none">
+                                        <tr>
+                                            <td class="d-xl-none">
 
-                                            <strong class="alert-heading"> {{ $activityLog->subject->number }} was
-                                                {{ $activityLog->description }}</strong>
+                                                <strong class="alert-heading"> {{ $activityLog->subject->number }} was
+                                                    {{ $activityLog->description }}</strong>
 
-                                        </td>
-                                        <td>
-                                            <div class="alert {{ $activityLog->description === 'created'? 'alert-success':
+                                            </td>
+                                            <td>
+                                                <div class="alert {{ $activityLog->description === 'created'? 'alert-success':
                                            ($activityLog->description === 'updated'? 'alert-warning': 'alert-danger')}}"
-                                                 role="alert">
-                                                <div class="searchable-title">
-                                                    {{ $activityLog->causer === null ? 'System Developer':
-                                                       $activityLog->causer->name }} {{ $activityLog->description }}
-                                                    file
-                                                    {{ $activityLog->subject->clientable != null ?$activityLog->subject->clientable->number : ''}} for
-                                                    {{ $activityLog->subject->clientable != null? class_basename($activityLog->subject->clientable) :''}} client
-                                                    {{  $activityLog->subject->clientable != null? $activityLog->subject->clientable->name : ''}}
-                                                    @if(class_basename($activityLog->subject->clientable) == 'Individual')
-                                                    {{ $activityLog->subject->clientable->surname }}
-                                                    @endif
-                                                    {{ \Carbon\CarbonImmutable::parse($activityLog->created_at)->calendar() }}
+                                                     role="alert">
+                                                    <div class="searchable-title">
+                                                        {{ $activityLog->causer === null ? 'System Developer':
+                                                           $activityLog->causer->name }} {{ $activityLog->description }}
+                                                        file
+                                                        {{ $activityLog->subject->clientable != null ?$activityLog->subject->clientable->number : ''}}
+                                                        for
+                                                        {{ $activityLog->subject->clientable != null? class_basename($activityLog->subject->clientable) :''}}
+                                                        client
+                                                        {{  $activityLog->subject->clientable != null? $activityLog->subject->clientable->name : ''}}
+                                                        @if(class_basename($activityLog->subject->clientable) == 'Individual')
+                                                            {{ $activityLog->subject->clientable->surname }}
+                                                        @endif
+                                                        {{ \Carbon\CarbonImmutable::parse($activityLog->created_at)->calendar() }}
 
-                                                </div>
-                                                @if ($activityLog->description === 'updated')
-                                                    <a class="alert alert-link" data-toggle="collapse" href="#content{{ $activityLog->id }}"
-                                                       aria-expanded="false">
-                                                        show change details of file
-                                                    </a>
-                                                    <div class="collapse" id="content{{ $activityLog->id }}">
-                                                        <span class="badge badge-primary">New</span>
-                                                        <ul>
-                                                            @foreach($activityLog->getExtraProperty('attributes') as $key=> $attribute)
-                                                                <li>  {{ $key . ': ' }}
-                                                                    {{ $attribute ??  'None' }}
-                                                                </li>
-                                                            @endforeach
-                                                        </ul>
-                                                        <span class="badge badge-secondary">Old</span>
-                                                        <ul>
-                                                            @foreach($activityLog->getExtraProperty('old') as $key=> $attribute)
-                                                                <li> {{ $key . ': ' }}
-                                                                    {{ $attribute ??  'None' }}
-                                                                </li>
-                                                            @endforeach
-                                                        </ul>
                                                     </div>
-                                                @endif
-                                            </div>
-                                        </td>
-                                    </tr>
+                                                    @if ($activityLog->description === 'updated')
+                                                        <a class="alert alert-link" data-toggle="collapse"
+                                                           href="#content{{ $activityLog->id }}"
+                                                           aria-expanded="false">
+                                                            show change details of file
+                                                        </a>
+                                                        <div class="collapse" id="content{{ $activityLog->id }}">
+                                                            <span class="badge badge-primary">New</span>
+                                                            <ul>
+                                                                @foreach($activityLog->getExtraProperty('attributes') as $key=> $attribute)
+                                                                    <li>  {{ $key . ': ' }}
+                                                                        {{ $attribute ??  'None' }}
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+                                                            <span class="badge badge-secondary">Old</span>
+                                                            <ul>
+                                                                @foreach($activityLog->getExtraProperty('old') as $key=> $attribute)
+                                                                    <li> {{ $key . ': ' }}
+                                                                        {{ $attribute ??  'None' }}
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                            </td>
+                                        </tr>
                                     @endif
                                 @endforeach
                                 </tbody>
@@ -276,7 +280,7 @@
                             <!-- Begin Page Content -->
                             <div class="table-responsive">
                                 <table id="caseActivities" cellspacing="0" width="100%"
-                                       class="table display hover table-light table-bordered nowrap" >
+                                       class="table display hover table-light table-bordered nowrap">
                                     <thead>
                                     <tr>
                                         <th></th>
@@ -305,7 +309,8 @@
                                                         {{ \Carbon\CarbonImmutable::parse($activityLog->created_at)->calendar() }}
                                                         <br>
                                                         @if ($activityLog->description === 'updated')
-                                                            <a class="alert alert-link" data-toggle="collapse" href="#content{{ $activityLog->id }}"
+                                                            <a class="alert alert-link" data-toggle="collapse"
+                                                               href="#content{{ $activityLog->id }}"
                                                                aria-expanded="false">
                                                                 show change details of case
                                                             </a>
@@ -328,6 +333,36 @@
                                                                     @endforeach
                                                                 </ul>
                                                             </div>
+                                                            <span class="badge {{ $activityLog->status === 'pending'?
+                                                                    'badge-warning':'badge-primary' }}">
+                                                                   {{ $activityLog->status }}
+                                                            </span>
+
+                                                        @elseif($activityLog->description === 'deleted')
+                                                            <span class="badge {{ $activityLog->status === 'pending'?
+                                                                    'badge-warning':'badge-primary' }}">
+                                                                   {{ $activityLog->status }}
+                                                            </span>
+                                                        @endif
+                                                        @if($activityLog->status == 'pending')
+                                                            <a href="{{ route(
+                                                                    $activityLog->description === 'updated' ?
+                                                                    'super.updated-litigation':'super.deleted-litigation',[
+                                                                               $activityLog->subject->id,
+                                                                               $activityLog->id
+                                                                           ]) }}">
+                                                                   <span class="badge btn-outline-info">
+                                                                       Review
+                                                                   </span>
+                                                            </a>
+                                                        @endif
+                                                        @if($activityLog->status == 'reviewed')
+                                                            <a href="{{ route('super.resolve-activity',
+                                                                                    $activityLog->id) }}">
+                                                                   <span class="badge btn-outline-info">
+                                                                       Resolve
+                                                                   </span>
+                                                            </a>
                                                         @endif
                                                     </div>
 
@@ -362,7 +397,7 @@
                             <!-- Begin Page Content -->
                             <div class="table-responsive">
                                 <table id="caseActivities" cellspacing="0" width="100%"
-                                       class="table display hover table-light table-bordered nowrap" >
+                                       class="table display hover table-light table-bordered nowrap">
                                     <thead>
                                     <tr>
                                         <th></th>
@@ -373,54 +408,80 @@
                                     <tbody>
                                     @foreach($conveyancingActivityLog->get() as $activityLog)
                                         @if($activityLog->subject != null)
-                                        <tr>
-                                            <td class="d-xl-none">
-                                                <strong class="alert-heading"> {{ $activityLog->subject->number }}
-                                                    was {{ $activityLog->description }}</strong>
-                                            </td>
-                                            <td>
-                                                <div class="alert {{ $activityLog->description === 'created'? 'alert-success':
+                                            <tr>
+                                                <td class="d-xl-none">
+                                                    <strong class="alert-heading"> {{ $activityLog->subject->number }}
+                                                        was {{ $activityLog->description }}</strong>
+                                                </td>
+                                                <td>
+                                                    <div class="alert {{ $activityLog->description === 'created'? 'alert-success':
                                         ($activityLog->description === 'updated'? 'alert-warning': 'alert-danger')}}"
-                                                     role="alert">
-                                                    <div>
-                                                        {{ $activityLog->causer === null ? 'System Developer':
-                                                      $activityLog->causer->name }} {{ $activityLog->description }}
-                                                        conveyancing
-                                                        {{ $activityLog->subject->number }}
-                                                        for file
-                                                        {{ $activityLog->subject->client->clientable->number }}
-                                                        {{ \Carbon\CarbonImmutable::parse($activityLog->created_at)->calendar() }}
-                                                        <br>
-                                                        @if ($activityLog->description === 'updated')
-                                                            <a class="alert alert-link" data-toggle="collapse" href="#content{{ $activityLog->id }}"
-                                                               aria-expanded="false">
-                                                                show change details of case
-                                                            </a>
-                                                            <div class="collapse" id="content{{ $activityLog->id }}">
-                                                                <span class="badge badge-primary">New</span>
-                                                                <ul>
-                                                                    @foreach($activityLog->getExtraProperty('attributes') as $key=> $attribute)
-                                                                        <li>
-                                                                            {{ $key === 'user.name'? 'Lawyer: ': $key.': ' }}
-                                                                            {{ $attribute ??  'None' }}
-                                                                        </li>
-                                                                    @endforeach
-                                                                </ul>
-                                                                <span class="badge badge-secondary">Old</span>
-                                                                <ul>
-                                                                    @foreach($activityLog->getExtraProperty('old') as $key=> $attribute)
-                                                                        <li> {{ $key === 'user.name'? 'Lawyer:': $key. ': ' }}
-                                                                            {{ $attribute ??  'None' }}
-                                                                        </li>
-                                                                    @endforeach
-                                                                </ul>
-                                                            </div>
-                                                        @endif
+                                                         role="alert">
+                                                        <div>
+                                                            {{ $activityLog->causer === null ? 'System Developer':
+                                                          $activityLog->causer->name }} {{ $activityLog->description }}
+                                                            conveyancing
+                                                            {{ $activityLog->subject->number }}
+                                                            for file
+                                                            {{ $activityLog->subject->client->clientable->number }}
+                                                            {{ \Carbon\CarbonImmutable::parse($activityLog->created_at)->calendar() }}
+                                                            <br>
+                                                            @if ($activityLog->description === 'updated')
+                                                                <a class="alert alert-link" data-toggle="collapse"
+                                                                   href="#content{{ $activityLog->id }}"
+                                                                   aria-expanded="false">
+                                                                    show change details of case
+                                                                </a>
+                                                                <div class="collapse"
+                                                                     id="content{{ $activityLog->id }}">
+                                                                    <span class="badge badge-primary">New</span>
+                                                                    <ul>
+                                                                        @foreach($activityLog->getExtraProperty('attributes') as $key=> $attribute)
+                                                                            <li>
+                                                                                {{ $key === 'user.name'? 'Lawyer: ': $key.': ' }}
+                                                                                {{ $attribute ??  'None' }}
+                                                                            </li>
+                                                                        @endforeach
+                                                                    </ul>
+                                                                    <span class="badge badge-secondary">Old</span>
+                                                                    <ul>
+                                                                        @foreach($activityLog->getExtraProperty('old') as $key=> $attribute)
+                                                                            <li> {{ $key === 'user.name'? 'Lawyer:': $key. ': ' }}
+                                                                                {{ $attribute ??  'None' }}
+                                                                            </li>
+                                                                        @endforeach
+                                                                    </ul>
+                                                                </div>
+                                                                <a href="#">
+                                                                   <span class="badge {{ $activityLog->status === 'pending'?
+                                                                        'badge-warning':'badge-primary' }}">
+                                                                       {{ $activityLog->status }}
+                                                                   </span>
+                                                                </a>
+                                                                @if($activityLog->status == 'pending')
+                                                                    <a href="#">
+                                                                       <span class="badge badge-outline-info">
+                                                                           review
+                                                                       </span>
+                                                                    </a>
+                                                                @endif
+                                                                @if($activityLog->status == 'reviewed')
+                                                                    <a href="#">
+                                                                       <span class="badge badge-outline-info">
+                                                                           resolve
+                                                                       </span>
+                                                                    </a>
+                                                                @endif
+                                                            @elseif($activityLog->description === 'deleted')
+                                                                <span class="badge {{ $activityLog->status === 'pending'?
+                                                                        'badge-warning':'badge-primary' }}">
+                                                                       {{ $activityLog->status }}
+                                                                   </span>
+                                                            @endif
+                                                        </div>
                                                     </div>
-
-                                                </div>
-                                            </td>
-                                        </tr>
+                                                </td>
+                                            </tr>
                                         @endif
                                     @endforeach
                                     </tbody>
@@ -440,7 +501,8 @@
                 <!-- Card Header - Accordion -->
                 <a href="#collapseCardExample4" class="d-block card-header py-3" data-toggle="collapse" role="button"
                    aria-expanded="true" aria-controls="collapseCardExample4">
-                    <h5 class="m-0 font-weight-bold text-primary">  Schedule Activities <span class="badge badge-primary">
+                    <h5 class="m-0 font-weight-bold text-primary"> Schedule Activities <span
+                            class="badge badge-primary">
                                        {{ $schedulesActivityLog->count() }}</span></h5>
                 </a>
                 <!-- Card Content - Collapse -->
@@ -450,7 +512,7 @@
                             <!-- Begin Page Content -->
                             <div class="table-responsive">
                                 <table id="scheduleActivities" cellspacing="0" width="100%"
-                                       class="table display hover table-light table-bordered nowrap" >
+                                       class="table display hover table-light table-bordered nowrap">
                                     <thead>
                                     <tr>
                                         <th></th>
@@ -462,7 +524,8 @@
                                     @foreach($schedulesActivityLog->get() as $activityLog)
                                         <tr>
                                             <td class="d-xl-none">
-                                                <strong class="alert-heading">  {{ $activityLog->subject->case->number  }}
+                                                <strong
+                                                    class="alert-heading">  {{ $activityLog->subject->case->number  }}
                                                     has been {{ $activityLog->description }}</strong>
                                             </td>
                                             <td>
@@ -476,7 +539,8 @@
                                                         {{ \Carbon\CarbonImmutable::parse($activityLog->created_at)->calendar() }}
                                                         <br>
                                                         @if ($activityLog->description === 'updated')
-                                                            <a class="alert alert-link" data-toggle="collapse" href="#content{{ $activityLog->id }}"
+                                                            <a class="alert alert-link" data-toggle="collapse"
+                                                               href="#content{{ $activityLog->id }}"
                                                                aria-expanded="false">
                                                                 show change details of a schedule
                                                             </a>
@@ -515,121 +579,121 @@
         </div>
     </div>
 @endsection
-   @section('custom-scripts')
-       <!-- Custom scripts for all pages-->
+@section('custom-scripts')
+    <!-- Custom scripts for all pages-->
 
-       <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
-       <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
-       <script src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
-       <script src="{{ asset('js/responsive.bootstrap4.min.js') }}"></script>
-           <script type="application/javascript">
-               $(document).ready(function() {
-                   $('#fileActivities').DataTable( {
-                       responsive: {
-                           details: {
-                               display: $.fn.dataTable.Responsive.display.modal( {
-                                   header: function ( row ) {
-                                       let data = row.data();
-                                       return data[0];
-                                   },
-                               } ),
-                               renderer: function ( api, rowIdx, columns ) {
-                                   var data = $.map( columns, function ( col, i ) {
-                                       return col.columnIndex === 1?
-                                           '<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
-                                           '<td>'+col.title+':'+'</td> '+
-                                           '<td>'+col.data+'</td>'+
-                                           '</tr>' :
-                                           '';
-                                   } ).join('');
+    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('js/responsive.bootstrap4.min.js') }}"></script>
+    <script type="application/javascript">
+        $(document).ready(function () {
+            $('#fileActivities').DataTable({
+                responsive: {
+                    details: {
+                        display: $.fn.dataTable.Responsive.display.modal({
+                            header: function (row) {
+                                let data = row.data();
+                                return data[0];
+                            },
+                        }),
+                        renderer: function (api, rowIdx, columns) {
+                            var data = $.map(columns, function (col, i) {
+                                return col.columnIndex === 1 ?
+                                    '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
+                                    '<td>' + col.title + ':' + '</td> ' +
+                                    '<td>' + col.data + '</td>' +
+                                    '</tr>' :
+                                    '';
+                            }).join('');
 
-                                   return data;
-                               }
-                           },
+                            return data;
+                        }
+                    },
 
-                           "paging": true,
-                           "scrollY": false,
-                           "scrollX": false
-                       },
-                   } );
-                   $('#caseActivities').DataTable( {
-                       responsive: {
-                           details: {
-                               display: $.fn.dataTable.Responsive.display.modal( {
-                                   header: function ( row ) {
-                                       let data = row.data();
-                                       return data[0];
-                                   },
-                               } ),
-                               renderer: function ( api, rowIdx, columns ) {
-                                   var data = $.map( columns, function ( col, i ) {
-                                       return col.columnIndex === 1?
-                                           '<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
-                                           '<td>'+col.title+':'+'</td> '+
-                                           '<td>'+col.data+'</td>'+
-                                           '</tr>' :
-                                           '';
-                                   } ).join('');
+                    "paging": true,
+                    "scrollY": false,
+                    "scrollX": false
+                },
+            });
+            $('#caseActivities').DataTable({
+                responsive: {
+                    details: {
+                        display: $.fn.dataTable.Responsive.display.modal({
+                            header: function (row) {
+                                let data = row.data();
+                                return data[0];
+                            },
+                        }),
+                        renderer: function (api, rowIdx, columns) {
+                            var data = $.map(columns, function (col, i) {
+                                return col.columnIndex === 1 ?
+                                    '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
+                                    '<td>' + col.title + ':' + '</td> ' +
+                                    '<td>' + col.data + '</td>' +
+                                    '</tr>' :
+                                    '';
+                            }).join('');
 
-                                   return data;
-                               }
-                           },
+                            return data;
+                        }
+                    },
 
-                           "paging": true
-                       },
-                   } );
-                   $('#scheduleActivities').DataTable( {
-                       responsive: {
-                           details: {
-                               display: $.fn.dataTable.Responsive.display.modal( {
-                                   header: function ( row ) {
-                                       let data = row.data();
-                                       return data[0];
-                                   },
-                               } ),
-                               renderer: function ( api, rowIdx, columns ) {
-                                   var data = $.map( columns, function ( col, i ) {
-                                       return col.columnIndex === 1?
-                                           '<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
-                                           '<td>'+col.title+':'+'</td> '+
-                                           '<td>'+col.data+'</td>'+
-                                           '</tr>' :
-                                           '';
-                                   } ).join('');
+                    "paging": true
+                },
+            });
+            $('#scheduleActivities').DataTable({
+                responsive: {
+                    details: {
+                        display: $.fn.dataTable.Responsive.display.modal({
+                            header: function (row) {
+                                let data = row.data();
+                                return data[0];
+                            },
+                        }),
+                        renderer: function (api, rowIdx, columns) {
+                            var data = $.map(columns, function (col, i) {
+                                return col.columnIndex === 1 ?
+                                    '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
+                                    '<td>' + col.title + ':' + '</td> ' +
+                                    '<td>' + col.data + '</td>' +
+                                    '</tr>' :
+                                    '';
+                            }).join('');
 
-                                   return data;
-                               }
-                           },
+                            return data;
+                        }
+                    },
 
-                           "paging": true
-                       },
-                   } );
-                   $('#userActivities').DataTable( {
-                       responsive: {
-                           details: {
-                               display: $.fn.dataTable.Responsive.display.modal( {
-                                   header: function ( row ) {
-                                       let data = row.data();
-                                       return data[0];
-                                   },
-                               } ),
-                               renderer: function ( api, rowIdx, columns ) {
-                                   var data = $.map( columns, function ( col, i ) {
-                                       return col.columnIndex === 1?
-                                           '<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
-                                           '<td>'+col.title+':'+'</td> '+
-                                           '<td>'+col.data+'</td>'+
-                                           '</tr>' :
-                                           '';
-                                   } ).join('');
+                    "paging": true
+                },
+            });
+            $('#userActivities').DataTable({
+                responsive: {
+                    details: {
+                        display: $.fn.dataTable.Responsive.display.modal({
+                            header: function (row) {
+                                let data = row.data();
+                                return data[0];
+                            },
+                        }),
+                        renderer: function (api, rowIdx, columns) {
+                            var data = $.map(columns, function (col, i) {
+                                return col.columnIndex === 1 ?
+                                    '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
+                                    '<td>' + col.title + ':' + '</td> ' +
+                                    '<td>' + col.data + '</td>' +
+                                    '</tr>' :
+                                    '';
+                            }).join('');
 
-                                   return data;
-                               }
-                           },
+                            return data;
+                        }
+                    },
 
-                           "paging": true
-                       },
-                   } );
-               } );
-           </script>
+                    "paging": true
+                },
+            });
+        });
+    </script>
 @endsection

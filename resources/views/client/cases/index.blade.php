@@ -38,88 +38,87 @@
                            data-toggle="modal" data-target="#openClientConveyanceModal">
                             <i class="fa fa-file-pdf fa-sm text-dark-100"></i> Conveyance
                         </a>
-                        @can('file_edit')
-                            <a href="#" class="btn d-sm-block btn-outline-secondary shadow-sm float-right" data-toggle="modal" data-target="#openClientCaseModal">
-                                <i class="fa fa-pencil-alt fa-sm text-dark-100"></i> Edit</a>
-                        @endcan
+{{--                        @can('file_edit')--}}
+{{--                            <a href="#" class="btn d-sm-block btn-outline-secondary shadow-sm float-right" data-toggle="modal" data-target="#openClientCaseModal">--}}
+{{--                                <i class="fa fa-pencil-alt fa-sm text-dark-100"></i> Edit</a>--}}
+{{--                        @endcan--}}
                     </div>
                     <!-- Modal -->
-                    <div class="modal fade" id="openClientCaseModal" tabindex="-1" role="dialog"
-                         aria-labelledby="openClientCaseModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="openClientCaseModalLabel">Litigation Information Form</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                   @if(class_basename($file->clientable) =='Individual')
-                                        <form id="individualLitigation_data" method="POST"
-                                              action="{{ route('admin.litigation.store') }}"
-                                              enctype="multipart/form-data">
-                                            @honeypot
-                                            @csrf
-                                            <div class="container-fluid">
-                                                <div class="container-fluid">
-                                                    <div class="alert alert-secondary" role="alert">
-                                                        CLIENT'S INFORMATION - INDIVIDUAL
-                                                    </div>
-                                                    <div class="form-row">
-                                                        <div class="form-group col-10">
-                                                            <select class="form-control form-control-md"  name="category" required>
-                                                                <option disabled selected value="">Select Litigation Category</option>
-                                                                <option value="matrimonial">A (Matrimonial)</option>
-                                                                <option>B</option>
-                                                                <option>C</option>
-                                                                <option>D</option>
-                                                                <option>E</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <input type="hidden" name="client_id" value="{{ $file->id }}">
-                                                <x-individualForm :file="$file->clientable"/>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Save</button>
-                                            </div>
-                                        </form>
-                                    @else
-                                        <form id="companyLitigation_data" method="POST" action="{{ route('admin.litigation.store') }}"
-                                              enctype="multipart/form-data">
-                                            @honeypot
-                                            @csrf
-                                            <div class="container-fluid">
-                                                <div class="alert alert-secondary" role="alert">
-                                                    CLIENT'S INFORMATION - COMPANY
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-10">
-                                                        <select class="form-control form-control-md"  name="category" required>
-                                                            <option disabled selected value="">Select Litigation Category</option>
-                                                            <option>B</option>
-                                                            <option>C</option>
-                                                            <option>D</option>
-                                                            <option>E</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <input type="hidden" name="client_id" value="{{ $file->id }}">
-                                                <x-companyConveyanceForm :file="$file->clientable"/>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Save</button>
-                                            </div>
-                                        </form>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+{{--                    <div class="modal fade" id="openClientCaseModal" tabindex="-1" role="dialog"--}}
+{{--                         aria-labelledby="openClientCaseModalLabel" aria-hidden="true">--}}
+{{--                        <div class="modal-dialog modal-lg" role="document">--}}
+{{--                            <div class="modal-content">--}}
+{{--                                <div class="modal-header">--}}
+{{--                                    <h5 class="modal-title" id="openClientCaseModalLabel">Litigation Information Form</h5>--}}
+{{--                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
+{{--                                        <span aria-hidden="true">&times;</span>--}}
+{{--                                    </button>--}}
+{{--                                </div>--}}
+{{--                                <div class="modal-body">--}}
+{{--                                   @if(class_basename($file->clientable) =='Individual')--}}
+{{--                                        <form id="individualLitigation_data" method="POST"--}}
+{{--                                              action="{{ route('admin.litigation.store') }}"--}}
+{{--                                              enctype="multipart/form-data">--}}
+{{--                                            @honeypot--}}
+{{--                                            @csrf--}}
+{{--                                            <div class="container-fluid">--}}
+{{--                                                <div class="container-fluid">--}}
+{{--                                                    <div class="alert alert-secondary" role="alert">--}}
+{{--                                                        CLIENT'S INFORMATION - INDIVIDUAL--}}
+{{--                                                    </div>--}}
+{{--                                                    <div class="form-row">--}}
+{{--                                                        <div class="form-group col-10">--}}
+{{--                                                            <select class="form-control form-control-md"  name="category" required>--}}
+{{--                                                                <option disabled selected value="">Select Litigation Category</option>--}}
+{{--                                                                <option value="matrimonial">A (Matrimonial)</option>--}}
+{{--                                                                <option>B</option>--}}
+{{--                                                                <option>C</option>--}}
+{{--                                                                <option>D</option>--}}
+{{--                                                                <option>E</option>--}}
+{{--                                                            </select>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                                <input type="hidden" name="client_id" value="{{ $file->id }}">--}}
+{{--                                                <x-individualForm :file="$file->clientable"/>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="modal-footer">--}}
+{{--                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--}}
+{{--                                                <button type="submit" class="btn btn-primary">Save</button>--}}
+{{--                                            </div>--}}
+{{--                                        </form>--}}
+{{--                                    @else--}}
+{{--                                        <form id="companyLitigation_data" method="POST" action="{{ route('admin.litigation.store') }}"--}}
+{{--                                              enctype="multipart/form-data">--}}
+{{--                                            @honeypot--}}
+{{--                                            @csrf--}}
+{{--                                            <div class="container-fluid">--}}
+{{--                                                <div class="alert alert-secondary" role="alert">--}}
+{{--                                                    CLIENT'S INFORMATION - COMPANY--}}
+{{--                                                </div>--}}
+{{--                                                <div class="form-row">--}}
+{{--                                                    <div class="form-group col-10">--}}
+{{--                                                        <select class="form-control form-control-md"  name="category" required>--}}
+{{--                                                            <option disabled selected value="">Select Litigation Category</option>--}}
+{{--                                                            <option>B</option>--}}
+{{--                                                            <option>C</option>--}}
+{{--                                                            <option>D</option>--}}
+{{--                                                            <option>E</option>--}}
+{{--                                                        </select>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                                <input type="hidden" name="client_id" value="{{ $file->id }}">--}}
+{{--                                            </div>--}}
+{{--                                            <div class="modal-footer">--}}
+{{--                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--}}
+{{--                                                <button type="submit" class="btn btn-primary">Save</button>--}}
+{{--                                            </div>--}}
+{{--                                        </form>--}}
+{{--                                    @endif--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
                     <div class="modal fade" id="openClientConveyanceModal" tabindex="-1" role="dialog"
                          aria-labelledby="openClientConveyanceModal" aria-hidden="true">
@@ -328,19 +327,19 @@
                                            <td>{{ $conveyance->other_type }}</td>
                                            <td>{{ $conveyance->user == null ? "" : $conveyance->user->name }}</td>
                                            <td>
-                                               @can('case_access')
-                                                   <a class="btn btn-info btn-sm  text-center text-white"
-                                                      href="{{ route('admin.client.show', $conveyance->id) }}">
-                                                       <i class="fa fa-eye"></i> view</a>
-                                               @endcan
+{{--                                               @can('case_access')--}}
+{{--                                                   <a class="btn btn-info btn-sm  text-center text-white"--}}
+{{--                                                      href="{{ route('client.show', $conveyance->id) }}">--}}
+{{--                                                       <i class="fa fa-eye"></i> view</a>--}}
+{{--                                               @endcan--}}
                                                @can('case_access')
                                                        @include('partials.dropdown-lawyers',[ 'user' => $conveyance->user])
                                                @endcan
-                                               @can('file_edit')
-                                                   <a class="btn btn-warning btn-sm  text-center text-white"
-                                                      data-toggle="modal" data-target="#editClientFileModal{{ $conveyance->id }}">
-                                                       <i class="fa fa-pencil-alt"></i> Edit</a>
-                                               @endcan
+{{--                                               @can('file_edit')--}}
+{{--                                                   <a class="btn btn-warning btn-sm  text-center text-white"--}}
+{{--                                                      data-toggle="modal" data-target="#editClientFileModal{{ $conveyance->id }}">--}}
+{{--                                                       <i class="fa fa-pencil-alt"></i> Edit</a>--}}
+{{--                                               @endcan--}}
                                                @can('file_delete')
                                                    <button class="delete btn btn-danger btn-sm text-center text-white"
                                                            id="{{ $conveyance->id }}"

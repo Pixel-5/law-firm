@@ -291,6 +291,15 @@
                             </a>
                         @endcan
                     @endif
+                        @if($file->trashed())
+                            <a href="{{ route('super.restore-litigation',[
+                                            'id' => $file->id,
+                                            'activity' => $activity
+                                        ]) }}"
+                               class="btn btn-md btn-outline-danger shadow-sm">
+                                <i class="fa fa-share fa-sm text-dark-100"></i> Restore
+                            </a>
+                        @endif
                 </div>
             </div>
         </div>

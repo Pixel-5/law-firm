@@ -124,15 +124,11 @@
             </select>
         </div>
     </div>
-    <div class="form-row">
-        <div class="form-group col-md-12">
-            <div class="custom-file">
-                <input type="file"
-                       name="cdocs[]" class="form-control-file" multiple>
-                <label class="custom-file-label" for="validatedCustomFile">
-                    Upload supporting docs...</label>
-                <div class="invalid-feedback">Scan Supporting Documents</div>
-            </div>
+    <div class="form-group">
+        <label for="attach_agreement_copies"> Scan documents</label>
+        <div class="file-upload-wrapper">
+            <input type="file" id="docs" multiple
+                   name="cdocs[]" class="file-upload" />
         </div>
     </div>
 </div>

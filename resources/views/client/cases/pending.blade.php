@@ -67,7 +67,7 @@
                                                     <i class="fa fa-calendar"></i>
                                                 </a>
                                                 <a class="btn btn-info btn-sm  text-center text-white" title="Open file"
-                                                   href="{{ route('admin.client.show', $case->client->id) }}">
+                                                   href="{{ route('client.show', $case->client->id) }}">
                                                     <i class="fa fa-folder-open"></i>
                                                 </a>
                                             </td>
@@ -116,7 +116,7 @@
                                                     <i class="fa fa-eye"></i>
                                                 </a>
                                                 <a class="btn btn-info btn-sm  text-center text-white" title="Open file"
-                                                   href="{{ route('admin.client.show', $conveyance->client->id) }}">
+                                                   href="{{ route('client.show', $conveyance->client->id) }}">
                                                     <i class="fa fa-folder-open"></i>
                                                 </a>
                                             </td>

@@ -33,7 +33,7 @@
                 <div class="form-group">
                     <label for="gender">Gender</label>
                     <select class="form-control form-control-md"
-                            name="gender"required >
+                            name="gender" required >
                         <option disabled>Select</option>
                         <option>@if($file != null) {{ $file->gender == 'Male'? 'Male':'Female' }} @else {{ 'Male' }}@endif</option>
                         <option>@if($file != null) {{ $file->gender == 'Male'? 'Female':'Male' }} @else {{ 'Female' }}@endif </option>
@@ -58,11 +58,30 @@
                <input type="text" class="form-control" required
                       name="nationality"  @if($file != null) value="{{ $file->nationality }}" @endif>
            </div>
-           <div class="form-group col-md-4">
-               <label for="inputContact">Marital Status</label>
-               <input type="text" class="form-control"
-                      name="marital_status" required
-                       @if($file != null) value="{{ $file->marital_status }}" @endif>
+           <div class="form-group" >
+               <label for="marital_status">Marital Status</label>
+               <select class="form-control form-control-md" name="marital_status" required id="marital_status">
+                   @if($file != null)
+                       @if( $file->marital_status == 'Single')
+                           <option>Single</option>
+                           <option>Married</option>
+                           <option>Divorced</option>
+                        @elseif($file->marital_status == 'Married')
+                           <option>Married</option>
+                           <option>Single</option>
+                           <option>Divorced</option>
+                       @else
+                           <option>Divorced</option>
+                           <option>Married</option>
+                           <option>Single</option>
+                       @endif
+                   @else
+                       <option disabled>Select Marital Status</option>
+                       <option>Single</option>
+                       <option>Married</option>
+                       <option>Divorced</option>
+                   @endif
+               </select>
            </div>
        </div>
        <div class="form-row">
@@ -133,9 +152,9 @@
                 </select>
             </div>
         </div>
-        <div class="form-group">
-            <label for="inputAddress2">Name of Spouse (If applicable)</label>
-            <input type="text" class="form-control"
+        <div class="form-group hidden" id="name_spouse_id">
+            <label for="inputAddress2">Name of Spouse </label>
+            <input type="text" class="form-control" id="name_spouse"
                    name="name_spouse"  @if($file != null) value="{{ $file->name_spouse }} @endif">
         </div>
         <div class="form-row">

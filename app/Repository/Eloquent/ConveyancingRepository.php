@@ -55,7 +55,7 @@ class ConveyancingRepository extends AbstractBaseRepository
                         'physical_address'  =>$request->transferor_physical_address,
                         'postal_address'    =>$request->transferor_postal_address,
                         'tel'               =>$request->transferor_tel,
-                        'cel'               =>$request->transferor_cell . ' / '. $request->transferor_alt,
+                        'cell'               =>$request->transferor_cell . ' / '. $request->transferor_alt,
                         'spouse_name'       =>$request->transferor_spouse
                 ]);
                 }else{

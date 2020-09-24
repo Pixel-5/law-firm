@@ -178,7 +178,7 @@
                                                     <td>
                                                         @can('case_access')
                                                             <a class="btn btn-info btn-sm  text-center text-white"
-                                                               href="{{ route('admin.client.show', $client->id) }}">
+                                                               href="{{ route('client.show', $client->id) }}">
                                                                 <i class="fa fa-file-contract"></i> Open</a>
                                                         @endcan
                                                         @can('file_edit')
@@ -276,7 +276,7 @@
                                                 <td>
                                                     @can('case_access')
                                                         <a class="btn btn-info btn-sm  text-center text-white"
-                                                           href="{{ route('admin.client.show', $client->id) }}">
+                                                           href="{{ route('client.show', $client->id) }}">
                                                             <i class="fa fa-file-contract"></i> Open</a>
                                                     @endcan
                                                     @can('file_edit')
@@ -388,7 +388,7 @@
                                                     <td>
                                                         @can('case_access')
                                                             <a class="btn btn-info btn-sm  text-center text-white"
-                                                               href="{{ route('admin.client.show', $client->id) }}">
+                                                               href="{{ route('client.show', $client->id) }}">
                                                                 <i class="fa fa-file-contract"></i> Open</a>
                                                         @endcan
                                                         @can('file_edit')
@@ -454,7 +454,7 @@
                         }
                     },
                     callback: function (result) {
-                        let url = '{{ route("admin.client.destroy",["client"=> ":id"]) }}';
+                        let url = '{{ route("client.destroy",["client"=> ":id"]) }}';
                         url = url.replace(':id', client);
                         if(result){
                             $(el).html(`<i class="fa fa-spinner fa-spin"></i> deleting...`);
@@ -509,7 +509,7 @@
                         }
                     },
                     callback: function (result) {
-                        let url = '{{ route("admin.client.destroy",["client"=> ":id"]) }}';
+                        let url = '{{ route("client.destroy",["client"=> ":id"]) }}';
                         url = url.replace(':id', client);
                         if(result){
                             $(el).html(`<i class="fa fa-spinner fa-spin"></i> deleting...`);
@@ -564,7 +564,7 @@
                         }
                     },
                     callback: function (result) {
-                        let url = '{{ route("admin.client.destroy",["client"=> ":id"]) }}';
+                        let url = '{{ route("client.destroy",["client"=> ":id"]) }}';
                         url = url.replace(':id', client);
                         if(result){
                             $(el).html(`<i class="fa fa-spinner fa-spin"></i> deleting...`);
@@ -607,7 +607,6 @@
             $('#both').hide();
             $('#submit_div').hide();
             $("#retainerType").change(function () {
-
                let retainerType = $("#retainerType :selected").text();
                $('#submit_div').show();
 
@@ -701,6 +700,19 @@
                     "paging": true
                 },
             } );
+
+            $('#marital_status').change(function () {
+                let marital_status = $("#marital_status :selected").text();
+                console.log(marital_status);
+                if(marital_status == 'Married'){
+                    $('#name_spouse_id').removeClass('hidden');
+                    $('#name_spouse').prop('required',true);
+
+                }else{
+                    $('#name_spouse_id').addClass('hidden');
+                    $('#name_spouse').prop('required',false);
+                }
+            });
         });
     </script>
 @endsection
