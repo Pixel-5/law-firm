@@ -16,7 +16,6 @@
                                 <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
                                     <span class="badge badge-primary">
 {{--                                         {{ $files->count() }}--}}
-                                        20
                                       </span>
                                 </div>
                             </div>
