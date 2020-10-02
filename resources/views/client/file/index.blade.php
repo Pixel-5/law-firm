@@ -237,16 +237,15 @@
                                         @foreach($clients as $client)
                                             @if($client->clientable_type == 'App\Company')
                                             <tr>
-                                                <div class="modal fade" id="editClientFileModal" tabindex="-1"
+                                                <div class="modal fade" id="editClientFileModal{{ $client->clientable->id }}" tabindex="-1"
                                                      role="dialog"
                                                      aria-labelledby="clientModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog modal-lg" role="document">
                                                         <div class="modal-content">
-                                                            <form action="{{ route('admin.files.update',[$client->clientable->id]) }}"
+                                                            <form action="{{ route('admin.company.update',[$client->clientable->id]) }}"
                                                                   enctype="multipart/form-data" method="POST">
                                                                 @csrf
                                                                 @honeypot
-
                                                                 @method('PUT')
                                                                 <div class="modal-header">
                                                                     <h5 class="modal-title" id="clientModalLabel">
@@ -258,7 +257,149 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-
+                                                                        <div class="container-fluid">
+                                                                            <div class="form-row">
+                                                                                <div class="form-group col-md-6">
+                                                                                    <label for="inputName">Name of Company</label>
+                                                                                    <input type="text" class="form-control"
+                                                                                           name="name" value="{{ $client->clientable->name }}" required>
+                                                                                </div>
+                                                                                <div class="form-group col-md-6">
+                                                                                    <label for="inputEntity">Nature of Entity</label>
+                                                                                    <input type="text" class="form-control"
+                                                                                           name="entity"
+                                                                                           value="{{ $client->clientable->entity }}" required>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-row">
+                                                                                <div class="form-group col-md-12">
+                                                                                    <label for="inputAddress">Physical Address</label>
+                                                                                    <input type="text" class="form-control"
+                                                                                           name="physical_address"
+                                                                                           value="{{ $client->clientable->physical_address }}" required>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-row">
+                                                                                <div class="form-group  col-md-12">
+                                                                                    <label for="inputAddress2">Postal Address</label>
+                                                                                    <input type="text" class="form-control"
+                                                                                           name="postal_address"
+                                                                                           value="{{ $client->clientable->postal_address }}"required>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-row">
+                                                                                <div class="form-group col-md-12">
+                                                                                    <div class="form-group">
+                                                                                        <label for="dob">Director (s) Names</label>
+                                                                                        <input type="text" class="form-control"
+                                                                                               name="director_name"
+                                                                                               value="{{ $client->clientable->director_name }}"required>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-row">
+                                                                                <div class="form-group  col-md-12">
+                                                                                    <label for="inputAddress">Physical Address</label>
+                                                                                    <input type="text" class="form-control"
+                                                                                           name="director_physical_address"
+                                                                                           value="{{ $client->clientable->director_physical_address }}"required>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-row">
+                                                                                <div class="form-group  col-md-12">
+                                                                                    <label for="inputAddress2">Postal Address</label>
+                                                                                    <input type="text" class="form-control"
+                                                                                           name="director_postal_address"
+                                                                                           value="{{ $client->clientable->director_postal_address }}"required>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-row">
+                                                                                <div class="form-group col-md-12">
+                                                                                    <label >Contacts (TEL|FAX|CELL)</label>
+                                                                                    <div class="input-group">
+                                                                                        <input type="tel" class="form-control"
+                                                                                               name="tel" value="{{ $client->clientable->tel }}">
+                                                                                        <input type="tel" class="form-control"
+                                                                                               name="fax" value="{{ $client->clientable->fax }}">
+                                                                                        <input type="tel" class="form-control"
+                                                                                               name="cell" value="{{ $client->clientable->cell }}" required>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-row">
+                                                                                <div class="form-group col-md-6">
+                                                                                    <label for="inputEmail">Email</label>
+                                                                                    <input type="email" class="form-control"
+                                                                                           name="email" value="{{ $client->clientable->email }}" required>
+                                                                                </div>
+                                                                                <div class="form-group col-md-6">
+                                                                                    <label for="inputContact">Preferred Email</label>
+                                                                                    <input type="tel" class="form-control"
+                                                                                           name="preferred_email"
+                                                                                           value="{{ $client->clientable->preferred_email }}" required>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-row">
+                                                                                <div class="form-group col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="gender">Preferred method of contact</label>
+                                                                                        <select class="form-control form-control-md" name="preferred_contact" required>
+                                                                                            <option selected>{{ $client->clientable->preferred_contact }}</option>
+                                                                                            <option>CELL</option>
+                                                                                            <option>TEL</option>
+                                                                                            <option>FAX</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group col-md-6">
+                                                                                    <label for="inputContact">Contact Person</label>
+                                                                                    <input type="tel" class="form-control"
+                                                                                           name="contact_person"
+                                                                                           value="{{ $client->clientable->contact_person }}" required>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-row">
+                                                                                <div class="form-group col-md-12">
+                                                                                    <label for="inputAddress2">Director (s) Postal Address</label>
+                                                                                    <input type="text" class="form-control"
+                                                                                           name="directors_postal_address"
+                                                                                           value="{{ $client->clientable->directors_postal_address }}" required>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-row">
+                                                                                <div class="form-group col-md-12">
+                                                                                    <label for="inputAddress">Director (s) Physical Address</label>
+                                                                                    <input type="text" class="form-control"
+                                                                                           name="directors_physical_address"
+                                                                                           value="{{ $client->clientable->directors_physical_address }}">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-row">
+                                                                                <div class="form-group col-md-12">
+                                                                                    <label for="inputAddress2">Director (s) Alternative Contact</label>
+                                                                                    <input type="text" class="form-control"
+                                                                                           value="{{ $client->clientable-> alternative_contect }}"
+                                                                                           name="calternative_contact" >
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-row">
+                                                                                <div class="form-group col-md-12">
+                                                                                    <label for="inputAddress2">Preferred methods of receiving invoices</label>
+                                                                                    <select class="form-control form-control-md" name="preferred_invoice" required>
+                                                                                        <option selected>{{ $client->clientable->preferred_invoice }}</option>
+                                                                                        <option>contact</option>
+                                                                                        <option>email</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+{{--                                                                            <div class="form-group">--}}
+{{--                                                                                <label for="attach_agreement_copies"> Scan documents</label>--}}
+{{--                                                                                <div class="file-upload-wrapper">--}}
+{{--                                                                                    <input type="file" id="docs" multiple--}}
+{{--                                                                                           name="cdocs[]" class="file-upload" />--}}
+{{--                                                                                </div>--}}
+{{--                                                                            </div>--}}
+                                                                        </div>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -281,7 +422,7 @@
                                                     @endcan
                                                     @can('file_edit')
                                                         <a class="btn btn-warning btn-sm  text-center text-white"
-                                                           data-toggle="modal" data-target="#editClientFileModal">
+                                                           data-toggle="modal" data-target="#editClientFileModal{{ $client->clientable->id }}">
                                                             <i class="fa fa-pencil-alt"></i> Edit</a>
                                                     @endcan
                                                     @can('file_delete')
@@ -330,41 +471,216 @@
                                                 <th>Action</th>
                                             </tr>
                                             </thead>
-
                                             <tbody>
-
                                             @foreach($clients as $client)
                                                 @if(class_basename($client->clientable) == 'Retainer')
                                                 <tr>
-                                                    <div class="modal fade" id="editClientFileModal" tabindex="-1"
-                                                         role="dialog"
-                                                         aria-labelledby="clientModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog modal-lg" role="document">
-                                                            <div class="modal-content">
-                                                                <form action="{{ route('admin.files.update',[$client->clientable->id]) }}"
-                                                                      enctype="multipart/form-data" method="POST">
-                                                                    @csrf
-                                                                    @honeypot
-                                                                    @method('PUT')
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title" id="clientModalLabel">
-                                                                            Edit Client File
-                                                                            Information</h5>
-                                                                        <button type="button" class="close" data-dismiss="modal"
-                                                                                aria-label="Close">
-                                                                            <span aria-hidden="true">&times;</span>
-                                                                        </button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                        <button type="submit" class="btn btn-primary">Save file</button>
-                                                                    </div>
-                                                                </form>
+                                                    @if($client->clientable->type == 'company')
+                                                        <div class="modal fade" id="editIndividualClientFileModal" tabindex="-1"
+                                                             role="dialog"
+                                                             aria-labelledby="clientModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg" role="document">
+                                                                <div class="modal-content">
+                                                                    <form action="{{ route('admin.company.update',[$client->clientable->id]) }}"
+                                                                          enctype="multipart/form-data" method="POST">
+                                                                        @csrf
+                                                                        @honeypot
+                                                                        @method('PUT')
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="clientModalLabel">
+                                                                                Edit Client File
+                                                                                Information</h5>
+                                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                                    aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <div class="container-fluid">
+                                                                                <div class="form-row">
+                                                                                    <div class="form-group col-md-6">
+                                                                                        <label for="inputName">Name of Company</label>
+                                                                                        <input type="text" class="form-control"
+                                                                                               name="name" value="{{ $client->clientable->name }}" required>
+                                                                                    </div>
+                                                                                    <div class="form-group col-md-6">
+                                                                                        <label for="inputEntity">Nature of Entity</label>
+                                                                                        <input type="text" class="form-control"
+                                                                                               name="entity"
+                                                                                               value="{{ $client->clientable->entity }}" required>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-row">
+                                                                                    <div class="form-group col-md-12">
+                                                                                        <label for="inputAddress">Physical Address</label>
+                                                                                        <input type="text" class="form-control"
+                                                                                               name="physical_address"
+                                                                                               value="{{ $client->clientable->physical_address }}" required>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-row">
+                                                                                    <div class="form-group  col-md-12">
+                                                                                        <label for="inputAddress2">Postal Address</label>
+                                                                                        <input type="text" class="form-control"
+                                                                                               name="postal_address"
+                                                                                               value="{{ $client->clientable->postal_address }}"required>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-row">
+                                                                                    <div class="form-group col-md-12">
+                                                                                        <div class="form-group">
+                                                                                            <label for="dob">Director (s) Names</label>
+                                                                                            <input type="text" class="form-control"
+                                                                                                   name="director_name"
+                                                                                                   value="{{ $client->clientable->director_name }}"required>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-row">
+                                                                                    <div class="form-group  col-md-12">
+                                                                                        <label for="inputAddress">Physical Address</label>
+                                                                                        <input type="text" class="form-control"
+                                                                                               name="director_physical_address"
+                                                                                               value="{{ $client->clientable->director_physical_address }}"required>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-row">
+                                                                                    <div class="form-group  col-md-12">
+                                                                                        <label for="inputAddress2">Postal Address</label>
+                                                                                        <input type="text" class="form-control"
+                                                                                               name="director_postal_address"
+                                                                                               value="{{ $client->clientable->director_postal_address }}"required>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-row">
+                                                                                    <div class="form-group col-md-12">
+                                                                                        <label >Contacts (TEL|FAX|CELL)</label>
+                                                                                        <div class="input-group">
+                                                                                            <input type="tel" class="form-control"
+                                                                                                   name="tel" value="{{ $client->clientable->tel }}">
+                                                                                            <input type="tel" class="form-control"
+                                                                                                   name="fax" value="{{ $client->clientable->fax }}">
+                                                                                            <input type="tel" class="form-control"
+                                                                                                   name="cell" value="{{ $client->clientable->cell }}" required>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-row">
+                                                                                    <div class="form-group col-md-6">
+                                                                                        <label for="inputEmail">Email</label>
+                                                                                        <input type="email" class="form-control"
+                                                                                               name="email" value="{{ $client->clientable->email }}" required>
+                                                                                    </div>
+                                                                                    <div class="form-group col-md-6">
+                                                                                        <label for="inputContact">Preferred Email</label>
+                                                                                        <input type="tel" class="form-control"
+                                                                                               name="preferred_email"
+                                                                                               value="{{ $client->clientable->preferred_email }}" required>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-row">
+                                                                                    <div class="form-group col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label for="gender">Preferred method of contact</label>
+                                                                                            <select class="form-control form-control-md" name="preferred_contact" required>
+                                                                                                <option selected>{{ $client->clientable->preferred_contact }}</option>
+                                                                                                <option>CELL</option>
+                                                                                                <option>TEL</option>
+                                                                                                <option>FAX</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="form-group col-md-6">
+                                                                                        <label for="inputContact">Contact Person</label>
+                                                                                        <input type="tel" class="form-control"
+                                                                                               name="contact_person"
+                                                                                               value="{{ $client->clientable->contact_person }}" required>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-row">
+                                                                                    <div class="form-group col-md-12">
+                                                                                        <label for="inputAddress2">Director (s) Postal Address</label>
+                                                                                        <input type="text" class="form-control"
+                                                                                               name="directors_postal_address"
+                                                                                               value="{{ $client->clientable->directors_postal_address }}" required>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-row">
+                                                                                    <div class="form-group col-md-12">
+                                                                                        <label for="inputAddress">Director (s) Physical Address</label>
+                                                                                        <input type="text" class="form-control"
+                                                                                               name="directors_physical_address"
+                                                                                               value="{{ $client->clientable->directors_physical_address }}">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-row">
+                                                                                    <div class="form-group col-md-12">
+                                                                                        <label for="inputAddress2">Director (s) Alternative Contact</label>
+                                                                                        <input type="text" class="form-control"
+                                                                                               value="{{ $client->clientable-> alternative_contect }}"
+                                                                                               name="calternative_contact" >
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-row">
+                                                                                    <div class="form-group col-md-12">
+                                                                                        <label for="inputAddress2">Preferred methods of receiving invoices</label>
+                                                                                        <select class="form-control form-control-md" name="preferred_invoice" required>
+                                                                                            <option selected>{{ $client->clientable->preferred_invoice }}</option>
+                                                                                            <option>contact</option>
+                                                                                            <option>email</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                </div>
+                                                                                {{--                                                                            <div class="form-group">--}}
+                                                                                {{--                                                                                <label for="attach_agreement_copies"> Scan documents</label>--}}
+                                                                                {{--                                                                                <div class="file-upload-wrapper">--}}
+                                                                                {{--                                                                                    <input type="file" id="docs" multiple--}}
+                                                                                {{--                                                                                           name="cdocs[]" class="file-upload" />--}}
+                                                                                {{--                                                                                </div>--}}
+                                                                                {{--                                                                            </div>--}}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                            <button type="submit" class="btn btn-primary">Save file</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    @elseif($client->clientable->type == 'individual')
+                                                        <div class="modal fade" id="editCompanyClientFileModal{{ $client->clientable->id  }}" tabindex="-1"
+                                                             role="dialog"
+                                                             aria-labelledby="clientModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg" role="document">
+                                                                <div class="modal-content">
+                                                                    <form action="{{ route('admin.individual.update',[$client->clientable->id]) }}"
+                                                                          enctype="multipart/form-data" method="POST">
+                                                                        @csrf
+                                                                        @honeypot
+                                                                        @method('PUT')
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="clientModalLabel">
+                                                                                Edit Client File Information</h5>
+                                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                                    aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <x-individualForm :file="$client->clientable"/>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                            <button type="submit" class="btn btn-primary">Save file</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @else
+
+                                                    @endif
                                                     <td>{{ $client->clientable->id }}</td>
                                                     <td>{{ $client->clientable->number }}</td>
                                                     @if($client->clientable->type == 'company')
@@ -373,7 +689,7 @@
                                                            $company =  $company->getFile($client->clientable->companies_id)
                                                         @endphp
                                                         @if($company != null)
-                                                        <td>{{ $company->name }}</td>
+                                                            <td>{{ $company->name }}</td>
                                                         @endif
                                                     @elseif($client->clientable->type == 'individual' || $client->clientable->type == 'both')
                                                         @inject('individual','App\Repository\IndividualFileRepositoryInterface')

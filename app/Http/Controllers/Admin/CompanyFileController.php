@@ -71,11 +71,14 @@ class CompanyFileController extends Controller
      *
      * @param Request $request
      * @param  int  $id
-     * @return Response
+     * @return RedirectResponse
      */
     public function update(Request $request, $id)
     {
-        //
+        return redirect()->back()->with(
+            empty( CompanyFileRepository::update($id,$request->all())) ?
+                ['fail' => 'Failed to update a client file'] :
+                ['status' => 'Successfully updated Company client file']);
     }
 
     /**
