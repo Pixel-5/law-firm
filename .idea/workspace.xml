@@ -20,7 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2a36650-46ac-44ee-b4e4-5b2af27c0aaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/resources/views/components/company-conveyance-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/company-conveyance-form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/client/cases/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/cases/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -271,7 +271,7 @@
       <workItem from="1600959635423" duration="594000" />
       <workItem from="1600962201645" duration="3323000" />
       <workItem from="1601548321215" duration="798000" />
-      <workItem from="1601560490201" duration="8400000" />
+      <workItem from="1601560490201" duration="8910000" />
     </task>
     <servers />
   </component>
