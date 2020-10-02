@@ -311,7 +311,84 @@
                                                                </button>
                                                            </div>
                                                            <div class="modal-body">
-                                                               <x-individualForm :file="$conveyance"/>
+                                                               <div class="container-fluid">
+                                                                   <div class="alert alert-secondary" role="alert">
+                                                                       Other Party Details
+                                                                   </div>
+                                                               </div>
+                                                               @if($conveyance->other_type == 'Individual')
+                                                                   @inject('individual','App\Repository\IndividualFileRepositoryInterface')
+                                                                   @php
+                                                                       $individual =  $individual->getFile($conveyance->other_id)
+                                                                   @endphp
+                                                                    <x-individualForm :file="$individual"/>
+                                                               @elseif($conveyance->other_type == 'Company')
+                                                                   @inject('company','App\Repository\CompanyFileRepositoryInterface')
+                                                                   @php
+                                                                       $company =  $company->getFile($conveyance->other_id)
+                                                                   @endphp
+                                                                   <x-companyConveyanceForm :file="$company"/>
+                                                               @endif
+                                                               <div class="container-fluid">
+                                                                   <div class="alert alert-secondary" role="alert">
+                                                                      Plot Details
+                                                                   </div>
+                                                               </div>
+                                                               <div class="container">
+                                                                   <div class="form-row">
+                                                                       <div class="form-group col-md-12">
+                                                                           <label for="dob">PLOT NO</label>
+                                                                           <input type="text" class="form-control"
+                                                                                 value="{{ $conveyance->transaction->plot->plot_no }}"
+                                                                                  name="plot_no" required>
+                                                                       </div>
+                                                                   </div>
+                                                                   <div class="form-row">
+                                                                       <div class="form-group col-md-12">
+                                                                           <label for="gender">SITUATED AT</label>
+                                                                           <input type="text" class="form-control"
+                                                                                  value="{{ $conveyance->transaction->plot->situated_at }}"
+                                                                                  name="situated_at" required>
+                                                                       </div>
+                                                                   </div>
+                                                                   <div class="form-row">
+                                                                       <div class="form-group col-md-12">
+                                                                           <label for="deed">TITLE DEED/CERTIFICATE NO</label>
+                                                                           <input type="text" class="form-control"
+                                                                                  value="{{ $conveyance->transaction->plot->title_deed }}"
+                                                                                  name="certificate" required >
+                                                                       </div>
+                                                                   </div>
+                                                                   <div class="form-row">
+                                                                       <div class="form-group col-md-12">
+                                                                           <label for="property_bounded">Is property bounded?</label>
+                                                                           <label class="radio-inline"><input type="radio" name="property_bounded" value="Yes" checked="{{ $conveyance->transaction->plot->property_bounded == 1 }}"> Yes</label>
+                                                                           <label class="radio-inline"><input type="radio" name="property_bounded" value="No" checked="{{ $conveyance->transaction->plot->property_bounded == 0 }}"> No</label>
+                                                                       </div>
+                                                                   </div>
+                                                                   <div class="form-row">
+                                                                       <div class="form-group col-md-12">
+                                                                           <label for="inputAddress">Purchase Price</label>
+                                                                           <input type="text" class="form-control"
+                                                                                  value="{{ $conveyance->transaction->plot->purchase_price }}"
+                                                                                  name="price" required>
+                                                                       </div>
+                                                                   </div>
+                                                                   <div class="form-row">
+                                                                       <div class="form-group col-md-12">
+                                                                           <label for="inputAddress">Initial Payment Amount</label>
+                                                                           <input type="text" class="form-control"
+                                                                                  value="{{ $conveyance->transaction->plot->initial_payment }}"
+                                                                                  name="initial_payment" required>
+                                                                       </div>
+                                                                   </div>
+                                                                   <div class="form-row">
+                                                                       <div class="form-group col-md-12">
+                                                                           <label for="inputAddress2">Other Notes</label>
+                                                                           <textarea rows="5" cols="80" class="form-control">{{ $conveyance->transaction->plot->notes }}</textarea>
+                                                                       </div>
+                                                                   </div>
+                                                               </div>
                                                            </div>
                                                            <div class="modal-footer">
                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -335,11 +412,11 @@
                                                @can('case_access')
                                                        @include('partials.dropdown-lawyers',[ 'user' => $conveyance->user])
                                                @endcan
-{{--                                               @can('file_edit')--}}
-{{--                                                   <a class="btn btn-warning btn-sm  text-center text-white"--}}
-{{--                                                      data-toggle="modal" data-target="#editClientFileModal{{ $conveyance->id }}">--}}
-{{--                                                       <i class="fa fa-pencil-alt"></i> Edit</a>--}}
-{{--                                               @endcan--}}
+                                               @can('file_edit')
+                                                   <a class="btn btn-warning btn-sm  text-center text-white"
+                                                      data-toggle="modal" data-target="#editClientFileModal{{ $conveyance->id }}">
+                                                       <i class="fa fa-pencil-alt"></i> Edit</a>
+                                               @endcan
                                                @can('file_delete')
                                                    <button class="delete btn btn-danger btn-sm text-center text-white"
                                                            id="{{ $conveyance->id }}"
