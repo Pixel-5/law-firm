@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Lawyer;
 
+use App\Conveyancing;
 use App\Facade\ScheduleRepository;
+use App\Litigation;
+use App\Notifications\CustomerCaseScheduleNotification;
 use App\Schedule;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyEventRequest;
@@ -34,7 +37,8 @@ class ScheduleController extends Controller
 
     public function store(StoreScheduleRequest $request)
     {
-        ScheduleRepository::createSchedule($request);
+        $schedule = ScheduleRepository::createSchedule($request);
+        $schedule->scheduleable->client->clientable->notify(new CustomerCaseScheduleNotification($schedule));
         return redirect()->route('lawyer.schedule')->with('status', 'Successfully scheduled a case');
     }
 
@@ -47,10 +51,22 @@ class ScheduleController extends Controller
         return view('lawyer.schedule.edit', compact('schedule'));
     }
 
-    public function update(UpdateScheduleRequest $request, Schedule $schedule)
+    public function update(Request $request, Schedule $schedule)
     {
         $schedule->update($request->all());
-
+        if(class_basename($schedule->scheduleable_type) == 'Litigation'){
+            Litigation::find($schedule->scheduleable_id)->update(
+                [
+                    'status'=>'re-scheduled'
+                ]
+            );
+        }else{
+            Conveyancing::find($schedule->scheduleable_id)->update(
+                [
+                    'status'=>'re-scheduled'
+                ]
+            );
+        }
         if (Auth::user()->roles)
         return redirect()->route('lawyer.schedule');
     }

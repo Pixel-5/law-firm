@@ -11,7 +11,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 
-class ClientRepository extends AbstractBaseRepository
+class  ClientRepository extends AbstractBaseRepository
 {
 
     public function __construct(Client $model)
@@ -83,22 +83,44 @@ class ClientRepository extends AbstractBaseRepository
         return $myUnscheduledClients;
     }
 
-    public function myClients()
+    public function myConveyancingClients()
     {
         return $this->model->whereHas('conveyancing', function (Builder $query) {
             $query->where('user_id',Auth::user()->id);
-        })->whereHas('litigation',function (Builder $query){
+        })->get();
+    }
+
+    public function myLitigationClients()
+    {
+        return $this->model->whereHas('litigation', function (Builder $query) {
             $query->where('user_id',Auth::user()->id);
         })->get();
+    }
+
+    public function myAssignedLitigationClients()
+    {
+        return $this->model->whereHas('conveyancing', function (Builder $query) {
+            $query->where('user_id',Auth::user()->id);
+        })->orWhereHas('litigation',function (Builder $query){
+            $query->where('user_id',Auth::user()->id);
+        })->with(['conveyancing','conveyancing.schedule','litigation','litigation.schedule',])->get();
     }
 
     public function myAssignedClients()
     {
         return $this->model->whereHas('conveyancing', function (Builder $query) {
             $query->where('user_id',Auth::user()->id);
-        })->whereHas('litigation',function (Builder $query){
+        })->orWhereHas('litigation',function (Builder $query){
             $query->where('user_id',Auth::user()->id);
         })->with(['conveyancing','conveyancing.schedule','litigation','litigation.schedule',])->get();
+    }
+    public function myAssignedConveyancingClients()
+    {
+        return $this->model->whereHas('conveyancing', function (Builder $query) {
+            $query->where('user_id',Auth::user()->id);
+        })->orWhereHas('litigation',function (Builder $query){
+            $query->where('user_id',Auth::user()->id);
+        })->with(['conveyancing','conveyancing.schedule',])->get();
     }
 
     public function unAssignedClients()

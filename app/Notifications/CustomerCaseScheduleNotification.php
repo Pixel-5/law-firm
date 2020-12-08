@@ -38,17 +38,17 @@
             return (new SmsApiMessage)
                 ->content("content")
                 ->params([
-                    'phone_number'=>$this->schedule->case->file->contact
+                    'phone_number'=>$this->schedule->schedule->scheduleable->client->clientable->cell
                 ])
                 ;
         }
         public function toNexmo($notifiable)
         {
             return (new NexmoMessage)
-                ->clientReference($this->schedule->case->file->name)
-                ->content('Dear '. $this->schedule->case->file->name. ' '. $this->schedule->case->file->surname.
-                    "\nThis is a reminder that your case number " .
-                $this->schedule->case->number. ' has been scheduled ' .
+                ->clientReference($this->schedule->scheduleable->client->clientable->name)
+                ->content('Dear '. $this->schedule->scheduleable->client->clientable->name. ' '. $this->schedule->scheduleable->client->clientable->surname.
+                    "\nThis is a reminder that your appointment for " . class_basename($this->schedule->scheduleable). ' '.
+                $this->schedule->scheduleable->number. ' has been scheduled ' .
                     CarbonImmutable::parse($this->schedule->start_time)->calendar().
                     ' at '. $this->schedule->venue
                 );

@@ -73,10 +73,12 @@ class Schedule extends Model implements Searchable
         return $this->belongsTo(Litigation::class);
     }
 
-//    public function getDescriptionForEvent(string $eventName): string
-//    {
-//        return "Schedule has been {$eventName}";
-//    }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'attorney_id');
+    }
+
+
     public function getSearchResult(): SearchResult
     {
         $url = route('lawyer.schedule.show', $this->id);

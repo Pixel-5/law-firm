@@ -2,6 +2,8 @@
 
 namespace App\Repository\Eloquent;
 
+use App\Conveyancing;
+use App\Litigation;
 use App\QueryFilters\CaseId;
 use App\QueryFilters\EndTime;
 use App\QueryFilters\StartTime;
@@ -39,7 +41,17 @@ class ScheduleRepository extends AbstractBaseRepository implements ScheduleRepos
     }
     public function createSchedule($request)
     {
-
+        if($request->scheduleable_type == 'litigation'){
+            Litigation::find($request->scheduleable_id)->update(
+                [
+                    'status'=>'scheduled'
+                ]
+            );
+        }else{
+            Conveyancing::find($request->scheduleable_id)->update([
+                'status'=>'scheduled'
+            ]);
+        }
         return $this->create([
             'schedule_appointment'  => $request->schedule_appointment,
             'attorney_id' => $request->attorney_id,

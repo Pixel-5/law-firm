@@ -292,7 +292,7 @@
                                     @foreach($casesActivityLog->get() as $activityLog)
                                         <tr>
                                             <td class="d-xl-none">
-                                                <strong class="alert-heading"> {{ $activityLog->subject->number }}
+                                                <strong class="alert-heading"> {{ $activityLog->subject != null ? $activityLog->subject->number : '' }}
                                                     was {{ $activityLog->description }}</strong>
                                             </td>
                                             <td>
@@ -303,9 +303,9 @@
                                                         {{ $activityLog->causer === null ? 'System Developer':
                                                       $activityLog->causer->name }} {{ $activityLog->description }}
                                                         case
-                                                        {{ $activityLog->subject->number }}
+                                                        {{ $activityLog->subject != null ? $activityLog->subject->number : '' }}
                                                         for file
-                                                        {{ $activityLog->subject->client->clientable->number }}
+                                                        {{  $activityLog->subject != null ? $activityLog->subject->client != null ?$activityLog->subject->client->clientable->number: '' : '' }}
                                                         {{ \Carbon\CarbonImmutable::parse($activityLog->created_at)->calendar() }}
                                                         <br>
                                                         @if ($activityLog->description === 'updated')
@@ -358,14 +358,13 @@
                                                         @endif
                                                         @if($activityLog->status == 'reviewed')
                                                             <a href="{{ route('super.resolve-activity',
-                                                                                    $activityLog->id) }}">
+                                                                    $activityLog->id) }}">
                                                                    <span class="badge btn-outline-info">
                                                                        Resolve
                                                                    </span>
                                                             </a>
                                                         @endif
                                                     </div>
-
                                                 </div>
                                             </td>
                                         </tr>
@@ -476,7 +475,27 @@
                                                                 <span class="badge {{ $activityLog->status === 'pending'?
                                                                         'badge-warning':'badge-primary' }}">
                                                                        {{ $activityLog->status }}
+                                                                </span>
+                                                                @if($activityLog->status == 'pending')
+                                                                    <a href="{{ route(
+                                                                    $activityLog->description === 'updated' ?
+                                                                    'super.updated-litigation':'super.deleted-litigation',[
+                                                                               $activityLog->subject->id,
+                                                                               $activityLog->id
+                                                                           ]) }}">
+                                                                   <span class="badge btn-outline-info">
+                                                                       Review
                                                                    </span>
+                                                                    </a>
+                                                                @endif
+                                                                @if($activityLog->status == 'reviewed')
+                                                                    <a href="{{ route('super.resolve-activity',
+                                                                    $activityLog->id) }}">
+                                                                   <span class="badge btn-outline-info">
+                                                                       Resolve
+                                                                   </span>
+                                                                    </a>
+                                                                @endif
                                                             @endif
                                                         </div>
                                                     </div>
@@ -521,53 +540,53 @@
                                     </thead>
 
                                     <tbody>
-                                    @foreach($schedulesActivityLog->get() as $activityLog)
-                                        <tr>
-                                            <td class="d-xl-none">
-                                                <strong
-                                                    class="alert-heading">  {{ $activityLog->subject->case->number  }}
-                                                    has been {{ $activityLog->description }}</strong>
-                                            </td>
-                                            <td>
-                                                <div class="alert {{ $activityLog->description === 'created'? 'alert-success':
-                                        ($activityLog->description === 'updated'? 'alert-warning': 'alert-danger')}}"
-                                                     role="alert">
-                                                    <div>
-                                                        {{ $activityLog->causer->name }} {{ $activityLog->description }}
-                                                        schedule
-                                                        {{ $activityLog->subject->case->number }}
-                                                        {{ \Carbon\CarbonImmutable::parse($activityLog->created_at)->calendar() }}
-                                                        <br>
-                                                        @if ($activityLog->description === 'updated')
-                                                            <a class="alert alert-link" data-toggle="collapse"
-                                                               href="#content{{ $activityLog->id }}"
-                                                               aria-expanded="false">
-                                                                show change details of a schedule
-                                                            </a>
-                                                            <div class="collapse" id="content{{ $activityLog->id }}">
-                                                                <span class="badge badge-primary">New</span>
-                                                                <ul>
-                                                                    @foreach($activityLog->getExtraProperty('attributes') as $key=> $attribute)
-                                                                        <li> {{ $key === 'case.user.name'? 'Lawyer:': $key. ': ' }}
-                                                                            {{ $attribute ??  'None' }}
-                                                                        </li>
-                                                                    @endforeach
-                                                                </ul>
-                                                                <span class="badge badge-secondary">Old</span>
-                                                                <ul>
-                                                                    @foreach($activityLog->getExtraProperty('old') as $key=> $attribute)
-                                                                        <li> {{ $key === 'case.user.name'? 'Lawyer:': $key. ': ' }}
-                                                                            {{ $attribute ??  'None' }}
-                                                                        </li>
-                                                                    @endforeach
-                                                                </ul>
-                                                            </div>
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+{{--                                    @foreach($schedulesActivityLog->get() as $activityLog)--}}
+{{--                                        <tr>--}}
+{{--                                            <td class="d-xl-none">--}}
+{{--                                                <strong--}}
+{{--                                                    class="alert-heading">  {{ $activityLog->subject->scheduleable->number  }}--}}
+{{--                                                    has been {{ $activityLog->description }}</strong>--}}
+{{--                                            </td>--}}
+{{--                                            <td>--}}
+{{--                                                <div class="alert {{ $activityLog->description === 'created'? 'alert-success':--}}
+{{--                                        ($activityLog->description === 'updated'? 'alert-warning': 'alert-danger')}}"--}}
+{{--                                                     role="alert">--}}
+{{--                                                    <div>--}}
+{{--                                                        {{ $activityLog->causer->name }} {{ $activityLog->description }}--}}
+{{--                                                        schedule--}}
+{{--                                                        {{ $activityLog->subject->scheduleable->number }}--}}
+{{--                                                        {{ \Carbon\CarbonImmutable::parse($activityLog->created_at)->calendar() }}--}}
+{{--                                                        <br>--}}
+{{--                                                        @if ($activityLog->description === 'updated')--}}
+{{--                                                            <a class="alert alert-link" data-toggle="collapse"--}}
+{{--                                                               href="#content{{ $activityLog->id }}"--}}
+{{--                                                               aria-expanded="false">--}}
+{{--                                                                show change details of a schedule--}}
+{{--                                                            </a>--}}
+{{--                                                            <div class="collapse" id="content{{ $activityLog->id }}">--}}
+{{--                                                                <span class="badge badge-primary">New</span>--}}
+{{--                                                                <ul>--}}
+{{--                                                                    @foreach($activityLog->getExtraProperty('attributes') as $key=> $attribute)--}}
+{{--                                                                        <li> {{ $key === 'case.user.name'? 'Lawyer:': $key. ': ' }}--}}
+{{--                                                                            {{ $attribute ??  'None' }}--}}
+{{--                                                                        </li>--}}
+{{--                                                                    @endforeach--}}
+{{--                                                                </ul>--}}
+{{--                                                                <span class="badge badge-secondary">Old</span>--}}
+{{--                                                                <ul>--}}
+{{--                                                                    @foreach($activityLog->getExtraProperty('old') as $key=> $attribute)--}}
+{{--                                                                        <li> {{ $key === 'case.user.name'? 'Lawyer:': $key. ': ' }}--}}
+{{--                                                                            {{ $attribute ??  'None' }}--}}
+{{--                                                                        </li>--}}
+{{--                                                                    @endforeach--}}
+{{--                                                                </ul>--}}
+{{--                                                            </div>--}}
+{{--                                                        @endif--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                            </td>--}}
+{{--                                        </tr>--}}
+{{--                                    @endforeach--}}
                                     </tbody>
                                 </table>
                             </div>

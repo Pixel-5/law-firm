@@ -114,4 +114,5 @@ class Individual extends Model implements Searchable
     {
         return $this->hasOne(Retainer::class);
     }
+
 }

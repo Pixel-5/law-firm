@@ -17,7 +17,8 @@ class FileComposer
     {
         return $view->with([
             'clients' => $this->getClients(),
-            'myClients'   => $this->myClients(),
+            'myConveyancingClients'   => $this->myConveyancingClients(),
+            'myLitigationClients'   => $this->myLitigationClients(),
             'individuals' => $this->countIndividuals(),
             'companies'      => $this->countCompanies(),
             'retainers'    => $this->countRetainers(),
@@ -28,9 +29,14 @@ class FileComposer
     {
         return ClientRepository::clients();
     }
-    public function myClients()
+    public function myConveyancingClients()
     {
-        return ClientRepository::myClients();
+        return ClientRepository::myConveyancingClients();
+    }
+
+    public function myLitigationClients()
+    {
+        return ClientRepository::myLitigationClients();
     }
 
     public function countIndividuals()

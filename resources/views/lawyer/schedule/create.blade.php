@@ -218,33 +218,29 @@
                     $('#numberField').removeClass('hidden');
 
                     $('#numberLabel').html('Litigation Number');
-                    @foreach($myAssignedClients as $myAssignedClient)
-                        @foreach($myAssignedClient->litigation as $litigation)
-                            @if($litigation->schedule === null)
-                                @if($litigation->id == old('scheduleable_id'))
-                                     $('#number').append(`<option value="{{ $litigation->id }}" selected>{{ $litigation->number }}</option>`);
-                                @else
-                                    $('#number').append(`<option value="{{ $litigation->id }}">{{ $litigation->number }}</option>`);
-                                @endif
-                            @endif
-                        @endforeach
-                    @endforeach
+                    @foreach($myAssignedLitigationClient as $litigation)
+            @if($litigation->schedule === null)
+            @if($litigation->id == old('scheduleable_id'))
+            $('#number').append(`<option value="{{ $litigation->id }}" selected>{{ $litigation->number }}</option>`);
+            @else
+            $('#number').append(`<option value="{{ $litigation->id }}">{{ $litigation->number }}</option>`);
+            @endif
+            @endif
+            @endforeach
                     @else
                     $('#number').find('option').remove();
                     $('#numberField').removeClass('hidden');
                     $('#numberLabel').html('Conveyancing Number');
                     $('#number').append(`<option disabled selected>Select Conveyancing Number</option>`);
-                    @foreach($myAssignedClients as $myAssignedClient)
-                        @foreach($myAssignedClient->conveyancing as $conveyancing)
-                            @if($conveyancing->schedule === null)
-                                 @if($conveyancing->id == old('scheduleable_id'))
-                                    $('#number').append(`<option value="{{ $conveyancing->id }}" selected>{{ $conveyancing->number }}</option>`);
-                                 @else
-                                 $('#number').append(`<option value="{{ $conveyancing->id }}">{{ $conveyancing->number }}</option>`);
-                                 @endif
-                            @endif
-                        @endforeach
-                    @endforeach
+                    @foreach($myAssignedConveyancingClient->conveyancing as $conveyancing)
+            @if($conveyancing->schedule === null)
+            @if($conveyancing->id == old('scheduleable_id'))
+            $('#number').append(`<option value="{{ $conveyancing->id }}" selected>{{ $conveyancing->number }}</option>`);
+            @else
+            $('#number').append(`<option value="{{ $conveyancing->id }}">{{ $conveyancing->number }}</option>`);
+            @endif
+            @endif
+            @endforeach
                 @endif
             @endif
             $('input[type=radio][name=scheduleable_type]').change(function() {

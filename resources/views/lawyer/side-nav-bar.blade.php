@@ -90,9 +90,13 @@
         <div id="collapseClients" class="collapse" aria-labelledby="collapseClients" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">List of Clients:
-                    <span class="badge badge-secondary">{{ $myClients->count() }}</span>
+                    <span class="badge badge-secondary">{{ $myConveyancingClients->count() + $myLitigationClients->count() }}</span>
                 </h6>
-                @foreach ($myClients as $client)
+                @foreach ($myLitigationClients as $client)
+                    <a class="collapse-item" href="#">{{ $client->clientable->name }} {{ $client->clientable->surname }}
+                    </a>
+                @endforeach
+                @foreach ($myConveyancingClients as $client)
                     <a class="collapse-item" href="#">{{ $client->clientable->name }} {{ $client->clientable->surname }}
                     </a>
                 @endforeach
