@@ -16,7 +16,6 @@
                                 <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
                                     <span class="badge badge-primary">
 {{--                                         {{ $files->count() }}--}}
-                                        20
                                       </span>
                                 </div>
                             </div>
@@ -43,19 +42,20 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-success text-uppercase
-                            mb-1"><a href="{{ route('admin.assign.lawyer.cases') }}">Conveyancing</a></div>
+                            mb-1"><a href="{{ route('admin.conveyancing.index') }}">Conveyancing</a></div>
                         <div class="row no-gutters align-items-center">
                             <div class="col-auto">
                                 <div class="h5 mb-0 mr-3 font-weight-bold
                                 text-gray-800">
                                      <span class="badge badge-primary">
-                                          {{ $assignedCases->count() }}
+{{--                                          {{ $assignedCases->count() }}--}}
                                       </span>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="progress progress-sm mr-2">
-                                    <div class="progress-bar bg-info" role="progressbar" style="width: {{ $cases->count() > 0?  $assignedCases->count() / $cases->count() * 100 : 0}}%"
+                                    <div class="progress-bar bg-info" role="progressbar"
+{{--                                         style="width: {{ $cases->count() > 0?  $assignedCases->count() / $cases->count() * 100 : 0}}%"--}}
                                         aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
@@ -78,13 +78,13 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-info text-uppercase
                             mb-1">
-                            <a href="{{ route('admin.schedule.index') }}">Litigation</a>
+                            <a href="{{ route('admin.litigation.index') }}">Litigation</a>
                         </div>
                         <div class="row no-gutters align-items-center">
                             <div class="col-auto">
                                 <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
                                       <span class="badge badge-primary">
-                                          {{ $scheduledCases->count() }}
+{{--                                          {{ $scheduledCases->count() }}--}}
                                       </span>
                                 </div>
                             </div>
@@ -118,7 +118,7 @@
                                 <div class="h5 mb-0 mr-3 font-weight-bold
                                 text-gray-800">
                                     <span class="badge badge-primary">
-                                        {{ $unScheduledCases->count() }}
+{{--                                        {{ $unScheduledCases->count() }}--}}
                                     </span>
                                 </div>
                             </div>
@@ -138,21 +138,20 @@
             </div>
         </div>
     </div>
-
 </div>
 <div class="row">
     <div class="col-lg-12 col-md-12">
         <!-- Bar Chart -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Case Summary</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Conveyancing and Litigation Summary</h6>
             </div>
             <div class="card-body">
                 <div class="chart-bar">
                     <canvas id="casesBarChart"></canvas>
                 </div>
                 <hr>
-                Bar chat showing summary of all cases thrroughout the year
+                Bar chat showing summary of Litigation & Conveyancing throughout the year
             </div>
         </div>
     </div>

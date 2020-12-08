@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Searchable\Searchable;
 use Spatie\Searchable\SearchResult;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Company extends Model
+class Company extends Model implements Searchable
 {
     use SoftDeletes, HasSlug, Notifiable, LogsActivity, SoftCascadeTrait;
 
@@ -25,6 +26,7 @@ class Company extends Model
     protected static $logAttributes = [
         'name',
         'entity',
+        'doi',
         'physical_address',
         'postal_address',
         'director_name',
@@ -102,4 +104,10 @@ class Company extends Model
     {
         return $this->morphOne('App\Client', 'clientable');
     }
+
+    public function retainer()
+    {
+        return $this->hasOne(Retainer::class);
+    }
+
 }

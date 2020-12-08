@@ -7,8 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class ClientProperty extends Model
 {
     protected $fillable = [
-        'client_id',
-        'immovable_id',
-        'movable_id',
+        'matrimony_id',
+        'propertiable_id',
+        'propertiable_type',
     ];
+
+    public function propertiable()
+    {
+        return $this->morphTo();
+    }
 }

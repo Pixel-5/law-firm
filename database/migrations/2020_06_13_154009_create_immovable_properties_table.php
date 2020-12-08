@@ -19,7 +19,7 @@ class CreateImmovablePropertiesTable extends Migration
             $table->string('type');
             $table->string('development');
             $table->string('value');
-            $table->string('title_holder');
+            $table->string('fully_paid_for');
             $table->timestamps();
             $table->softDeletes();
         });

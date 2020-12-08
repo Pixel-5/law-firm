@@ -30,47 +30,27 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>List clients files</span>
+        <a class="nav-link collapsed" href="#clients" data-toggle="collapse" data-target="#clients" aria-expanded="true"
+           aria-controls="clients"> <i class="fas fa-fw fa-folder"></i><span>List clients files</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="clients" class="collapse" aria-labelledby="clients" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Select File:</h6>
-
-{{--                @foreach($files as $file)--}}
-{{--                    <a class="collapse-item" href="{{ route('cases.show', $file->id) }}">{{ $file->number }}--}}
-{{--                        <span class="badge badge-secondary">{{ 0 }}</span>--}}
-{{--                    </a>--}}
-{{--                @endforeach--}}
-            </div>
-        </div>
-    </li>
-
-    <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCases" aria-expanded="true" aria-controls="collapseCases">
-            <i class="fas fa-fw fa-calendar"></i>
-            <span>Case schedules</span>
-        </a>
-        <div id="collapseCases" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">List of Active cases:</h6>
-                @foreach($scheduledCases as $case)
-                    @if (\Carbon\Carbon::parse($case->schedule->end_time)->timestamp >
-                                \Carbon\Carbon::parse(now())->timestamp)
-                        <a class="collapse-item" href="#">{{ $case->number }}
-                            <span class="badge badge-secondary">
-                            <i class="fa fa-clock"></i>
-                        </span>
+                @inject('clients','App\Repository\ClientRepositoryInterface')
+                @foreach($clients->clients() as $client)
+                    @if($client->clientable != null)
+                        <a class="collapse-item" href="{{ route('files.show', $client->id) }}">
+                                {{ $client->clientable->number }}
+                            <span class="badge badge-secondary">{{ 0 }}</span>
                         </a>
                     @endif
                 @endforeach
             </div>
         </div>
     </li>
+
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+        <a class="nav-link collapsed" href="#collapseUtilities" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-user-circle"></i>
             <span>Lawyers</span>
         </a>

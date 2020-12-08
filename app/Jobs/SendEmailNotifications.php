@@ -24,6 +24,6 @@ class SendEmailNotifications extends SendNotifications
      */
     public function handle()
     {
-        $this->schedule->case->user->notify(new LawyerCaseScheduleNotification($this->schedule));
+        $this->schedule->attorney->notify(new LawyerCaseScheduleNotification($this->schedule));
     }
 }

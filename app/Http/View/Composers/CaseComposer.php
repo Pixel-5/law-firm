@@ -5,6 +5,9 @@ namespace App\Http\View\Composers;
 
 
 use App\Facade\CaseRepository;
+use App\Facade\ClientRepository;
+use App\Facade\ConveyancingRepository;
+use App\Facade\LitigationRepository;
 use Illuminate\View\View;
 
 class CaseComposer
@@ -12,39 +15,46 @@ class CaseComposer
     public function compose(View $view)
     {
         return $view->with( [
-            'myCases'=> $this->myCourtCases(),
-            'myUnScheduledCases'=>$this->myUnScheduledCases(),
-            'cases' => $this->allCases(),
-            'scheduledCases'=> $this->scheduledCases(),
-            'unScheduledCases' => $this->unscheduledCases(),
-            'unAssignedCases' => $this->unAssignedCases(),
+            'myAssignedClients'=>$this->myAssignedClients(),
+            'litigation' => $this->litigation(),
+            'conveyancing'=> $this->conveyancing(),
+            'myUnScheduledClients' => $this->unscheduledCases(),
             'assignedCases' => $this->assignedCases(),
-            'pendingCases' => $this->pendingCases(),
+            'pendingClients' => $this->pendingClients(),
+            'myLitigation' => $this->myLitigation(),
+            'myConveyancing' =>$this->myConveyancing(),
+            'unAssignedClients'=>$this->unAssignedClients()
         ]);
     }
 
-    public function myUnScheduledCases(){
-        return CaseRepository::myUnScheduledCases();
+    public function myAssignedClients(){
+        return ClientRepository::myAssignedClients();
     }
 
-    public function myCourtCases()
+    public function myLitigation()
     {
-        return CaseRepository::myCases();
+        return LitigationRepository::getMyLitigation();
     }
 
-    public function allCases()
+
+    public function myConveyancing()
     {
-        return CaseRepository::allCases();
+        return ConveyancingRepository::getMyConveyancing();
     }
 
-    public function scheduledCases()
+    public function litigation()
     {
-        return CaseRepository::scheduledCases();
+        return LitigationRepository::allLitigation();
+    }
+
+    public function conveyancing()
+    {
+        return ConveyancingRepository::all();
     }
 
     public function unscheduledCases()
     {
-        return CaseRepository::unscheduledCases();
+        return ClientRepository::unscheduledCases();
     }
 
     public function unAssignedCases()
@@ -53,13 +63,16 @@ class CaseComposer
     }
     public function assignedCases()
     {
-        return CaseRepository::assignedCases();
+        return LitigationRepository::getMyLitigation();
     }
 
-    public function pendingCases()
+    public function pendingClients()
     {
-        return CaseRepository::pendingCases();
+        return ClientRepository::pendingClients();
     }
 
-
+    public function unAssignedClients()
+    {
+        return ClientRepository::unAssignedClients();
+    }
 }

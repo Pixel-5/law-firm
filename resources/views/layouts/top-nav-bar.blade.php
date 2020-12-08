@@ -8,12 +8,12 @@
 
     <!-- Topbar Search -->
     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
-          action="{{ route('search') }}" method="`get`">
+          action="{{ route('search') }}" method="get">
         @csrf
         @honeypot
         <div class="input-group">
             <input type="text" name="query" class="form-control bg-light border-0 small" placeholder="Search for..."
-                   aria-label="Search" aria-describedby="basic-addon2">
+                   aria-label="Search" aria-describedby="basic-addon2" required>
             <div class="input-group-append">
                 <button class="btn btn-primary" type="submit">
                     <i class="fas fa-search fa-sm"></i>
@@ -128,10 +128,10 @@
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                    {{ auth()->user()->profile->username }}
+                    {{auth()->user()->profile != null? auth()->user()->profile->username: auth()->user()->name }}
                 </span>
                 <img class="img-profile rounded-circle"
-                     src="{{ asset(auth()->user()->profile->photo !== null?
+                     src="{{ auth()->user()->profile == null? 'img/default-profile.jpg' :asset(auth()->user()->profile->photo !== null?
                              'storage/'.auth()->user()->profile->photo:'img/default-profile.jpg')
                             }}"
                      width="60px" height="60px">

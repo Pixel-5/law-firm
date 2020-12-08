@@ -8,14 +8,17 @@ class InitialConsultationForm extends Model
 {
     protected $fillable = [
         'litigation_id',
-        'name',
         'number',
-        'file_no',
-        'other_party',
-        'attorney_id',
+        'matter',
         'start_time',
         'end_time',
         'venue',
+        'date',
         'description'
     ];
+
+    public function litigation()
+    {
+        return $this->belongsTo(Litigation::class);
+    }
 }

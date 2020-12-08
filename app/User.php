@@ -103,20 +103,23 @@ class User extends Authenticatable implements Searchable
         return $this->belongsToMany(Role::class);
     }
 
-    public function cases()
+    public function conveyancing()
     {
-        return $this->hasMany(FileCase::class);
+        return $this->hasMany(Conveyancing::class);
+    }
+
+    public function litigation()
+    {
+        return $this->hasMany(Litigation::class);
     }
 
     public function userSchedule()
     {
-        return $this->hasManyThrough(
+        return $this->hasMany(
             Schedule::class,
-            FileCase::class,
-            'user_id', // Foreign key on schedule table...
-            'case_id', // Foreign key on cases table...
-            'id', // Local key on schedule table...
-            'id');
+            'attorney_id',
+            'id'
+        );
     }
 
     /**

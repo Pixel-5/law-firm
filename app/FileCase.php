@@ -54,11 +54,6 @@ class FileCase extends Model implements Searchable
         return $this->belongsTo(User::class);
     }
 
-    public function schedule()
-    {
-        return $this->hasOne(Schedule::class,'case_id');
-    }
-
     protected function getArrayAttributeByKey($key)
     {
         return 'id';

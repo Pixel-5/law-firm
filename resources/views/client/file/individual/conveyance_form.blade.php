@@ -1,16 +1,9 @@
-<style>
-    .hidden
-    {
-        visibility: hidden;
-        display: none;
-    }
 
-</style>
 <div class="container-fluid">
     <div class="form-row">
         <div class="form-group col-10">
             <select class="form-control form-control-md" id="transferor_type" name="transferor_type" required>
-                <option disabled selected value="">Select Transferor Type</option>
+                <option disabled selected value="">Select Transferor/Seller</option>
                 <option>Individual</option>
                 <option>Company</option>
             </select>
@@ -27,7 +20,7 @@
     <div class="form-row">
         <div class="form-group col-10">
             <select class="form-control form-control-md" id="transferee_type" name="transferee_type" required>
-                <option disabled selected value="">Select Transferee Type</option>
+                <option disabled selected value="">Select Transferee/Purchaser/Mortgagor</option>
                 <option>Individual</option>
                 <option>Company</option>
             </select>
@@ -42,7 +35,7 @@
     </div>
 </div>
 
-<form id="individualsConveyancing" method="POST" action="{{ route('admin.conveyancing.store') }}"
+<form id="individualsTransferorConveyancing_data" method="POST" action="{{ route('admin.conveyancing.store') }}"
       enctype="multipart/form-data">
     @honeypot
     @csrf
@@ -60,7 +53,12 @@
             <div class="form-group col-md-3">
                 <label class="radio-inline"><input type="radio" name="transfer_type" value="Mortgage"> Mortgage</label>
             </div>
+
+            <div class="form-group col-md-3">
+                <label class="radio-inline"><input type="radio" name="transfer_type" value="Other"> Other</label>
+            </div>
         </div>
+
         <div class="card mb-4">
             <!-- Card Header - Accordion -->
             <a href="#collapseCardExample1" class="d-block card-header py-2 alert alert-secondary" data-toggle="collapse" role="alert"
@@ -72,8 +70,10 @@
             <!-- Card Content - Collapse -->
             <div class="collapse show" id="collapseCardExample1">
                 <div class="card-body">
-                    <div id="transferor_individual_form">
-                        <x-individualTransferorConveyanceForm file=""/>
+                    <input type="hidden" name="client" value="Transferor">
+                    <input type="hidden" name="client_id" value="{{ $file->id }}">
+                    <div id="transferor_individual_form_data">
+                        <x-individualTransferorConveyanceForm :file="$file->clientable"/>
                     </div>
                 </div>
             </div>
@@ -92,12 +92,13 @@
             <div class="collapse show" id="collapseCardExample2">
                 <div class="card-body">
                     <div id="transferee_individual_form">
+                        <input type="hidden" name="other_type" value="Individual">
+                        <input type="hidden" name="other" value="Transferee">
                         <x-individualTransfereeConveyanceForm file=""/>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="card shadow mb-4">
             <!-- Card Header - Accordion -->
             <a href="#collapseCardExample3" class="d-block card-header py-2 alert alert-secondary"
@@ -109,66 +110,17 @@
             <!-- Card Content - Collapse -->
             <div class="collapse hide" id="collapseCardExample3">
                 <div class="card-body">
-                    <div class="container-fluid">
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="dob">PLOT NO</label>
-                                <input type="text" class="form-control"
-                                       name="plot_no" id="plot_no" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">SITUATED AT</label>
-                                <input type="text" class="form-control" id="situated_at"
-                                       name="situated_at" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="deed">TITLE DEED/CERTIFICATE NO</label>
-                                <input type="text" class="form-control" id="certificate"
-                                       name="certificate" required >
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">Is property bounded?</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="Yes"> Yes</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="No" checked> No</label>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Purchase Price</label>
-                                <input type="text" class="form-control" id="price"
-                                       name="price" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Initial Payment Amount</label>
-                                <input type="text" class="form-control" id="initial_payment"
-                                       name="initial_payment" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress2">Other Notes</label>
-                                <textarea rows="5" cols="80"></textarea>
-                            </div>
-                        </div>
-                    </div>
+                    <x-plot-details-form/>
                 </div>
             </div>
         </div>
+    </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Save</button>
     </div>
-    </div>
 </form>
-<form id="companiesConveyancing" method="POST" action="{{ route('admin.conveyancing.store') }}"
+<form id="individualsTransfereeConveyancing_data" method="POST" action="{{ route('admin.conveyancing.store') }}"
       enctype="multipart/form-data">
     @honeypot
     @csrf
@@ -199,8 +151,10 @@
             <!-- Card Content - Collapse -->
             <div class="collapse show" id="collapseCardExample1">
                 <div class="card-body">
-                    <div id="transferor_company_form">
-                        <x-companyTransferorConveyanceForm file=""/>
+                    <div id="transferor_individual_form_data">
+                        <input type="hidden" name="other_type" value="Individual">
+                        <input type="hidden" name="other" value="Transferor">
+                        <x-individualTransferorConveyanceForm file=""/>
                     </div>
                 </div>
             </div>
@@ -218,7 +172,89 @@
             <!-- Card Content - Collapse -->
             <div class="collapse show" id="collapseCardExample2">
                 <div class="card-body">
-                    <div id="transferee_company_form">
+                    <input type="hidden" name="client" value="Transferee">
+                    <input type="hidden" name="client_id" value="{{ $file->id }}">
+                    <div id="transferee_individual_form">
+                        <x-individualTransfereeConveyanceForm :file="$file->clientable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card shadow mb-4">
+            <!-- Card Header - Accordion -->
+            <a href="#collapseCardExample3" class="d-block card-header py-2 alert alert-secondary"
+               data-toggle="collapse" role="alert" aria-expanded="true" aria-controls="collapseCardExample1">
+                <div class="alert-secondary">
+                    DETAILS OF A PLOT
+                </div>
+            </a>
+            <!-- Card Content - Collapse -->
+            <div class="collapse hide" id="collapseCardExample3">
+                <div class="card-body">
+                    <x-plot-details-form/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+</form>
+
+<form id="companiesTransferorConveyancing_data" method="POST" action="{{ route('admin.conveyancing.store') }}"
+      enctype="multipart/form-data">
+    @honeypot
+    @csrf
+    <div class="container-fluid">
+        <div class="alert alert-secondary" role="alert">
+            TRANSACTION TYPE
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label class="radio-inline"><input type="radio" name="transfer_type" value="Deed of Sale" checked> Deed of Sale</label>
+            </div>
+            <div class="form-group col-md-3">
+                <label class="radio-inline"><input type="radio" name="transfer_type" value="Transfer"> Transfer</label>
+            </div>
+            <div class="form-group col-md-3">
+                <label class="radio-inline"><input type="radio" name="transfer_type" value="Mortgage"> Mortgage</label>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <!-- Card Header - Accordion -->
+            <a href="#collapseCardExample1" class="d-block card-header py-2 alert alert-secondary" data-toggle="collapse" role="alert"
+               aria-expanded="true" aria-controls="collapseCardExample1" >
+                <div class="alert-secondary">
+                    DETAILS OF SELLER/TRANSFEROR
+                </div>
+            </a>
+            <!-- Card Content - Collapse -->
+            <div class="collapse show" id="collapseCardExample1">
+                <div class="card-body">
+                    <input type="hidden" name="client" value="Transferor">
+                    <input type="hidden" name="client_id" value="{{ $file->id }}">
+                    <div id="transferor_company_form_data">
+                        <x-companyTransferorConveyanceForm :file="$file->clientable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card shadow mb-4">
+            <!-- Card Header - Accordion -->
+            <a href="#collapseCardExample2" class="d-block card-header py-2 alert alert-secondary" data-toggle="collapse" role="alert"
+               aria-expanded="true" aria-controls="collapseCardExample1" >
+                <div class="alert-secondary">
+                    DETAILS OF PURCHASER/TRANSFEREE/MORTGAGOR
+                </div>
+            </a>
+
+            <!-- Card Content - Collapse -->
+            <div class="collapse show" id="collapseCardExample2">
+                <div class="card-body">
+                    <div id="transferee_company_form_data">
+                        <input type="hidden" name="other_type" value="Company">
+                        <input type="hidden" name="other" value="Transferee">
                         <x-companyTransfereeConveyanceForm file=""/>
                     </div>
                 </div>
@@ -235,67 +271,17 @@
             <!-- Card Content - Collapse -->
             <div class="collapse hide" id="collapseCardExample3">
                 <div class="card-body">
-                    <div class="container-fluid">
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="dob">PLOT NO</label>
-                                <input type="text" class="form-control"
-                                       name="plot_no" id="plot_no" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">SITUATED AT</label>
-                                <input type="text" class="form-control" id="situated_at"
-                                       name="situated_at" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="deed">TITLE DEED/CERTIFICATE NO</label>
-                                <input type="text" class="form-control" id="certificate"
-                                       name="certificate" required >
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">Is property bounded?</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="Yes"> Yes</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="No" checked> No</label>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Purchase Price</label>
-                                <input type="text" class="form-control" id="price"
-                                       name="price" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Initial Payment Amount</label>
-                                <input type="text" class="form-control" id="initial_payment"
-                                       name="initial_payment" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress2">Other Notes</label>
-                                <textarea rows="5" cols="80"></textarea>
-                            </div>
-                        </div>
-                    </div>
+                    <x-plot-details-form/>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Save</button>
     </div>
 </form>
-<form id="individualCompanyconveyancing" method="POST" action="{{ route('admin.conveyancing.store') }}"
+<form id="companiesTransfereeConveyancing_data" method="POST" action="{{ route('admin.conveyancing.store') }}"
       enctype="multipart/form-data">
     @honeypot
     @csrf
@@ -326,8 +312,10 @@
             <!-- Card Content - Collapse -->
             <div class="collapse show" id="collapseCardExample1">
                 <div class="card-body">
-                    <div id="transferor_individual_form">
-                        <x-individualTransferorConveyanceForm file=""/>
+                    <div id="transferor_company_form_data">
+                        <input type="hidden" name="other_type" value="Company">
+                        <input type="hidden" name="other" value="Transferor">
+                        <x-companyTransferorConveyanceForm file=""/>
                     </div>
                 </div>
             </div>
@@ -341,9 +329,91 @@
                     DETAILS OF PURCHASER/TRANSFEREE/MORTGAGOR
                 </div>
             </a>
+
+            <!-- Card Content - Collapse -->
+            <div class="collapse show" id="collapseCardExample2">
+                <div class="card-body">
+                    <input type="hidden" name="client" value="Transferee">
+                    <input type="hidden" name="client_id" value="{{ $file->id }}">
+                    <div id="transferee_company_form_data">
+                        <x-companyTransfereeConveyanceForm :file="$file->clientable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card shadow mb-4">
+            <!-- Card Header - Accordion -->
+            <a href="#collapseCardExample3" class="d-block card-header py-2 alert alert-secondary"
+               data-toggle="collapse" role="alert" aria-expanded="true" aria-controls="collapseCardExample1">
+                <div class="alert-secondary">
+                    DETAILS OF A PLOT
+                </div>
+            </a>
+            <!-- Card Content - Collapse -->
+            <div class="collapse hide" id="collapseCardExample3">
+                <div class="card-body">
+                    <x-plot-details-form/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+</form>
+
+<form id="individualTransferorCompanyconveyancing_data" method="POST" action="{{ route('admin.conveyancing.store') }}"
+      enctype="multipart/form-data">
+    @honeypot
+    @csrf
+    <div class="container-fluid">
+        <div class="alert alert-secondary" role="alert">
+            TRANSACTION TYPE
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label class="radio-inline"><input type="radio" name="transfer_type" value="Deed of Sale" checked> Deed of Sale</label>
+            </div>
+            <div class="form-group col-md-3">
+                <label class="radio-inline"><input type="radio" name="transfer_type" value="Transfer"> Transfer</label>
+            </div>
+            <div class="form-group col-md-3">
+                <label class="radio-inline"><input type="radio" name="transfer_type" value="Mortgage"> Mortgage</label>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <!-- Card Header - Accordion -->
+            <a href="#collapseCardExample1" class="d-block card-header py-2 alert alert-secondary" data-toggle="collapse" role="alert"
+               aria-expanded="true" aria-controls="collapseCardExample1" >
+                <div class="alert-secondary">
+                    DETAILS OF SELLER/TRANSFEROR
+                </div>
+            </a>
+            <!-- Card Content - Collapse -->
+            <div class="collapse show" id="collapseCardExample1">
+                <div class="card-body">
+                    <input type="hidden" name="client" value="Transferor">
+                    <input type="hidden" name="client_id" value="{{ $file->id }}">
+                    <div id="transferor_individual_form_data">
+                        <x-individualTransferorConveyanceForm :file="$file->clientable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card shadow mb-4">
+            <!-- Card Header - Accordion -->
+            <a href="#collapseCardExample2" class="d-block card-header py-2 alert alert-secondary" data-toggle="collapse" role="alert"
+               aria-expanded="true" aria-controls="collapseCardExample1" >
+                <div class="alert-secondary">
+                    DETAILS OF PURCHASER/TRANSFEREE/MORTGAGOR
+                </div>
+            </a>
             <!-- Card Content - Collapse -->
             <div class="collapse show" id="collapseCardExample2">
                 <div id="transferee_company_form">
+                    <input type="hidden" name="other_type" value="Company">
+                    <input type="hidden" name="other" value="Transferee">
                     <x-companyTransfereeConveyanceForm file=""/>
                 </div>
             </div>
@@ -359,56 +429,7 @@
             <!-- Card Content - Collapse -->
             <div class="collapse hide" id="collapseCardExample3">
                 <div class="card-body">
-                    <div class="container">
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="dob">PLOT NO</label>
-                                <input type="text" class="form-control"
-                                       name="plot_no" id="plot_no" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">SITUATED AT</label>
-                                <input type="text" class="form-control" id="situated_at"
-                                       name="situated_at" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="deed">TITLE DEED/CERTIFICATE NO</label>
-                                <input type="text" class="form-control" id="certificate"
-                                       name="certificate" required >
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">Is property bounded?</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="Yes"> Yes</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="No" checked> No</label>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Purchase Price</label>
-                                <input type="text" class="form-control" id="price"
-                                       name="price" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Initial Payment Amount</label>
-                                <input type="text" class="form-control" id="initial_payment"
-                                       name="initial_payment" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress2">Other Notes</label>
-                                <textarea rows="5" cols="80"></textarea>
-                            </div>
-                        </div>
-                    </div>
+                    <x-plot-details-form/>
                 </div>
             </div>
         </div>
@@ -418,7 +439,7 @@
         <button type="submit" class="btn btn-primary">Save</button>
     </div>
 </form>
-<form id="companyIndividualconveyancing" method="POST" action="{{ route('admin.conveyancing.store') }}"
+<form id="individualTransfereeCompanyconveyancing_data" method="POST" action="{{ route('admin.conveyancing.store') }}"
       enctype="multipart/form-data">
     @honeypot
     @csrf
@@ -437,6 +458,7 @@
                 <label class="radio-inline"><input type="radio" name="transfer_type" value="Mortgage"> Mortgage</label>
             </div>
         </div>
+
         <div class="card mb-4">
             <!-- Card Header - Accordion -->
             <a href="#collapseCardExample1" class="d-block card-header py-2 alert alert-secondary" data-toggle="collapse" role="alert"
@@ -448,7 +470,9 @@
             <!-- Card Content - Collapse -->
             <div class="collapse show" id="collapseCardExample1">
                 <div class="card-body">
-                    <div id="transferor_company_form">
+                    <div id="transferor_company_form_data">
+                        <input type="hidden" name="other_type" value="Company">
+                        <input type="hidden" name="other" value="Transferor">
                         <x-companyTransferorConveyanceForm file=""/>
                     </div>
                 </div>
@@ -465,144 +489,10 @@
             </a>
             <!-- Card Content - Collapse -->
             <div class="collapse show" id="collapseCardExample2">
-                <div class="card-body">
-                    <div id="transferee_company_form">
-                        <x-individualTransfereeConveyanceForm file=""/>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card shadow mb-4">
-            <!-- Card Header - Accordion -->
-            <a href="#collapseCardExample3" class="d-block card-header py-2 alert alert-secondary"
-               data-toggle="collapse" role="alert" aria-expanded="true" aria-controls="collapseCardExample1">
-                <div class="alert-secondary">
-                    DETAILS OF A PLOT
-                </div>
-            </a>
-            <!-- Card Content - Collapse -->
-            <div class="collapse hide" id="collapseCardExample3">
-                <div class="card-body">
-                    <div class="container">
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="dob">PLOT NO</label>
-                                <input type="text" class="form-control"
-                                       name="plot_no" id="plot_no" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">SITUATED AT</label>
-                                <input type="text" class="form-control" id="situated_at"
-                                       name="situated_at" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="deed">TITLE DEED/CERTIFICATE NO</label>
-                                <input type="text" class="form-control" id="certificate"
-                                       name="certificate" required >
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">Is property bounded?</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="Yes"> Yes</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="No" checked> No</label>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Purchase Price</label>
-                                <input type="text" class="form-control" id="price"
-                                       name="price" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Initial Payment Amount</label>
-                                <input type="text" class="form-control" id="initial_payment"
-                                       name="initial_payment" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress2">Other Notes</label>
-                                <textarea rows="5" cols="80"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save</button>
-    </div>
-</form>
-
-<form id="individualsConveyancing_data" method="POST" action="{{ route('admin.conveyancing.store') }}"
-      enctype="multipart/form-data">
-    @honeypot
-    @csrf
-    <div class="container-fluid">
-        <div class="alert alert-secondary" role="alert">
-            TRANSACTION TYPE
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-3">
-                <label class="radio-inline"><input type="radio" name="transfer_type" value="Deed of Sale" checked> Deed of Sale</label>
-            </div>
-            <div class="form-group col-md-3">
-                <label class="radio-inline"><input type="radio" name="transfer_type" value="Transfer"> Transfer</label>
-            </div>
-            <div class="form-group col-md-3">
-                <label class="radio-inline"><input type="radio" name="transfer_type" value="Mortgage"> Mortgage</label>
-            </div>
-        </div>
-
-        <div class="card mb-4">
-            <!-- Card Header - Accordion -->
-            <a href="#collapseCardExample1" class="d-block card-header py-2 alert alert-secondary" data-toggle="collapse" role="alert"
-               aria-expanded="true" aria-controls="collapseCardExample1" >
-                <div class="alert-secondary">
-                    DETAILS OF SELLER/TRANSFEROR
-                </div>
-            </a>
-            <!-- Card Content - Collapse -->
-            <div class="collapse show" id="collapseCardExample1">
-                <div class="card-body">
-                    <div id="transferor_individual_form">
-                        <x-individualTransferorConveyanceForm file=""/>
-                    </div>
-                    <div id="transferor_individual_form_data">
-                        <x-individualTransferorConveyanceForm :file="$file"/>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card shadow mb-4">
-            <!-- Card Header - Accordion -->
-            <a href="#collapseCardExample2" class="d-block card-header py-2 alert alert-secondary" data-toggle="collapse" role="alert"
-               aria-expanded="true" aria-controls="collapseCardExample1" >
-                <div class="alert-secondary">
-                    DETAILS OF PURCHASER/TRANSFEREE/MORTGAGOR
-                </div>
-            </a>
-
-            <!-- Card Content - Collapse -->
-            <div class="collapse show" id="collapseCardExample2">
-                <div class="card-body">
-                    <div id="transferee_individual_form">
-                        <x-individualTransfereeConveyanceForm file=""/>
-                    </div>
-                </div>
+                <input type="hidden" name="client" value="Transferee">
+                <input type="hidden" name="client_id" value="{{ $file->id }}">
                 <div id="transferee_individual_form_data">
-                    <x-individualTransfereeConveyanceForm file=""/>
+                    <x-individualTransferorConveyanceForm :file="$file->clientable"/>
                 </div>
             </div>
         </div>
@@ -617,56 +507,7 @@
             <!-- Card Content - Collapse -->
             <div class="collapse hide" id="collapseCardExample3">
                 <div class="card-body">
-                    <div class="container">
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="dob">PLOT NO</label>
-                                <input type="text" class="form-control"
-                                       name="plot_no" id="plot_no" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">SITUATED AT</label>
-                                <input type="text" class="form-control" id="situated_at"
-                                       name="situated_at" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="deed">TITLE DEED/CERTIFICATE NO</label>
-                                <input type="text" class="form-control" id="certificate"
-                                       name="certificate" required >
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">Is property bounded?</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="Yes"> Yes</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="No" checked> No</label>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Purchase Price</label>
-                                <input type="text" class="form-control" id="price"
-                                       name="price" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Initial Payment Amount</label>
-                                <input type="text" class="form-control" id="initial_payment"
-                                       name="initial_payment" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress2">Other Notes</label>
-                                <textarea rows="5" cols="80"></textarea>
-                            </div>
-                        </div>
-                    </div>
+                    <x-plot-details-form/>
                 </div>
             </div>
         </div>
@@ -676,7 +517,8 @@
         <button type="submit" class="btn btn-primary">Save</button>
     </div>
 </form>
-<form id="companiesConveyancing_data" method="POST" action="{{ route('admin.conveyancing.store') }}"
+
+<form id="companyTransferorIndividualconveyancing_data" method="POST" action=" {{ route('admin.conveyancing.store') }}"
       enctype="multipart/form-data">
     @honeypot
     @csrf
@@ -707,11 +549,10 @@
             <!-- Card Content - Collapse -->
             <div class="collapse show" id="collapseCardExample1">
                 <div class="card-body">
-                    <div id="transferor_company_form">
-                        <x-companyTransferorConveyanceForm file=""/>
-                    </div>
+                    <input type="hidden" name="client" value="Transferor">
+                    <input type="hidden" name="client_id" value="{{ $file->id }}">
                     <div id="transferor_company_form_data">
-                        <x-companyTransferorConveyanceForm :file="$file"/>
+                        <x-companyTransferorConveyanceForm :file="$file->clientable"/>
                     </div>
                 </div>
             </div>
@@ -725,146 +566,14 @@
                     DETAILS OF PURCHASER/TRANSFEREE/MORTGAGOR
                 </div>
             </a>
-
             <!-- Card Content - Collapse -->
             <div class="collapse show" id="collapseCardExample2">
-                <div class="card-body">
-                    <div id="transferee_company_form">
-                        <x-companyTransfereeConveyanceForm file=""/>
-                    </div>
-                    <div id="transferee_company_form_data">
-                        <x-companyTransfereeConveyanceForm :file="$file"/>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card shadow mb-4">
-            <!-- Card Header - Accordion -->
-            <a href="#collapseCardExample3" class="d-block card-header py-2 alert alert-secondary"
-               data-toggle="collapse" role="alert" aria-expanded="true" aria-controls="collapseCardExample1">
-                <div class="alert-secondary">
-                    DETAILS OF A PLOT
-                </div>
-            </a>
-            <!-- Card Content - Collapse -->
-            <div class="collapse hide" id="collapseCardExample3">
-                <div class="card-body">
-                    <div class="container">
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="dob">PLOT NO</label>
-                                <input type="text" class="form-control"
-                                       name="plot_no" id="plot_no" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">SITUATED AT</label>
-                                <input type="text" class="form-control" id="situated_at"
-                                       name="situated_at" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="deed">TITLE DEED/CERTIFICATE NO</label>
-                                <input type="text" class="form-control" id="certificate"
-                                       name="certificate" required >
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">Is property bounded?</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="Yes"> Yes</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="No" checked> No</label>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Purchase Price</label>
-                                <input type="text" class="form-control" id="price"
-                                       name="price" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Initial Payment Amount</label>
-                                <input type="text" class="form-control" id="initial_payment"
-                                       name="initial_payment" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress2">Other Notes</label>
-                                <textarea rows="5" cols="80"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save</button>
-    </div>
-</form>
-<form id="individualCompanyconveyancing_data" method="POST" action="{{ route('admin.conveyancing.store') }}"
-      enctype="multipart/form-data">
-    @honeypot
-    @csrf
-    <div class="container-fluid">
-        <div class="alert alert-secondary" role="alert">
-            TRANSACTION TYPE
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-3">
-                <label class="radio-inline"><input type="radio" name="transfer_type" value="Deed of Sale" checked> Deed of Sale</label>
-            </div>
-            <div class="form-group col-md-3">
-                <label class="radio-inline"><input type="radio" name="transfer_type" value="Transfer"> Transfer</label>
-            </div>
-            <div class="form-group col-md-3">
-                <label class="radio-inline"><input type="radio" name="transfer_type" value="Mortgage"> Mortgage</label>
-            </div>
-        </div>
-
-        <div class="card mb-4">
-            <!-- Card Header - Accordion -->
-            <a href="#collapseCardExample1" class="d-block card-header py-2 alert alert-secondary" data-toggle="collapse" role="alert"
-               aria-expanded="true" aria-controls="collapseCardExample1" >
-                <div class="alert-secondary">
-                    DETAILS OF SELLER/TRANSFEROR
-                </div>
-            </a>
-            <!-- Card Content - Collapse -->
-            <div class="collapse show" id="collapseCardExample1">
                 <div class="card-body">
                     <div id="transferor_individual_form">
-                        <x-individualTransferorConveyanceForm file=""/>
+                        <input type="hidden" name="other_type" value="Individual">
+                        <input type="hidden" name="other" value="Transferee">
+                        <x-individualTransfereeConveyanceForm file=""/>
                     </div>
-                    <div id="transferor_individual_form_data">
-                        <x-individualTransferorConveyanceForm :file="$file"/>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card shadow mb-4">
-            <!-- Card Header - Accordion -->
-            <a href="#collapseCardExample2" class="d-block card-header py-2 alert alert-secondary" data-toggle="collapse" role="alert"
-               aria-expanded="true" aria-controls="collapseCardExample1" >
-                <div class="alert-secondary">
-                    DETAILS OF PURCHASER/TRANSFEREE/MORTGAGOR
-                </div>
-            </a>
-            <!-- Card Content - Collapse -->
-            <div class="collapse show" id="collapseCardExample2">
-                <div id="transferee_company_form">
-                    <x-companyTransfereeConveyanceForm file=""/>
-                </div>
-
-                <div id="transferee_company_form_data">
-                    <x-companyTransfereeConveyanceForm :file="$file"/>
                 </div>
             </div>
         </div>
@@ -879,66 +588,18 @@
             <!-- Card Content - Collapse -->
             <div class="collapse hide" id="collapseCardExample3">
                 <div class="card-body">
-                    <div class="container">
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="dob">PLOT NO</label>
-                                <input type="text" class="form-control"
-                                       name="plot_no" id="plot_no" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">SITUATED AT</label>
-                                <input type="text" class="form-control" id="situated_at"
-                                       name="situated_at" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="deed">TITLE DEED/CERTIFICATE NO</label>
-                                <input type="text" class="form-control" id="certificate"
-                                       name="certificate" required >
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">Is property bounded?</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="Yes"> Yes</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="No" checked> No</label>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Purchase Price</label>
-                                <input type="text" class="form-control" id="price"
-                                       name="price" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Initial Payment Amount</label>
-                                <input type="text" class="form-control" id="initial_payment"
-                                       name="initial_payment" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress2">Other Notes</label>
-                                <textarea rows="5" cols="80"></textarea>
-                            </div>
-                        </div>
-                    </div>
+                    <x-plot-details-form/>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Save</button>
     </div>
 </form>
-<form id="companyIndividualconveyancing_data" method="POST" action=" {{ route('admin.conveyancing.store') }}"
+<form id="companyTransfereeIndividualconveyancing_data" method="POST" action=" {{ route('admin.conveyancing.store') }}"
       enctype="multipart/form-data">
     @honeypot
     @csrf
@@ -969,17 +630,10 @@
             <!-- Card Content - Collapse -->
             <div class="collapse show" id="collapseCardExample1">
                 <div class="card-body">
-                    <div id="transferor_individual_form">
-                        <x-individualTransferorConveyanceForm file=""/>
-                    </div>
-                    <div id="transferor_company_form">
-                        <x-companyTransferorConveyanceForm file=""/>
-                    </div>
-                    <div id="transferor_individual_form_data">
-                        <x-individualTransferorConveyanceForm :file="$file"/>
-                    </div>
+                    <input type="hidden" name="other_type" value="Individual">
+                    <input type="hidden" name="other" value="Transferor">
                     <div id="transferor_company_form_data">
-                        <x-companyTransferorConveyanceForm :file="$file"/>
+                        <x-individualTransferorConveyanceForm file=""/>
                     </div>
                 </div>
             </div>
@@ -997,11 +651,10 @@
             <!-- Card Content - Collapse -->
             <div class="collapse show" id="collapseCardExample2">
                 <div class="card-body">
-                    <div id="transferee_company_form">
-                        <x-companyTransfereeConveyanceForm file=""/>
-                    </div>
+                    <input type="hidden" name="client" value="Transferee">
+                    <input type="hidden" name="client_id" value="{{ $file->id }}">
                     <div id="transferee_company_form_data">
-                        <x-companyTransfereeConveyanceForm :file="$file"/>
+                        <x-companyTransfereeConveyanceForm :file="$file->clientable"/>
                     </div>
                 </div>
             </div>
@@ -1017,56 +670,7 @@
             <!-- Card Content - Collapse -->
             <div class="collapse hide" id="collapseCardExample3">
                 <div class="card-body">
-                    <div class="container">
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="dob">PLOT NO</label>
-                                <input type="text" class="form-control"
-                                       name="plot_no" id="plot_no" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">SITUATED AT</label>
-                                <input type="text" class="form-control" id="situated_at"
-                                       name="situated_at" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="deed">TITLE DEED/CERTIFICATE NO</label>
-                                <input type="text" class="form-control" id="certificate"
-                                       name="certificate" required >
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="gender">Is property bounded?</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="Yes"> Yes</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="No" checked> No</label>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Purchase Price</label>
-                                <input type="text" class="form-control" id="price"
-                                       name="price" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Initial Payment Amount</label>
-                                <input type="text" class="form-control" id="initial_payment"
-                                       name="initial_payment" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress2">Other Notes</label>
-                                <textarea rows="5" cols="80"></textarea>
-                            </div>
-                        </div>
-                    </div>
+                    <x-plot-details-form/>
                 </div>
             </div>
         </div>
@@ -1077,130 +681,3 @@
         <button type="submit" class="btn btn-primary">Save</button>
     </div>
 </form>
-
-@section('custom-scripts')
-    <script type="application/javascript">
-        $(document).ready(function (){
-            $('#individualsConveyancing').addClass('hidden');
-            $('#companiesConveyancing').addClass('hidden');
-            $('#individualCompanyconveyancing').addClass('hidden');
-            $('#companyIndividualconveyancing').addClass('hidden');
-
-            $('#individualsConveyancing_data').addClass('hidden');
-            $('#companiesConveyancing_data').addClass('hidden');
-            $('#individualCompanyconveyancing_data').addClass('hidden');
-            $('#companyIndividualconveyancing_data').addClass('hidden');
-
-            $("#transferor_type").change(function () {
-
-                $('#individualsConveyancing').addClass('hidden');
-                $('#companiesConveyancing').addClass('hidden');
-                $('#individualCompanyconveyancing').addClass('hidden');
-                $('#companyIndividualconveyancing').addClass('hidden');
-
-                let transferorType = $("#transferor_type :selected").text();
-                let transfereeType = $("#transferee_type :selected").text();
-                switch (transferorType) {
-                    case 'Individual':
-                        if (transfereeType == 'Individual' || transfereeType == 'Select Transferee Type'){
-                            $('#individualsConveyancing').removeClass('hidden');
-                        }else if (transfereeType == 'Company'){
-                            $('#individualCompanyconveyancing').removeClass('hidden');
-                        }
-                        break;
-                    case 'Company':
-                        if (transfereeType == 'Individual' || transfereeType == 'Select Transferee Type'){
-                            $('#companyIndividualconveyancing').removeClass('hidden');
-                        }else if (transfereeType == 'Company'){
-                            $('#companiesConveyancing').removeClass('hidden');
-                        }
-                        break;
-                }
-            });
-            $("#transferee_type").change(function () {
-
-                $('#individualsConveyancing').addClass('hidden');
-                $('#companiesConveyancing').addClass('hidden');
-                $('#individualCompayconveyancing').addClass('hidden');
-                $('#companyIndividualconveyancing').addClass('hidden');
-
-                let transferorType = $("#transferor_type :selected").text();
-                let transfereeType = $("#transferee_type :selected").text();
-                console.log(transferorType+' '+transfereeType);
-                switch (transfereeType) {
-                    case 'Individual':
-                        if (transferorType == 'Individual' || transferorType == 'Select Transferee Type'){
-                            $('#individualsConveyancing').removeClass('hidden');
-                        }else if (transferorType == 'Company' || transferorType == 'Select Transferee Type'){
-                            $('#companyIndividualconveyancing').removeClass('hidden');
-                        }
-                        break;
-                    case 'Company':
-                        if (transferorType == 'Company' || transferorType == 'Select Transferee Type'){
-                            $('#companiesConveyancing').removeClass('hidden');
-                        }else if (transferorType == 'Individual' || transferorType == 'Select Transferee Type'){
-                            $('#individualCompanyconveyancing').removeClass('hidden');
-                        }
-                        break;
-                }
-            });
-            $("#client_info_transferor").on('click',function (){
-                $('#client_info_transferee').hide();
-                $('#transferee_client_info_clear').hide();
-                let clientType = $("#transferor_type :selected").text();
-                switch (clientType) {
-                    case 'Individual':
-                        break;
-                    case 'Company':
-                        break;
-                }
-            });
-            $("#client_info_transferee").on('click',function (){
-                $('#client_info_transferor').hide();
-                $('#transferor_client_info_clear').hide();
-                let clientType = $("#transferee_type :selected").text();
-                switch (clientType) {
-                    case 'Individual':
-                        break;
-                    case 'Company':
-                        break;
-                }
-            });
-
-            $('#transferor_client_info_clear').on('click',function (){
-                let clientType = $("#transferor_type :selected").text();
-                $('#client_info_transferee').show();
-                $('#transferee_client_info_clear').show();
-                switch (clientType) {
-                    case 'Individual':
-                        $('#client_info_transferee').show();
-                        $('#transferee_client_info_clear').show();
-
-                        break;
-                    case 'Company':
-                        $('#client_info_transferee').show();
-                        $('#transferee_client_info_clear').hide();
-
-                        break;
-                }
-
-            });
-            $('#transferee_client_info_clear').on('click',function (){
-                let clientType = $("#transferee_type :selected").text();
-                $('#client_info_transferor').show();
-                $('#transferor_client_info_clear').show();
-                switch (clientType) {
-                    case 'Individual':
-                        $('#client_info_transferor').show();
-                        $('#transferor_client_info_clear').show();
-
-                        break;
-                    case 'Company':
-                        $('#client_info_transferor').show();
-                        $('#transferor_client_info_clear').show();
-                        break;
-                }
-            });
-        });
-    </script>
-@endsection

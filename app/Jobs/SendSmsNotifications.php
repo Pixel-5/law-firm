@@ -25,6 +25,6 @@ class SendSmsNotifications extends SendNotifications
      */
     public function handle()
     {
-        $this->schedule->case->file->notify(new CustomerCaseScheduleNotification($this->schedule));
+        $this->schedule->scheduleable->client->notify(new CustomerCaseScheduleNotification($this->schedule));
     }
 }

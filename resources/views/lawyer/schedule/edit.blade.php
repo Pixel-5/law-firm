@@ -10,8 +10,13 @@
                 </a>
             </li>
             <li class="breadcrumb-item"><a href="{{ route('lawyer.schedule') }}">
+                   {{ class_basename($schedule->scheduleable) }}
+                </a>
+            </li>
+            <li class="breadcrumb-item"><a href="{{ route('lawyer.schedule') }}">
                    Schedule
-                </a></li>
+                </a>
+            </li>
             <li class="breadcrumb-item active" aria-current="page">Edit</li>
             <li class="offset-11 d-sm-block" style="height: 10px;margin-top: -30px;">
                 <a href="{{ url()->previous() }}" title="Back">
@@ -32,15 +37,15 @@
             @csrf
             @method('PUT')
             <div class="form-group ">
-                <label for="case_id">Case No</label>
+                <label for="case_id">{{ class_basename($schedule->scheduleable) }} No</label>
                 <input type="text" id="case_id" class="form-control"
-                       value="{{ isset($schedule) ? $schedule->case->number : '' }}" readonly>
+                       value="{{ isset($schedule) ? $schedule->scheduleable->number : '' }}" readonly>
             </div>
             <div class="form-group ">
                 <label for="case_id">Client</label>
                 <input type="text" id="case_id" class="form-control"
-                       value="{{ isset($schedule) ? $schedule->case->file->name . ' '.
-                                $schedule->case->file->surname : '' }}" readonly>
+                       value="{{ isset($schedule) ? $schedule->scheduleable->client->clientable->name . ' '.
+                                $schedule->scheduleable->client->clientable->surname : '' }}" readonly>
             </div>
             <div class="form-group {{ $errors->has('venue') ? 'has-error' : '' }}">
                 <label for="venue">Venue <span style="color: red;">*</span></label>
@@ -113,9 +118,7 @@
             let start_time = $('#start_time').val();
             let end_time = $('#end_time').val();
             let venue = $("#venue option:selected").text();
-            let case_id = '{{ isset($case)? $case->id : $schedule->case->id }}';
-
-
+            let case_id = '{{ $schedule->scheduleable_id }}';
             $("select.venue").change(function () {
                 venue = $(this).children("option:selected").val();
 
@@ -152,7 +155,7 @@
             });
 
         });
-        function checkSchedule(start_time, end_time, venue, url, token,case_id) {
+        function checkSchedule(start_time, end_time, venue, url, token, case_id) {
 
             if((start_time !== null) && new Date(start_time) > new Date(end_time)){
                 $("#start_time_errors").text("start date time  cannot be greater than end date time");

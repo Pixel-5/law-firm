@@ -12,7 +12,6 @@
     <title>@yield('title')</title>
     @include('layouts.links')
     @yield('custom-links')
-
 </head>
 
 <body id="page-top">
@@ -50,6 +49,18 @@
                           </div>
                   </div>
                 @endif
+                @if(Session::has('fail'))
+                    <div class="container-fluid">
+                        <div class="alert  alert-danger alert-dismissible fade {{ Session::has('status')? 'show':'hide' }}"
+                             role="alert" id="status_alert">
+                            <strong class="status">Alert!</strong>
+                            {{  Session::get('fail') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                @endif
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     @hasSection('title')
                         <h1 class="h3 mb-0 text-gray-800">@yield('title')</h1>
@@ -72,37 +83,21 @@
 <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
 </a>
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById
-                ('frm-logout').submit();">
-                    Logout
-                </a>
-                <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
 @include('partials.logout-modal')
 @include("layouts.scripts")
 @yield('custom-scripts')
 <script type="application/javascript">
     $(document).ready(function () {
 
+        var conveyancing_labels;
+        var litigation_labels;
+        var ctx;
+        var max;
+        var url;
+        var myBarChart;
+        var labels;
+        var litigation_data;
+        var conveyancing_data;
         $(".alert-dismissible").fadeTo(2000, 500).slideUp(500, function(){
             $(".alert-dismissible").alert('close');
         });
@@ -128,51 +123,77 @@
         // });
 
         $(".loader").addClass("hidden");
-        var ctx;
-        var myBarChart;
-        let labels = [];
-        let data = [];
-
-        function sortByMonth(arr) {
-
-            var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-            arr.sort(function(a, b){
-                return months.indexOf(a.name)
-                    - months.indexOf(b.name);
-            });
-        }
+        litigation_labels = [];
+        litigation_data = [];
+        conveyancing_data = [];
+        conveyancing_labels = [];
+        max =0;
         // Bar Chart Example
-        let url = '{{ route(auth()->user()->roles->first()->title === 'Lawyer'? 'lawyer.chart':'admin.chart') }}';
+        url = '{{ route(auth()->user()->roles->first()->title === 'Lawyer'? 'lawyer.chart':'admin.chart') }}';
         $.ajax({
             url: url,
             method: 'GET',
             success: function(response) {
-                const years = response.years;
-                const lastYearKey = Object.keys(years).sort().reverse()[0];
-                let lastValue = years[lastYearKey];
-                sortByMonth(lastValue.months);
-
-                for (const key in lastValue.months) {
-                    const month = lastValue.months[key];
-                    labels.push(month.name);
-                    data.push(month.value);
+                var conveyancing;
+                var labels;
+                let month;
+                const litigation = response.litigation;
+                if (!Array.isArray( litigation)){
+                    const lastLitigationYearKey = Object.keys(litigation).sort().reverse()[0];
+                    let lastLitigationValue = litigation[lastLitigationYearKey];
+                    //sortByMonth(lastLitigationValue.months);
+                    for (const key in lastLitigationValue.months) {
+                        month = lastLitigationValue.months[key];
+                        litigation_labels.push(month.name);
+                        litigation_data.push(month.value);
+                    }
+                    max = lastLitigationValue.total_cases;
                 }
+
+                conveyancing = response.conveyancing;
+                console.log(Array.isArray( conveyancing));
+                if (!Array.isArray( conveyancing)){
+                    const lastConveyancingYearKey = Object.keys(conveyancing).sort().reverse()[0];
+                    let lastConveyancingValue = conveyancing[lastConveyancingYearKey];
+
+                    // sortByMonth(lastConveyancingValue.months);
+                    if (lastConveyancingValue !== null || lastConveyancingValue != undefined){
+                        for (const key in lastConveyancingValue.months) {
+                            month = lastConveyancingValue.months[key];
+                            conveyancing_labels.push(month.name);
+                            conveyancing_data.push(month.value);
+                        }
+                    }
+                    max = Math.max(max, lastConveyancingValue.total_cases);
+                }
+
                 ctx = document.getElementById("casesBarChart");
+                labels = [...new Set([...litigation_labels ,...conveyancing_labels])];
                 myBarChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: labels,
-                        datasets: [{
-                            label: "# of Cases",
-                            backgroundColor: "#4e73df",
-                            hoverBackgroundColor: "#2e59d9",
-                            borderColor: "#4e73df",
-                            data: data,
-                        }],
+                        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                        datasets: [
+                            {
+                                label: "# of Litigation",
+                                backgroundColor: "#4e73df",
+                                hoverBackgroundColor: "#2e59d9",
+                                borderColor: "#4e73df",
+                                data: litigation_data,
+                            },
+                            {
+                                label: "# of Conveyancing",
+                                backgroundColor: "#FF5733",
+                                hoverBackgroundColor: "#CB3B1C",
+                                borderColor: "#E15E42",
+                                data: conveyancing_data,
+                            }
+                        ],
                     },
                     options: {
                         maintainAspectRatio: false,
+                        responsive:true,
                         layout: {
                             padding: {
                                 left: 10,
@@ -198,7 +219,7 @@
                             yAxes: [{
                                 ticks: {
                                     min: 0,
-                                    max: lastValue.total_cases,
+                                    max: max,
                                     maxTicksLimit: 6,
                                     padding: 10,
                                     // Include a dollar sign in the ticks
@@ -213,7 +234,8 @@
                                     borderDash: [2],
                                     zeroLineBorderDash: [2]
                                 }
-                            }],
+                            },
+                            ],
                         },
                         legend: {
                             display: true

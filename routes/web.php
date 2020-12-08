@@ -17,6 +17,12 @@
     |
     */
 
+Route::get('/',function(){
+    return view('welcome');
+});
+
+
+
 Route::redirect('/',   '/redirectUser');
 Route::get('/redirectUser','RedirectUserController');
 Route::middleware(ProtectAgainstSpam::class)->group(function() {
@@ -52,13 +58,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin',
 
     //Forms
     Route::resource('conveyancing', 'ConveyancingController');
+    Route::resource('litigation', 'LitigationController');
 
     //default dashboard routes
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
     Route::get('/chart', 'HomeController@chart')->name('chart');
-    Route::get('/assign-cases', 'HomeController@assignCases')->name('assign.lawyer.cases');
-    Route::get('/re-assign-cases', 'HomeController@reAssignCases')->name('re-assign.lawyer.cases');
-    Route::get('/pending/cases', 'HomeController@pendingCases')->name('view.pending-cases');
+    Route::get('/pending/', 'HomeController@pendingCases')->name('view.pending-cases');
+
 });
 
 //lawyer routes, get & post
@@ -77,16 +83,25 @@ Route::group(
         Route::delete('schedules/destroy', 'ScheduleController@massDestroy')->name('events.massDestroy');
         Route::resource('schedule', 'ScheduleController');
 
+        //Litigation & Conveyancing
+        //Common Forms
+        Route::resource('litigation', 'LitigationController')->names([
+            'destroy' => 'admin.litigation.destroy',
+            'create' => 'admin.litigation.create',
+        ]);
+        Route::resource('conveyancing', 'ConveyancingController')->names([
+            'destroy' => 'admin.conveyancing.destroy',
+            'create' => 'admin.conveyancing.create',
+        ]);
+        Route::resource('initial-consultation-form', 'InitialConsultationFormController');
+        Route::resource('note-form', 'NoteFormController');
+        Route::resource('matrimony-form', 'MatrimonyController');
+
     });
 
 //Admin & Lawyer routes
-
-//Case & Case Schedule
+//Litigation, Conveyancing & Schedule
 Route::group(['middleware' => ['auth', 'role:lawyer,super,admin']], function (){
-    Route::resource('cases', 'CaseController')->names([
-        'destroy' => 'admin.cases.destroy',
-        'create' => 'admin.cases.create',
-    ]);
     Route::resource('files', 'Admin\FileController');
     Route::delete('cases/destroy', 'CaseController@massDestroy')->name('admin.cases.massDestroy');
 
@@ -103,11 +118,22 @@ Route::group(['middleware' => ['auth', 'role:lawyer,super,admin']], function (){
     Route::resource('user','UserController')->only([
         'update'
     ]);
-
+    Route::resource('client', 'ClientController');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'super.', 'namespace' => 'Admin','middleware' => ['auth', 'role:super']],
     function (){
-    Route::get('/activity-logs', 'HomeController@activityLogs')->name('activity.logs');
+        Route::get('/activity-logs', 'HomeController@activityLogs')->name('activity.logs');
+        Route::get('/litigation/{litigation}/updated/{activity}', 'HomeController@showUpdatedLitigation')->name('updated-litigation');
+        Route::get('/litigation/{id}/deleted/{activity}', 'HomeController@showDeletedLitigation')->name('deleted-litigation');
+        Route::get('/litigation/{id}/activity/{activity}/restore', 'HomeController@restoreDeletedLitigation')->name('restore-litigation');
+
+        Route::get('/conveyancing/{id}/updated/{activity}', 'HomeController@showUpdatedConveyancing')->name('updated-conveyancing');
+        Route::get('/conveyancing/{id}/deleted/{activity}', 'HomeController@deletedConveyancing')->name('deleted-conveyancing');
+        Route::get('/client/{id}/updated/{activity}', 'HomeController@showUpdatedClient')->name('updated-client');
+        Route::get('/client/{id}/deleted/{activity}', 'HomeController@showDeletedClient')->name('deleted-client');
+
+        Route::get('/activity/{activity}', 'HomeController@resolveActivity')->name('resolve-activity');
+
 });
 

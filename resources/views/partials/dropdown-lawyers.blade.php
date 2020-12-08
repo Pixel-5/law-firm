@@ -15,7 +15,7 @@
     </button>
     <div class="dropdown-menu" aria-labelledby="triggerId">
         @foreach($users->getLawyersOnly() as $lawyer)
-            <a class="dropdown-item" id="{{ $lawyer->id }}" href="#">{{ $lawyer->profile->username }}</a>
+            <a class="dropdown-item" id="{{ $lawyer->id }}" href="#">{{ $lawyer->profile != null? $lawyer->profile->username: $lawyer->name }}</a>
         @endforeach
     </div>
 </span>

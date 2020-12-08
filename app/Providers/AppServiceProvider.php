@@ -54,8 +54,9 @@ class AppServiceProvider extends ServiceProvider
         });
         View::composer('admin.activity_log',function ($view){
             $usersActivityLog = Activity::where('log_name','user');
-            $filesActivityLog = Activity::where('log_name','file');
-            $casesActivityLog = Activity::where('log_name','case');
+            $filesActivityLog = Activity::where('log_name','client');
+            $casesActivityLog = Activity::where('log_name','litigation');
+            $conveyancingActivityLog = Activity::where('log_name','conveyancing');
             $schedulesActivityLog = Activity::where('log_name','schedule');
 
             return $view->with([
@@ -63,6 +64,7 @@ class AppServiceProvider extends ServiceProvider
                 'filesActivityLog' => $filesActivityLog,
                 'casesActivityLog' => $casesActivityLog,
                 'schedulesActivityLog' => $schedulesActivityLog,
+                'conveyancingActivityLog' => $conveyancingActivityLog
             ]);
         });
 
